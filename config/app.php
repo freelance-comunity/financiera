@@ -156,11 +156,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-<<<<<<< HEAD
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
-=======
         Collective\Html\HtmlServiceProvider::class,
->>>>>>> 38e7d58ea5ffc53cf6dba4d7e0050a77f3cbd36a
+
 
     ],
 
@@ -208,13 +206,13 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-<<<<<<< HEAD
+
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
-=======
+
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
->>>>>>> 38e7d58ea5ffc53cf6dba4d7e0050a77f3cbd36a
+
 
     ],
 
