@@ -8,7 +8,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+            <a href="{{ url('/home') }}"><b>S&C</b> EMPRESARIAL</a>
         </div><!-- /.login-logo -->
 
     @if (count($errors) > 0)
@@ -43,13 +43,13 @@
                 </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-                <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('adminlte_lang::message.buttonsign') }}</button>
+                <button type="submit" class="uppercase btn btn-primary btn-block btn-flat">entrar</button>
             </div><!-- /.col -->
         </div>
     </form>
 
     <a href="{{ url('/password/reset') }}">{{ trans('adminlte_lang::message.forgotpassword') }}</a><br>
-    <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a>
+    <!--<a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a>-->
 
 </div><!-- /.login-box-body -->
 
