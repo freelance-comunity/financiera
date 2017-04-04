@@ -61,17 +61,16 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 
-<<<<<<< HEAD
 Route::resource('permissions', 'PermissionController');
 
 Route::get('permissions/{id}/delete', [
     'as' => 'permissions.delete',
     'uses' => 'PermissionController@destroy',
-=======
+    ]);
+
 Route::resource('roles', 'RolesController');
 
 Route::get('roles/{id}/delete', [
     'as' => 'roles.delete',
     'uses' => 'RolesController@destroy',
->>>>>>> 16dbc0ff09b7839301f226c2ea8b807c21999121
-]);
+    ]);
