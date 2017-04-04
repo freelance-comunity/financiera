@@ -76,8 +76,6 @@ Route::resource('roles', 'RolesController');
 Route::get('roles/{id}/delete', [
     'as' => 'roles.delete',
     'uses' => 'RolesController@destroy',
-
-
 ]);
 
 
