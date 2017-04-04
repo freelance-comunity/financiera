@@ -23,4 +23,8 @@ class Permission extends Model
 		"description" => "required"
 	];
 
+	public function roles(){
+        return $this->belongsToMany('App\Role');
+    }
+
 }
