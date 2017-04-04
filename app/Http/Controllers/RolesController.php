@@ -8,6 +8,8 @@ use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
+use App\Role;
+use App\Permission;
 
 class RolesController extends AppBaseController
 {
@@ -22,24 +24,24 @@ class RolesController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = Roles::query();
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
+		$columns = Schema::getColumnListing('$TABLE_NAME$');
+		$attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
+		foreach($columns as $attribute){
+			if($request[$attribute] == true)
+			{
+				$query->where($attribute, $request[$attribute]);
+				$attributes[$attribute] =  $request[$attribute];
+			}else{
+				$attributes[$attribute] =  null;
+			}
+		};
 
-        $roles = $query->get();
+		$roles = $query->get();
 
-        return view('roles.index')
-            ->with('roles', $roles)
-            ->with('attributes', $attributes);
+		return view('roles.index')
+		->with('roles', $roles)
+		->with('attributes', $attributes);
 	}
 
 	/**
@@ -61,9 +63,9 @@ class RolesController extends AppBaseController
 	 */
 	public function store(CreateRolesRequest $request)
 	{
-        $input = $request->all();
-        $name = str_slug($input['name']);
-        $input['name'] = $name;
+		$input = $request->all();
+		$name = str_slug($input['name']);
+		$input['name'] = $name;
 
 		$roles = Roles::create($input);
 
@@ -161,5 +163,21 @@ class RolesController extends AppBaseController
 		Flash::message('Roles deleted successfully.');
 
 		return redirect(route('roles.index'));
+	}
+
+	public function addPermission(Request $request)
+	{
+		$id_role = $request->input('rol_id');
+		$input = $request->all();
+		//$role = Role::find($id_role);
+		foreach ($input['rows'] as $row) {
+			$role = Role::find($id_role);
+			$id_permission = $row['id'];
+			$permission = Permission::find($id_permission);
+
+			$assigmment = $role->attachPermission($permission);
+		}
+		Flash::success('Se asignaron lor permisos al Rol.');
+		return redirect(route('roles.index'));	
 	}
 }

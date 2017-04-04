@@ -39,7 +39,6 @@
             <ul class="treeview-menu">
                 <li><a href="{{ url('/roles')}}">Roles</a></li>
                 <li><a href="{{ url('/permissions') }}">Permisos</a></li>   
-                <li><a href="#">Asiganar permisos a rol</a></li>
             </ul>
         </li>
         <li class="treeview">
