@@ -62,6 +62,8 @@ class RolesController extends AppBaseController
 	public function store(CreateRolesRequest $request)
 	{
         $input = $request->all();
+        $name = str_slug($input['name']);
+        $input['name'] = $name;
 
 		$roles = Roles::create($input);
 
