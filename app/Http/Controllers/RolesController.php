@@ -162,4 +162,12 @@ class RolesController extends AppBaseController
 
 		return redirect(route('roles.index'));
 	}
+
+	public function addPermission(Request $request)
+	{
+
+		$rol = App\Roles::find($id)
+		$permission = App\Permission::find($id)
+		$asignamment->attachPermission($permission);
+	}
 }

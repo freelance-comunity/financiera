@@ -68,16 +68,24 @@ Route::get('permissions/{id}/delete', [
     'as' => 'permissions.delete',
     'uses' => 'PermissionController@destroy',
 
-    ]);
-
-   
+    ]);   
 
 Route::resource('roles', 'RolesController');
 Route::get('roles/{id}/delete', [
     'as' => 'roles.delete',
     'uses' => 'RolesController@destroy',
-
-
 ]);
 
+Route::get('asignamment/{id}',function($id){
+    $role = App\Role::find($id);
+    $permissions = App\Permission::all();
+
+    return view('roles.add')
+    ->with('role', $role)
+    ->with('permissions', $permissions);
+});
+
+Route::Post ('/asignamment', 'RolesController@addPermission');
+
+    
 
