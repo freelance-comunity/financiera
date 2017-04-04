@@ -32,7 +32,7 @@
                     <td>{!! $roles->description !!}</td>
                     <td>
                         <a href="{{ url('asignamment', [$roles->id])}}"><button class="btn btn-info">Asignar</button></a>
-                        <a href="#"><button class="btn btn-warning">Editar</button></a>
+                        <a href="{{ url('permissionsEdit', [$roles->id])}}"><button class="btn btn-warning">Editar</button></a>
                     </td>
                     <td>
                         <a href="{!! route('roles.edit', [$roles->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>

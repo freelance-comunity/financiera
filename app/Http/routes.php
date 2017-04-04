@@ -89,4 +89,12 @@ Route::get('asignamment/{id}',function($id){
 Route::Post ('/asignamment', 'RolesController@addPermission');
 
     
+Route::get('permissionsEdit/{id}',function($id){
+    $role = App\Role::find($id);
+    $permissions = App\Permission::find($id);
 
+    return view('roles.permissions')
+    ->with('role', $role)
+    ->with('permissions', $permissions);
+});
+Route::Post ('/permissionsEdit', 'RolesController@addPermission');
