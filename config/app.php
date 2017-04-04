@@ -161,6 +161,11 @@ return [
 
         Zizaco\Entrust\EntrustServiceProvider::class,
 
+        'Illuminate\View\ViewServiceProvider',
+        'Illuminate\Html\HtmlServiceProvider',
+        'Laracasts\Flash\FlashServiceProvider',
+        'Mitul\Generator\GeneratorServiceProvider'
+
     ],
 
     /*
@@ -216,6 +221,9 @@ return [
 
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
+        'Form'  => 'Illuminate\Html\FormFacade',
+        'HTML'  => 'Illuminate\Html\HtmlFacade',
+        'Flash' => 'Laracasts\Flash\Flash'
 
     ],
 
