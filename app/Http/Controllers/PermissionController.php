@@ -9,6 +9,7 @@ use Response;
 use Flash;
 use Schema;
 
+
 class PermissionController extends AppBaseController
 {
 
@@ -62,7 +63,9 @@ class PermissionController extends AppBaseController
 	public function store(CreatePermissionRequest $request)
 	{
         $input = $request->all();
-
+        $name = str_slug($input['name']);
+        $input['name'] = $name;
+        
 		$permission = Permission::create($input);
 
 		Flash::message('Permission saved successfully.');
