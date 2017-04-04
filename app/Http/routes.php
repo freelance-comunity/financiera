@@ -59,3 +59,11 @@ Route::get('/roles', function() {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+
+Route::resource('roles', 'RolesController');
+
+Route::get('roles/{id}/delete', [
+    'as' => 'roles.delete',
+    'uses' => 'RolesController@destroy',
+]);
