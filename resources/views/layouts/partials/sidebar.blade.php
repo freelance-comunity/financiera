@@ -33,13 +33,44 @@
         <ul class="sidebar-menu">
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li>
+            <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-life-ring'></i> <span>Roles y permisos</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                    <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
+                    <li><a href="#">Roles</a></li>
+                    <li><a href="#">Permisos</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-building'></i> <span>Compañia</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="#">Información</a></li>
+                    <li><a href="#">Carteras</a></li>
+                    <li><a href="#">Cajeros(a)</a></li>
+                    <li><a href="#">Promotores</a></li>
+                    <li><a href="#">Mesa de control</a></li>
+                    <li><a href="#">Asistente de sucursal</a></li>
+                    <li><a href="#">Dirección de crédito</a></li>
+                    <li><a href="#">Dirección de promotor</a></li>
+                    <li><a href="#">Administrador</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-users'></i> <span>Clientes</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="#">Lista de clientes</a></li>
+                    <li><a href="#">Lista negra de clientes</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-dollar'></i> <span>Prestamos</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="#">Nuevo prestamo</a></li>
+                    <li><a href="#">Lista de prestamos</a></li>
+                    <li><a href="#">Nuevo pago</a></li>
+                    <li><a href="#">Lista de pagos</a></li>
+                    <li><a href="#">Nuevo anticipo</a></li>
+                    <li><a href="#">Lista de anticipos</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->
