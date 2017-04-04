@@ -38,7 +38,8 @@
                 <a href="#"><i class='fa fa-life-ring'></i> <span>Roles y permisos</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('/roles')}}">Roles</a></li>
-                    <li><a href="{{ url('/permissions') }}">Permisos</a></li>                 
+                    <li><a href="{{ url('/permissions') }}">Permisos</a></li>   
+                    <li><a href="#">Asignar permisos a rol</a></li>              
                 </ul>
             </li>
             <li class="treeview">
