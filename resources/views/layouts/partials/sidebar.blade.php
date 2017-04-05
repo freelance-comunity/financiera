@@ -44,19 +44,11 @@
         <li class="treeview">
             <a href="#"><i class='fa fa-building'></i> <span>Compañia</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-                <li><a href="#">Información</a></li>
-                <li><a href="#">Carteras</a></li>
-                <li><a href="#">Cajeros(a)</a></li>
-                <li><a href="#">Promotores</a></li>
-                <li><a href="#">Mesa de control</a></li>
-                <li><a href="#">Asistente de sucursal</a></li>
-                <li><a href="#">Dirección de crédito</a></li>
-                <li><a href="#">Dirección de promotor</a></li>
-                <li><a href="#">Administrador</a></li>
+                <li><a href="#">Crear usuarios</a></li>
             </ul>
         </li>
         <li class="treeview">
-            <a href="#"><i class='fa fa-users'></i> <span>Clientes</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <a href="#"><i class='fa fa-users'></i> <span>Acreditados</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
                 <li><a href="#">Lista de clientes</a></li>
                 <li><a href="#">Lista negra de clientes</a></li>

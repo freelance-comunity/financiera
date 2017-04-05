@@ -18,6 +18,11 @@
     <!-- iCheck -->
     <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css" />
 
+    <!-- DataTables -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="{{ asset('/sweetalert/sweetalert.css') }}">
+    <script src="{{ asset('/sweetalert/sweetalert.min.js')}}"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
