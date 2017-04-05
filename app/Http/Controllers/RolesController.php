@@ -186,14 +186,17 @@ class RolesController extends AppBaseController
 		$id_role = $request->input('rol_id');
 		$input = $request->all();
 		foreach ($input['rows'] as $row) {
-			$role = Role::find($id_role);
+			$role = Role::find($id_role);	
 			$id_permission = $row['id'];
-			$permissionEdit = Permission::find($id_permission);
+			$permission = Permission::find($id_permission);
 
-			$permissionEdit = $role->attachPermission($permissionEdit);
+			$permission = $role->attachPermission($permission);
 		}
 
-		Flash::success('Se asignaron lor permisos al Rol.');
+		Flash::success('Se editaron lor permisos al Rol.');
 		return redirect(route('roles.index'));	
 	}
+
+
+	
 }

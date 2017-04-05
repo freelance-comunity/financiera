@@ -12,7 +12,7 @@
 
     <div class="row">
         
-        {!! Form::open(['url' => 'permissionsEdit']) !!}
+        {!! Form::open(['url' => 'permissionEdit']) !!}
         <table class="table">
             <thead>
                 <th></th>
@@ -31,7 +31,7 @@
                     <td>{!! $permission->description !!}</td>
                     <td>
                         <a href="{!! route('permissions.edit', [$permission->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a href="{!! route('permissions.delete', [$permission->id]) !!}" onclick="return confirm('Are you sure wants to delete this Permission?')"><i class="glyphicon glyphicon-remove"></i></a>
+                        <a href="#" onclick="return confirm('Are you sure wants to delete this Permission?')"><i class="glyphicon glyphicon-remove"></i></a>
                     </td>
                 </tr>
                 @endforeach

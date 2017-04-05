@@ -1,0 +1,56 @@
+@extends('layouts.app')
+
+@section('main-content')
+
+    <div class="container">
+
+        @include('flash::message')
+
+        <div class="row">
+            <h1 class="pull-left">Domicilio</h1>
+            <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('addresses.create') !!}">Agregar Nuevo</a>
+        </div>
+
+        <div class="row">
+            @if($addresses->isEmpty())
+                <div class="well text-center">No se encontraron direcciones.</div>
+            @else
+                <table class="table">
+                    <thead>
+                    <th>Avenida</th>
+        			<th>Entre que calle</th>
+        			<th>Número interior y exterior</th>
+        			<th>Colonia</th>
+        			<th>Referencia</th>
+        			<th>Codigo Postal</th>
+        			<th>Municipio</th>
+        			<th>Ciudad</th>
+        			<th>Entidad Federativa</th>
+                    <th width="50px">Acción</th>
+                    </thead>
+                    <tbody>
+                     
+                    @foreach($addresses as $address)
+                        <tr>
+                            <td>{!! $address->avenue !!}</td>
+					<td>{!! $address->streets !!}</td>
+					<td>{!! $address->number !!}</td>
+					<td>{!! $address->colony !!}</td>
+					<td>{!! $address->reference !!}</td>
+					<td>{!! $address->postal_code !!}</td>
+					<td>{!! $address->municipality !!}</td>
+					<td>{!! $address->city !!}</td>
+					<td>{!! $address->federative !!}</td>
+                    
+                            <td>
+                                <a href="{!! route('addresses.edit', [$address->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
+                                <a href="{!! route('addresses.delete', [$address->id]) !!}" onclick="return confirm('Are you sure wants to delete this Address?')"><i class="glyphicon glyphicon-remove"></i></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @endif
+        </div>
+    </div>
+@endsection
