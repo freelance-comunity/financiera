@@ -15,7 +15,7 @@
             @if($references->isEmpty())
                 <div class="well text-center">No se encontraron referencias.</div>
             @else
-                <table class="table">
+                <table class="table" id="mayTable">
                     <thead>
                     <th>Nombre</th>
         			<th>Apellido</th>

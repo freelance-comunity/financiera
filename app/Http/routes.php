@@ -106,7 +106,7 @@ Route::get('permissionEdit/{id}',function($id){
 
 Route::resource('accrediteds', 'AccreditedController');
 
-<<<<<<< HEAD
+
 Route::get('accrediteds/{id}/delete', [
     'as' => 'accrediteds.delete',
     'uses' => 'AccreditedController@destroy',
@@ -122,18 +122,20 @@ Route::get('addresses/{id}/delete', [
 
 
 
+
+
 Route::resource('references', 'ReferencesController');
 
 Route::get('references/{id}/delete', [
     'as' => 'references.delete',
     'uses' => 'ReferencesController@destroy',
-=======
 
+]);
 
 Route::resource('users', 'UserController');
 
 Route::get('users/{id}/delete', [
     'as' => 'users.delete',
     'uses' => 'UserController@destroy',
->>>>>>> ec8e6ca2412fccc61f2c77669eb568eaed867c49
+
 ]);

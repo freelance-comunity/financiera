@@ -34,5 +34,9 @@ class Address extends Model
 		"city" => "required",
 		"federative" => "required"
 	];
-
+	
+	public function accredited()
+    {
+        return $this->belongsTo('App\Model\Accredited');
+    }
 }

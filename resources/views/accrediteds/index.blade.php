@@ -15,7 +15,7 @@
             @if($accrediteds->isEmpty())
                 <div class="well text-center">No se encontraron acreditados</div>
             @else
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <th>Nombre</th>
             			<th>Apellidos</th>
@@ -49,8 +49,7 @@
 					<td>{!! $accredited->civil_status !!}</td>
 					<td>{!! $accredited->name_conyug !!}</td>
                     <td>
-                    <div class="btn-group btn-group-justified">
-                        <a href="#"><button class="btn btn-info">Dirección</button></a>
+                    
                             <a href="#"><button class="btn btn-success">Aval</button></a>
                             <a href="#"><button class="btn btn-warning">Ref
                              Personales</button></a><a href="#"><button class="btn btn-info">Est Socioeconómico</button></a>

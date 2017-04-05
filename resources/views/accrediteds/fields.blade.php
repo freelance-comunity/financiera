@@ -13,7 +13,7 @@
 <!--- Birthdate Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('birthdate', 'Fecha de Nacimiento:') !!}
-    {!! Form::text('birthdate', null, ['class' => 'form-control']) !!}
+    <input type="date" name="birthdate" class="form-control">
 </div>
 
 <!--- Cel Field --->
@@ -55,14 +55,15 @@
 <!--- Sex Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('sex', 'Sexo:') !!} <br>
-    {!! Form::select('sex',['Hombre' => 'Hombre', 'Mujer' => 'Mujer'], ['class' => 'form-control'])!!}
+    {!! Form::select('sex',['Hombre' => 'Hombre', 'Mujer' => 'Mujer'], null, ['class' => 'form-control'])!!}
     
 </div>
 
 <!--- Civil Status Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('civil_status', 'Estado Civil:') !!}
-    {!! Form::text('civil_status', null, ['class' => 'form-control']) !!}
+    {!! Form::select('civil_status',['Soltero/a' => 'Soltero/a', 'Casado/a' => 'Casado/a',
+    'Viudo/a' => 'Viudo/a', 'Divorciado/a' => 'Divorciado/a'], null, ['class' => 'form-control'])!!}
 </div>
 
 <!--- Name Conyug Field --->

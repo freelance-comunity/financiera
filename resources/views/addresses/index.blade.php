@@ -15,7 +15,7 @@
             @if($addresses->isEmpty())
                 <div class="well text-center">No se encontraron direcciones.</div>
             @else
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                     <th>Avenida</th>
         			<th>Entre que calle</th>

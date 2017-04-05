@@ -29,7 +29,7 @@ class References extends Model
 
 	public function accredited()
     {
-        return $this->hasMany('App\Model\Accredited');
+        return $this->belongsTo('App\Model\Accredited');
     }
 
 }
