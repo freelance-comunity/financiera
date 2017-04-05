@@ -6,7 +6,13 @@
 <script src="{{ asset('/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
-
+<!-- DataTables -->
+<script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script>
+	$(document).ready(function(){
+		$('#myTable').DataTable();
+	});
+</script>
 <script>
 	$('#select-all').click(function(event) {
 		if(this.checked) {

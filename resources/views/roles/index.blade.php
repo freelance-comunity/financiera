@@ -36,7 +36,7 @@
                     </td>
                     <td>
                         <a href="{!! route('roles.edit', [$roles->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a href="{!! route('roles.delete', [$roles->id]) !!}" onclick="return confirm('¿Esta seguro de borrar este rol??')"><i class="glyphicon glyphicon-remove"></i></a>
+                        <!--<a href="{!! route('roles.delete', [$roles->id]) !!}" onclick="return confirm('¿Esta seguro de borrar este rol??')"><i class="glyphicon glyphicon-remove"></i></a>-->
                     </td>
                 </tr>
                 @endforeach

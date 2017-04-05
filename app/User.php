@@ -14,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'last_name', 'address', 'phone', 'birthday', 'position', 'start_date', 'email', 'password',
     ];
 
     /**
@@ -24,6 +24,18 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
+    ];
+
+    public static $rules = [
+        "name" => "required|max:255",
+        "last_name" => "required|max:255",
+        "address" => "required|max:255",
+        "phone" => "required",
+        "birthday" => "required",
+        "position" => "required",
+        "start_date" => "required",
+        "email" => "required|email|max:255|unique:users",
+        "password" => "required|confirmed|min:6"
     ];
 
     //establecemos las relaciones con el modelo Role, ya que un usuario puede tener varios roles

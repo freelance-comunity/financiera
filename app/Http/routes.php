@@ -90,3 +90,11 @@ Route::Post ('/asignamment', 'RolesController@addPermission');
 
     
 
+
+
+Route::resource('users', 'UserController');
+
+Route::get('users/{id}/delete', [
+    'as' => 'users.delete',
+    'uses' => 'UserController@destroy',
+]);
