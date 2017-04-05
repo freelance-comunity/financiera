@@ -3,12 +3,14 @@
 use App\Http\Requests;
 use App\Http\Requests\CreateUserRequest;
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
 use Hash;
+use Alert;
 
 class UserController extends AppBaseController
 {
@@ -49,8 +51,10 @@ class UserController extends AppBaseController
 	 * @return Response
 	 */
 	public function create()
-	{
-		return view('users.create');
+	{	
+		$roles = Role::pluck('name', 'id');
+		return view('users.create')
+		->with('roles', $roles);
 	}
 
 	/**
@@ -65,9 +69,13 @@ class UserController extends AppBaseController
         $input = $request->all();
         $password = Hash::make($request->input('password'));
         $input['password'] = $password;
-		$user = User::create($input);
+        $role = Role::find($request->input('position'));
+        $input['position'] = $role->name;
+		$usercreate = User::create($input);
+		$user = User::find($usercreate->id);
+		$user->attachRole($role);
 
-		Flash::message('Usuario saved successfully.');
+		Alert::success('Usuario creado exitosamente')->persistent('cerrar');
 
 		return redirect(route('users.index'));
 		
@@ -86,8 +94,8 @@ class UserController extends AppBaseController
 
 		if(empty($user))
 		{
-			Flash::error('Employee not found');
-			return redirect(route('employees.index'));
+			Alert::error('Usuario no encontrado en los registros')->persistent('cerrar');
+			return redirect(route('users.index'));
 		}
 
 		return view('users.show')->with('user', $user);
@@ -105,7 +113,7 @@ class UserController extends AppBaseController
 
 		if(empty($user))
 		{
-			Flash::error('Employee not found');
+			Alert::error('Usuario no encontrado en los registros')->persistent('cerrar');
 			return redirect(route('employees.index'));
 		}
 
@@ -127,14 +135,14 @@ class UserController extends AppBaseController
 
 		if(empty($user))
 		{
-			Flash::error('Employee not found');
+			Alert::error('Usuario no encontrado en los registros')->persistent('cerrar');
 			return redirect(route('users.index'));
 		}
 
 		$user->fill($request->all());
 		$user->save();
 
-		Flash::message('Employee updated successfully.');
+		Alert::success('Usuario actualizado de los registros')->persistent('cerrar');
 
 		return redirect(route('users.index'));
 	}
@@ -153,13 +161,13 @@ class UserController extends AppBaseController
 
 		if(empty($user))
 		{
-			Flash::error('user not found');
+			Alert::error('Usuario no encontrado en los registros')->persistent('cerrar');
 			return redirect(route('users.index'));
 		}
 
 		$user->delete();
 
-		Flash::message('Employee deleted successfully.');
+		Alert::info('Usuario eliminado de los registros')->persistent('cerrar');
 
 		return redirect(route('users.index'));
 	}

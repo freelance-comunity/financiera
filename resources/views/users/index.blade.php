@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    @include('flash::message')
+    @include('sweet::alert')
 
     <div class="row">
         <h1 class="pull-left">Usuarios del sistema</h1>
@@ -41,7 +41,7 @@
                     <td>{!! $user->email !!}</td>
                     <td>
                         <a href="{!! route('users.edit', [$user->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a href="{!! route('users.delete', [$user->id]) !!}" onclick="return confirm('Are you sure wants to delete this Employee?')"><i class="glyphicon glyphicon-remove"></i></a>
+                        <a href="{!! route('users.delete', [$user->id]) !!}" onclick="return confirm('¿Estas seguro de eliminar a este Usuario del sistema?')"><i class="glyphicon glyphicon-remove"></i></a>
                     </td>
                 </tr>
                 @endforeach

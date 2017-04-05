@@ -10,7 +10,12 @@
 <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script>
 	$(document).ready(function(){
-		$('#myTable').DataTable();
+		$('#myTable').DataTable({
+			responsive: true,
+			"language": {
+				"url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+			}
+		});
 	});
 </script>
 <script>
