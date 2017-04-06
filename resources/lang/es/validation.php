@@ -100,8 +100,39 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => 'El campo nombre es obligatorio.',
+            'alpha' => 'El campo nombre sólo puede contener letras.'
+        ],
+
+        'last_name' => [
+            'required' => 'El campo apellidos es obligatorio.',
+            'regex' => 'El formato del campo apellidos es inválido.'
+        ],
+
+        'address' => [
+            'required' => 'El campo dirección es obligatorio.'
+        ],
+
+        'phone' => [
+            'required' => 'El campo teléfono es obligatorio.',
+            'digits'   => 'El campo teléfono debe ser un número de :digits dígitos.'
+        ],
+
+        'birthday' => [
+            'required' => 'El campo fecha de nacimiento es obligatorio.'
+        ],
+
+        'position' => [
+            'required' => 'El campo puesto es obligatorio.'
+        ],
+
+        'start_date' => [
+            'required' => 'El campo fecha de inicio de contrato es obligatorio.'
+        ],
+
+        'email' => [
+            'required' => 'El campo correo electronico es obligatorio.'
         ],
     ],
 

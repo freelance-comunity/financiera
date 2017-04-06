@@ -74,7 +74,7 @@ Route::resource('roles', 'RolesController');
 Route::get('roles/{id}/delete', [
     'as' => 'roles.delete',
     'uses' => 'RolesController@destroy',
-]);
+    ]);
 
 
 Route::get('asignamment/{id}',function($id){
@@ -148,6 +148,7 @@ Route::get('users/{id}/delete', [
     'as' => 'users.delete',
     'uses' => 'UserController@destroy',
 
+
 ]);
 
 
@@ -172,3 +173,27 @@ Route::get('micros/{id}/delete', [
     'as' => 'micros.delete',
     'uses' => 'MicroController@destroy',
 ]);
+
+   
+
+Route::get('positions', function (Illuminate\Http\Request  $request) {
+    $term = $request->term ?: '';
+    $positions = App\Role::where('name', 'like', $term.'%')->lists('name', 'id');
+    $valid_positions = [];
+    foreach ($positions as $id => $position) {
+        $valid_positions[] = ['id' => $id, 'text' => $position];
+    }
+    return \Response::json($valid_positions);
+});
+
+Route::get('/deleterole/{user}/{role}', function($user, $role){
+    $users = App\User::all();
+    $user_quit = App\User::find($user);
+    $role = App\Role::find($role);
+    $user_quit->roles()->detach($role);
+    alert()->success('Rol eliminado!');
+    return redirect(route('users.index'))
+    ->with('users', $users);
+});
+
+
