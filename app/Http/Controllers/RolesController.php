@@ -180,4 +180,23 @@ class RolesController extends AppBaseController
 		Flash::success('Se asignaron lor permisos al Rol.');
 		return redirect(route('roles.index'));	
 	}
+
+	public function permissionEdit(Request $request)
+	{
+		$id_role = $request->input('rol_id');
+		$input = $request->all();
+		foreach ($input['rows'] as $row) {
+			$role = Role::find($id_role);	
+			$id_permission = $row['id'];
+			$permission = Permission::find($id_permission);
+
+			$permission = $role->attachPermission($permission);
+		}
+
+		Flash::success('Se editaron lor permisos al Rol.');
+		return redirect(route('roles.index'));	
+	}
+
+
+	
 }

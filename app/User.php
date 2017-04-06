@@ -54,4 +54,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role');
     }
 
+    public function accredited()
+    {
+        return $this->hasOne('App\Models\Accredited');
+    }
+
 }

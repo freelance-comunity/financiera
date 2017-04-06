@@ -88,15 +88,56 @@ Route::get('asignamment/{id}',function($id){
 
 Route::Post ('/asignamment', 'RolesController@addPermission');
 
+    
+Route::get('permissionEdit/{id}',function($id){
+    $role = App\Role::find($id);
+    
+    $permissions = $role->permissions;
+
+    return view('roles.permissions')
+    ->with('role', $role)
+    ->with('permissions', $permissions);
+});
 
 
 
+
+/*======================= Acreditado======================*/
+
+Route::resource('accrediteds', 'AccreditedController');
+
+
+Route::get('accrediteds/{id}/delete', [
+    'as' => 'accrediteds.delete',
+    'uses' => 'AccreditedController@destroy',
+
+    ]);   
+
+Route::resource('addresses', 'AddressController');
+
+Route::get('addresses/{id}/delete', [
+    'as' => 'addresses.delete',
+    'uses' => 'AddressController@destroy',
+]);
+
+
+
+
+
+Route::resource('references', 'ReferencesController');
+
+Route::get('references/{id}/delete', [
+    'as' => 'references.delete',
+    'uses' => 'ReferencesController@destroy',
+
+]);
 
 Route::resource('users', 'UserController');
 
 Route::get('users/{id}/delete', [
     'as' => 'users.delete',
     'uses' => 'UserController@destroy',
+
     ]);
 
 Route::get('positions', function (Illuminate\Http\Request  $request) {
@@ -118,3 +159,7 @@ Route::get('/deleterole/{user}/{role}', function($user, $role){
     return redirect(route('users.index'))
     ->with('users', $users);
 });
+
+
+
+
