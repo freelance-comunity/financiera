@@ -16,7 +16,8 @@ class References extends Model
 		"last_name",
 		"address",
 		"phone",
-		"relationship"
+		"relationship",
+		"accrediteds_id"
 	];
 
 	public static $rules = [

@@ -23,7 +23,8 @@ class Accredited extends Model
 		"curp",
 		"sex",
 		"civil_status",
-		"name_conyug"
+		"name_conyug",
+		"user_id"
 	];
 
 	public static $rules = [
@@ -54,5 +55,9 @@ class Accredited extends Model
         return $this->hasMany('App\Models\Address');
     }
 
+    public function aval()
+	{
+        return $this->hasMany('App\Models\Aval');
+    }
 
 }

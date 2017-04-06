@@ -20,7 +20,8 @@ class Address extends Model
 		"postal_code",
 		"municipality",
 		"city",
-		"federative"
+		"federative",
+		"accrediteds_id"
 	];
 
 	public static $rules = [

@@ -119,6 +119,11 @@ Route::get('addresses/{id}/delete', [
     'as' => 'addresses.delete',
     'uses' => 'AddressController@destroy',
 ]);
+ 
+Route::get('addresses/{id}',[
+    'as' => 'accrediteds.addresses',
+    'uses' => 'AccreditedController@addresses',
+]);
 
 
 
@@ -132,10 +137,38 @@ Route::get('references/{id}/delete', [
 
 ]);
 
+Route::get('references/{id}',[
+    'as' => 'accrediteds.references',
+    'uses' => 'AccreditedController@references',
+]);
+
 Route::resource('users', 'UserController');
 
 Route::get('users/{id}/delete', [
     'as' => 'users.delete',
     'uses' => 'UserController@destroy',
 
+]);
+
+
+Route::resource('avals', 'AvalController');
+
+Route::get('avals/{id}/delete', [
+    'as' => 'avals.delete',
+    'uses' => 'AvalController@destroy',
+]);
+
+Route::get('avals/{id}',[
+    'as' => 'accrediteds.avals',
+    'uses' => 'AccreditedController@avals',
+]);
+
+
+
+
+Route::resource('micros', 'MicroController');
+
+Route::get('micros/{id}/delete', [
+    'as' => 'micros.delete',
+    'uses' => 'MicroController@destroy',
 ]);

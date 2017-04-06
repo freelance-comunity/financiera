@@ -160,4 +160,23 @@ class AccreditedController extends AppBaseController
 
 		return redirect(route('accrediteds.index'));
 	}
+
+	public function addresses($id)
+	{
+		return view ('addresses.index')
+		->with('addresses', $addresses)
+		->with('addresses', $attributes);
+	}
+	public function references($id)
+	{
+		return view ('references.index')
+		->with('references', $references)
+		->with('references', $attributes);
+	}
+	public function avals($id)
+	{
+		return view ('avals.index')
+		->with('avals', $avals)
+		->with('avals', $attributes);
+	}
 }

@@ -1,6 +1,6 @@
 <!--- Name Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('name', 'Nombre:') !!}
+    {!! Form::label('name', 'Nombre(s):') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -31,7 +31,7 @@
 <!--- Home Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('email', 'Email:') !!}
-    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+    <input type="email" name="email" class="form-control">
 </div>
 
 <!--- Address Field --->

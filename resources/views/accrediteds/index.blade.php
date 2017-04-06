@@ -17,11 +17,11 @@
             @else
                 <table class="table" id="myTable">
                     <thead>
-                        <th>Nombre</th>
+                        <th>Nombre(s)</th>
             			<th>Apellidos</th>
             			<th>Fecha de Nacimiento</th>
-            			<th>TeléfonoCelular</th>
-            			<th>Teléfono de Casa</th>
+            			<th>Celular</th>
+            			<th>Teléfono</th>
             			<th>Email</th>
             			<th>Dirección</th>
             			<th>Nacionalidad</th>
@@ -30,7 +30,7 @@
             			<th>Estado Civil</th>
             			<th>Nombre del conyugue</th>
                         <th>Agregar</th>
-                    <th width="50px">Action</th>
+                    <th width="50px">Acción</th>
                     </thead>
                     <tbody>
                      
@@ -48,11 +48,12 @@
 					<td>{!! $accredited->sex !!}</td>
 					<td>{!! $accredited->civil_status !!}</td>
 					<td>{!! $accredited->name_conyug !!}</td>
-                    <td>
+                   <td>
                     
-                            <a href="#"><button class="btn btn-success">Aval</button></a>
-                            <a href="#"><button class="btn btn-warning">Ref
-                             Personales</button></a><a href="#"><button class="btn btn-info">Est Socioeconómico</button></a>
+                            <a href="{!! route('addresses.create', [$accredited->id])!!}"><button class="btn btn-success">Domicilio</button></a>
+                            <a href="{!! route('references.create', [$accredited->id])!!}"><button class="btn btn-success">Referencias</button></a>
+                            <a href="{!! route('avals.create', [$accredited->id])!!}"><button class="btn btn-success">Aval</button></a>
+                            
                     </div>
                             
                         
