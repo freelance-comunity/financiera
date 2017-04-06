@@ -27,15 +27,25 @@ class User extends Authenticatable
     ];
 
     public static $rules = [
-        "name" => "required|max:255",
-        "last_name" => "required|max:255",
-        "address" => "required|max:255",
-        "phone" => "required",
-        "birthday" => "required",
+        "name" => "required|max:255|alpha",
+        "last_name" => "required|max:255|regex:/^[(a-zA-Z\s)]+$/u",
+        "address" => "required|max:255|min:5",
+        "phone" => "required|digits:10",
+        "birthday" => "required|date",
         "position" => "required",
-        "start_date" => "required",
+        "start_date" => "required|date",
         "email" => "required|email|max:255|unique:users",
-        "password" => "required|confirmed|min:6"
+    ];
+
+     public static $rulesedit = [
+        "name" => "required|max:255|regex:/^[(a-zA-Z\s)]+$/u",
+        "last_name" => "required|max:255|regex:/^[(a-zA-Z\s)]+$/u",
+        "address" => "required|max:255|min:5",
+        "phone" => "required|digits:10",
+        "birthday" => "required|date|date",
+        "position" => "required",
+        "start_date" => "required|date",
+        "email" => "required|email|max:255",
     ];
 
     //establecemos las relaciones con el modelo Role, ya que un usuario puede tener varios roles

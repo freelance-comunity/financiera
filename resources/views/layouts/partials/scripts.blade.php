@@ -15,7 +15,33 @@
 <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
 <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
-
+<script src="{{ asset('/select2/js/select2.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // inicializamos el plugin
+        $('#position').select2({
+            // Activamos la opcion "Posotion" del plugin
+            placeholder: "Selecciona uno o más roles",
+            tags: true,
+            tokenSeparators: [','],
+            ajax: {
+                dataType: 'json',
+                url: '{{ url("positions") }}',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        term: params.term
+                    }
+                },
+                processResults: function (data, page) {
+                  return {
+                    results: data
+                  };
+                },
+            }
+        });
+    });
+</script>
 <script>
 	$(document).ready(function(){
 		$('#myTable').DataTable({

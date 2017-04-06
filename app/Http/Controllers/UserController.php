@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\EditUserRequest;
 use App\User;
 use App\Role;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Flash;
 use Schema;
 use Hash;
 use Alert;
+use Mail;
 
 class UserController extends AppBaseController
 {
@@ -25,24 +27,24 @@ class UserController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = User::query();
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
+		$columns = Schema::getColumnListing('$TABLE_NAME$');
+		$attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
+		foreach($columns as $attribute){
+			if($request[$attribute] == true)
+			{
+				$query->where($attribute, $request[$attribute]);
+				$attributes[$attribute] =  $request[$attribute];
+			}else{
+				$attributes[$attribute] =  null;
+			}
+		};
 
-        $users = $query->get();
+		$users = $query->get();
 
-        return view('users.index')
-            ->with('users', $users)
-            ->with('attributes', $attributes);
+		return view('users.index')
+		->with('users', $users)
+		->with('attributes', $attributes);
 	}
 
 	/**
@@ -66,20 +68,39 @@ class UserController extends AppBaseController
 	 */
 	public function store(CreateUserRequest $request)
 	{
-        $input = $request->all();
-        $password = Hash::make($request->input('password'));
-        $input['password'] = $password;
-        $role = Role::find($request->input('position'));
-        $input['position'] = $role->name;
-		$usercreate = User::create($input);
-		$user = User::find($usercreate->id);
-		$user->attachRole($role);
+		$input = $request->all();
+		
+		$password = str_random(8);
+		$input['password'] = Hash::make($password);
+		$var_roles = $input['position'];
 
+		$position = $input['position'];
+		$position = implode(',', $position);
+		$input['position'] = $position;
+
+		$usercreate = User::create($input);
+		
+		foreach ($var_roles as $position) {
+				$user = User::find($usercreate->id);
+				$role = Role::find($position);
+				$user->attachRole($role);
+		}
+		
+		$data['name'] = $request->input('name');
+		$data['pass'] = $password;
+		$data['email'] = $request->input('email');
+
+		Mail::send('mails.register', ['data' => $data], function($mail) use($data){
+                $mail->subject('Te proporcionamos las credenciales de acceso al sistema');
+                $mail->to($data['email'], $data['name'], $data['pass']);
+            });
+		
 		Alert::success('Usuario creado exitosamente')->persistent('cerrar');
 
 		return redirect(route('users.index'));
+
 		
-	}
+	} 
 
 	/**
 	 * Display the specified User.
@@ -108,16 +129,17 @@ class UserController extends AppBaseController
 	 * @return Response
 	 */
 	public function edit($id)
-	{
+	{	
 		$user = User::find($id);
-
+		$roles = Role::pluck('name', 'id');
+		
 		if(empty($user))
 		{
 			Alert::error('Usuario no encontrado en los registros')->persistent('cerrar');
-			return redirect(route('employees.index'));
+			return redirect(route('users.index'));
 		}
 
-		return view('users.edit')->with('user', $user);
+		return view('users.edit')->with('user', $user)->with('roles', $roles);
 	}
 
 	/**
@@ -128,9 +150,13 @@ class UserController extends AppBaseController
 	 *
 	 * @return Response
 	 */
-	public function update($id, CreateUserRequest $request)
+	public function update($id, EditUserRequest $request)
 	{
 		/** @var User $user */
+		$input = $request->all();
+		$role = Role::find($request->input('position'));
+		$input['position'] = $role->name;
+		
 		$user = User::find($id);
 
 		if(empty($user))
@@ -139,7 +165,7 @@ class UserController extends AppBaseController
 			return redirect(route('users.index'));
 		}
 
-		$user->fill($request->all());
+		$user->fill($input);
 		$user->save();
 
 		Alert::success('Usuario actualizado de los registros')->persistent('cerrar');
