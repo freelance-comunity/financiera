@@ -2,6 +2,7 @@
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('name', 'Nombre de  la Empresa:') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
+    <input type="hidden" name="accrediteds_id" value="{{ $accrediteds->id}}">
 </div>
 
 <!--- Address Field --->
@@ -43,7 +44,7 @@
 <!--- Business Type Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('business_type', 'Tipo de negocio:') !!}
-    {!! Form::select('business',['Fijo' => 'Fijo', 'Ambulante' => 'Ambulante'], null, ['class' => 'form-control'])!!}
+    {!! Form::select('business_type',['Fijo' => 'Fijo', 'Ambulante' => 'Ambulante'], null, ['class' => 'form-control'])!!}
 </div>
 
 <!--- Times Field --->

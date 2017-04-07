@@ -45,12 +45,18 @@
     {!! Form::label('nationality', 'Nacionalidad:') !!}
     {!! Form::text('nationality', null, ['class' => 'form-control']) !!}
 </div>
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('ife', 'IFE:') !!}
+    {!! Form::text('ife', null, ['class' => 'form-control']) !!}
+</div>
 
 <!--- Curp Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('curp', 'Curp:') !!}
+    {!! Form::label('curp', 'CURP:') !!}
     {!! Form::text('curp', null, ['class' => 'form-control']) !!}
 </div>
+<!--- Curp Field --->
+
 
 <!--- Sex Field --->
 <div class="form-group col-sm-6 col-lg-4">

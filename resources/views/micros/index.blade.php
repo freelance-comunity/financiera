@@ -8,14 +8,14 @@
 
     <div class="row">
     <h1 class="pull-left">Datos de la Microempresa</h1>
-        <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('micros.create') !!}">Agregar Nuevo</a>
+        
     </div>
 
     <div class="row">
         @if($micros->isEmpty())
         <div class="well text-center">No se encontraron microempresas</div>
         @else
-        <table class="table">
+        <table class="table" id="myTable">
             <thead>
                 <th>Nombre</th>
                 <th>Dirección</th>
@@ -44,8 +44,11 @@
                     <td>{!! $micro->times !!}</td>
                     <td>{!! $micro->local !!}</td>
                     <td>
+                    
                         <a href="{!! route('micros.edit', [$micro->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
                         <a href="{!! route('micros.delete', [$micro->id]) !!}" onclick="return confirm('Are you sure wants to delete this Micro?')"><i class="glyphicon glyphicon-remove"></i></a>
+                  
+                        
                     </td>
                 </tr>
                 @endforeach

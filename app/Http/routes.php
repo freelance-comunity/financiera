@@ -120,13 +120,18 @@ Route::get('addresses/{id}/delete', [
     'uses' => 'AddressController@destroy',
 ]);
  
-Route::get('addresses/{id}',[
-    'as' => 'accrediteds.addresses',
-    'uses' => 'AccreditedController@addresses',
+Route::get('addressesAccredited/{id}/',[
+    'as' => 'accrediteds.addressesAccredited',
+    'uses' => 'AccreditedController@addressesAccredited',
 ]);
 
+Route::get('view-addresses/{id}', function($id){
+    $accrediteds = App\Models\Accredited::find($id);
+    $addresses = $accrediteds->addresses;
 
-
+    return view('addresses.view-addresses')
+    ->with('addresses', $addresses);
+});
 
 
 Route::resource('references', 'ReferencesController');
@@ -137,10 +142,12 @@ Route::get('references/{id}/delete', [
 
 ]);
 
-Route::get('references/{id}',[
-    'as' => 'accrediteds.references',
-    'uses' => 'AccreditedController@references',
+Route::get('referencesAccredited/{id}/',[
+    'as' => 'accrediteds.referencesAccredited',
+    'uses' => 'AccreditedController@referencesAccredited',
 ]);
+
+
 
 Route::resource('users', 'UserController');
 
@@ -159,9 +166,9 @@ Route::get('avals/{id}/delete', [
     'uses' => 'AvalController@destroy',
 ]);
 
-Route::get('avals/{id}',[
-    'as' => 'accrediteds.avals',
-    'uses' => 'AccreditedController@avals',
+Route::get('avalsAccredited/{id}/',[
+    'as' => 'accrediteds.avalsAccredited',
+    'uses' => 'AccreditedController@avalsAccredited',
 ]);
 
 
@@ -173,7 +180,10 @@ Route::get('micros/{id}/delete', [
     'as' => 'micros.delete',
     'uses' => 'MicroController@destroy',
 ]);
-
+ Route::get('microsAccredited/{id}/',[
+    'as' => 'accrediteds.microsAccredited',
+    'uses' => 'AccreditedController@microsAccredited',
+]);
    
 
 Route::get('positions', function (Illuminate\Http\Request  $request) {
@@ -197,3 +207,27 @@ Route::get('/deleterole/{user}/{role}', function($user, $role){
 });
 
 
+
+
+Route::resource('histories', 'HistoryController');
+
+Route::get('histories/{id}/delete', [
+    'as' => 'histories.delete',
+    'uses' => 'HistoryController@destroy',
+]);
+Route::get('historiesAccredited/{id}/',[
+    'as' => 'accrediteds.historiesAccredited',
+    'uses' => 'AccreditedController@historiesAccredited',
+]);
+  
+
+Route::resource('studies', 'StudyController');
+
+Route::get('studies/{id}/delete', [
+    'as' => 'studies.delete',
+    'uses' => 'StudyController@destroy',
+]);
+Route::get('studiesAccredited/{id}/',[
+    'as' => 'accrediteds.studiesAccredited',
+    'uses' => 'AccreditedController@studiesAccredited',
+]);

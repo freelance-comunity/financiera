@@ -8,14 +8,14 @@
 
         <div class="row">
             <h1 class="pull-left">Aval</h1>
-            <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('avals.create') !!}">Agregar Nuevo</a>
+            
         </div>
 
         <div class="row">
             @if($avals->isEmpty())
                 <div class="well text-center">No se encontraron AVales</div>
             @else
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                     <th>Nombre(s)</th>
         			<th>Apellidos</th>
