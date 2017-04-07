@@ -56,7 +56,22 @@
                     </div>
 
                     <td>
-                        <a href="{{ url('/view-addresses')}}/{{ $accredited->id}}"><button class="btn btn-block btn-success">Ver dirección</button></a>
+
+                    <div class="btn-group-vertical btn-group-xs">
+
+                            <button type="button" class="btn btn-primary">Ver</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Domicilio</a></li>
+                                <li><a href="#">Estudio Socioeconómico</a></li>
+                                <li><a href="#">Aval</a></li>
+                                <li><a href="#">Datos de la Microempresa</a></li>
+                                <li><a href="#">Antecedentes crediticios</a></li>
+                                <li><a href="#">Referencias</a></li>                 
+                            </ul>
+                        </div>
                     </td>
                 </td>
                 <td>
