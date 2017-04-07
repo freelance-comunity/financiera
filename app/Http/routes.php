@@ -226,6 +226,7 @@ Route::post('/updateroles', function(Illuminate\Http\Request  $request) {
     $user = App\User::find($request->input('user_id'));
     $users = App\User::all();
     $roles = $request->input($user->id);
+
     foreach ($roles as $role) {
         $name_role = App\Role::find($role);
         $user->attachRole($name_role);
