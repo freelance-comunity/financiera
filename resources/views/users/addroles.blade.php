@@ -38,7 +38,7 @@
                     <div class="form-group col-sm-3 col-lg-4">
                         <label>Roles ya asignados</label>
                         @if($roles_user->isEmpty())
-                        <select multiple class="form-control" id="lstBox2{{$user->id}}">
+                        <select name="{{$user->id}}[]" multiple class="form-control" id="lstBox2{{$user->id}}">
                             <option value="">No hay roles asignados</option>
                         </select>
                         @else
