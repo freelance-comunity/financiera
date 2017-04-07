@@ -14,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'last_name', 'address', 'phone', 'birthday', 'position', 'start_date', 'email', 'password',
+    'name', 'last_name', 'address', 'phone', 'birthday', 'position', 'start_date', 'email', 'password',
     ];
 
     /**
@@ -23,29 +23,28 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+    'password', 'remember_token',
     ];
 
     public static $rules = [
-        "name" => "required|max:255|alpha",
-        "last_name" => "required|max:255|regex:/^[(a-zA-Z\s)]+$/u",
-        "address" => "required|max:255|min:5",
-        "phone" => "required|digits:10",
-        "birthday" => "required|date",
-        "position" => "required",
-        "start_date" => "required|date",
-        "email" => "required|email|max:255|unique:users",
+    "name" => "required|max:255|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
+    "last_name" => "required|max:255|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
+    "address" => "required|max:255|min:5",
+    "phone" => "required|digits:10",
+    "birthday" => "required|date",
+    "position" => "required",
+    "start_date" => "required|date",
+    "email" => "required|email|max:255|unique:users",
     ];
 
-     public static $rulesedit = [
-        "name" => "required|max:255|regex:/^[(a-zA-Z\s)]+$/u",
-        "last_name" => "required|max:255|regex:/^[(a-zA-Z\s)]+$/u",
-        "address" => "required|max:255|min:5",
-        "phone" => "required|digits:10",
-        "birthday" => "required|date|date",
-        "position" => "required",
-        "start_date" => "required|date",
-        "email" => "required|email|max:255",
+    public static $rulesedit = [
+    "name" => "required|max:255|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
+    "last_name" => 'required|max:255|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+    "address" => "required|max:255|min:5",
+    "phone" => "required|digits:10",
+    "birthday" => "required|date|date",
+    "start_date" => "required|date",
+    "email" => "required|email|max:255",
     ];
 
     //establecemos las relaciones con el modelo Role, ya que un usuario puede tener varios roles

@@ -153,10 +153,7 @@ class UserController extends AppBaseController
 	public function update($id, EditUserRequest $request)
 	{
 		/** @var User $user */
-		$input = $request->all();
-		$role = Role::find($request->input('position'));
-		$input['position'] = $role->name;
-		
+		$input = $request->all();	
 		$user = User::find($id);
 
 		if(empty($user))

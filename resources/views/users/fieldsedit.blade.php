@@ -28,12 +28,6 @@
     <input type="date" name="birthday" value="{{ $user->birthday }}" class="form-control">
 </div>
 
-<!--- Position Field --->
-<div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('position', 'Puesto:') !!}
-    {!! Form::select('position', $roles, null, ['class' => 'form-control']) !!}
-</div>
-
 <!--- Start Date Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('start_date', 'Fecha de inicio de contrato:') !!}
