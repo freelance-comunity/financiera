@@ -16,7 +16,7 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-Route::get('/roles', function() {
+Route::get('/rolescreate', function() {
     $propietario = new App\Role();
     $propietario->name         = 'propietario';
     $propietario->display_name = 'Usuario Propietario'; // optional

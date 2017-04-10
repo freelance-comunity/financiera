@@ -25,6 +25,7 @@ ACREDITADOS
                 <th>Teléfono</th>
                 <th>Dirección</th>
                 <th>Agregar</th>
+                <th>Ver datos</th>
                 <th width="50px">Acción</th>
             </thead>
             <tbody>
@@ -39,8 +40,8 @@ ACREDITADOS
                     <td>
                         <div class="btn-group-vertical btn-group-xs">
 
-                            <button type="button" class="btn btn-primary">Agregar</button>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <button type="button" class="btn btn-block btn-primary">Agregar</button>
+                            <button type="button" class="btn btn-block btn-primary dropdown-toggle" data-toggle="dropdown">
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -61,7 +62,7 @@ ACREDITADOS
 
                     <div class="btn-group-vertical btn-group-xs">
 
-                            <button type="button" class="btn btn-primary">Ver</button>
+                            <button type="button" class="btn btn-block btn-primary">Ver</button>
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                 <span class="caret"></span>
                             </button>
