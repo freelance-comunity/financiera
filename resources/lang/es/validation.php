@@ -134,6 +134,10 @@ return [
         'email' => [
             'required' => 'El campo correo electronico es obligatorio.'
         ],
+
+        'rows[]' => [
+            'required' => 'Debes seleccionar por lo menos un permiso.'
+        ],
     ],
 
     /*

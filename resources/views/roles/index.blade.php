@@ -6,7 +6,7 @@ Roles del sistema
 @endsection
 <div class="container">
 
-    @include('flash::message')
+    @include('sweet::alert')
 
     <!--<div class="row">
         <h1 class="pull-left">Roles</h1>
@@ -17,7 +17,7 @@ Roles del sistema
         @if($roles->isEmpty())
         <div class="well text-center">No se encontraron roles</div>
         @else
-        <table class="table">
+        <table class="table" id="myTable">
             <thead>
                 <th>Nombre</th>
                 <th>Nombre para mostrar</th>

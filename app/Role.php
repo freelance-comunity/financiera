@@ -9,6 +9,10 @@ class Role extends EntrustRole
         'display_name',
         'description'
     ];
+
+    public static $rulesadd = [
+    "rows[]" => "required",  
+    ];
     
    //establecemos la relacion de muchos a muchos con el modelo User, ya que un rol 
    //lo pueden tener varios usuarios y un usuario puede tener varios roles

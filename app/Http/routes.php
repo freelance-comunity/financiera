@@ -80,10 +80,16 @@ Route::get('roles/{id}/delete', [
 Route::get('asignamment/{id}',function($id){
     $role = App\Role::find($id);
     $permissions = App\Permission::all();
+    $permissions_role = $role->permissions;
 
+    $collection = $permissions;
+
+    $diff = $collection->diff($permissions_role);
+
+    $diff->all();
     return view('roles.add')
     ->with('role', $role)
-    ->with('permissions', $permissions);
+    ->with('diff', $diff);
 });
 
 Route::Post ('/asignamment', 'RolesController@addPermission');
@@ -98,6 +104,8 @@ Route::get('permissionEdit/{id}',function($id){
     ->with('role', $role)
     ->with('permissions', $permissions);
 });
+
+Route::Post ('/permissionEdit', 'RolesController@permissionEdit');
 
 
 
