@@ -227,3 +227,19 @@ Route::get('/test', function() {
 });
 
 
+
+
+Route::resource('anchorings', 'AnchoringController');
+
+Route::get('anchorings/{id}/delete', [
+    'as' => 'anchorings.delete',
+    'uses' => 'AnchoringController@destroy',
+]);
+
+
+Route::resource('products', 'ProductController');
+
+Route::get('products/{id}/delete', [
+    'as' => 'products.delete',
+    'uses' => 'ProductController@destroy',
+]);

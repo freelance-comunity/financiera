@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('main-content')
-
+@section('contentheader_title')
+Permisos del sistema
+@endsection
 <div class="container">
 
     @include('flash::message')
