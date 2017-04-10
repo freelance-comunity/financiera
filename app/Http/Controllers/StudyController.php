@@ -8,6 +8,7 @@ use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
+use Alert;
 
 class StudyController extends AppBaseController
 {
@@ -65,7 +66,7 @@ class StudyController extends AppBaseController
 
 		$study = Study::create($input);
 
-		Flash::message('Study saved successfully.');
+		Alert::success('Estudio socioeconomico guardado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('studies.index'));
 	}
@@ -131,7 +132,7 @@ class StudyController extends AppBaseController
 		$study->fill($request->all());
 		$study->save();
 
-		Flash::message('Study updated successfully.');
+		Alert::success('Datos actualizados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('studies.index'));
 	}
@@ -156,7 +157,7 @@ class StudyController extends AppBaseController
 
 		$study->delete();
 
-		Flash::message('Study deleted successfully.');
+		Alert::success('Estudio socioeconomico eliminado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('studies.index'));
 	}

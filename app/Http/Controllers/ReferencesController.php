@@ -8,6 +8,7 @@ use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
+use Alert;
 
 class ReferencesController extends AppBaseController
 {
@@ -65,7 +66,7 @@ class ReferencesController extends AppBaseController
 
 		$references = References::create($input);
 
-		Flash::message('References saved successfully.');
+		Alert::success('Referencia creada exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('references.index'));
 	}
@@ -131,7 +132,7 @@ class ReferencesController extends AppBaseController
 		$references->fill($request->all());
 		$references->save();
 
-		Flash::message('References updated successfully.');
+		Alert::success('Datos actualizados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('references.index'));
 	}
@@ -156,7 +157,7 @@ class ReferencesController extends AppBaseController
 
 		$references->delete();
 
-		Flash::message('References deleted successfully.');
+		Alert::success('Referencia eliminada exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('references.index'));
 	}

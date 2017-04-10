@@ -135,9 +135,98 @@ return [
             'required' => 'El campo correo electronico es obligatorio.'
         ],
 
+<<<<<<< HEAD
+        'nationality' => [
+            'required' => 'El campo nacionalidad es obligatorio.'
+        ],
+
+        'avenue' => [
+            'required' => 'El campo avenida es obligatorio.'
+        ],
+
+        'streets' => [
+            'required' => 'El campo entre que calles es obligatorio.'
+        ],
+        'number' => [
+            'required' => 'El campo número interior y exterior es obligatorio.'
+        ],
+        'colony' => [
+            'required' => 'El campo colonia es obligatorio.'
+        ],
+        'reference' => [
+            'required' => 'El campo referencia es obligatorio.'
+        ],
+
+        'postal_code' => [
+            'required' => 'El campo código postal es obligatorio.'
+        ],
+        
+        'municipality' => [
+            'required' => 'El campo municicipio es obligatorio.'
+        ],
+        'city' => [
+            'required' => 'El campo ciudad es obligatorio.'
+        ],
+        'federative' => [
+            'required' => 'El campo entidad federativa es obligatorio.'
+        ],
+        'dependent' => [
+            'required' => 'El campo número de hijos o dependientes es obligatorio.'
+        ],
+        'time_address' => [
+            'required' => 'El campo tiempo de vivir en el mismo domicilio es obligatorio.'
+        ],
+        'type_material' => [
+            'required' => 'El campo tipo de material de la vivienda es obligatorio.'
+        ],
+        'school_grade' => [
+            'required' => 'El campo grado de escolaridad es obligatorio.'
+        ],
+        'nacionality' => [
+            'required' => 'El campo nacionalidad es obligatorio.'
+        ],
+        'place' => [
+            'required' => 'El campo lugar de nacimiento es obligatorio.'
+        ],
+        'ocupation' => [
+            'required' => 'El campo ocupación es obligatorio.'
+        ],
+        'address_work' => [
+            'required' => 'El campo dirección de trabajo es obligatorio.'
+        ],
+        'activity' => [
+            'required' => 'El campo giro o actividad principal es obligatorio.'
+        ],
+        'antiquity' => [
+            'required' => 'El campo antiguedad es obligatorio.'
+        ],
+        'antiquity_locality' => [
+            'required' => 'El campo antiguedad en la colonia es obligatorio.'
+        ],
+        'times' => [
+            'required' => 'El campo que dias y en que horario atiende su trabajo es obligatorio.'
+        ],
+        'name_company' => [
+            'required' => 'El campo nombre de la empresa es obligatorio.'
+        ],
+        'amount' => [
+            'required' => 'El campo monto recibido es obligatorio.'
+        ],
+        'term' => [
+            'required' => 'El campo plazo es obligatorio.'
+        ],
+        'payment_amount' => [
+            'required' => 'El campo monto de pago por amortización es obligatorio.'
+        ],
+        'relationship' => [
+            'required' => 'El campo parentezco es obligatorio.'
+        ],
+
+=======
         'rows[]' => [
             'required' => 'Debes seleccionar por lo menos un permiso.'
         ],
+>>>>>>> remotes/origin/master
     ],
 
     /*

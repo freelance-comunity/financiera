@@ -8,6 +8,7 @@ use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
+use Alert;
 
 class MicroController extends AppBaseController
 {
@@ -65,7 +66,7 @@ class MicroController extends AppBaseController
 
 		$micro = Micro::create($input);
 
-		Flash::message('Micro saved successfully.');
+		Alert::success('Datos guardados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('micros.index'));
 	}
@@ -131,7 +132,7 @@ class MicroController extends AppBaseController
 		$micro->fill($request->all());
 		$micro->save();
 
-		Flash::message('Micro updated successfully.');
+		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('micros.index'));
 	}
@@ -156,7 +157,7 @@ class MicroController extends AppBaseController
 
 		$micro->delete();
 
-		Flash::message('Micro deleted successfully.');
+		Alert::success('Datos eliminados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('micros.index'));
 	}

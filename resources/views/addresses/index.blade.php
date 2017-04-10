@@ -4,10 +4,10 @@
 
     <div class="container">
 
-        @include('flash::message')
+        @include('sweet::alert')
 
         <div class="row">
-            <h1 class="pull-left">Domicilio</h1>
+            <h1 class="pull-left">Datos domiciliarios</h1>
            
         </div>
 
