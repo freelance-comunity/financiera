@@ -135,6 +135,7 @@ return [
             'required' => 'El campo correo electronico es obligatorio.'
         ],
 
+<<<<<<< HEAD
         'nationality' => [
             'required' => 'El campo nacionalidad es obligatorio.'
         ],
@@ -221,6 +222,11 @@ return [
             'required' => 'El campo parentezco es obligatorio.'
         ],
 
+=======
+        'rows[]' => [
+            'required' => 'Debes seleccionar por lo menos un permiso.'
+        ],
+>>>>>>> remotes/origin/master
     ],
 
     /*

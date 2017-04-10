@@ -4,14 +4,16 @@
 
 <div class="container">
 
-    @include('flash::message')
-
+    @include('sweet::alert')
+    @include('common.errors')  
     <div class="row">
-        <h1 class="pull-left">Asignar permisos al Rol {{$role->name}}</h1>
+        <h1 class="pull-left">Editar permisos al Rol {{$role->name}}</h1>
     </div>
 
     <div class="row">
-        
+        @if ($permissions->isEmpty())
+        <div class="well text-center">No Este rol no tiene ningun permiso asignado.</div>
+        @else
         {!! Form::open(['url' => 'permissionEdit']) !!}
         <table class="table">
             <thead>
@@ -19,20 +21,15 @@
                 <th>Nombre</th>
                 <th>Nombre opcional</th>
                 <th>Descripción</th>
-                <th width="50px">Acción</th>
             </thead>
             <tbody>
 
                 @foreach($permissions as $permission)
                 <tr>
-                <td><input type="checkbox" name="rows[{{$permission->id}}][id]" value="{{$permission->id}}"></td>
+                    <td><input type="checkbox" id="testcheck" name="rows[{{$permission->id}}][id]" value="{{$permission->id}}"></td>
                     <td>{!! $permission->name !!}</td>
                     <td>{!! $permission->display_name !!}</td>
                     <td>{!! $permission->description !!}</td>
-                    <td>
-                        <a href="{!! route('permissions.edit', [$permission->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a href="#" onclick="return confirm('Are you sure wants to delete this Permission?')"><i class="glyphicon glyphicon-remove"></i></a>
-                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -42,6 +39,7 @@
             <input type="submit" value="Asignar" class="btn uppercase bt-success">
         </div>
         {!! Form::close() !!}
+        @endif
     </div>
 </div>
 @endsection

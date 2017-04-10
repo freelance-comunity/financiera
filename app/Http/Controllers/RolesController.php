@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Requests\CreateRolesRequest;
+use App\Http\Requests\AddPermissionRequest;
 use App\Models\Roles;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
@@ -10,6 +11,7 @@ use Flash;
 use Schema;
 use App\Role;
 use App\Permission;
+use Alert;
 
 class RolesController extends AppBaseController
 {
@@ -22,11 +24,11 @@ class RolesController extends AppBaseController
 	 * @return Response
 	 */
 
-	 public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
 	public function index(Request $request)
 	{
 		$query = Roles::query();
@@ -75,7 +77,7 @@ class RolesController extends AppBaseController
 
 		$roles = Roles::create($input);
 
-		Flash::message('Roles saved successfully.');
+		Alert::success('Rol guardado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('roles.index'));
 	}
@@ -172,10 +174,12 @@ class RolesController extends AppBaseController
 	}
 
 	public function addPermission(Request $request)
-	{
+	{	
+
 		$id_role = $request->input('rol_id');
 		$input = $request->all();
-		//$role = Role::find($id_role);
+
+		
 		foreach ($input['rows'] as $row) {
 			$role = Role::find($id_role);
 			$id_permission = $row['id'];
@@ -183,24 +187,31 @@ class RolesController extends AppBaseController
 
 			$assigmment = $role->attachPermission($permission);
 		}
-		Flash::success('Se asignaron lor permisos al Rol.');
+		Alert::success('Se asignaron los permisos al Rol.')->persistent('Cerrar');
 		return redirect(route('roles.index'));	
+
 	}
 
 	public function permissionEdit(Request $request)
 	{
 		$id_role = $request->input('rol_id');
+
 		$input = $request->all();
+
+		
 		foreach ($input['rows'] as $row) {
 			$role = Role::find($id_role);	
 			$id_permission = $row['id'];
 			$permission = Permission::find($id_permission);
 
-			$permission = $role->attachPermission($permission);
+			$revoke_permission = $role->detach($permission);
+			echo "listo";
+			echo "<br>";
 		}
 
 		Flash::success('Se editaron lor permisos al Rol.');
 		return redirect(route('roles.index'));	
+
 	}
 
 

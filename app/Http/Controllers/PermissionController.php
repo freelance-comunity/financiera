@@ -8,6 +8,7 @@ use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
+use Alert;
 
 
 class PermissionController extends AppBaseController
@@ -74,7 +75,7 @@ class PermissionController extends AppBaseController
         
 		$permission = Permission::create($input);
 
-		Flash::message('Permission saved successfully.');
+		Alert::success('Permiso guardado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('permissions.index'));
 	}
@@ -140,7 +141,7 @@ class PermissionController extends AppBaseController
 		$permission->fill($request->all());
 		$permission->save();
 
-		Flash::message('Permission updated successfully.');
+		Alert::message('Permiso actualizado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('permissions.index'));
 	}
@@ -165,7 +166,7 @@ class PermissionController extends AppBaseController
 
 		$permission->delete();
 
-		Flash::message('Permission deleted successfully.');
+		Alert::success('Permiso eliminado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('permissions.index'));
 	}

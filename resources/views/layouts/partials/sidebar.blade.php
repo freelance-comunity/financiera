@@ -44,13 +44,17 @@
         <li class="treeview">
             <a href="#"><i class='fa fa-building'></i> <span>Compañia</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-                <li><a href="#">Crear usuarios</a></li>
+                <li><a href="{{ url('/users') }}">Crear usuarios</a></li>
+                <li><a href="#">Cuentas bancarias</a></li>
+                <li><a href="{{ url('/anchorings') }}">Fondeo</a></li>
+                <li><a href="{{ url('/products') }}">Productos</a></li>
+                <li><a href="#">Grupos</a></li>
             </ul>
         </li>
         <li class="treeview">
             <a href="#"><i class='fa fa-users'></i> <span>Acreditados</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-                <li><a href="#">Lista de clientes</a></li>
+                <li><a href="{{ url('/accrediteds') }}">Lista de clientes</a></li>
                 <li><a href="#">Lista negra de clientes</a></li>
             </ul>
         </li>
