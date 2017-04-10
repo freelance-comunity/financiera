@@ -1,15 +1,17 @@
 @extends('layouts.app')
 
 @section('main-content')
-
+@section('contentheader_title')
+Roles del sistema
+@endsection
 <div class="container">
 
     @include('flash::message')
 
-    <div class="row">
+    <!--<div class="row">
         <h1 class="pull-left">Roles</h1>
         <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('roles.create') !!}">Agregar Nuevo</a>
-    </div>
+    </div>-->
 
     <div class="row">
         @if($roles->isEmpty())

@@ -1,19 +1,19 @@
 <!--- Name Field --->
-<div class="form-group col-sm-6 col-lg-6">
+<div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('name', 'Nombre:') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Last Name Field --->
-<div class="form-group col-sm-6 col-lg-6">
+<div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('last_name', 'Apellidos:') !!}
     {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Address Field --->
-<div class="form-group col-sm-6 col-lg-12">
+<div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('address', 'Dirección:') !!}
-    {!! Form::textarea('address', null, ['class' => 'form-control']) !!}
+    {!! Form::text('address', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Phone Field --->
@@ -28,12 +28,6 @@
     <input type="date" value="{{ old('birthday', date('d-m-y')) }}" name="birthday" class="form-control">
 </div>
 
-<!--- Position Field --->
-<div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('position', 'Puesto:') !!}
-    <select name="position[]" multiple="multiple" class="form-control" id="position"></select>
-</div>
-
 <!--- Start Date Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('start_date', 'Fecha de inicio de contrato:') !!}
@@ -44,6 +38,12 @@
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('email', 'Correo electronico:') !!}
     <input type="email" value="{{ old('email') }}" name="email" class="form-control">
+</div>
+
+<!--- Position Field --->
+<div class="form-group col-sm-6 col-lg-12">
+    {!! Form::label('position', 'Puesto:') !!}
+    <select name="position[]" multiple="multiple" class="form-control" id="position"></select>
 </div>
 
 <!--- Submit Field --->

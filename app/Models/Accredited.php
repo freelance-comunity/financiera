@@ -40,7 +40,6 @@ class Accredited extends Model
 		"curp" => "required",
 		"sex" => "required",
 		"civil_status" => "required",
-		"name_conyug" => "required"
 	];
 
 	public function user()

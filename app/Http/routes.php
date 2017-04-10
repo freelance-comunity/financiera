@@ -294,6 +294,22 @@ Route::get('/test', function() {
 
 
 
+
+Route::resource('anchorings', 'AnchoringController');
+
+Route::get('anchorings/{id}/delete', [
+    'as' => 'anchorings.delete',
+    'uses' => 'AnchoringController@destroy',
+]);
+
+
+Route::resource('products', 'ProductController');
+
+Route::get('products/{id}/delete', [
+    'as' => 'products.delete',
+    'uses' => 'ProductController@destroy',
+]);
+
 Route::resource('histories', 'HistoryController');
 
 Route::get('histories/{id}/delete', [
@@ -330,6 +346,7 @@ Route::get('studiesAccredited/{id}/',[
     'uses' => 'AccreditedController@studiesAccredited',
 ]);
 
+
 Route::get('view-studies/{id}', function($id){
     $accrediteds = App\Models\Accredited::find($id);
     $studies = $accrediteds->studies;
@@ -341,3 +358,4 @@ Route::get('editStudies/{id}/',[
     'as' => 'studies.editStudies',
     'uses' => 'StudyController@editStudies',
 ]);
+
