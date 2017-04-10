@@ -24,11 +24,12 @@ class CreateAccreditedsTable extends Migration
 			$table->string('email');
 			$table->string('address');
 			$table->string('nationality');
+			$table->string('ife');
 			$table->string('curp');
 			$table->string('sex');
 			$table->string('civil_status');
 			$table->string('name_conyug');
-			$table->integer('user_id')->unsigned()->foreign('user_id')->references('id')->on('users');
+			$table->integer('user_id')->unsigned()->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}

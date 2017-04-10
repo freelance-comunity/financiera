@@ -2,6 +2,7 @@
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('name', 'Nombre:') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
+    <input type="hidden" name="accrediteds_id" value="{{ $accrediteds->id}}">
 </div>
 
 <!--- Last Name Field --->

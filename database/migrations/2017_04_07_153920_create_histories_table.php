@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMicrosTable extends Migration
+class CreateHistoriesTable extends Migration
 {
 
 	/**
@@ -13,19 +13,14 @@ class CreateMicrosTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('micros', function(Blueprint $table)
+		Schema::create('histories', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name');
-			$table->string('address');
-			$table->string('colony');
-			$table->string('municipality');
-			$table->string('activity');
-			$table->string('antiquity');
-			$table->string('antiquity_locality');
-			$table->string('business_type');
-			$table->string('times');
-			$table->string('local');
+			$table->string('credit_actualy');
+			$table->string('name_company');
+			$table->string('amount');
+			$table->string('term');
+			$table->string('payment_amount');
 			$table->integer('accrediteds_id')->unsigned()->foreign('accrediteds_id')->references('id')->on('accrediteds');
 			$table->timestamps();
 		});
@@ -38,7 +33,7 @@ class CreateMicrosTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('micros');
+		Schema::drop('histories');
 	}
 
 }

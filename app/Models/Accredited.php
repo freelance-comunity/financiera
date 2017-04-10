@@ -20,6 +20,7 @@ class Accredited extends Model
 		"email",
 		"address",
 		"nationality",
+		"ife",
 		"curp",
 		"sex",
 		"civil_status",
@@ -36,6 +37,7 @@ class Accredited extends Model
 		"email" => "required",
 		"address" => "required",
 		"nationality" => "required",
+		"ife" =>"required",
 		"curp" => "required",
 		"sex" => "required",
 		"civil_status" => "required",
@@ -58,6 +60,18 @@ class Accredited extends Model
     public function aval()
 	{
         return $this->hasMany('App\Models\Aval');
+    }
+     public function micro()
+	{
+        return $this->hasOne('App\Models\Micro');
+    }
+    public function history()
+	{
+        return $this->hasMany('App\Models\Historys');
+    }
+    public function study()
+	{
+        return $this->hasOne('App\Models\Study');
     }
 
 }

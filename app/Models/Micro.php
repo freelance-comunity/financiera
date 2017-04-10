@@ -21,11 +21,12 @@ class Micro extends Model
 		"antiquity_locality",
 		"business_type",
 		"times",
-		"local"
+		"local",
+		"accrediteds_id"
 	];
 
 	public static $rules = [
-	    "name" => "address:string",
+	    "name" => "required",
 		"address" => "required",
 		"colony" => "required",
 		"municipality" => "required",
@@ -36,5 +37,8 @@ class Micro extends Model
 		"times" => "required",
 		"local" => "required"
 	];
-
+	public function accredited()
+    {
+        return $this->hasOne('App\Model\Accredited');
+    }
 }

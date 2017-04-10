@@ -161,22 +161,48 @@ class AccreditedController extends AppBaseController
 		return redirect(route('accrediteds.index'));
 	}
 
-	public function addresses($id)
-	{
-		return view ('addresses.index')
-		->with('addresses', $addresses)
-		->with('addresses', $attributes);
+	public function addressesAccredited($id)
+	{	
+		$accrediteds = Accredited::find($id);
+		return view ('addresses.create')
+		->with('accrediteds', $accrediteds);
+		
 	}
-	public function references($id)
+	public function referencesAccredited($id)
 	{
-		return view ('references.index')
-		->with('references', $references)
-		->with('references', $attributes);
+		$accrediteds = Accredited::find($id);
+		return view ('references.create')
+		->with('accrediteds', $accrediteds);
+		
 	}
-	public function avals($id)
+	public function avalsAccredited($id)
 	{
-		return view ('avals.index')
-		->with('avals', $avals)
-		->with('avals', $attributes);
+		$accrediteds = Accredited::find($id);
+		return view ('avals.create')
+		->with('accrediteds', $accrediteds);
+		
+	}
+	public function microsAccredited($id)
+	{
+		$accrediteds = Accredited::find($id);
+		return view ('micros.create')
+		->with('accrediteds', $accrediteds);
+		
+	}
+
+	public function historiesAccredited($id)
+	{
+		$accrediteds = Accredited::find($id);
+		return view ('histories.create')
+		->with('accrediteds', $accrediteds);
+		
+	}
+
+	public function studiesAccredited($id)
+	{
+		$accrediteds = Accredited::find($id);
+		return view ('studies.create')
+		->with('accrediteds', $accrediteds);
+		
 	}
 }
