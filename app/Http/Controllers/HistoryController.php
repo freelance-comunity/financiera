@@ -8,6 +8,7 @@ use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
+use Alert;
 
 class HistoryController extends AppBaseController
 {
@@ -65,7 +66,7 @@ class HistoryController extends AppBaseController
 
 		$history = History::create($input);
 
-		Flash::message('History saved successfully.');
+		Alert::success('Historial Crediticio guardado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('histories.index'));
 	}
@@ -131,7 +132,7 @@ class HistoryController extends AppBaseController
 		$history->fill($request->all());
 		$history->save();
 
-		Flash::message('History updated successfully.');
+		Alert::success('Datos actualizados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('histories.index'));
 	}
@@ -156,7 +157,7 @@ class HistoryController extends AppBaseController
 
 		$history->delete();
 
-		Flash::message('History deleted successfully.');
+		Alert::success('Historial crediticio eliminado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('histories.index'));
 	}

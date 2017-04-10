@@ -8,6 +8,7 @@ use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
+use Alert;
 
 class AccreditedController extends AppBaseController
 {
@@ -65,7 +66,7 @@ class AccreditedController extends AppBaseController
 
 		$accredited = Accredited::create($input);
 
-		Flash::message('Accredited saved successfully.');
+		Alert::success('Acreditado creado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('accrediteds.index'));
 	}
@@ -131,7 +132,7 @@ class AccreditedController extends AppBaseController
 		$accredited->fill($request->all());
 		$accredited->save();
 
-		Flash::message('Accredited updated successfully.');
+		Alert::success('Datos actualizados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('accrediteds.index'));
 	}
@@ -156,7 +157,7 @@ class AccreditedController extends AppBaseController
 
 		$accredited->delete();
 
-		Flash::message('Accredited deleted successfully.');
+		Alert::success('Acreditado eliminado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('accrediteds.index'));
 	}

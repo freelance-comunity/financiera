@@ -8,6 +8,7 @@ use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
+use Alert;
 
 
 class AddressController extends AppBaseController
@@ -66,7 +67,7 @@ class AddressController extends AppBaseController
 
 		$address = Address::create($input);
 
-		Flash::message('Address saved successfully.');
+		Alert::success('Domicilio guardado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('addresses.index'));
 	}
@@ -132,7 +133,7 @@ class AddressController extends AppBaseController
 		$address->fill($request->all());
 		$address->save();
 
-		Flash::message('Address updated successfully.');
+		Alert::success('Datos actualizados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('addresses.index'));
 	}
@@ -157,7 +158,7 @@ class AddressController extends AppBaseController
 
 		$address->delete();
 
-		Flash::message('Address deleted successfully.');
+		Alert::success('Domicilio eliminado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('addresses.index'));
 	}

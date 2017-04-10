@@ -144,6 +144,7 @@ Route::get('editAddresses/{id}/',[
     'as' => 'addresses.editAddresses',
     'uses' => 'AddressController@editAddresses',
 ]);
+
 Route::resource('references', 'ReferencesController');
 
 Route::get('references/{id}/delete', [

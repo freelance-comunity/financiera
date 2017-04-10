@@ -8,6 +8,7 @@ use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
+use Alert;
 
 class AvalController extends AppBaseController
 {
@@ -65,7 +66,7 @@ class AvalController extends AppBaseController
 
 		$aval = Aval::create($input);
 
-		Flash::message('Aval saved successfully.');
+		Alert::success('Aval guardado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('avals.index'));
 	}
@@ -131,7 +132,7 @@ class AvalController extends AppBaseController
 		$aval->fill($request->all());
 		$aval->save();
 
-		Flash::message('Aval updated successfully.');
+		Alert::success('Datos acutalizados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('avals.index'));
 	}
@@ -156,7 +157,7 @@ class AvalController extends AppBaseController
 
 		$aval->delete();
 
-		Flash::message('Aval deleted successfully.');
+		Alert::success('Aval eliminado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('avals.index'));
 	}
