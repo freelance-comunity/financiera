@@ -43,7 +43,7 @@
 					<td>{!! $address->federative !!}</td>
                     
                             <td>
-                                <a href="{!! route('addresses.edit', [$address->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
+                                <a href="{!! route('addresses.editAddresses', [$address->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
                                 <a href="{!! route('addresses.delete', [$address->id]) !!}" onclick="return confirm('Are you sure wants to delete this Address?')"><i class="glyphicon glyphicon-remove"></i></a>
                             </td>
                         </tr>

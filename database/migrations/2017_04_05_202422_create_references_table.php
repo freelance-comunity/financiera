@@ -21,7 +21,7 @@ class CreateReferencesTable extends Migration
 			$table->string('address');
 			$table->string('phone');
 			$table->string('relationship');
-			$table->integer('accrediteds_id')->unsigned()->foreign('accrediteds_id')->references('id')->on('accrediteds');
+			$table->integer('accredited_id')->unsigned()->foreign('accredited_id')->references('id')->on('accrediteds');
 			$table->timestamps();
 		});
 	}

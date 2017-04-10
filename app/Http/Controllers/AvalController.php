@@ -160,4 +160,17 @@ class AvalController extends AppBaseController
 
 		return redirect(route('avals.index'));
 	}
+
+	public function editAval($id)
+	{
+		$aval = Aval::find($id);
+
+		if(empty($aval))
+		{
+			Flash::error('Aval not found');
+			return redirect(route('avals.index'));
+		}
+
+		return view('avals.editAval')->with('aval', $aval);
+	}
 }

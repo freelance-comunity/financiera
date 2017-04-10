@@ -2,7 +2,6 @@
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('name', 'Nombre de  la Empresa:') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
-    <input type="hidden" name="accredited_id" value="{{ $accrediteds->id}}">
 </div>
 
 <!--- Address Field --->

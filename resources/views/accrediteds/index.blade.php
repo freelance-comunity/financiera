@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+ACREDITADOS
+@endsection
 @section('main-content')
 
 <div class="container">
@@ -7,7 +9,7 @@
     @include('flash::message')
 
     <div class="row">
-        <h1 class="pull-left">Acreditados</h1>
+        <h1 class="pull-left">Todos los acreditados</h1>
         <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('accrediteds.create') !!}">Agregar Nuevo</a>
     </div>
 
@@ -64,12 +66,12 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Domicilio</a></li>
-                                <li><a href="#">Estudio Socioeconómico</a></li>
-                                <li><a href="#">Aval</a></li>
-                                <li><a href="#">Datos de la Microempresa</a></li>
-                                <li><a href="#">Antecedentes crediticios</a></li>
-                                <li><a href="#">Referencias</a></li>                 
+                                <li><a href="{{ url('/view-addresses') }}/{{$accredited->id}}">Domicilio</a></li>
+                                <li><a href="{{ url ('/view-studies')}}/{{$accredited->id}}">Estudio Socioeconómico</a></li>
+                                <li><a href="{{ url('/view-avals')}}/{{$accredited->id}}">Aval</a></li>
+                                <li><a href="{{ url('/view-micros')}}/{{$accredited->id}}">Datos de la Microempresa</a></li>
+                                <li><a href="{{ url('/view-histories')}}/{{$accredited->id}}">Antecedentes crediticios</a></li>
+                                <li><a href="{{ url('/view-references')}}/{{$accredited->id}}">Referencias</a></li>                 
                             </ul>
                         </div>
                     </td>

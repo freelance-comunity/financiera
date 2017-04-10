@@ -25,7 +25,7 @@ class CreateAddressesTable extends Migration
 			$table->string('municipality');
 			$table->string('city');
 			$table->string('federative');
-			$table->integer('accrediteds_id')->unsigned()->foreign('accrediteds_id')->references('id')->on('accrediteds');
+			$table->integer('accredited_id')->unsigned()->foreign('accredited_id')->references('id')->on('accrediteds');
 			$table->timestamps();
 		});
 	}

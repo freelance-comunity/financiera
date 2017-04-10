@@ -160,4 +160,17 @@ class MicroController extends AppBaseController
 
 		return redirect(route('micros.index'));
 	}
+
+	public function editMicros($id)
+	{
+		$micro = Micro::find($id);
+
+		if(empty($micro))
+		{
+			Flash::error('Micro not found');
+			return redirect(route('micros.index'));
+		}
+
+		return view('micros.editMicros')->with('micro', $micro);
+	}
 }

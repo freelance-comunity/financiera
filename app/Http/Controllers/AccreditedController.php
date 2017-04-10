@@ -168,6 +168,7 @@ class AccreditedController extends AppBaseController
 		->with('accrediteds', $accrediteds);
 		
 	}
+	
 	public function referencesAccredited($id)
 	{
 		$accrediteds = Accredited::find($id);

@@ -160,4 +160,16 @@ class StudyController extends AppBaseController
 
 		return redirect(route('studies.index'));
 	}
+	public function editStudies($id)
+	{
+		$study = Study::find($id);
+
+		if(empty($study))
+		{
+			Flash::error('Study not found');
+			return redirect(route('studies.index'));
+		}
+
+		return view('studies.editStudies')->with('study', $study);
+	}
 }

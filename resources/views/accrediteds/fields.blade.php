@@ -2,7 +2,7 @@
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('name', 'Nombre(s):') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
-    <input type="hidden" name="user_id" value="{{ $user->id}}">
+    
 </div>
 
 <!--- Last Name Field --->
@@ -73,11 +73,7 @@
     'Viudo/a' => 'Viudo/a', 'Divorciado/a' => 'Divorciado/a'], null, ['class' => 'form-control'])!!}
 </div>
 
-<!--- Name Conyug Field --->
-<div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('name_conyug', 'Nombre del Conyugue:') !!}
-    {!! Form::text('name_conyug', null, ['class' => 'form-control']) !!}
-</div>
+
 
 
 <!--- Submit Field --->

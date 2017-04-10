@@ -160,4 +160,16 @@ class HistoryController extends AppBaseController
 
 		return redirect(route('histories.index'));
 	}
+	public function editHistories($id)
+	{
+		$history = History::find($id);
+
+		if(empty($history))
+		{
+			Flash::error('History not found');
+			return redirect(route('histories.index'));
+		}
+
+		return view('histories.editHistories')->with('history', $history);
+	}
 }
