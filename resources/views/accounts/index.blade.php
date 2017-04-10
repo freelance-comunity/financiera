@@ -15,7 +15,7 @@
         @if($accounts->isEmpty())
         <div class="well text-center">No hay cuentas registradas.</div>
         @else
-        <table class="table" id="myTable">
+        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th>Nombre del Banco</th>
                 <th>Número de Cuenta</th>

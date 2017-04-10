@@ -15,7 +15,7 @@
         @if($histories->isEmpty())
         <div class="well text-center">No se encontraron Antecedentes Crediticios.</div>
         @else
-        <table class="table" id="myTable">
+        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
             <th>Credito Actual</th>
                 <th>Nombre de la Empresa</th>

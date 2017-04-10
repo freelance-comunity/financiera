@@ -15,7 +15,7 @@
         @if($studies->isEmpty())
         <div class="well text-center">No Studies found.</div>
         @else
-        <table class="table" id="myTable">
+        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th>Dependientes economicos</th>
                 <th>Regimen de casamiento</th>

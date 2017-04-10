@@ -15,7 +15,7 @@
         <div class="well text-center">No Este rol no tiene ningun permiso asignado.</div>
         @else
         {!! Form::open(['url' => 'permissionEdit']) !!}
-        <table class="table">
+        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th></th>
                 <th>Nombre</th>

@@ -15,7 +15,7 @@
             @if($roles->isEmpty())
                 <div class="well text-center">No se encontraron roles</div>
             @else
-                <table class="table">
+                <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
                     <thead>
                     <th>Nombre</th>
                     <th>Nombre para mostrar</th>

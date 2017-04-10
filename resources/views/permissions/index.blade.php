@@ -17,7 +17,7 @@ Permisos del sistema
         @if($permissions->isEmpty())
         <div class="well text-center">No hay Permisos registrados.</div>
         @else
-        <table class="table">
+       <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th>Nombre</th>
                 <th>Nombre opcional</th>

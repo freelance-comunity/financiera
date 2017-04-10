@@ -15,7 +15,7 @@
         <div class="well text-center">Este rol ya tiene todos los permisos asignados</div>
         @else
         {!! Form::open(['url' => 'asignamment']) !!}
-        <table class="table">
+        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th><!-- select all boxes -->
                     <input type="checkbox" id="testcheck" name="select-all" id="select-all" /> <label for="select-all">Todos</label></th>

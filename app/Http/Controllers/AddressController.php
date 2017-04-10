@@ -21,6 +21,12 @@ class AddressController extends AppBaseController
 	 *
 	 * @return Response
 	 */
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+	
 	public function index(Request $request)
 	{
 		$query = Address::query();
