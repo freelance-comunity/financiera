@@ -23,8 +23,7 @@ class Accredited extends Model
 		"ife",
 		"curp",
 		"sex",
-		"civil_status",
-		"name_conyug",
+		"civil_status",		
 		"user_id"
 	];
 
@@ -41,7 +40,6 @@ class Accredited extends Model
 		"curp" => "required",
 		"sex" => "required",
 		"civil_status" => "required",
-		"name_conyug" => "required"
 	];
 
 	public function user()
@@ -52,26 +50,26 @@ class Accredited extends Model
     {
         return $this->hasMany('App\Models\References');
     }
-    public function address()
+    public function addresses()
     {
         return $this->hasMany('App\Models\Address');
     }
 
-    public function aval()
+    public function avals()
 	{
         return $this->hasMany('App\Models\Aval');
     }
-     public function micro()
+     public function micros()
 	{
-        return $this->hasOne('App\Models\Micro');
+        return $this->hasMany('App\Models\Micro');
     }
     public function history()
 	{
-        return $this->hasMany('App\Models\Historys');
+        return $this->hasMany('App\Models\History');
     }
-    public function study()
+    public function studies()
 	{
-        return $this->hasOne('App\Models\Study');
+        return $this->hasMany('App\Models\Study');
     }
 
 }

@@ -21,7 +21,7 @@ class CreateHistoriesTable extends Migration
 			$table->string('amount');
 			$table->string('term');
 			$table->string('payment_amount');
-			$table->integer('accrediteds_id')->unsigned()->foreign('accrediteds_id')->references('id')->on('accrediteds');
+			$table->integer('accredited_id')->unsigned()->foreign('accredited_id')->references('id')->on('accrediteds');
 			$table->timestamps();
 		});
 	}

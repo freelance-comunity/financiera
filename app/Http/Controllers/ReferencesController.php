@@ -160,4 +160,16 @@ class ReferencesController extends AppBaseController
 
 		return redirect(route('references.index'));
 	}
+	public function editReferences($id)
+	{
+		$references = References::find($id);
+
+		if(empty($references))
+		{
+			Flash::error('References not found');
+			return redirect(route('references.index'));
+		}
+
+		return view('references.editReferences')->with('references', $references);
+	}
 }

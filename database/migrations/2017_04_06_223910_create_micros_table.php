@@ -26,7 +26,7 @@ class CreateMicrosTable extends Migration
 			$table->string('business_type');
 			$table->string('times');
 			$table->string('local');
-			$table->integer('accrediteds_id')->unsigned()->foreign('accrediteds_id')->references('id')->on('accrediteds');
+			$table->integer('accredited_id')->unsigned()->foreign('accredited_id')->references('id')->on('accrediteds');
 			$table->timestamps();
 		});
 	}

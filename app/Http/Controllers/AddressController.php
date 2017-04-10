@@ -9,6 +9,7 @@ use Response;
 use Flash;
 use Schema;
 
+
 class AddressController extends AppBaseController
 {
 
@@ -160,4 +161,18 @@ class AddressController extends AppBaseController
 
 		return redirect(route('addresses.index'));
 	}
+
+	public function editAddresses($id)
+	{
+		$address = Address::find($id);
+
+		if(empty($address))
+		{
+			Flash::error('Address not found');
+			return redirect(route('addresses.index'));
+		}
+
+		return view('addresses.editAddresses')->with('address', $address);
+	}
+
 }

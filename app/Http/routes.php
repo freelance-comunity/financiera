@@ -144,11 +144,14 @@ Route::get('view-addresses/{id}', function($id){
     $accrediteds = App\Models\Accredited::find($id);
     $addresses = $accrediteds->addresses;
 
-    return view('addresses.view-addresses')
+   return view('addresses.view-addresses')
     ->with('addresses', $addresses);
 });
 
-
+Route::get('editAddresses/{id}/',[
+    'as' => 'addresses.editAddresses',
+    'uses' => 'AddressController@editAddresses',
+]);
 Route::resource('references', 'ReferencesController');
 
 Route::get('references/{id}/delete', [
@@ -163,10 +166,22 @@ Route::get('referencesAccredited/{id}/',[
     'uses' => 'AccreditedController@referencesAccredited',
 ]);
 
+Route::get('view-references/{id}', function($id){
+    $accrediteds = App\Models\Accredited::find($id);
+    $references = $accrediteds->references;
+
+   return view('references.view-references')
+    ->with('references', $references);
+});
 Route::get('references/{id}',[
     'as' => 'accrediteds.references',
     'uses' => 'AccreditedController@references',
     ]);
+
+Route::get('editReferences/{id}/',[
+    'as' => 'references.editReferences',
+    'uses' => 'ReferencesController@editReferences',
+]);
 
 Route::resource('users', 'UserController');
 
@@ -194,7 +209,18 @@ Route::get('avals/{id}',[
     'as' => 'accrediteds.avals',
     'uses' => 'AccreditedController@avals',
     ]);
+Route::get('view-avals/{id}', function($id){
+    $accrediteds = App\Models\Accredited::find($id);
+    $avals = $accrediteds->avals;
 
+   return view('avals.view-avals')
+    ->with('avals', $avals);
+});
+
+Route::get('editAval/{id}/',[
+    'as' => 'avals.editAval',
+    'uses' => 'AvalController@editAval',
+]);
 
 Route::resource('micros', 'MicroController');
 
@@ -206,6 +232,19 @@ Route::get('micros/{id}/delete', [
  Route::get('microsAccredited/{id}/',[
     'as' => 'accrediteds.microsAccredited',
     'uses' => 'AccreditedController@microsAccredited',
+]);
+
+ Route::get('view-micros/{id}', function($id){
+    $accrediteds = App\Models\Accredited::find($id);
+    $micros = $accrediteds->micros;
+
+   return view('micros.view-micros')
+    ->with('micros', $micros);
+});
+
+Route::get('editMicros/{id}/',[
+    'as' => 'micros.editMicros',
+    'uses' => 'MicroController@editMicros',
 ]);
    
 
@@ -289,6 +328,19 @@ Route::get('historiesAccredited/{id}/',[
     'as' => 'accrediteds.historiesAccredited',
     'uses' => 'AccreditedController@historiesAccredited',
 ]);
+
+Route::get('view-histories/{id}', function($id){
+    $accrediteds = App\Models\Accredited::find($id);
+    $histories = $accrediteds->history;
+
+   return view('histories.view-histories')
+    ->with('histories', $histories);
+});
+
+Route::get('editHistories/{id}/',[
+    'as' => 'histories.editHistories',
+    'uses' => 'HistoryController@editHistories',
+]);
   
 
 Route::resource('studies', 'StudyController');
@@ -300,5 +352,18 @@ Route::get('studies/{id}/delete', [
 Route::get('studiesAccredited/{id}/',[
     'as' => 'accrediteds.studiesAccredited',
     'uses' => 'AccreditedController@studiesAccredited',
+]);
+
+
+Route::get('view-studies/{id}', function($id){
+    $accrediteds = App\Models\Accredited::find($id);
+    $studies = $accrediteds->studies;
+
+   return view('studies.view-studies')
+    ->with('studies', $studies);
+});
+Route::get('editStudies/{id}/',[
+    'as' => 'studies.editStudies',
+    'uses' => 'StudyController@editStudies',
 ]);
 

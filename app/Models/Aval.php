@@ -27,7 +27,7 @@ class Aval extends Model
 		"sex",
 		"ocupation",
 		"address_work",
-		"accrediteds_id"
+		"accredited_id"
 	];
 
 	public static $rules = [

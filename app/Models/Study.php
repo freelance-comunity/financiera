@@ -23,7 +23,7 @@ class Study extends Model
 		"school_grade",
 		"sector",
 		"company",
-		"accrediteds_id"
+		"accredited_id"
 	];
 
 	public static $rules = [
@@ -41,7 +41,7 @@ class Study extends Model
 	];
 	public function accredited()
     {
-        return $this->hasOne('App\Model\Accredited');
+        return $this->belongsTo('App\Model\Accredited');
     }
 
 }

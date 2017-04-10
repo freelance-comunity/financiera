@@ -22,7 +22,7 @@ class Micro extends Model
 		"business_type",
 		"times",
 		"local",
-		"accrediteds_id"
+		"accredited_id"
 	];
 
 	public static $rules = [
@@ -39,6 +39,6 @@ class Micro extends Model
 	];
 	public function accredited()
     {
-        return $this->hasOne('App\Model\Accredited');
+        return $this->belongsTo('App\Model\Accredited');
     }
 }

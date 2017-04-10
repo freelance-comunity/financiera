@@ -31,7 +31,7 @@ class CreateAvalsTable extends Migration
 			$table->string('sex');
 			$table->string('ocupation');
 			$table->string('address_work');
-			$table->integer('accrediteds_id')->unsigned()->foreign('accrediteds_id')->references('id')->on('accrediteds');
+			$table->integer('accredited_id')->unsigned()->foreign('accredited_id')->references('id')->on('accrediteds');
 			$table->timestamps();
 		});
 	}

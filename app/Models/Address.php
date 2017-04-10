@@ -21,7 +21,7 @@ class Address extends Model
 		"municipality",
 		"city",
 		"federative",
-		"accrediteds_id"
+		"accredited_id"
 	];
 
 	public static $rules = [

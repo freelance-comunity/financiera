@@ -17,7 +17,7 @@ class History extends Model
 		"amount",
 		"term",
 		"payment_amount",
-		"accrediteds_id"
+		"accredited_id"
 	];
 
 	public static $rules = [
