@@ -367,3 +367,11 @@ Route::get('editStudies/{id}/',[
     'uses' => 'StudyController@editStudies',
 ]);
 
+
+
+Route::resource('accounts', 'AccountController');
+
+Route::get('accounts/{id}/delete', [
+    'as' => 'accounts.delete',
+    'uses' => 'AccountController@destroy',
+]);
