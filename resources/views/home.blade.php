@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-Home
+Inicio
 @endsection
 
 
 @section('main-content')
+@section('contentheader_title')
+s&c  <small>Version 1.0</small>
+@endsection
 <div class="container spark-screen">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">

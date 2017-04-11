@@ -1,5 +1,7 @@
 @extends('layouts.app')
-Referencia
+@section('contentheader_title')
+Referencias
+@endsection
 @section('main-content')
 
     <div class="container">
@@ -7,7 +9,7 @@ Referencia
        @include('sweet::alert')
 
         <div class="row">
-            <h1 class="pull-left">Referencias</h1>
+            <h1 class="pull-left">Referencias del acreditado</h1>
             
         </div>
 
