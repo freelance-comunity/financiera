@@ -139,7 +139,7 @@ class AnchoringController extends AppBaseController
 		$anchoring->fill($request->all());
 		$anchoring->save();
 
-		Flash::message('Anchoring updated successfully.');
+		Alert::message('Fondeo actualizado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('anchorings.index'));
 	}

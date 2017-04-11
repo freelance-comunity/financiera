@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('contentheader_title')
+Lista de referencias
+@endsection
 @section('main-content')
 
     <div class="container">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('contentheader_title')
+Editar dirección
+@endsection
 @section('main-content')
 <div class="container">
 

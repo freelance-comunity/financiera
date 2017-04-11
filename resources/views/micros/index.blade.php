@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('contentheader_title')
+Lista de microempresas
+@endsection
 @section('main-content')
 
 <div class="container">

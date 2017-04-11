@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('main-content')
-
+@section('contentheader_title')
+Editar 
+@endsection
 <div class="container">
 
     @include('sweet::alert')

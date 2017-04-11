@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title')
-ACREDITADOS
+@section('contentheader_title')
+Lista de acreditados
 @endsection
 @section('main-content')
 

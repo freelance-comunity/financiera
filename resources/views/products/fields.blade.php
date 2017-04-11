@@ -49,7 +49,7 @@
 <!--- Modality Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('modality', 'Modalidad:') !!}
-    {!! Form::text('modality', null, ['class' => 'form-control']) !!}
+    {!! Form::select('modality', ['Diario' => 'Diario', 'Diario cuota' => 'Diario cuota', 'Semanal' => 'Semanal', 'Catorcenal' => 'Catorcenal', 'Mensual' => 'Mensual'], null, ['class' => 'form-control']) !!}
 </div>
 
 

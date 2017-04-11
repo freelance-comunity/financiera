@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('contentheader_title')
+Lista de direcciones
+@endsection
 @section('main-content')
 
     <div class="container">

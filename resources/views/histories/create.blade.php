@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('contentheader_title')
+Crear historial crediticio
+@endsection
 @section('main-content')
 <div class="container">
 

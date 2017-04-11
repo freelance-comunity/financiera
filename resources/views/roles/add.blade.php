@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('main-content')
-
+@section('contentheader_title')
+Asignar permisos
+@endsection
 <div class="container">
 
     @include('sweet::alert')

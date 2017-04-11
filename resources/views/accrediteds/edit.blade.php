@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('contentheader_title')
+Editar acreditado
+@endsection
 @section('main-content')
 <div class="container">
 

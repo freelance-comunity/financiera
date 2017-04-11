@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('contentheader_title')
+lista de historiales crediticios
+@endsection
 @section('main-content')
 
 <div class="container">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('contentheader_title')
+Estudio de negocio
+@endsection
 @section('main-content')
 <div class="container">
 
