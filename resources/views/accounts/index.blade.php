@@ -20,7 +20,7 @@ Lista de cuentas
         <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th>Nombre del Banco</th>
-                <th>Número de Cuenta</th>
+                <th>Número de Cuenta / Número de Sucursal</th>
                 <th>Tipo de Cuenta</th>
                 <th width="50px">Acción</th>
             </thead>

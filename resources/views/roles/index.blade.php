@@ -33,8 +33,8 @@ Roles del sistema
                     <td>{!! $roles->display_name !!}</td>
                     <td>{!! $roles->description !!}</td>
                     <td>
-                        <a href="{{ url('asignamment', [$roles->id])}}"><button class="btn btn-info">Asignar</button></a>
-                        <a href="{{ url('permissionEdit', [$roles->id])}}"><button class="btn btn-warning">Editar</button></a>
+                        <a href="{{ url('asignamment', [$roles->id])}}"><button class="btn btn-block btn-info">Asignar</button></a>
+                        <!--<a href="{{ url('permissionEdit', [$roles->id])}}"><button class="btn btn-block btn-warning">Editar</button></a>-->
                     </td>
                     <td>
                         <a href="{!! route('roles.edit', [$roles->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>

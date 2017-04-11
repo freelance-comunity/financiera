@@ -22,7 +22,11 @@
 <!--- Destination Account Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('destination_account', 'Cuenta destino:') !!}
-    {!! Form::text('destination_account', null, ['class' => 'form-control', 'placeholder' => 'XXX-XXXXXXXX-XXX']) !!}
+    <select name="destination_account" class="form-control" id="">
+        @foreach ($accounts as $element)
+            <option value="{{$element->account_number}}">{{$element->name_bank}}----{{$element->account_number}}</option>
+        @endforeach
+    </select>
 </div>
 
 

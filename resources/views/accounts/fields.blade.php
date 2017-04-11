@@ -1,12 +1,12 @@
 <!--- Name Bank Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('name_bank', 'Nombren del Banco:') !!}
+    {!! Form::label('name_bank', 'Nombre del Banco:') !!}
     {!! Form::text('name_bank', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Account Number Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('account_number', 'Número de Cuenta:') !!}
+    {!! Form::label('account_number', 'Número de Cuenta / Número de Sucursal:') !!}
     {!! Form::text('account_number', null, ['class' => 'form-control']) !!}
 </div>
 

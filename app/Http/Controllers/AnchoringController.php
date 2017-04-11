@@ -5,6 +5,7 @@ use App\Http\Requests\CreateAnchoringRequest;
 use App\Models\Anchoring;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
+use App\Models\Account;
 use Response;
 use Flash;
 use Schema;
@@ -55,8 +56,10 @@ class AnchoringController extends AppBaseController
 	 * @return Response
 	 */
 	public function create()
-	{
-		return view('anchorings.create');
+	{	
+		$accounts = Account::all();
+		return view('anchorings.create')
+		->with('accounts', $accounts);
 	}
 
 	/**
