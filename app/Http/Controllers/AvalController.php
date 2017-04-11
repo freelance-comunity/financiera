@@ -44,7 +44,7 @@ class AvalController extends AppBaseController
 
         $avals = $query->get();
 
-        return view('avals.index')
+        return view('avals.view-avals')
             ->with('avals', $avals)
             ->with('attributes', $attributes);
 	}

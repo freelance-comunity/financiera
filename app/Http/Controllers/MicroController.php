@@ -44,7 +44,7 @@ class MicroController extends AppBaseController
 
         $micros = $query->get();
 
-        return view('micros.index')
+        return view('micros.view-micros')
             ->with('micros', $micros)
             ->with('attributes', $attributes);
 	}

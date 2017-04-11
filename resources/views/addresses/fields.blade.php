@@ -57,4 +57,5 @@
 <!--- Submit Field --->
 <div class="form-group col-sm-12">
     {!! Form::submit('GUARDAR', ['class' => 'btn btn-primary']) !!}
+    echo link_to_route('route.view-addresses', $title = null, $parameters = array(), $attributes = array());
 </div>

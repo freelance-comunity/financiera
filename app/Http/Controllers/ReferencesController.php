@@ -44,7 +44,7 @@ class ReferencesController extends AppBaseController
 
         $references = $query->get();
 
-        return view('references.index')
+        return view('references.view-references')
             ->with('references', $references)
             ->with('attributes', $attributes);
 	}
@@ -179,4 +179,6 @@ class ReferencesController extends AppBaseController
 
 		return view('references.editReferences')->with('references', $references);
 	}
+
+
 }

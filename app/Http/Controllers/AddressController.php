@@ -45,7 +45,7 @@ class AddressController extends AppBaseController
 
         $addresses = $query->get();
 
-        return view('addresses.index')
+        return view('addresses.view-addresses')
             ->with('addresses', $addresses)
             ->with('attributes', $attributes);
 	}

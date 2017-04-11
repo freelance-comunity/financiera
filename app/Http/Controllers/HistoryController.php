@@ -44,7 +44,7 @@ class HistoryController extends AppBaseController
 
         $histories = $query->get();
 
-        return view('histories.index')
+        return view('histories.view-histories')
             ->with('histories', $histories)
             ->with('attributes', $attributes);
 	}

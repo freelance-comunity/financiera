@@ -44,7 +44,7 @@ class StudyController extends AppBaseController
 
         $studies = $query->get();
 
-        return view('studies.index')
+        return view('studies.view-studies')
             ->with('studies', $studies)
             ->with('attributes', $attributes);
 	}
