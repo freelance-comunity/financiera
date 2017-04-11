@@ -9,6 +9,7 @@ use Response;
 use Flash;
 use Schema;
 use Alert;
+use App\Models\Accredited;
 
 class MicroController extends AppBaseController
 {
@@ -29,24 +30,24 @@ class MicroController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = Micro::query();
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
+		$columns = Schema::getColumnListing('$TABLE_NAME$');
+		$attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
+		foreach($columns as $attribute){
+			if($request[$attribute] == true)
+			{
+				$query->where($attribute, $request[$attribute]);
+				$attributes[$attribute] =  $request[$attribute];
+			}else{
+				$attributes[$attribute] =  null;
+			}
+		};
 
-        $micros = $query->get();
+		$micros = $query->get();
 
-        return view('micros.view-micros')
-            ->with('micros', $micros)
-            ->with('attributes', $attributes);
+		return view('micros.view-micros')
+		->with('micros', $micros)
+		->with('attributes', $attributes);
 	}
 
 	/**
@@ -68,13 +69,17 @@ class MicroController extends AppBaseController
 	 */
 	public function store(CreateMicroRequest $request)
 	{
-        $input = $request->all();
-
+		$input = $request->all();
+		$accredited = $request->input('accredited_id');
 		$micro = Micro::create($input);
 
 		Alert::success('Datos guardados exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('micros.index'));
+		$accrediteds = Accredited::find($accredited);
+		$micros = $accrediteds->micros;
+
+		return view('micros.view-micros')
+		->with('micros', $micros);
 	}
 
 	/**

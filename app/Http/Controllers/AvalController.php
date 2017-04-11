@@ -9,6 +9,7 @@ use Response;
 use Flash;
 use Schema;
 use Alert;
+use App\Models\Accredited;
 
 class AvalController extends AppBaseController
 {
@@ -29,24 +30,24 @@ class AvalController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = Aval::query();
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
+		$columns = Schema::getColumnListing('$TABLE_NAME$');
+		$attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
+		foreach($columns as $attribute){
+			if($request[$attribute] == true)
+			{
+				$query->where($attribute, $request[$attribute]);
+				$attributes[$attribute] =  $request[$attribute];
+			}else{
+				$attributes[$attribute] =  null;
+			}
+		};
 
-        $avals = $query->get();
+		$avals = $query->get();
 
-        return view('avals.view-avals')
-            ->with('avals', $avals)
-            ->with('attributes', $attributes);
+		return view('avals.view-avals')
+		->with('avals', $avals)
+		->with('attributes', $attributes);
 	}
 
 	/**
@@ -68,13 +69,16 @@ class AvalController extends AppBaseController
 	 */
 	public function store(CreateAvalRequest $request)
 	{
-        $input = $request->all();
-
+		$input = $request->all();
+		$accredited = $request->input('accredited_id');
 		$aval = Aval::create($input);
 
 		Alert::success('Aval guardado exitosamente.')->persistent('Cerrar');
+		$accrediteds = Accredited::find($accredited);
+		$avals = $accrediteds->avals;
 
-		return redirect(route('avals.index'));
+		return view('avals.view-avals')
+		->with('avals', $avals);
 	}
 
 	/**

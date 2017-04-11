@@ -5,6 +5,7 @@ use App\Http\Requests\CreateAddressRequest;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
+use App\Models\Accredited;
 use Response;
 use Flash;
 use Schema;
@@ -30,24 +31,28 @@ class AddressController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = Address::query();
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
+       
 
-        $addresses = $query->get();
+		$columns = Schema::getColumnListing('$TABLE_NAME$');
+		$attributes = array();
 
-        return view('addresses.view-addresses')
-            ->with('addresses', $addresses)
-            ->with('attributes', $attributes);
+		foreach($columns as $attribute){
+			if($request[$attribute] == true)
+			{
+				$query->where($attribute, $request[$attribute]);
+				$attributes[$attribute] =  $request[$attribute];
+			}else{
+				$attributes[$attribute] =  null;
+			}
+		};
+
+		$addresses = $query->get();
+
+		return view('addresses.index')
+		->with('addresses', $addresses)
+		->with('attributes', $attributes);
+		
 	}
 
 	/**
@@ -69,13 +74,16 @@ class AddressController extends AppBaseController
 	 */
 	public function store(CreateAddressRequest $request)
 	{
-        $input = $request->all();
-
+		$input = $request->all();
+		$accredited = $request->input('accredited_id');
 		$address = Address::create($input);
 
 		Alert::success('Domicilio guardado exitosamente.')->persistent('Cerrar');
+		$accrediteds = Accredited::find($accredited);
+		$addresses = $accrediteds->addresses;
 
-		return redirect(route('addresses.index'));
+		return view('addresses.view-addresses')
+		->with('addresses', $addresses);
 	}
 
 	/**
@@ -137,11 +145,18 @@ class AddressController extends AppBaseController
 		}
 
 		$address->fill($request->all());
+		$accredited = $request->address('accredited_id');
+		$address = Address::create($address);
+
+		
 		$address->save();
+		Alert::success('Domicilio guardado exitosamente.')->persistent('Cerrar');
+		$accrediteds = Accredited::find($accredited);
+		$addresses = $accrediteds->addresses;
 
-		Alert::success('Datos actualizados exitosamente.')->persistent('Cerrar');
-
-		return redirect(route('addresses.index'));
+		return view('addresses.view-addresses')
+		->with('addresses', $addresses);
+		
 	}
 
 	/**

@@ -9,6 +9,7 @@ use Response;
 use Flash;
 use Schema;
 use Alert;
+use App\Models\Accredited;
 
 class ReferencesController extends AppBaseController
 {
@@ -29,24 +30,24 @@ class ReferencesController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = References::query();
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
+		$columns = Schema::getColumnListing('$TABLE_NAME$');
+		$attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
+		foreach($columns as $attribute){
+			if($request[$attribute] == true)
+			{
+				$query->where($attribute, $request[$attribute]);
+				$attributes[$attribute] =  $request[$attribute];
+			}else{
+				$attributes[$attribute] =  null;
+			}
+		};
 
-        $references = $query->get();
+		$references = $query->get();
 
-        return view('references.view-references')
-            ->with('references', $references)
-            ->with('attributes', $attributes);
+		return view('references.view-references')
+		->with('references', $references)
+		->with('attributes', $attributes);
 	}
 
 	/**
@@ -68,13 +69,17 @@ class ReferencesController extends AppBaseController
 	 */
 	public function store(CreateReferencesRequest $request)
 	{
-        $input = $request->all();
-
+		$input = $request->all();
+		$accredited = $request->input('accredited_id');
 		$references = References::create($input);
 
 		Alert::success('Referencia creada exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('references.index'));
+		$accrediteds = Accredited::find($accredited);
+		$references = $accrediteds->references;
+
+		return view('references.view-references')
+		->with('references', $references);
 	}
 
 	/**

@@ -9,6 +9,7 @@ use Response;
 use Flash;
 use Schema;
 use Alert;
+use App\Models\Accredited;
 
 class StudyController extends AppBaseController
 {
@@ -29,24 +30,24 @@ class StudyController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = Study::query();
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
+		$columns = Schema::getColumnListing('$TABLE_NAME$');
+		$attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
+		foreach($columns as $attribute){
+			if($request[$attribute] == true)
+			{
+				$query->where($attribute, $request[$attribute]);
+				$attributes[$attribute] =  $request[$attribute];
+			}else{
+				$attributes[$attribute] =  null;
+			}
+		};
 
-        $studies = $query->get();
+		$studies = $query->get();
 
-        return view('studies.view-studies')
-            ->with('studies', $studies)
-            ->with('attributes', $attributes);
+		return view('studies.view-studies')
+		->with('studies', $studies)
+		->with('attributes', $attributes);
 	}
 
 	/**
@@ -68,13 +69,17 @@ class StudyController extends AppBaseController
 	 */
 	public function store(CreateStudyRequest $request)
 	{
-        $input = $request->all();
-
+		$input = $request->all();
+		$accredited = $request->input('accredited_id');
 		$study = Study::create($input);
 
 		Alert::success('Estudio socioeconomico guardado exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('studies.index'));
+		$accrediteds = Accredited::find($accredited);
+		$studies = $accrediteds->studies;
+
+		return view('studies.view-studies')
+		->with('studies', $studies);
 	}
 
 	/**
