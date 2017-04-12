@@ -29,7 +29,7 @@ Lista de estudio de negocios
                 <th>Escolaridad</th>
                 <th>Grado</th>
                 <th>Rubro de la empresa</th>
-                <th>Naturaleza juríidca de la empresa</th>
+                <th>Naturaleza jurídca de la empresa</th>
                 <th width="50px">Action</th>
             </thead>
             <tbody>
