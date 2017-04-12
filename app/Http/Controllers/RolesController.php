@@ -204,13 +204,11 @@ class RolesController extends AppBaseController
 			$id_permission = $row['id'];
 			$permission = Permission::find($id_permission);
 
-			$revoke_permission = $role->detach($permission);
-			echo "listo";
-			echo "<br>";
+			$revoke_permission = $role->permissions()->detach($permission);
 		}
 
-		Flash::success('Se editaron lor permisos al Rol.');
-		return redirect(route('roles.index'));	
+		Alert::success('Se eliminaron lor permisos al Rol.');
+		return redirect(route('roles.index'));
 
 	}
 

@@ -9,7 +9,7 @@ Editar
     @include('sweet::alert')
     @include('common.errors')  
     <div class="row">
-        <h1 class="pull-left">Editar permisos al Rol {{$role->name}}</h1>
+        <h1 class="pull-left">Quitar permisos al Rol {{$role->name}}</h1>
     </div>
 
     <div class="row">
@@ -19,7 +19,7 @@ Editar
         {!! Form::open(['url' => 'permissionEdit']) !!}
         <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
-                <th></th>
+                <th><input type="checkbox" name="select-all" id="select-all" /> <label for="select-all">Todos</label></th>
                 <th>Nombre</th>
                 <th>Nombre opcional</th>
                 <th>Descripción</th>
@@ -28,7 +28,7 @@ Editar
 
                 @foreach($permissions as $permission)
                 <tr>
-                    <td><input type="checkbox" id="testcheck" name="rows[{{$permission->id}}][id]" value="{{$permission->id}}"></td>
+                    <td><input type="checkbox" name="rows[{{$permission->id}}][id]" value="{{$permission->id}}"></td>
                     <td>{!! $permission->name !!}</td>
                     <td>{!! $permission->display_name !!}</td>
                     <td>{!! $permission->description !!}</td>
@@ -38,7 +38,7 @@ Editar
         </table>
         <div class="form-group col-sm-6 col-lg-4">
             <input type="hidden" name="rol_id" value="{{$role->id}}">
-            <input type="submit" value="Asignar" class="btn uppercase bt-success">
+            <input type="submit" value="quitar" class="btn uppercase bt-success">
         </div>
         {!! Form::close() !!}
         @endif

@@ -65,14 +65,5 @@
 		}
 	});
 </script>
-<script>
-    $("#testcheck").on('click', function() {
-        if (jQuery("#checkbox").is(":checked")) {
-            alert("first button checked");
-        }
-        else {
-            alert("none checked");
-        }
-    });
-</script>
+
 
