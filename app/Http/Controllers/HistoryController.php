@@ -9,6 +9,7 @@ use Response;
 use Flash;
 use Schema;
 use Alert;
+use App\Models\Accredited;
 
 class HistoryController extends AppBaseController
 {
@@ -29,24 +30,24 @@ class HistoryController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = History::query();
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
+		$columns = Schema::getColumnListing('$TABLE_NAME$');
+		$attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
+		foreach($columns as $attribute){
+			if($request[$attribute] == true)
+			{
+				$query->where($attribute, $request[$attribute]);
+				$attributes[$attribute] =  $request[$attribute];
+			}else{
+				$attributes[$attribute] =  null;
+			}
+		};
 
-        $histories = $query->get();
+		$histories = $query->get();
 
-        return view('histories.index')
-            ->with('histories', $histories)
-            ->with('attributes', $attributes);
+		return view('histories.view-histories')
+		->with('histories', $histories)
+		->with('attributes', $attributes);
 	}
 
 	/**
@@ -68,14 +69,18 @@ class HistoryController extends AppBaseController
 	 */
 	public function store(CreateHistoryRequest $request)
 	{
-        $input = $request->all();
-
+		$input = $request->all();
+		$accredited = $request->input('accredited_id');
 		$history = History::create($input);
 
 		Alert::success('Historial Crediticio guardado exitosamente.')->persistent('Cerrar');
+		$accrediteds = Accredited::find($accredited);
+		$histories = $accrediteds->history;
 
-		return redirect(route('histories.index'));
-	}
+		return view('histories.view-histories')
+		->with('histories', $histories);
+	
+}
 
 	/**
 	 * Display the specified History.

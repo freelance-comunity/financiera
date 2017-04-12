@@ -31,6 +31,9 @@ class AddressController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = Address::query();
+
+       
+
 		$columns = Schema::getColumnListing('$TABLE_NAME$');
 		$attributes = array();
 
@@ -49,6 +52,7 @@ class AddressController extends AppBaseController
 		return view('addresses.index')
 		->with('addresses', $addresses)
 		->with('attributes', $attributes);
+		
 	}
 
 	/**
@@ -141,11 +145,18 @@ class AddressController extends AppBaseController
 		}
 
 		$address->fill($request->all());
+		$accredited = $request->address('accredited_id');
+		$address = Address::create($address);
+
+		
 		$address->save();
+		Alert::success('Domicilio guardado exitosamente.')->persistent('Cerrar');
+		$accrediteds = Accredited::find($accredited);
+		$addresses = $accrediteds->addresses;
 
-		Alert::success('Datos actualizados exitosamente.')->persistent('Cerrar');
-
-		return redirect(route('addresses.index'));
+		return view('addresses.view-addresses')
+		->with('addresses', $addresses);
+		
 	}
 
 	/**

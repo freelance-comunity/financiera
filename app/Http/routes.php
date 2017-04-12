@@ -183,6 +183,10 @@ Route::get('editReferences/{id}/',[
     'as' => 'references.editReferences',
     'uses' => 'ReferencesController@editReferences',
 ]);
+Route::get('indexReferences/{id}/',[
+    'as' => 'references.indexReferences',
+    'uses' => 'ReferencesController@indexReferences',
+]);
 
 Route::resource('users', 'UserController');
 
