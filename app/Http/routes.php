@@ -388,3 +388,10 @@ Route::get('updatephoto/{id}', function($id) {
 });
 
 Route::post('updatephoto', 'ApplyController@update');
+
+Route::resource('branches', 'BranchController');
+
+Route::get('branches/{id}/delete', [
+    'as' => 'branches.delete',
+    'uses' => 'BranchController@destroy',
+]);
