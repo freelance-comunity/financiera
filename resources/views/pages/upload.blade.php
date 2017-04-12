@@ -1,33 +1,24 @@
 @extends('layouts.app')
 
 @section('contentheader_title')
-Subir imagen
+Actualizar foto
 @endsection
 @section('main-content')
-<div class="about-section">
-   <div class="text-content">
-     <div class="span7 offset1">
-        @if(Session::has('success'))
-          <div class="alert-box success">
-          <h2>{!! Session::get('success') !!}</h2>
-          </div>
-        @endif
-        <div class="secure">Upload form</div>
-        {!! Form::open(array('url'=>'apply/upload','method'=>'POST', 'files'=>true)) !!}
-         <div class="control-group">
-          <div class="controls">
-          {!! Form::file('image') !!}
-    <p class="errors">{!!$errors->first('image')!!}</p>
-  @if(Session::has('error'))
-  <p class="errors">{!! Session::get('error') !!}</p>
-  @endif
-        </div>
-        </div>
-        <div id="success"> </div>
-      {!! Form::submit('Submit', array('class'=>'send-btn')) !!}
-      {!! Form::close() !!}
-      </div>
-   </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <img src="{{ asset('/img/uploads/') }}/{{$accredited->photo}}" style="width: 150px; height: 150px; float: left; border-radius: 50%; margin-right: 25px; " alt="">
+      <h2>{{ $accredited->name}} {{$accredited->last_name}}</h2>
+      <form action="{{ url('/updatephoto') }}" enctype="multipart/form-data" method="POST">
+        {{ csrf_field() }}
+        <label for="">Actualizar foto</label>
+        <input type="file" name="photo">
+        <input type="hidden" value="{{$accredited->id}}" name="accredited_id">
+        <br>
+        <input type="submit" value="Actualizar" class="uppercase pull-right btn btn-success">
+      </form>
+    </div>
+  </div>
 </div>
 @endsection
 

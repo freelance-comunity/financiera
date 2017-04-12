@@ -167,6 +167,8 @@ return [
         'Mitul\Generator\GeneratorServiceProvider',
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
+        Intervention\Image\ImageServiceProvider::class,
+
         ],
 
     /*
@@ -227,6 +229,8 @@ return [
     'Flash' => 'Laracasts\Flash\Flash',
 
     'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+
+    'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

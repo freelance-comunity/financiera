@@ -381,8 +381,10 @@ Route::get('accounts/{id}/delete', [
     'uses' => 'AccountController@destroy',
 ]);
 
-
-Route::get('upload', function() {
-  return View::make('pages.upload');
+Route::get('updatephoto/{id}', function($id) {
+    $accredited = App\Models\Accredited::find($id);
+    return view('pages.upload')
+    ->with('accredited', $accredited);
 });
-Route::post('apply/upload', 'ApplyController@upload');
+
+Route::post('updatephoto', 'ApplyController@update');
