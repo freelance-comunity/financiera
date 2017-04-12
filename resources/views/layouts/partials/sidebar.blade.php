@@ -45,6 +45,7 @@
             <a href="#"><i class='fa fa-building'></i> <span>Compañia</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
                 <li><a href="{{ url('/users') }}">Crear usuarios</a></li>
+                <li><a href="{{ url('/branches') }}">Sucursales</a></li>
                 <li><a href="{{ url('/accounts') }}">Cuentas bancarias</a></li>
                 <li><a href="{{ url('/anchorings') }}">Fondeo</a></li>
                 <li><a href="{{ url('/products') }}">Productos</a></li>
