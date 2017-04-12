@@ -20,13 +20,13 @@
 <!--- Phone Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('phone', 'Teléfono:') !!}
-    {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+    <input type="number" name="phone" min="1" max="10" class="form-control">
 </div>
 
 <!--- Relationship Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('relationship', 'Parentezco:') !!}
-    {!! Form::text('relationship', null, ['class' => 'form-control']) !!}
+    {!! Form::select('relationship',['Padre' => 'Padre', 'Madre' => 'Madre', 'Suegro/a'=> 'Suegro/a', 'Hijo/a' => 'Hijo/a', 'Yerno' => 'Yerno', 'Nuera'=> 'Nuera', 'Abuelo/a' => 'Abuelo/a', 'Nieto/a' => 'Nieto/a', 'Hermano/a'=> 'Hermano/a', 'Cuñado' => 'Cuñado', 'Tio/a' => 'Tio/a', 'Sobrino'=> 'Sobrino', 'Conocido' =>'Conocido'], null, ['class' => 'form-control'])!!}
 </div>
 
 

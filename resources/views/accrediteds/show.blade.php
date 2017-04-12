@@ -19,7 +19,7 @@ Acreditado
 
 						<h3 class="profile-username text-center">{{ $accredited->name }} {{$accredited->last_name}}</h3>
 
-						
+
 
 						<ul class="list-group list-group-unbordered">
 							<li class="list-group-item">
@@ -64,7 +64,7 @@ Acreditado
 
 						<hr>
 
-						
+
 					</div>
 					<!-- /.box-body -->
 				</div>
@@ -74,23 +74,23 @@ Acreditado
 			<div class="col-md-9">
 				<div class="nav-tabs-custom">
 					<ul class="nav nav-tabs">
-						
+
 						<li class="active"><a href="#timeline" data-toggle="tab">Datos</a></li>
-						
+
 					</ul>
 					<div class="tab-content">
-						
+
 						<!-- /.tab-pane -->
 						<div class="active tab-pane" id="timeline">
 							<!-- The timeline -->
 							<ul class="timeline timeline-inverse">
 								<!-- timeline time label -->
-								
+
 								<!-- /.timeline-label -->
 								<!-- timeline item -->
 								<ul class="timeline">
 
-									
+
 									<!-- timeline item -->
 									<li>
 										<!-- timeline icon -->
@@ -131,7 +131,7 @@ Acreditado
 											<span class="time"><i class="fa fa-clock-o"></i> {{$element->created_at}}</span>
 
 											<h3 class="timeline-header"><a>Estudio Socioeconomico</a></h3>
-											
+
 											<div class="timeline-body">            		
 												<strong>Dependientes economicos: </strong>{{ $element->dependent}} <br>
 												<strong>Regimen de casamiento:</strong> {{ $element->regimen}} <br>
@@ -149,7 +149,7 @@ Acreditado
 											@endforeach
 										</div>
 
-										
+
 
 									</li>
 									<!-- END timeline item -->
@@ -161,7 +161,7 @@ Acreditado
 											<span class="time"><i class="fa fa-clock-o"></i> {{$aval->created_at}}</span>
 
 											<h3 class="timeline-header"><a>Datos de aval</a></h3>
-											
+
 											<div class="timeline-body">            		
 												<strong>Nombre: </strong>{{ $aval->name}} <br>
 												<strong>Apellido:</strong> {{ $aval->last_name}} <br>
@@ -182,7 +182,7 @@ Acreditado
 											@endforeach
 										</div>
 
-										
+
 
 									</li>
 									<li>
@@ -193,7 +193,7 @@ Acreditado
 											<span class="time"><i class="fa fa-clock-o"></i> {{$micros->created_at}}</span>
 
 											<h3 class="timeline-header"><a>Datos de la microempresa</a></h3>
-											
+
 											<div class="timeline-body">            		
 												<strong>Nombre: </strong>{{ $micros->name}} <br>
 												<strong>Dirección:</strong> {{ $micros->address}} <br>	
@@ -209,7 +209,7 @@ Acreditado
 											@endforeach
 										</div>
 
-										
+
 
 									</li>
 									<li>
@@ -220,7 +220,7 @@ Acreditado
 											<span class="time"><i class="fa fa-clock-o"></i> {{$history->created_at}}</span>
 
 											<h3 class="timeline-header"><a>Antecedentes crediticios</a></h3>
-											
+
 											<div class="timeline-body">            		
 												<strong>Credito Actual: </strong>{{ $history->credit_actualy}} <br>
 												<strong>Nombre de la empresa:</strong> {{ $history->name_company}} <br>	
@@ -231,7 +231,7 @@ Acreditado
 											@endforeach
 										</div>
 
-										
+
 
 									</li>
 									<li>
@@ -242,7 +242,7 @@ Acreditado
 											<span class="time"><i class="fa fa-clock-o"></i> {{$references->created_at}}</span>
 
 											<h3 class="timeline-header"><a>Referencias</a></h3>
-											
+
 											<div class="timeline-body">            		
 												<strong>Nombre: </strong>{{ $references->name}} <br>
 												<strong>Apellido:</strong> {{ $references->last_name}} <br>	
@@ -253,12 +253,12 @@ Acreditado
 											@endforeach
 										</div>
 
-										
+
 
 									</li>
 
 								</ul>
-								<i class="fa fa-clock-o bg-gray"></i>
+								
 							</li>
 						</ul>
 					</div>

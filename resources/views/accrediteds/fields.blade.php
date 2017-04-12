@@ -1,8 +1,7 @@
 <!--- Name Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('name', 'Nombre(s):') !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
-    
+    <input type="text" name="name" pattern"[A-Za-z]{4-16}" class="form-control">
 </div>
 
 <!--- Last Name Field --->
@@ -20,13 +19,14 @@
 <!--- Cel Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('cel', 'Teléfono Celular:') !!}
-    {!! Form::text('cel', null, ['class' => 'form-control']) !!}
+    <input type="tel" name="cel" pattern="[0-10]{10}" class="form-control">
 </div>
 
 <!--- Phone Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('phone', 'Teléfono de Casa:') !!}
-    {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+     <input type="tel" name="phone" pattern="[0-10]{10}" class="form-control">
+   
 </div>
 
 <!--- Home Field --->
@@ -44,10 +44,10 @@
 <!--- Nationality Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('nationality', 'Nacionalidad:') !!}
-    {!! Form::text('nationality', null, ['class' => 'form-control']) !!}
+    {!! Form::select('nationality',['Mexicana' => 'Mexicana'], null, ['class' => 'form-control'])!!}
 </div>
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('ife', 'IFE:') !!}
+    {!! Form::label('ife', 'Folio IFE:') !!}
     {!! Form::text('ife', null, ['class' => 'form-control']) !!}
 </div>
 

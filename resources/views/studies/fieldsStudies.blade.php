@@ -1,13 +1,13 @@
 <!--- Dependent Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('dependent', 'Número de hijos o dependientes económicos :') !!}
-    {!! Form::text('dependent', null, ['class' => 'form-control']) !!}
+    {!! Form::select('deoendent',['1' => '1', '2' => '2', '3'=>'3', 'Más de tres' =>'Más de tres', 'Ninguno' =>'Ninguno'], null, ['class' => 'form-control'])!!}sss
 </div>
 
 <!--- Regimen Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('regimen', 'Regimen de casamiento:') !!}
-    {!! Form::select('regimen',['Bienes Mancomunados' => 'Bienes Mancomunados', 'Bienes Separados' => 'Bienes Separados'], null, ['class' => 'form-control'])!!}
+    {!! Form::select('regimen',['Bienes Mancomunados' => 'Bienes Mancomunados', 'Bienes Separados' => 'Bienes Separados', 'No estoy casado/a'=> 'No estoy casado/a'], null, ['class' => 'form-control'])!!}
     
 </div>
 
@@ -25,7 +25,7 @@
 <!--- Time Address Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('time_address', 'Tiempo de vivir en el mismo domicilio:') !!}
-    {!! Form::text('time_address', null, ['class' => 'form-control']) !!}
+    {!! Form::select('time_address',['Nueva' => 'Nueva', 'Menos de 1 año' => 'Menos de 1 año', 'De 1  a 3 años' => 'De 1  a 3 años', 'De 3 años a 10 años' => 'De 3 años a 10 años', 'Más de 10 años' => 'Más de 10 años'], null, ['class' => 'form-control'])!!}
 </div>
 
 <!--- Economic Field --->
@@ -37,7 +37,7 @@
 <!--- Type Material Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('type_material', 'Tipo de material de la vivienda:') !!}
-    {!! Form::text('type_material', null, ['class' => 'form-control']) !!}
+    {!! Form::select('type_material',['Ladrillo' => 'Ladrillo', 'Adobe' => 'Adobe', 'Madera' => 'Madera', 'Dúplex' => 'Dúplex', 'Cemento' => 'Cemento'], null, ['class' => 'form-control'])!!}
 </div>
 
 <!--- Scholarship Field --->
