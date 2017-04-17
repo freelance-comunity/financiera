@@ -148,11 +148,6 @@ Route::get('view-addresses/{id}', function($id){
     ->with('addresses', $addresses);
 });
 
-Route::get('editAddresses/{id}/',[
-    'as' => 'addresses.editAddresses',
-    'uses' => 'AddressController@editAddresses',
-]);
-
 Route::resource('references', 'ReferencesController');
 
 Route::get('references/{id}/delete', [

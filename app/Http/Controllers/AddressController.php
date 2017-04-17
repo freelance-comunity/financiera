@@ -144,18 +144,12 @@ class AddressController extends AppBaseController
 			return redirect(route('addresses.index'));
 		}
 
-		$address->fill($request->all());
-		$accredited = $request->address('accredited_id');
-		$address = Address::create($address);
-
-		
+		$address->fill($request->all());	
 		$address->save();
-		Alert::success('Domicilio guardado exitosamente.')->persistent('Cerrar');
-		$accrediteds = Accredited::find($accredited);
-		$addresses = $accrediteds->addresses;
 
-		return view('accrediteds.index')
-		->with('addresses', $addresses);
+		Alert::success('Domicilio editado exitosamente.')->persistent('Cerrar');
+		
+		return redirect(route('addresses.index'));
 		
 	}
 
@@ -182,19 +176,6 @@ class AddressController extends AppBaseController
 		Alert::success('Domicilio eliminado exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('addresses.index'));
-	}
-
-	public function editAddresses($id)
-	{
-		$address = Address::find($id);
-
-		if(empty($address))
-		{
-			Flash::error('Address not found');
-			return redirect(route('addresses.index'));
-		}
-
-		return view('addresses.editAddresses')->with('address', $address);
 	}
 
 }

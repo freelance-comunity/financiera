@@ -229,6 +229,10 @@ return [
             'required' => 'El campo apellidos  es obligatorio.'
         ],
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> remotes/origin/master
         'rows[]' => [
             'required' => 'Debes seleccionar por lo menos un permiso.'
         ],
