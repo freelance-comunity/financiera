@@ -220,11 +220,55 @@ return [
         'relationship' => [
             'required' => 'El campo parentezco es obligatorio.'
         ],
-
-
         'rows[]' => [
             'required' => 'Debes seleccionar por lo menos un permiso.'
         ],
+        'nomenclature' => [
+            'required' => 'El campo nomenclatura es obligatorio.'
+        ],
+         'municipality' => [
+            'required' => 'El campo municipio es obligatorio.'
+        ],
+        'exercise' => [
+            'required' => 'El campo ejercicio es obligatorio.',
+            'alpha' => 'El campo ejercicio sólo puede contener letras.'
+        ],
+        'name_bank' => [
+            'required' => 'El campo nombre del banco es obligatorio.',
+            'alpha' => 'El campo nombre del banco sólo puede contener letras.'
+        ],
+        'account_number' => [
+            'required' => 'El campo número de cuenta/número de sucursal es obligatorio.',
+        ],
+        'name_institution' => [
+            'required' => 'El campo nombre de la institución es obligatorio.',
+            'alpha' => 'El campo nombre de la institución sólo puede contener letras.'
+        ],
+        'description' => [
+            'required' => 'El campo descripción es obligatorio.',
+            'alpha' => 'El campo descripción sólo puede contener letras.'
+        ],
+        'minimum_amount' => [
+            'required' => 'El campo monto minimo es obligatorio.',
+            'numeric' => 'El campo monto minimo sólo puede contener números.'
+        ],
+        'maximum_amount' => [
+            'required' => 'El campo monto maximo es obligatorio.',
+            'numeric' => 'El campo monto maximo sólo puede contener números.'
+        ],
+        'minimum_term' => [
+            'required' => 'El campo plazo minimo es obligatorio.',
+        ],
+        'maximum_term' => [
+            'required' => 'El campo plazo maximo es obligatorio.',
+        ],
+         'cup_interest' => [
+            'required' => 'El campo tasa de interes es obligatorio.',
+        ],
+         'surcharge' => [
+            'required' => 'El campo recargo es obligatorio.',
+        ],
+
 
     ],
 

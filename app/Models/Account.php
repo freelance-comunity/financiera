@@ -18,7 +18,7 @@ class Account extends Model
 	];
 
 	public static $rules = [
-	    "name_bank" => "required",
+	    "name_bank" => "required|alpha",
 		"account_number" => "required",
 		"account_type" => "required"
 	];

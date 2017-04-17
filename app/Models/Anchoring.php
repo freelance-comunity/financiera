@@ -19,8 +19,8 @@ class Anchoring extends Model
 	];
 
 	public static $rules = [
-	    "name_institution" => "required",
-		"amount_resource" => "required",
+	    "name_institution" => "required|alpha",
+		"amount_resource" => "required|numeric",
 		"reference" => "required",
 		"destination_account" => "required"
 	];
