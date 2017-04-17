@@ -28,12 +28,12 @@ class Accredited extends Model
 	];
 
 	public static $rules = [
-	    "name" => "required",
-		"last_name" => "required",
+	    "name" => "required|alpha",
+		"last_name" => "required|alpha",
 		"birthdate" => "required",
-		"cel" => "required",
-		"phone" => "required",
-		"email" => "required",
+		"cel" => "required|digits:10",
+		"phone" => "required|digits:10",
+		"email" => "required|email",
 		"address" => "required",
 		"nationality" => "required",
 		"ife" =>"required",

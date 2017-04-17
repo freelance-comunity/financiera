@@ -31,8 +31,8 @@ class Aval extends Model
 	];
 
 	public static $rules = [
-	    "name" => "required",
-		"last_name" => "required",
+	    "name" => "required|alpha",
+		"last_name" => "required|alpha",
 		"address" => "required",
 		"colony" => "required",
 		"municipality" => "required",
@@ -41,8 +41,8 @@ class Aval extends Model
 		"birthday" => "required",
 		"ife" => "required",
 		"curp" => "required",
-		"phone" => "required",
-		"cel" => "required",
+		"phone" => "required|digits:10",
+		"cel" => "required|digits:10",
 		"sex" => "required",
 		"ocupation" => "required",
 		"address_work" => "required"

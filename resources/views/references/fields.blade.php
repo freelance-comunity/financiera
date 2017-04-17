@@ -20,7 +20,7 @@
 <!--- Phone Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('phone', 'Teléfono:') !!}
-    <input type="number" name="phone" min="1" max="10" class="form-control">
+    <input type="tel" name="phone"  class="form-control">
 </div>
 
 <!--- Relationship Field --->

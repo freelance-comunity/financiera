@@ -21,10 +21,10 @@ class References extends Model
 	];
 
 	public static $rules = [
-	    "name" => "required",
-		"last_name" => "required",
+	    "name" => "required|alpha",
+		"last_name" => "required|alpha",
 		"address" => "required",
-		"phone" => "required",
+		"phone" => "required|digits:10",
 		"relationship" => "required"
 	];
 

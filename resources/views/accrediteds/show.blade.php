@@ -113,16 +113,47 @@ Acreditado
 												<strong>Estado civil:</strong> {{$accredited->civil_status}}
 
 											</div>
+											<a href="{!! route('accrediteds.edit', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
 										</div>
 
 									</li>
 									@php
+									$address = $accredited->addresses;
 									$study = $accredited->studies;
 									$aval = $accredited->avals;
 									$micros = $accredited->micros;
 									$histories = $accredited->history;
 									$references = $accredited->references;
 									@endphp
+									<li>
+										<!-- timeline icon -->
+										<i class="fa fa-home bg-purple"></i>
+										<div class="timeline-item">
+
+											@foreach ($address as $addresses)
+											
+											<span class="time"><i class="fa fa-clock-o"></i> {{$addresses->created_at}}</span>
+
+											<h3 class="timeline-header"><a>Datos domiciliarios</a></h3>
+
+											<div class="timeline-body">            		
+												<strong>Avenida: </strong>{{ $addresses->avenue}} <br>
+												<strong>Entre que calles:</strong> {{ $addresses->streets}} <br>
+												<strong>Número interior y exterior:</strong> {{ $addresses->number}} <br>	
+												<strong>Colonia:</strong> {{ $addresses->colony}} <br>	
+												<strong>Referencia:</strong> {{ $addresses->reference}} <br>
+												<strong>Código postal:</strong> {{$addresses->postal_code}} <br>	
+												<strong>Municipio:</strong> {{$addresses->municipality}} <br>	
+												<strong>Ciudad:</strong> {{$addresses->city}} <br>	
+												<strong>Entidad federativa:</strong> {{$addresses->federative}} <br>	
+												
+											</div>
+											<a href="{!! route('addresses.editAddresses', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
+											@endforeach
+											
+										</div>
+										
+									</li>
 									<li>
 										<!-- timeline icon -->
 										<i class="fa fa-dollar bg-yellow"></i>
@@ -146,7 +177,9 @@ Acreditado
 												<strong>Naturaleza jurídca de la empresa:</strong> {{$element->sector}}
 
 											</div>
+											<a href="{!! route('studies.editStudies', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
 											@endforeach
+											
 										</div>
 
 
@@ -179,7 +212,9 @@ Acreditado
 												<strong>Ocupación:</strong> {{$aval->ocupation}} <br>
 												<strong>Dirrección de trabajo:</strong> {{$aval->address_work}} <br>
 											</div>
+											<a href="{!! route('avals.editAval', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
 											@endforeach
+											
 										</div>
 
 
@@ -206,7 +241,9 @@ Acreditado
 												<strong>Horario de Atencion en su negocio:</strong> {{$micros->times}} <br>
 												<strong>Local comercial:</strong> {{$micros->local}} <br>
 											</div>
+											<a href="{!! route('micros.editMicros', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
 											@endforeach
+											
 										</div>
 
 
@@ -228,7 +265,9 @@ Acreditado
 												<strong>Plazo:</strong> {{ $history->term}} <br>
 												<strong>Monto de pago por amortización:</strong> {{$history->payment_amount}} <br>	
 											</div>
+											<a href="{!! route('histories.editHistories', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
 											@endforeach
+											
 										</div>
 
 
@@ -250,7 +289,9 @@ Acreditado
 												<strong>Teléfono:</strong> {{ $references->phone}} <br>
 												<strong>Perentezco:</strong> {{$references->relationship}} <br>	
 											</div>
+											<a href="{!! route('references.editReferences', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
 											@endforeach
+											
 										</div>
 
 

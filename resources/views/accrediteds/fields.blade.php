@@ -19,13 +19,13 @@
 <!--- Cel Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('cel', 'Teléfono Celular:') !!}
-    <input type="tel" name="cel" pattern="[0-10]{10}" class="form-control">
+    <input type="tel" name="cel"  class="form-control">
 </div>
 
 <!--- Phone Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('phone', 'Teléfono de Casa:') !!}
-     <input type="tel" name="phone" pattern="[0-10]{10}" class="form-control">
+     <input type="tel" name="phone"  class="form-control">
    
 </div>
 

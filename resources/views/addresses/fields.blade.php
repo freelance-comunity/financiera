@@ -293,15 +293,15 @@
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('federative', 'Entidad Federativa:') !!}
     <select class="form-control" name="federative">
-<option value="0">Todo México</option>
-<option value="1">Aguascalientes</option>
-<option value="2">Baja California</option>
-<option value="3">Baja California Sur</option>
-<option value="4">Campeche</option>
-<option value="5">Coahuila de Zaragoza</option>
-<option value="6">Colima</option>
-<option value="7">Chiapas</option>
-<option value="8">Chihuahua</option>
+<option value="Todo México">Todo México</option>
+<option value="Aguascalientes">Aguascalientes</option>
+<option value="Baja California">Baja California</option>
+<option value="Baja California Sur">Baja California Sur</option>
+<option value="Campeche">Campeche</option>
+<option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+<option value="colima">Colima</option>
+<option value="Chiapas">Chiapas</option>
+<option value="Chihuahua">Chihuahua</option>
 <option value="9">Distrito Federal</option>
 <option value="10">Durango</option>
 <option value="11">Guanajuato</option>

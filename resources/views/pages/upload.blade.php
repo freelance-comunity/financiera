@@ -15,7 +15,8 @@ Actualizar foto
         <input type="file" name="photo">
         <input type="hidden" value="{{$accredited->id}}" name="accredited_id">
         <br>
-        <input type="submit" value="Actualizar" class="uppercase pull-right btn btn-success">
+        <input type="submit" value="Actualizar" class="uppercase btn btn-success">
+         <a href="{!! route('accrediteds.show', [$accredited->id]) !!}" class="btn btn-info">Ver perfil</a>
       </form>
     </div>
   </div>

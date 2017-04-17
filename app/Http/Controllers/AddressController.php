@@ -49,7 +49,7 @@ class AddressController extends AppBaseController
 
 		$addresses = $query->get();
 
-		return view('accrediteds.index')
+		return view('addresses.view-addresses')
 		->with('addresses', $addresses)
 		->with('attributes', $attributes);
 		
@@ -82,7 +82,7 @@ class AddressController extends AppBaseController
 		$accrediteds = Accredited::find($accredited);
 		$addresses = $accrediteds->addresses;
 
-		return view('accrediteds.index')
+		return view('addresses.view-addresses')
 		->with('addresses', $addresses);
 	}
 

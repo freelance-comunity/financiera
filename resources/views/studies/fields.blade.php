@@ -1,7 +1,7 @@
 <!--- Dependent Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('dependent', 'Número de hijos o dependientes económicos :') !!}
-    {!! Form::select('deoendent',['1' => '1', '2' => '2', '3'=>'3', 'Más de tres' =>'Más de tres', 'Ninguno' =>'Ninguno'], null, ['class' => 'form-control'])!!}
+    {!! Form::select('dependent',['1' => '1', '2' => '2', '3'=>'3', 'Más de tres' =>'Más de tres', 'Ninguno' =>'Ninguno'], null, ['class' => 'form-control'])!!}
     <input type="hidden" name="accredited_id" value="{{ $accrediteds->id}}">
 </div>
 

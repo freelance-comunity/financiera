@@ -108,6 +108,7 @@ return [
         'last_name' => [
             'required' => 'El campo apellidos es obligatorio.',
             'regex' => 'El formato del campo apellidos es inválido.'
+
         ],
 
         'address' => [
@@ -219,6 +220,12 @@ return [
         ],
         'relationship' => [
             'required' => 'El campo parentezco es obligatorio.'
+        ],
+        'birthdate' => [
+            'required' => 'El campo fecha de nacimiento es obligatorio.'
+        ],
+        'last_name' => [
+            'required' => 'El campo apellidos  es obligatorio.'
         ],
 
 
