@@ -10,7 +10,7 @@ Editar acreditado
 
     {!! Form::model($accredited, ['route' => ['accrediteds.update', $accredited->id], 'method' => 'patch']) !!}
 
-        @include('accrediteds.fields')
+        @include('accrediteds.fields-edit')
 
     {!! Form::close() !!}
 </div>
