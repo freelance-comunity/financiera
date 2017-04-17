@@ -118,7 +118,7 @@ Acreditado
 
 									</li>
 									@php
-									$address = $accredited->addresses;
+									$addresses = $accredited->addresses;
 									$study = $accredited->studies;
 									$aval = $accredited->avals;
 									$micros = $accredited->micros;
