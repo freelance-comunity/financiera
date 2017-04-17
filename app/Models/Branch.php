@@ -22,7 +22,7 @@ class Branch extends Model
 	    "nomenclature" => "required",
 		"municipality" => "required",
 		"status" => "required",
-		"exercise" => "required"
+		"exercise" => "required|alpha"
 	];
 
 }

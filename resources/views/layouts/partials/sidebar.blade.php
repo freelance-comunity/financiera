@@ -70,6 +70,21 @@
                 <li><a href="#">Lista de anticipos</a></li>
             </ul>
         </li>
+        @php
+        $information = App\Models\Information::all();
+        @endphp
+        <li class="treeview">
+            <a href="#"><i class='fa fa-cogs'></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+                @if ($information->isEmpty())
+                <li><a href="{!! route('information.create') !!}">Detalles de la compañia</a></li>
+                @else
+                @foreach ($information as $element)
+                <li><a href="{!! route('information.show', [$element->id]) !!}">Detalles de la compañia</a></li>
+                @endforeach
+                @endif
+            </ul>
+        </li>
     </ul><!-- /.sidebar-menu -->
 </section>
 <!-- /.sidebar -->

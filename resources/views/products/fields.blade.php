@@ -36,7 +36,7 @@
 
 <!--- Cup Interest Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('cup_interest', 'Taza de Interes:') !!}
+    {!! Form::label('cup_interest', 'Tasa de Interes:') !!}
     {!! Form::text('cup_interest', null, ['class' => 'form-control']) !!}
 </div>
 

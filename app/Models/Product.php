@@ -24,10 +24,10 @@ class Product extends Model
 	];
 
 	public static $rules = [
-	    "name" => "required",
-		"description" => "required",
-		"minimum_amount" => "required",
-		"maximum_amount" => "required",
+	    "name" => "required|alpha",
+		"description" => "required|alpha",
+		"minimum_amount" => "required|numeric",
+		"maximum_amount" => "required|numeric",
 		"minimum_term" => "required",
 		"maximum_term" => "required",
 		"cup_interest" => "required",

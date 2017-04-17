@@ -395,3 +395,11 @@ Route::get('branches/{id}/delete', [
     'as' => 'branches.delete',
     'uses' => 'BranchController@destroy',
 ]);
+
+
+Route::resource('information', 'InformationController');
+
+Route::get('information/{id}/delete', [
+    'as' => 'information.delete',
+    'uses' => 'InformationController@destroy',
+]);
