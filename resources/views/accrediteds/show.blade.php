@@ -177,7 +177,7 @@ Acreditado
 												<strong>Naturaleza jurídca de la empresa:</strong> {{$element->sector}}
 
 											</div>
-											<a href="{!! route('studies.editStudies', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
+											<a href="{!! route('studies.editStudies', [$element->id]) !!}" class="btn btn-default">Editar</a>
 											@endforeach
 											
 										</div>
@@ -212,7 +212,7 @@ Acreditado
 												<strong>Ocupación:</strong> {{$aval->ocupation}} <br>
 												<strong>Dirrección de trabajo:</strong> {{$aval->address_work}} <br>
 											</div>
-											<a href="{!! route('avals.editAval', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
+											<a href="{!! route('avals.editAval', [$aval->id]) !!}" class="btn btn-default">Editar</a>
 											@endforeach
 											
 										</div>
@@ -241,7 +241,7 @@ Acreditado
 												<strong>Horario de Atencion en su negocio:</strong> {{$micros->times}} <br>
 												<strong>Local comercial:</strong> {{$micros->local}} <br>
 											</div>
-											<a href="{!! route('micros.editMicros', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
+											<a href="{!! route('micros.editMicros', [$micros->id]) !!}" class="btn btn-default">Editar</a>
 											@endforeach
 											
 										</div>
@@ -265,7 +265,7 @@ Acreditado
 												<strong>Plazo:</strong> {{ $history->term}} <br>
 												<strong>Monto de pago por amortización:</strong> {{$history->payment_amount}} <br>	
 											</div>
-											<a href="{!! route('histories.editHistories', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
+											<a href="{!! route('histories.editHistories', [$history->id]) !!}" class="btn btn-default">Editar</a>
 											@endforeach
 											
 										</div>
@@ -289,7 +289,7 @@ Acreditado
 												<strong>Teléfono:</strong> {{ $references->phone}} <br>
 												<strong>Perentezco:</strong> {{$references->relationship}} <br>	
 											</div>
-											<a href="{!! route('references.editReferences', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
+											<a href="{!! route('references.editReferences', [$references->id]) !!}" class="btn btn-default">Editar</a>
 											@endforeach
 											
 										</div>
