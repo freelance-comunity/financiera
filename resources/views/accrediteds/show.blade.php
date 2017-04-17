@@ -148,7 +148,7 @@ Acreditado
 												<strong>Entidad federativa:</strong> {{$addresses->federative}} <br>	
 												
 											</div>
-											<a href="{!! route('addresses.editAddresses', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
+											<a href="{!! route('addresses.editAddresses', [$addresses->id]) !!}" class="btn btn-default">Editar</a>
 											@endforeach
 											
 										</div>
