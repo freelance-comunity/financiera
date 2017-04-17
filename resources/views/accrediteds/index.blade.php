@@ -59,21 +59,7 @@ Lista de acreditados
                     </div>
                     <td>
                         <a href="{!! route('accrediteds.show', [$accredited->id]) !!}" class="uppercase btn btn-success btn-block">ver datos</a>
-                        <!--<div class="btn-group-vertical btn-group-xs">
-
-                            <button type="button" class="btn btn-block btn-primary">Ver</button>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/view-addresses') }}/{{$accredited->id}}">Domicilio</a></li>
-                                <li><a href="{{ url ('/view-studies')}}/{{$accredited->id}}">Estudio Socioeconómico</a></li>
-                                <li><a href="{{ url('/view-avals')}}/{{$accredited->id}}">Aval</a></li>
-                                <li><a href="{{ url('/view-micros')}}/{{$accredited->id}}">Datos de la Microempresa</a></li>
-                                <li><a href="{{ url('/view-histories')}}/{{$accredited->id}}">Antecedentes crediticios</a></li>
-                                <li><a href="{{ url('/view-references')}}/{{$accredited->id}}">Referencias</a></li>                 
-                            </ul>
-                        </div>-->
+                        
                     </td>
                 </td>
                 <td>
