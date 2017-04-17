@@ -1,13 +1,13 @@
 <!--- Name Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('name', 'Nombre(s):') !!}
-    <input type="text" name="name" pattern"[A-Za-z]{4-16}" class="form-control">
+    <input type="text" name="name" pattern"[A-Za-z]{4-16}" value="{{ old('name') }}" class="form-control">
 </div>
 
 <!--- Last Name Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('last_name', 'Apellidos:') !!}
-    {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
+     <input type="text" name="last_name" pattern"[A-Za-z]{4-16}" value="{{ old('last_name') }}" class="form-control">
 </div>
 
 <!--- Birthdate Field --->
@@ -19,26 +19,26 @@
 <!--- Cel Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('cel', 'Teléfono Celular:') !!}
-    <input type="tel" name="cel"  class="form-control">
+    <input type="tel" name="cel"  value="{{ old('cel') }}" class="form-control">
 </div>
 
 <!--- Phone Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('phone', 'Teléfono de Casa:') !!}
-     <input type="tel" name="phone"  class="form-control">
+     <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control">
    
 </div>
 
 <!--- Home Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('email', 'Email:') !!}
-    <input type="email" name="email" class="form-control">
+    <input type="email" name="email"   value="{{ old('email') }}" class="form-control">
 </div>
 
 <!--- Address Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('address', 'Dirección:') !!}
-    {!! Form::text('address', null, ['class' => 'form-control']) !!}
+    <input type="text" name="address"   value="{{ old('address') }}" class="form-control">
 </div>
 
 <!--- Nationality Field --->
@@ -48,13 +48,13 @@
 </div>
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('ife', 'Folio IFE:') !!}
-    {!! Form::text('ife', null, ['class' => 'form-control']) !!}
+    <input type="text" name="ife"   value="{{ old('ife') }}" class="form-control">
 </div>
 
 <!--- Curp Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('curp', 'CURP:') !!}
-    {!! Form::text('curp', null, ['class' => 'form-control']) !!}
+    <input type="text" name="curp"   value="{{ old('curp') }}" class="form-control">
 </div>
 <!--- Curp Field --->
 
