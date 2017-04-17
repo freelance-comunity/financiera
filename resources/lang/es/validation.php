@@ -221,7 +221,7 @@ return [
         'relationship' => [
             'required' => 'El campo parentezco es obligatorio.'
         ],
-<<<<<<< HEAD
+
         'birthdate' => [
             'required' => 'El campo fecha de nacimiento es obligatorio.'
         ],
@@ -230,8 +230,7 @@ return [
         ],
 
 
-=======
->>>>>>> remotes/origin/master
+
         'rows[]' => [
             'required' => 'Debes seleccionar por lo menos un permiso.'
         ],

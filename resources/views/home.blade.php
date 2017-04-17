@@ -89,8 +89,8 @@ s&c  <small>Version 1.0</small>
 						<table class="table no-margin">
 							<thead>
 								<tr>
-									<th>Order ID</th>
-									<th>Item</th>
+									<th>Folio</th>
+									<th>Acreditado</th>
 									<th>Status</th>
 									<th>Popularity</th>
 								</tr>
@@ -143,7 +143,7 @@ s&c  <small>Version 1.0</small>
 		</div>
 		<!-- /.box -->
 		@php
-		$accrediteds = App\Models\Accredited::all();
+		$accrediteds = App\Models\Accredited::all()->take(4);
 		@endphp
 		<div class="col-md-4">
 			<!-- USERS LIST -->
@@ -161,13 +161,17 @@ s&c  <small>Version 1.0</small>
 				<!-- /.box-header -->
 				<div class="box-body no-padding">
 					<ul class="users-list clearfix">
+					@if ($accrediteds->isEmpty())
+						No hay acreditados nuevos.
+						@else
 						@foreach ($accrediteds as $element)
 						<li>
 							<img style="width: 50px; height: 50px; border-radius: 50%" src="{{ asset('/img/uploads/') }}/{{ $element->photo}}" alt="">
-							<a class="users-list-name" href="#">{{$element->name}} {{$element->last_name}}</a>
+							<a class="users-list-name" href="{!! route('accrediteds.show', [$element->id]) !!}">{{$element->name}} {{$element->last_name}}</a>
 							<span class="users-list-date">{{$element->created_at}}</span>
 						</li>
 						@endforeach
+						@endif
 					</ul>
 					<!-- /.users-list -->
 				</div>
