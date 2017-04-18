@@ -233,9 +233,18 @@ class AccreditedController extends AppBaseController
 
 	public function studiesAccredited($id)
 	{
+		
 		$accrediteds = Accredited::find($id);
-		return view ('studies.create')
-		->with('accrediteds', $accrediteds);
+		$studies = $accrediteds->studies;
+		if ($studies->isEmpty()) {
+			return view ('studies.create')
+			->with('accrediteds', $accrediteds);
+		}
+		else
+		{
+			Alert::info('Este acreditado ya tiene su estudio socioeconomico en el sistema.');
+			return redirect(route('accrediteds.show', [$accrediteds->id])); 
+		}
 		
 	}
 }

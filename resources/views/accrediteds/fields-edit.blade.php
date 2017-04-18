@@ -13,7 +13,7 @@
 <!--- Birthdate Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('birthdate', 'Fecha de Nacimiento:') !!}
-    <input type="date" name="birthdate"  class="form-control">
+    {!! Form::text('birthdate', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Cel Field --->

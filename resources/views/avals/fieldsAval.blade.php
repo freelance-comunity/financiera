@@ -44,7 +44,7 @@
 <!--- Birthday Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('birthday', 'Fecha de Nacimiento:') !!}
-    <input type="date" name="birthday" class="form-control">
+    {!! Form::text('birthday', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Ife Field --->
