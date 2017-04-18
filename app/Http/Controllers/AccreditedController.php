@@ -179,7 +179,7 @@ class AccreditedController extends AppBaseController
         }
         else
         {   
-          return view('addresses.view-addresses');
+          return view('accrediteds.show');
         }
 		
 	}

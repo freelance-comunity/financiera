@@ -62,9 +62,17 @@ class AddressController extends AppBaseController
 	 */
 	public function create()
 	{
-		
-           return view('addresses.create');
+		$accrediteds = Accredited::find($id);
+		$address = $accrediteds->addresses;
         
+        if($address->isEmpty)
+        {   
+           return view('addresses.create');
+        }
+        else
+        {   
+          return view('accrediteds.show');
+        }
 	}
 
 	/**
