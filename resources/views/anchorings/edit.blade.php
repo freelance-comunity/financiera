@@ -10,7 +10,7 @@ Editar fondeo
 
     {!! Form::model($anchoring, ['route' => ['anchorings.update', $anchoring->id], 'method' => 'patch']) !!}
 
-        @include('anchorings.fields')
+        @include('anchorings.fields-edit')
 
     {!! Form::close() !!}
 </div>

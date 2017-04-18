@@ -19,7 +19,7 @@ class Anchoring extends Model
 	];
 
 	public static $rules = [
-	    "name_institution" => "required|alpha",
+	    "name_institution" => "required|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
 		"amount_resource" => "required|numeric",
 		"reference" => "required",
 		"destination_account" => "required"
