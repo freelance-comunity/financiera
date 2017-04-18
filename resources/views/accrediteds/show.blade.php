@@ -130,7 +130,7 @@ Acreditado
 										<i class="fa fa-home bg-purple"></i>
 										<div class="timeline-item">
 
-											@foreach ($address as $addresses)
+											@foreach ($addresses as $addresses)
 											
 											<span class="time"><i class="fa fa-clock-o"></i> {{$addresses->created_at}}</span>
 
@@ -171,7 +171,7 @@ Acreditado
 												<strong>Tiempo de vivir en el mismo domicilio:</strong> {{ $element->time_address}} <br>
 												<strong>Nivel socioeconomico:</strong> {{$element->economic}} <br>	
 												<strong>Tipo de material de la vivienda:</strong> {{$element->type_material}} <br>	
-												<strong>Escolaridad:</strong> {{$element->schoolarship}} <br>	
+												<strong>Escolaridad:</strong> {{$element->scholarship}} <br>	
 												<strong>Grado:</strong> {{$element->school_grade}} <br>	
 												<strong>Rubro de la empresa:</strong> {{$element->sector}} <br>
 												<strong>Naturaleza jurídca de la empresa:</strong> {{$element->sector}}

@@ -46,8 +46,17 @@ Lista de acreditados
                         <button type="button" class="btn btn-block btn-primary dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                         </button>
+                        @php
+                            $address = App\Models\Address::all();
+                        @endphp
                         <ul class="dropdown-menu" role="menu">
+                        @if ($address->isEmpty())
                             <li><a href="{!! route('accrediteds.addressesAccredited', [$accredited->id])!!}">Domicilio</a></li>
+                            @else 
+                            @foreach ($address as $element )
+                            <li><a href="{!! route('accrediteds.show', [$element->id]) !!}" >Domicilio</a></li>
+                            @endforeach
+                            @endif
                             <li><a href="{!! route('accrediteds.studiesAccredited', [$accredited->id])!!}">Estudio Socioeconómico</a></li>
                             <li><a href="{!! route('accrediteds.avalsAccredited', [$accredited->id])!!}">Aval</a></li>
                             <li><a href="{!! route('accrediteds.microsAccredited', [$accredited->id])!!}">Datos de la Microempresa</a></li>

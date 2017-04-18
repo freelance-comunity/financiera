@@ -171,8 +171,16 @@ class AccreditedController extends AppBaseController
 	public function addressesAccredited($id)
 	{	
 		$accrediteds = Accredited::find($id);
-		return view ('addresses.create')
-		->with('accrediteds', $accrediteds);
+		$address = $accrediteds->addresses;
+        
+        if($address->isEmpty)
+        {   
+           return view('addresses.create');
+        }
+        else
+        {   
+          return view('addresses.view-addresses');
+        }
 		
 	}
 	

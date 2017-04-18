@@ -1,6 +1,6 @@
 <!--- Avenue Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('avenue', 'Avenida:') !!}
+    {!! Form::label('avenue', 'Calle/Avenida:') !!}
     {!! Form::text('avenue', null, ['class' => 'form-control']) !!}
     <input type="hidden" name="accredited_id" value="{{ $accrediteds->id}}">
 </div>
@@ -293,7 +293,7 @@
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('federative', 'Entidad Federativa:') !!}
     <select class="form-control" name="federative">
-<option value="Todo México">Todo México</option>
+<option value="Chiapas">Chiapas</option>
 <option value="Aguascalientes">Aguascalientes</option>
 <option value="Baja California">Baja California</option>
 <option value="Baja California Sur">Baja California Sur</option>
@@ -302,9 +302,9 @@
 <option value="colima">Colima</option>
 <option value="Chiapas">Chiapas</option>
 <option value="Chihuahua">Chihuahua</option>
-<option value="9">Distrito Federal</option>
-<option value="10">Durango</option>
-<option value="11">Guanajuato</option>
+<option value="Distrito Federal">Distrito Federal</option>
+<option value="durango">Durango</option>
+<option value="Guanajuato">Guanajuato</option>
 <option value="12">Guerrero</option>
 <option value="13">Hidalgo</option>
 <option value="14">Jalisco</option>

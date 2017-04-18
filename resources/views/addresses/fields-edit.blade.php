@@ -1,6 +1,6 @@
 <!--- Avenue Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('avenue', 'Avenida:') !!}
+    {!! Form::label('avenue', 'Calle/Avenida:') !!}
     {!! Form::text('avenue', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -37,7 +37,7 @@
 <!--- Municipality Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('municipality', 'Municipio:') !!}
-    <select class="form-control" name="municipality">
+    <select class="form-control" name="municipality" value="{{ $address->municipality}}">
 <option value="">Selecciona un municipio</option>
 <option value="Acacoyagua">Acacoyagua</option>
 <option value="Acala">Acala</option>
@@ -292,39 +292,39 @@
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('federative', 'Entidad Federativa:') !!}
     <select class="form-control" name="federative">
-<option value="Todo México">Todo México</option>
+<option value="Chiapas">Chiapas</option>
 <option value="Aguascalientes">Aguascalientes</option>
 <option value="Baja California">Baja California</option>
 <option value="Baja California Sur">Baja California Sur</option>
 <option value="Campeche">Campeche</option>
 <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
-<option value="colima">Colima</option>
+<option value="Colima">Colima</option>
 <option value="Chiapas">Chiapas</option>
 <option value="Chihuahua">Chihuahua</option>
-<option value="9">Distrito Federal</option>
-<option value="10">Durango</option>
-<option value="11">Guanajuato</option>
-<option value="12">Guerrero</option>
-<option value="13">Hidalgo</option>
-<option value="14">Jalisco</option>
-<option value="15">México</option>
-<option value="16">Michoacán de Ocampo</option>
-<option value="17">Morelos</option>
-<option value="18">Nayarit</option>
-<option value="19">Nuevo León</option>
-<option value="20">Oaxaca</option>
-<option value="21">Puebla</option>
-<option value="22">Querétaro</option>
-<option value="23">Quintana Roo</option>
-<option value="24">San Luis Potosí</option>
-<option value="25">Sinaloa</option>
-<option value="26">Sonora</option>
-<option value="27">Tabasco</option>
-<option value="28">Tamaulipas</option>
-<option value="29">Tlaxcala</option>
-<option value="30">Veracruz de Ignacio de la Llave</option>
-<option value="31">Yucatán</option>
-<option value="32">Zacatecas</option>
+<option value="Distrito Federal">Distrito Federal</option>
+<option value="Durango">Durango</option>
+<option value="Guanajuato">Guanajuato</option>
+<option value="Guerrero">Guerrero</option>
+<option value="Hidalgo">Hidalgo</option>
+<option value="Jalisco">Jalisco</option>
+<option value="México">México</option>
+<option value="Michoacan">Michoacán de Ocampo</option>
+<option value="Morelos">Morelos</option>
+<option value="Nayarit">Nayarit</option>
+<option value="Nuevo León">Nuevo León</option>
+<option value="Oaxaca">Oaxaca</option>
+<option value="Puebla">Puebla</option>
+<option value="Querétaro">Querétaro</option>
+<option value="Quintana Roo">Quintana Roo</option>
+<option value="San luis Potosí">San Luis Potosí</option>
+<option value="Sinaloa">Sinaloa</option>
+<option value="Spnora">Sonora</option>
+<option value="Tabasco">Tabasco</option>
+<option value="Tamaulipas">Tamaulipas</option>
+<option value="Tlaxcala">Tlaxcala</option>
+<option value="Veracru<">Veracruz de Ignacio de la Llave</option>
+<option value="Yucatán">Yucatán</option>
+<option value="Zacatecas">Zacatecas</option>
 </select>
 </div>
 

@@ -62,7 +62,9 @@ class AddressController extends AppBaseController
 	 */
 	public function create()
 	{
-		return view('addresses.create');
+		
+           return view('addresses.create');
+        
 	}
 
 	/**
@@ -177,5 +179,6 @@ class AddressController extends AppBaseController
 
 		return redirect(route('addresses.index'));
 	}
+	
 
 }

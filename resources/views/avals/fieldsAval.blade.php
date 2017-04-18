@@ -1,19 +1,20 @@
 <!--- Name Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('name', 'Nombre(s):') !!}
-     <input type="text" name="name" pattern"[A-Za-z]{4-16}" value="{{ old('name') }}" class="form-control">
+    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+    
 </div>
 
 <!--- Last Name Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('last_name', 'Apellidos:') !!}
-     <input type="text" name="last_name" pattern"[A-Za-z]{4-16}" value="{{ old('last_name') }}" class="form-control">
+    {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Address Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('address', 'Dirección:') !!}
-    <input type="text" name="address"   value="{{ old('address') }}" class="form-control">
+    {!! Form::text('address', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Colony Field --->
@@ -170,25 +171,26 @@
 <!--- Ife Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('ife', 'Folio de Ife:') !!}
-    <input type="text" name="ife"   value="{{ old('ife') }}" class="form-control">
+    {!! Form::text('ife', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Curp Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('curp', 'Curp:') !!}
-    <input type="text" name="curp"   value="{{ old('curp') }}" class="form-control">
+    {!! Form::text('curp', null, ['class' => 'form-control']) !!}
+    
 </div>
 
 <!--- Phone Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('phone', 'Teléfono:') !!}
-     <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control">
+    {!! Form::text('phone', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Cel Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('cel', 'Celular:') !!}
-     <input type="tel" name="cel"  value="{{ old('cel') }}" class="form-control">
+    {!! Form::text('cel', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Sex Field --->
@@ -200,13 +202,13 @@
 <!--- Ocupation Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('ocupation', 'Ocupación:') !!}
-    <input type="text" name="ocupation"  value="{{ old('ocupation') }}" class="form-control">
+    {!! Form::text('ocupation', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Address Work Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('address_work', 'Dirección de Trabajo:') !!}
-    <input type="text" name="address_work"   value="{{ old('address') }}" class="form-control">
+   {!! Form::text('address_work', null, ['class' => 'form-control']) !!}
 </div>
 
 

@@ -9,11 +9,8 @@ Editar dirección
 
     {!! Form::model($address, ['route' => ['addresses.update', $address->id], 'method' => 'patch']) !!}
 
-<<<<<<< HEAD
-        @include('addresses.fieldsEdit')
-=======
         @include('addresses.fields-edit')
->>>>>>> remotes/origin/master
+
 
     {!! Form::close() !!}
 </div>

@@ -13,7 +13,7 @@
 <!--- Amount Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('amount', 'Monto recibido:') !!}
-    <input type="tel" name="amount"  class="form-control">
+    {!! Form::text('amount', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Term Field --->
@@ -25,7 +25,7 @@
 <!--- Payment Amount Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('payment_amount', 'Monto de pago por amortización:') !!}
-   <input type="tel" name="payment_amount" class="form-control">
+   {!! Form::text('payment_amount', null, ['class' => 'form-control']) !!}
 </div>
 
 
