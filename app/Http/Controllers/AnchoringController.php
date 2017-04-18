@@ -110,14 +110,16 @@ class AnchoringController extends AppBaseController
 	public function edit($id)
 	{
 		$anchoring = Anchoring::find($id);
-
+		$accounts = Account::all();
 		if(empty($anchoring))
 		{
 			Flash::error('Anchoring not found');
 			return redirect(route('anchorings.index'));
 		}
 
-		return view('anchorings.edit')->with('anchoring', $anchoring);
+		return view('anchorings.edit')
+		->with('anchoring', $anchoring)
+		->with('accounts', $accounts);
 	}
 
 	/**

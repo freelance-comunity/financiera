@@ -24,8 +24,8 @@ class Product extends Model
 	];
 
 	public static $rules = [
-	    "name" => "required|alpha",
-		"description" => "required|alpha",
+	"name" => "required|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
+	"description" => "required|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
 		"minimum_amount" => "required|numeric",
 		"maximum_amount" => "required|numeric",
 		"minimum_term" => "required",
