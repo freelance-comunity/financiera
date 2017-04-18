@@ -29,24 +29,24 @@ class AccreditedController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = Accredited::query();
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
+		$columns = Schema::getColumnListing('$TABLE_NAME$');
+		$attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
+		foreach($columns as $attribute){
+			if($request[$attribute] == true)
+			{
+				$query->where($attribute, $request[$attribute]);
+				$attributes[$attribute] =  $request[$attribute];
+			}else{
+				$attributes[$attribute] =  null;
+			}
+		};
 
-        $accrediteds = $query->get();
+		$accrediteds = $query->get();
 
-        return view('accrediteds.index')
-            ->with('accrediteds', $accrediteds)
-            ->with('attributes', $attributes);
+		return view('accrediteds.index')
+		->with('accrediteds', $accrediteds)
+		->with('attributes', $attributes);
 	}
 
 	/**
@@ -68,7 +68,7 @@ class AccreditedController extends AppBaseController
 	 */
 	public function store(CreateAccreditedRequest $request)
 	{
-        $input = $request->all();
+		$input = $request->all();
 
 		$accredited = Accredited::create($input);
 
@@ -169,11 +169,18 @@ class AccreditedController extends AppBaseController
 	}
 
 	public function addressesAccredited($id)
-	{	
+	{		
 		$accrediteds = Accredited::find($id);
-		return view ('addresses.create')
-		->with('accrediteds', $accrediteds);
-		
+		$address = $accrediteds->addresses;
+		if ($address->isEmpty()) {
+			return view ('addresses.create')
+			->with('accrediteds', $accrediteds);
+		}
+		else
+		{	
+			Alert::info('Este acreditado ya tiene sus datos domiciliarios en el sistema.');
+			return redirect(route('accrediteds.show', [$accrediteds->id])); 
+		}	
 	}
 	
 	public function referencesAccredited($id)
