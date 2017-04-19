@@ -5,6 +5,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\EditUserRequest;
 use App\User;
 use App\Role;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
 use Response;
@@ -61,8 +62,10 @@ class UserController extends AppBaseController
 	public function create()
 	{	
 		$roles = Role::pluck('name', 'id');
+		$branches = Branch::pluck('nomenclature', 'id');
 		return view('users.create')
-		->with('roles', $roles);
+		->with('roles', $roles)
+		->with('branches', $branches);
 	}
 
 	/**
@@ -75,7 +78,7 @@ class UserController extends AppBaseController
 	public function store(CreateUserRequest $request)
 	{
 		$input = $request->all();
-		
+
 		$password = str_random(8);
 		$input['password'] = Hash::make($password);
 		$var_roles = $input['position'];
@@ -104,7 +107,6 @@ class UserController extends AppBaseController
 		Alert::success('Usuario creado exitosamente')->persistent('cerrar');
 
 		return redirect(route('users.index'));
-
 		
 	} 
 

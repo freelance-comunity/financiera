@@ -25,4 +25,9 @@ class Branch extends Model
 		"exercise" => "required|alpha"
 	];
 
+	public function users()
+	{
+		 return $this->hasMany('App\User');
+	}
+
 }
