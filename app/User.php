@@ -14,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-    'name', 'last_name', 'address', 'phone', 'birthday', 'position', 'start_date', 'email', 'password',
+    'name', 'last_name', 'address', 'phone', 'birthday', 'position', 'start_date', 'email', 'password', 'branch_id',
     ];
 
     /**
@@ -56,6 +56,11 @@ class User extends Authenticatable
     public function accredited()
     {
         return $this->hasOne('App\Models\Accredited');
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo('App\Models\Branch');
     }
 
 }

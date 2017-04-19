@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('start_date');
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('branch_id')->unsigned()->foreign('branch_id')->references('id')->on('branches');
             $table->rememberToken();
             $table->timestamps();
         });

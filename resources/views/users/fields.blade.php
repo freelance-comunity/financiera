@@ -40,10 +40,16 @@
     <input type="email" value="{{ old('email') }}" name="email" class="form-control">
 </div>
 
+<!--- Branch Field --->
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('branch_id', 'Sucursal:') !!}
+    {!! Form::select('branch_id', $branches, null, ['class' => 'form-control'])!!}
+</div>
+
 <!--- Position Field --->
 <div class="form-group col-sm-6 col-lg-12">
     {!! Form::label('position', 'Puesto:') !!}
-    <select name="position[]" multiple="multiple" class="form-control" id="position"></select>
+    <select name="position[]" multiple="multiple" class="form-control select2" id="position"></select>
 </div>
 
 <!--- Submit Field --->

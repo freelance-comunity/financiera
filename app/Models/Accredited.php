@@ -46,6 +46,7 @@ class Accredited extends Model
     {
         return $this->belongsTo('App\User');
     }
+    
     public function references()
     {
         return $this->hasMany('App\Models\References');
