@@ -13,7 +13,7 @@ Lista de referencias
             
         </div>
 
-        <div class="row">
+        <div class="row table-responsive">
             @if($references->isEmpty())
                 <div class="well text-center">No se encontraron referencias.</div>
             @else

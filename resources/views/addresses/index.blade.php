@@ -13,7 +13,7 @@ Lista de direcciones
            
         </div>
 
-        <div class="row">
+        <div class="row table-responsive">
             @if($addresses->isEmpty())
                 <div class="well text-center">No se encontraron direcciones.</div>
             @else
