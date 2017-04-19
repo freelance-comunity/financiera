@@ -13,7 +13,7 @@ Lista de acreditados
     <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('accrediteds.create') !!}">Agregar Nuevo</a>
 </div>
 
-<div class="row">
+<div class="row table-responsive">
     @if($accrediteds->isEmpty())
     <div class="well text-center">No se encontraron acreditados</div>
     @else

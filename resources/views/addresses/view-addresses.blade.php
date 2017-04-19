@@ -12,7 +12,7 @@ Dirección
            
         </div>
 
-        <div class="row">
+        <div class="row table-responsive">
             @if($addresses->isEmpty())
                 <div class="well text-center">No se encontraron direcciones.</div>
             @else
@@ -30,7 +30,7 @@ Dirección
                     <th width="50px">Acción</th>
                     </thead>
                     <tbody>
-                     
+                     Mostrando registros del 1 al 1 de un total de 1 registros
                     @foreach($addresses as $address)
                         <tr>
                             <td>{!! $address->avenue !!}</td>

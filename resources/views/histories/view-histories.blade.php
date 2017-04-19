@@ -13,7 +13,7 @@ Historial crediticio
 
     </div>
 
-    <div class="row">
+    <div class="row table-responsive">
         @if($histories->isEmpty())
         <div class="well text-center">No se encontraron Antecedentes Crediticios.</div>
         @else

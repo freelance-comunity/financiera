@@ -13,7 +13,7 @@ Lista de estudio de negocios
         
     </div>
 
-    <div class="row">
+    <div class="row table-responsive">
         @if($studies->isEmpty())
         <div class="well text-center">No Studies found.</div>
         @else

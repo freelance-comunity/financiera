@@ -13,7 +13,7 @@ Lista de avales
             
         </div>
 
-        <div class="row">
+        <div class="row table-responsive">
             @if($avals->isEmpty())
                 <div class="well text-center">No se encontraron AVales</div>
             @else

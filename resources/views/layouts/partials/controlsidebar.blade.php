@@ -15,8 +15,8 @@
                     <a href='javascript::;'>
                         <i class="menu-icon fa fa-birthday-cake bg-red"></i>
                         <div class="menu-info">
-                            <h4 class="control-sidebar-subheading">{{ trans('adminlte_lang::message.birthday') }}</h4>
-                            <p>{{ trans('adminlte_lang::message.birthdaydate') }}</p>
+                            <h4 class="control-sidebar-subheading">Tu cumpleaños es el </h4>
+                            <p>{{ Auth::user()->birthday }}</p>
                         </div>
                     </a>
                 </li>

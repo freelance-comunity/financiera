@@ -13,7 +13,7 @@ Microempresa
         
     </div>
 
-    <div class="row">
+    <div class="row table-responsive">
         @if($micros->isEmpty())
         <div class="well text-center">No se encontraron microempresas</div>
         @else
