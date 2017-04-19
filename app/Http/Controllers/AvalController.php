@@ -71,14 +71,22 @@ class AvalController extends AppBaseController
 	{
 		$input = $request->all();
 		$accredited = $request->input('accredited_id');
-		$aval = Aval::create($input);
-
-		Alert::success('Aval guardado exitosamente.')->persistent('Cerrar');
 		$accrediteds = Accredited::find($accredited);
-		$avals = $accrediteds->avals;
+		$address = strtoupper($request->input('address'));
 
-		return view('avals.view-avals')
-		->with('avals', $avals);
+		if (strcmp($accrediteds->address, $address) == 0) {
+			Alert::error('La dirección del Aval es identica a la del acreditado.')->persistent('Cerrar');
+			return redirect()->back()->withInput($request->all());
+		}else{
+			$aval = Aval::create($input);
+
+			Alert::success('Aval guardado exitosamente.')->persistent('Cerrar');
+			$accrediteds = Accredited::find($accredited);
+			$avals = $accrediteds->avals;
+
+			return view('avals.view-avals')
+			->with('avals', $avals);
+		}
 	}
 
 	/**
