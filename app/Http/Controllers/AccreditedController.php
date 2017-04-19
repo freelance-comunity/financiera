@@ -78,7 +78,8 @@ class AccreditedController extends AppBaseController
 	public function store(CreateAccreditedRequest $request)
 	{
 		$input = $request->all();
-
+		$address = strtoupper($request->input('address'));
+		$input['address'] = $address;
 		$accredited = Accredited::create($input);
 
 		Alert::success('Acreditado creado exitosamente.')->persistent('Cerrar');
@@ -137,14 +138,17 @@ class AccreditedController extends AppBaseController
 	{
 		/** @var Accredited $accredited */
 		$accredited = Accredited::find($id);
-
+		$address = strtoupper($request->input('address'));
+		$input = $request->all();
+		$input['address'] = $address;
+		
 		if(empty($accredited))
 		{
 			Flash::error('Accredited not found');
 			return redirect(route('accrediteds.index'));
 		}
 
-		$accredited->fill($request->all());
+		$accredited->fill($input);
 		$accredited->save();
 
 		Alert::success('Datos actualizados exitosamente.')->persistent('Cerrar');

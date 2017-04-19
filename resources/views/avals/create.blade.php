@@ -5,12 +5,12 @@ Crear aval
 @section('main-content')
 <div class="container">
 
-    @include('common.errors')
+	@include('common.errors')
+	@include('sweet::alert')
+	{!! Form::open(['route' => 'avals.store']) !!}
 
-    {!! Form::open(['route' => 'avals.store']) !!}
+	@include('avals.fields')
 
-        @include('avals.fields')
-
-    {!! Form::close() !!}
+	{!! Form::close() !!}
 </div>
 @endsection
