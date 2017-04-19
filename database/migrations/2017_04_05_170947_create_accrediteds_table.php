@@ -30,6 +30,7 @@ class CreateAccreditedsTable extends Migration
 			$table->string('civil_status');
 			$table->string('photo')->default('default.jpg');
 			$table->integer('user_id')->unsigned()->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+			$table->integer('branch_id')->unsigned()->foreign('branch_id')->references('id')->on('branches');
 			$table->timestamps();
 		});
 	}

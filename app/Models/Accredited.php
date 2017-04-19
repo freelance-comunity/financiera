@@ -24,7 +24,8 @@ class Accredited extends Model
 		"curp",
 		"sex",
 		"civil_status",		
-		"user_id"
+		"user_id",
+		"branch_id",
 	];
 
 	public static $rules = [
@@ -71,6 +72,11 @@ class Accredited extends Model
     public function studies()
 	{
         return $this->hasMany('App\Models\Study');
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo('App\Models\Branch');
     }
 
 }

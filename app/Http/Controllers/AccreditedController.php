@@ -2,7 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Requests\CreateAccreditedRequest;
+use App\User;
+use App\Role;
 use App\Models\Accredited;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
 use Response;
@@ -56,7 +59,13 @@ class AccreditedController extends AppBaseController
 	 */
 	public function create()
 	{
-		return view('accrediteds.create');
+		$roles = Role::pluck('name', 'id');
+		$branches = Branch::pluck('nomenclature', 'id');
+		$users = User::pluck('name', 'id');
+		return view('accrediteds.create')
+		->with('roles', $roles)
+		->with('branches', $branches)
+		->with('users', $users);
 	}
 
 	/**
