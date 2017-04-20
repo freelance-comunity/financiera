@@ -35,6 +35,7 @@ class User extends Authenticatable
     "position" => "required",
     "start_date" => "required|date",
     "type" => "required",
+    "branch_id" => "required",
     "email" => "required|email|max:255|unique:users",
     ];
 

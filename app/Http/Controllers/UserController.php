@@ -140,14 +140,18 @@ class UserController extends AppBaseController
 	{	
 		$user = User::find($id);
 		$roles = Role::pluck('name', 'id');
-		
+		$branches = Branch::pluck('nomenclature', 'id');
+
 		if(empty($user))
 		{
 			Alert::error('Usuario no encontrado en los registros')->persistent('cerrar');
 			return redirect(route('users.index'));
 		}
 
-		return view('users.edit')->with('user', $user)->with('roles', $roles);
+		return view('users.edit')
+		->with('user', $user)
+		->with('roles', $roles)
+		->with('branches', $branches);
 	}
 
 	/**

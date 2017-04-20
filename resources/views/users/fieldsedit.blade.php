@@ -39,6 +39,17 @@
     {!! Form::label('email', 'Correo electronico:') !!}
     <input type="email" value="{{ $user->email}}" name="email" class="form-control">
 </div>
+
+<!--- Branch Field --->
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('branch_id', 'Sucursal:') !!}
+    @if ($branches->isEmpty())
+        {!! Form::select('empty', ['0' => 'No hay sucursales en el sistema'], null, ['class' => 'form-control']) !!}
+    @else
+    {!! Form::select('branch_id', $branches, null, ['class' => 'form-control'])!!}
+    @endif
+</div>
+
 <!--- Nationality Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('type', 'Rol del usuario:') !!}
