@@ -1,11 +1,11 @@
   <?php
 
-Route::get('/', function () {
+  Route::get('/', function () {
     //return view('welcome');
     return redirect('login');
-});
+  });
 
-Route::get('/rolescreate', function() {
+  Route::get('/rolescreate', function() {
     $propietario = new App\Role();
     $propietario->name         = 'propietario';
     $propietario->display_name = 'Usuario Propietario'; // optional
@@ -42,31 +42,31 @@ Route::get('/rolescreate', function() {
     $direccion->description  = 'Caja el cual hara uso de los servicios de S&C'; // optional
     $direccion->save();
     echo "Listo";
-});
-/*============== Main Routes ==============*/
+  });
+  /*============== Main Routes ==============*/
 
-Route::auth();
+  Route::auth();
 
-Route::get('/home', 'HomeController@index');
+  Route::get('/home', 'HomeController@index');
 
 
 
-Route::resource('permissions', 'PermissionController');
+  Route::resource('permissions', 'PermissionController');
 
-Route::get('permissions/{id}/delete', [
+  Route::get('permissions/{id}/delete', [
     'as' => 'permissions.delete',
     'uses' => 'PermissionController@destroy',
 
     ]);   
 
-Route::resource('roles', 'RolesController');
-Route::get('roles/{id}/delete', [
+  Route::resource('roles', 'RolesController');
+  Route::get('roles/{id}/delete', [
     'as' => 'roles.delete',
     'uses' => 'RolesController@destroy',
     ]);
 
 
-Route::get('asignamment/{id}',function($id){
+  Route::get('asignamment/{id}',function($id){
     $role = App\Role::find($id);
     $permissions = App\Permission::all();
     $permissions_role = $role->permissions;
@@ -79,12 +79,12 @@ Route::get('asignamment/{id}',function($id){
     return view('roles.add')
     ->with('role', $role)
     ->with('diff', $diff);
-});
+  });
 
-Route::Post ('/asignamment', 'RolesController@addPermission');
+  Route::Post ('/asignamment', 'RolesController@addPermission');
 
 
-Route::get('permissionEdit/{id}',function($id){
+  Route::get('permissionEdit/{id}',function($id){
     $role = App\Role::find($id);
     
     $permissions = $role->permissions;
@@ -92,89 +92,89 @@ Route::get('permissionEdit/{id}',function($id){
     return view('roles.permissions')
     ->with('role', $role)
     ->with('permissions', $permissions);
-});
+  });
 
-Route::Post ('/permissionEdit', 'RolesController@permissionEdit');
-
-
+  Route::Post ('/permissionEdit', 'RolesController@permissionEdit');
 
 
-/*======================= Acreditado======================*/
-
-Route::resource('accrediteds', 'AccreditedController');
 
 
-Route::get('accrediteds/{id}/delete', [
+  /*======================= Acreditado======================*/
+
+  Route::resource('accrediteds', 'AccreditedController');
+
+
+  Route::get('accrediteds/{id}/delete', [
     'as' => 'accrediteds.delete',
     'uses' => 'AccreditedController@destroy',
 
     ]);   
 
-Route::resource('addresses', 'AddressController');
+  Route::resource('addresses', 'AddressController');
 
-Route::get('addresses/{id}/delete', [
+  Route::get('addresses/{id}/delete', [
     'as' => 'addresses.delete',
     'uses' => 'AddressController@destroy',
 
-]);
- 
-Route::get('addressesAccredited/{id}/',[
+    ]);
+  
+  Route::get('addressesAccredited/{id}/',[
     'as' => 'accrediteds.addressesAccredited',
     'uses' => 'AccreditedController@addressesAccredited',
-]);
+    ]);
 
-Route::get('addresses/{id}',[
+  Route::get('addresses/{id}',[
     'as' => 'accrediteds.addresses',
     'uses' => 'AccreditedController@addresses',
-]);
+    ]);
 
 
-Route::get('view-addresses/{id}', function($id){
+  Route::get('view-addresses/{id}', function($id){
     $accrediteds = App\Models\Accredited::find($id);
     $addresses = $accrediteds->addresses;
 
-   return view('addresses.view-addresses')
+    return view('addresses.view-addresses')
     ->with('addresses', $addresses);
-});
+  });
 
-Route::resource('references', 'ReferencesController');
+  Route::resource('references', 'ReferencesController');
 
-Route::get('references/{id}/delete', [
+  Route::get('references/{id}/delete', [
     'as' => 'references.delete',
     'uses' => 'ReferencesController@destroy',
 
     ]);
 
 
-Route::get('referencesAccredited/{id}/',[
+  Route::get('referencesAccredited/{id}/',[
     'as' => 'accrediteds.referencesAccredited',
     'uses' => 'AccreditedController@referencesAccredited',
-]);
+    ]);
 
-Route::get('view-references/{id}', function($id){
+  Route::get('view-references/{id}', function($id){
     $accrediteds = App\Models\Accredited::find($id);
     $references = $accrediteds->references;
 
-   return view('references.view-references')
+    return view('references.view-references')
     ->with('references', $references);
-});
-Route::get('references/{id}',[
+  });
+  Route::get('references/{id}',[
     'as' => 'accrediteds.references',
     'uses' => 'AccreditedController@references',
     ]);
 
-Route::get('editReferences/{id}/',[
+  Route::get('editReferences/{id}/',[
     'as' => 'references.editReferences',
     'uses' => 'ReferencesController@editReferences',
-]);
-Route::get('indexReferences/{id}/',[
+    ]);
+  Route::get('indexReferences/{id}/',[
     'as' => 'references.indexReferences',
     'uses' => 'ReferencesController@indexReferences',
-]);
+    ]);
 
-Route::resource('users', 'UserController');
+  Route::resource('users', 'UserController');
 
-Route::get('users/{id}/delete', [
+  Route::get('users/{id}/delete', [
     'as' => 'users.delete',
     'uses' => 'UserController@destroy',
 
@@ -182,73 +182,73 @@ Route::get('users/{id}/delete', [
     ]);
 
 
-Route::resource('avals', 'AvalController');
+  Route::resource('avals', 'AvalController');
 
-Route::get('avals/{id}/delete', [
+  Route::get('avals/{id}/delete', [
     'as' => 'avals.delete',
     'uses' => 'AvalController@destroy',
     ]);
 
-Route::get('avalsAccredited/{id}/',[
+  Route::get('avalsAccredited/{id}/',[
     'as' => 'accrediteds.avalsAccredited',
     'uses' => 'AccreditedController@avalsAccredited',
-]);
+    ]);
 
-Route::get('avals/{id}',[
+  Route::get('avals/{id}',[
     'as' => 'accrediteds.avals',
     'uses' => 'AccreditedController@avals',
     ]);
-Route::get('view-avals/{id}', function($id){
+  Route::get('view-avals/{id}', function($id){
     $accrediteds = App\Models\Accredited::find($id);
     $avals = $accrediteds->avals;
 
-   return view('avals.view-avals')
+    return view('avals.view-avals')
     ->with('avals', $avals);
-});
+  });
 
-Route::get('editAval/{id}/',[
+  Route::get('editAval/{id}/',[
     'as' => 'avals.editAval',
     'uses' => 'AvalController@editAval',
-]);
+    ]);
 
-Route::resource('micros', 'MicroController');
+  Route::resource('micros', 'MicroController');
 
-Route::get('micros/{id}/delete', [
+  Route::get('micros/{id}/delete', [
     'as' => 'micros.delete',
     'uses' => 'MicroController@destroy',
 
-]);
- Route::get('microsAccredited/{id}/',[
+    ]);
+  Route::get('microsAccredited/{id}/',[
     'as' => 'accrediteds.microsAccredited',
     'uses' => 'AccreditedController@microsAccredited',
-]);
+    ]);
 
- Route::get('view-micros/{id}', function($id){
+  Route::get('view-micros/{id}', function($id){
     $accrediteds = App\Models\Accredited::find($id);
     $micros = $accrediteds->micros;
 
-   return view('micros.view-micros')
+    return view('micros.view-micros')
     ->with('micros', $micros);
-});
+  });
 
-Route::get('editMicros/{id}/',[
+  Route::get('editMicros/{id}/',[
     'as' => 'micros.editMicros',
     'uses' => 'MicroController@editMicros',
-]);
-   
+    ]);
+  
 
 
-Route::get('positions', function (Illuminate\Http\Request  $request) {
+  Route::get('positions', function (Illuminate\Http\Request  $request) {
     $term = $request->term ?: '';
     $positions = App\Role::where('name', 'like', $term.'%')->lists('name', 'id');
     $valid_positions = [];
     foreach ($positions as $id => $position) {
-        $valid_positions[] = ['id' => $id, 'text' => $position];
+      $valid_positions[] = ['id' => $id, 'text' => $position];
     }
     return \Response::json($valid_positions);
-});
+  });
 
-Route::get('/deleterole/{user}/{role}', function($user, $role){
+  Route::get('/deleterole/{user}/{role}', function($user, $role){
     $users = App\User::all();
     $user_quit = App\User::find($user);
     $role = App\Role::find($role);
@@ -256,23 +256,23 @@ Route::get('/deleterole/{user}/{role}', function($user, $role){
     alert()->success('Rol eliminado!')->persistent('Cerrar');
     return redirect(route('users.index'))
     ->with('users', $users);
-});
+  });
 
-Route::post('/updateroles', function(Illuminate\Http\Request  $request) {
+  Route::post('/updateroles', function(Illuminate\Http\Request  $request) {
     $user = App\User::find($request->input('user_id'));
     $users = App\User::all();
     $roles = $request->input($user->id);
 
     foreach ($roles as $role) {
-        $name_role = App\Role::find($role);
-        $user->attachRole($name_role);
+      $name_role = App\Role::find($role);
+      $user->attachRole($name_role);
     }
     alert()->info('Se han agregado los roles selecionados al usuario!')->persistent('Cerrar');
     return redirect(route('users.index'))
     ->with('users', $users);
-});
+  });
 
-Route::get('/test', function() {
+  Route::get('/test', function() {
     $user = App\User::find(7);
     $roles = $user->roles;
     $all_roles = App\Role::all();
@@ -283,107 +283,115 @@ Route::get('/test', function() {
 
     $diff->all();
     foreach ($diff as $key => $value) {
-        echo ++$key."  ".$value->name;
-        echo "<br>";
+      echo ++$key."  ".$value->name;
+      echo "<br>";
     }
-});
+  });
 
 
 
 
 
-Route::resource('anchorings', 'AnchoringController');
+  Route::resource('anchorings', 'AnchoringController');
 
-Route::get('anchorings/{id}/delete', [
+  Route::get('anchorings/{id}/delete', [
     'as' => 'anchorings.delete',
     'uses' => 'AnchoringController@destroy',
-]);
+    ]);
 
 
-Route::resource('products', 'ProductController');
+  Route::resource('products', 'ProductController');
 
-Route::get('products/{id}/delete', [
+  Route::get('products/{id}/delete', [
     'as' => 'products.delete',
     'uses' => 'ProductController@destroy',
-]);
+    ]);
 
-Route::resource('histories', 'HistoryController');
+  Route::resource('histories', 'HistoryController');
 
-Route::get('histories/{id}/delete', [
+  Route::get('histories/{id}/delete', [
     'as' => 'histories.delete',
     'uses' => 'HistoryController@destroy',
-]);
-Route::get('historiesAccredited/{id}/',[
+    ]);
+  Route::get('historiesAccredited/{id}/',[
     'as' => 'accrediteds.historiesAccredited',
     'uses' => 'AccreditedController@historiesAccredited',
-]);
+    ]);
 
-Route::get('view-histories/{id}', function($id){
+  Route::get('view-histories/{id}', function($id){
     $accrediteds = App\Models\Accredited::find($id);
     $histories = $accrediteds->history;
 
-   return view('histories.view-histories')
+    return view('histories.view-histories')
     ->with('histories', $histories);
-});
+  });
 
-Route::get('editHistories/{id}/',[
+  Route::get('editHistories/{id}/',[
     'as' => 'histories.editHistories',
     'uses' => 'HistoryController@editHistories',
-]);
+    ]);
   
 
-Route::resource('studies', 'StudyController');
+  Route::resource('studies', 'StudyController');
 
-Route::get('studies/{id}/delete', [
+  Route::get('studies/{id}/delete', [
     'as' => 'studies.delete',
     'uses' => 'StudyController@destroy',
-]);
-Route::get('studiesAccredited/{id}/',[
+    ]);
+  Route::get('studiesAccredited/{id}/',[
     'as' => 'accrediteds.studiesAccredited',
     'uses' => 'AccreditedController@studiesAccredited',
-]);
+    ]);
 
 
-Route::get('view-studies/{id}', function($id){
+  Route::get('view-studies/{id}', function($id){
     $accrediteds = App\Models\Accredited::find($id);
     $studies = $accrediteds->studies;
 
-   return view('studies.view-studies')
+    return view('studies.view-studies')
     ->with('studies', $studies);
-});
-Route::get('editStudies/{id}/',[
+  });
+  Route::get('editStudies/{id}/',[
     'as' => 'studies.editStudies',
     'uses' => 'StudyController@editStudies',
-]);
+    ]);
 
 
 
-Route::resource('accounts', 'AccountController');
+  Route::resource('accounts', 'AccountController');
 
-Route::get('accounts/{id}/delete', [
+  Route::get('accounts/{id}/delete', [
     'as' => 'accounts.delete',
     'uses' => 'AccountController@destroy',
-]);
+    ]);
 
-Route::get('updatephoto/{id}', function($id) {
+  Route::get('updatephoto/{id}', function($id) {
     $accredited = App\Models\Accredited::find($id);
     return view('pages.upload')
     ->with('accredited', $accredited);
-});
+  });
 
-Route::post('updatephoto', 'ApplyController@update');
+  Route::post('updatephoto', 'ApplyController@update');
 
-Route::resource('branches', 'BranchController');
+  Route::resource('branches', 'BranchController');
 
-Route::get('branches/{id}/delete', [
+  Route::get('branches/{id}/delete', [
     'as' => 'branches.delete',
     'uses' => 'BranchController@destroy',
-]);
+    ]);
 
 
-Route::resource('information', 'InformationController');
+  Route::resource('information', 'InformationController');
 
-Route::get('information/{id}/delete', [
+  Route::get('information/{id}/delete', [
     'as' => 'information.delete',
     'uses' => 'InformationController@destroy',
-]);
+    ]);
+
+Route::get('profile/', function() {
+    $user = Auth::user();
+    return view('users.profile')
+    ->with('user', $user);
+});
+
+Route::post('updatepassword', 'UserController@updatePassword');

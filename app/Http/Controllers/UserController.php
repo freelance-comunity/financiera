@@ -26,10 +26,10 @@ class UserController extends AppBaseController
 	 * @return Response
 	 */
 
-	 public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
 	public function index(Request $request)
 	{
@@ -90,9 +90,9 @@ class UserController extends AppBaseController
 		$usercreate = User::create($input);
 		
 		foreach ($var_roles as $position) {
-				$user = User::find($usercreate->id);
-				$role = Role::find($position);
-				$user->attachRole($role);
+			$user = User::find($usercreate->id);
+			$role = Role::find($position);
+			$user->attachRole($role);
 		}
 		
 		$data['name'] = $request->input('name');
@@ -100,9 +100,9 @@ class UserController extends AppBaseController
 		$data['email'] = $request->input('email');
 
 		Mail::send('mails.register', ['data' => $data], function($mail) use($data){
-                $mail->subject('Te proporcionamos las credenciales de acceso al sistema');
-                $mail->to($data['email'], $data['name'], $data['pass']);
-            });
+			$mail->subject('Te proporcionamos las credenciales de acceso al sistema');
+			$mail->to($data['email'], $data['name'], $data['pass']);
+		});
 		
 		Alert::success('Usuario creado exitosamente')->persistent('cerrar');
 
@@ -201,5 +201,16 @@ class UserController extends AppBaseController
 		Alert::info('Usuario eliminado de los registros')->persistent('cerrar');
 
 		return redirect(route('users.index'));
+	}
+
+	public function updatePassword(Request $request)
+	{
+		$password = $request->input('password');
+		$user = User::find($request->input('user_id'));
+		$user->password = Hash::make($password);
+		$user->save();
+
+		Alert::success('Contraseña actualizada con éxito');
+		return redirect()->back();
 	}
 }
