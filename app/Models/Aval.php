@@ -31,8 +31,8 @@ class Aval extends Model
 	];
 
 	public static $rules = [
-	    "name" => "required|alpha",
-		"last_name" => "required|alpha",
+	    "name" => "required|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
+		"last_name" =>"required|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
 		"address" => "required",
 		"colony" => "required",
 		"municipality" => "required",

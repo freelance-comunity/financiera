@@ -65,6 +65,26 @@
     
 </div>
 @php
+    $count = App\Models\Branch::all();
+@endphp
+
+<!--- User Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('branch_id', 'Sucursal:') !!}
+        <select name="user_id" class="form-control" id="">
+        @if ($count->isEmpty())
+            <option value="">Aún no hay promotores dados de alta en el sistema</option>
+    @else
+        @endif
+            @foreach ($count as $branches)
+                <option value="{{$branches->id}}" {{ ($branches->id == $accredited->branch_id) ? 'selected=selected' : '' }}>
+            {{$branches->name}} 
+        </option>
+            @endforeach
+        </select>
+    </div>
+
+@php
     $count = App\User::where('type', 'promotor')->get();
 @endphp
 

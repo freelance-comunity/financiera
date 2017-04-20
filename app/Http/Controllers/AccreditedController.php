@@ -59,14 +59,14 @@ class AccreditedController extends AppBaseController
 	 */
 	public function create()
 	{	
-		
 		$users = User::where('type', 'promotor')->get();
 		$roles = Role::pluck('name', 'id');
-		$branches = Branch::pluck('nomenclature', 'id');
+		$branches = Branch::all();
 		return view('accrediteds.create')
 		->with('users', $users)
 		->with('roles', $roles)
 		->with('branches', $branches);
+
 	}
 
 	/**

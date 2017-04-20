@@ -65,20 +65,37 @@
         {!! Form::select('sex',['Hombre' => 'Hombre', 'Mujer' => 'Mujer'], null, ['class' => 'form-control'])!!}
         
     </div>
-
+@php
+    $count = App\Models\Branch::all();
+@endphp
      <!--- Branch Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('branch_id', 'Sucursal:') !!}
-        {!! Form::select('branch_id', $branches, null, ['class' => 'form-control'])!!}
+        <select name="branch_id" class="form-control" id="">
+        @if($count ->isEmpty())
+        <option value="">No hay sucursales registradas en el sistema</option>
+        @else 
+             @foreach($branches as $branches)
+             <option value="{{ $branches->id}}">{{$branches->nomenclature}}</option>
+             @endforeach
+         @endif
+        </select>
+       
     </div>
-
+@php
+    $count = App\User::where('type', 'promotor')->get();
+@endphp
      <!--- User Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('user_id', 'Promotor:') !!}
         <select name="user_id" class="form-control" id="">
+        @if($count ->isEmpty())
+        <option value="">No hay promotores registrados en el sistema</option>
+        @else
             @foreach ($users as $element)
                 <option value="{{$element->id}}">{{$element->name}} {{$element->last_name}}</option>
             @endforeach
+        @endif
         </select>
     </div>
 
