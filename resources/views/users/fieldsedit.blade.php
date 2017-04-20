@@ -39,6 +39,11 @@
     {!! Form::label('email', 'Correo electronico:') !!}
     <input type="email" value="{{ $user->email}}" name="email" class="form-control">
 </div>
+<!--- Nationality Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('type', 'Rol del usuario:') !!}
+        {!! Form::select('type',['Promotor' => 'Promotor', 'Caja' => 'Caja', 'Propietario' => 'Propietario', 'Coordinador' => 'Coordinador', 'Mesa' => 'Mesa', 'Dirección' => 'Dirección'], null, ['class' => 'form-control'])!!}
+    </div>
 
 <!--- Submit Field --->
 <div class="form-group col-sm-12">

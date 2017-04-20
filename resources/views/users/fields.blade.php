@@ -46,6 +46,12 @@
     {!! Form::select('branch_id', $branches, null, ['class' => 'form-control'])!!}
 </div>
 
+ <!--- Nationality Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('type', 'Rol del usuario:') !!}
+        {!! Form::select('type',['Promotor' => 'Promotor', 'Caja' => 'Caja', 'Propietario' => 'Propietario', 'Coordinador' => 'Coordinador', 'Mesa' => 'Mesa', 'Dirección' => 'Dirección'], null, ['class' => 'form-control'])!!}
+    </div>
+
 <!--- Position Field --->
 <div class="form-group col-sm-6 col-lg-12">
     {!! Form::label('position', 'Puesto:') !!}

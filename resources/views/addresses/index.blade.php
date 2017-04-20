@@ -54,5 +54,13 @@ Lista de direcciones
                 </table>
             @endif
         </div>
+         <fieldset class="gllpLatlonPicker">
+    <input type="text" class="gllpSearchField">
+    <input type="button" class="gllpSearchButton" value="search">
+    <div class="gllpMap">Google Maps</div>
+    <input type="hidden" class="gllpLatitude" value="20"/>
+    <input type="hidden" class="gllpLongitude" value="20"/>
+    <input type="hidden" class="gllpZoom" value="3"/>
+  </fieldset>
     </div>
 @endsection

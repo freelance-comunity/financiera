@@ -2,8 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Requests\CreateAccreditedRequest;
-use App\User;
 use App\Role;
+use App\User;
 use App\Models\Accredited;
 use App\Models\Branch;
 use Illuminate\Http\Request;
@@ -58,14 +58,15 @@ class AccreditedController extends AppBaseController
 	 * @return Response
 	 */
 	public function create()
-	{
+	{	
+		
+		$users = User::where('type', 'promotor')->get();
 		$roles = Role::pluck('name', 'id');
 		$branches = Branch::pluck('nomenclature', 'id');
-		$users = User::pluck('name', 'id');
 		return view('accrediteds.create')
+		->with('users', $users)
 		->with('roles', $roles)
-		->with('branches', $branches)
-		->with('users', $users);
+		->with('branches', $branches);
 	}
 
 	/**

@@ -2,7 +2,6 @@
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('name', 'Nombre(s):') !!}
         <input type="text" name="name"  value="{{ old('name') }}" class="form-control">
-        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
     </div>
 
     <!--- Last Name Field --->
@@ -72,9 +71,15 @@
         {!! Form::label('branch_id', 'Sucursal:') !!}
         {!! Form::select('branch_id', $branches, null, ['class' => 'form-control'])!!}
     </div>
-<div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('name', 'Asignar Promotor:') !!}
-        {!! Form::select('name', $users, null, ['class' => 'form-control'])!!}
+
+     <!--- User Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('user_id', 'Promotor:') !!}
+        <select name="user_id" class="form-control" id="">
+            @foreach ($users as $element)
+                <option value="{{$element->id}}">{{$element->name}} {{$element->last_name}}</option>
+            @endforeach
+        </select>
     </div>
 
     <!--- Civil Status Field --->

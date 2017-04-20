@@ -14,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-    'name', 'last_name', 'address', 'phone', 'birthday', 'position', 'start_date', 'email', 'password', 'branch_id',
+    'name', 'last_name', 'address', 'phone', 'birthday', 'position', 'start_date', 'type','email', 'password', 'branch_id',
     ];
 
     /**
@@ -34,6 +34,7 @@ class User extends Authenticatable
     "birthday" => "required|date",
     "position" => "required",
     "start_date" => "required|date",
+    "type" => "required",
     "email" => "required|email|max:255|unique:users",
     ];
 

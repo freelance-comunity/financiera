@@ -64,7 +64,25 @@
     {!! Form::select('sex',['Hombre' => 'Hombre', 'Mujer' => 'Mujer'], null, ['class' => 'form-control'])!!}
     
 </div>
+@php
+    $count = App\User::where('type', 'promotor')->get();
+@endphp
 
+<!--- User Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('user_id', 'Promotor:') !!}
+        <select name="user_id" class="form-control" id="">
+        @if ($count->isEmpty())
+            <option value="">Aún no hay promotores dados de alta en el sistema</option>
+    @else
+        @endif
+            @foreach ($count as $element)
+                <option value="{{$element->id}}" {{ ($element->id == $accredited->user_id) ? 'selected=selected' : '' }}>
+            {{$element->name}} {{$element->last_name}}
+        </option>
+            @endforeach
+        </select>
+    </div>
 <!--- Civil Status Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('civil_status', 'Estado Civil:') !!}
