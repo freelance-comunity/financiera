@@ -277,6 +277,9 @@ return [
          'surcharge' => [
             'required' => 'El campo recargo es obligatorio.',
         ],
+        'branch_id' => [
+            'required' => 'El campo sucursal es obligatorio.',
+        ],
 
 
     ],

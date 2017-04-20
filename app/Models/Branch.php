@@ -20,9 +20,9 @@ class Branch extends Model
 
 	public static $rules = [
 	    "nomenclature" => "required",
-		"municipality" => "required",
+		"municipality" => "required|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
 		"status" => "required",
-		"exercise" => "required|alpha"
+		"exercise" => "required|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/"
 	];
 
 	public function users()
