@@ -168,6 +168,10 @@ return [
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
         Intervention\Image\ImageServiceProvider::class,
+        /*
+        ** Google Maps
+        */
+        GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
 
         ],
 
@@ -231,6 +235,11 @@ return [
     'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 
     'Image' => Intervention\Image\Facades\Image::class,
+
+    /*
+    ** Google Maps 
+    */
+    'Gmaps' => GeneaLabs\Phpgmaps\Facades\PhpgmapsFacade::class,
 
     ],
 

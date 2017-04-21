@@ -80,7 +80,6 @@
              @endforeach
          @endif
         </select>
-       
     </div>
 @php
     $count = App\User::where('type', 'promotor')->get();
@@ -104,6 +103,18 @@
         {!! Form::label('civil_status', 'Estado Civil:') !!}
         {!! Form::select('civil_status',['Soltero/a' => 'Soltero/a', 'Casado/a' => 'Casado/a',
         'Viudo/a' => 'Viudo/a', 'Divorciado/a' => 'Divorciado/a'], null, ['class' => 'form-control'])!!}
+    </div>
+
+    <div class="form-group col-sm-6 col-lg-6 gllpLatlonPicker">
+                <input type="text" class="gllpSearchField">
+                <input type="button" class="gllpSearchButton btn btn-success" value="Buscar">
+                <br/><br/>
+                <div class="gllpMap form-control">Google Maps</div>
+                <br/>
+                <input type="hidden" name="latitude" class="gllpLatitude" value="16.753239967660058"/>
+                <input type="hidden" name="length" class="gllpLongitude" value="-93.11789682636714"/>
+                Zoom: <input type="text" class="gllpZoom" value="12"/>
+                <br/>
     </div>
 
 

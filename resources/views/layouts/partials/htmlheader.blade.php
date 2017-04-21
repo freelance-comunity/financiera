@@ -15,7 +15,7 @@
           apply the skin class to the body tag so the changes take effect.
         -->
         <link href="{{ asset('/css/skins/skin-blue.css') }}" rel="stylesheet" type="text/css" />
-         <link href="{{ asset('/css/skins/skin-green.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('/css/skins/skin-green.css') }}" rel="stylesheet" type="text/css" />
         <!-- iCheck -->
         <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css" />
 
@@ -34,7 +34,10 @@
         <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
         <!-- Select List -->
         <script src="{{ asset('/selectList/js/jquery.selectlistactions.js')}}"></script>
-
+        <!-- Php Gmaps -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSkB3uvifGeGI2UEQUzOSXmy0V7XMDEhA"></script>
+        <link rel="stylesheet" href="{{ asset('css/phpgmaps/jquery-gmaps-latlon-picker.css') }}">
+        <script src="{{ asset('js/phpgmaps/jquery-gmaps-latlon-picker.js')}}"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
