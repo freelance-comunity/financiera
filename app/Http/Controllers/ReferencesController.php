@@ -78,8 +78,7 @@ class ReferencesController extends AppBaseController
 		$accrediteds = Accredited::find($accredited);
 		$references = $accrediteds->references;
 
-		return view('references.view-references')
-		->with('references', $references);
+		return redirect(route('accrediteds.show',  [$accrediteds->id]));
 	}
 
 	/**
@@ -145,7 +144,7 @@ class ReferencesController extends AppBaseController
 
 		Alert::success('Datos actualizados exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('references.index'));
+		return redirect(route('accrediteds.index'));
 	}
 
 	/**

@@ -84,8 +84,7 @@ class AvalController extends AppBaseController
 			$accrediteds = Accredited::find($accredited);
 			$avals = $accrediteds->avals;
 
-			return view('avals.view-avals')
-			->with('avals', $avals);
+			return redirect(route('accrediteds.show',  [$accrediteds->id]));
 		}
 	}
 
@@ -152,7 +151,7 @@ class AvalController extends AppBaseController
 
 		Alert::success('Datos acutalizados exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('avals.index'));
+		return redirect(route('accrediteds.index'));
 	}
 
 	/**

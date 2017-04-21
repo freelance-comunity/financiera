@@ -78,8 +78,7 @@ class StudyController extends AppBaseController
 		$accrediteds = Accredited::find($accredited);
 		$studies = $accrediteds->studies;
 
-		return view('studies.view-studies')
-		->with('studies', $studies);
+		return redirect(route('accrediteds.show',  [$accrediteds->id]));
 	}
 
 	/**
@@ -145,7 +144,7 @@ class StudyController extends AppBaseController
 
 		Alert::success('Datos actualizados exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('studies.index'));
+		return redirect(route('accrediteds.index'));
 	}
 
 	/**

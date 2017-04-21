@@ -78,8 +78,7 @@ class MicroController extends AppBaseController
 		$accrediteds = Accredited::find($accredited);
 		$micros = $accrediteds->micros;
 
-		return view('micros.view-micros')
-		->with('micros', $micros);
+		return redirect(route('accrediteds.show',  [$accrediteds->id]));
 	}
 
 	/**
@@ -145,7 +144,7 @@ class MicroController extends AppBaseController
 
 		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('micros.index'));
+		return redirect(route('accrediteds.index'));
 	}
 
 	/**
@@ -170,7 +169,7 @@ class MicroController extends AppBaseController
 
 		Alert::success('Datos eliminados exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('micros.index'));
+		return redirect(route('accrediteds.index'));
 	}
 
 	public function editMicros($id)
