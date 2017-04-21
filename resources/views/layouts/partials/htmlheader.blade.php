@@ -35,7 +35,7 @@
         <!-- Select List -->
         <script src="{{ asset('/selectList/js/jquery.selectlistactions.js')}}"></script>
         <!-- Php Gmaps -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSkB3uvifGeGI2UEQUzOSXmy0V7XMDEhA"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCHCpQVaYUmdj1ld0VcCCD5Wj-6XubYw"></script>
         <link rel="stylesheet" href="{{ asset('css/phpgmaps/jquery-gmaps-latlon-picker.css') }}">
         <script src="{{ asset('js/phpgmaps/jquery-gmaps-latlon-picker.js')}}"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
