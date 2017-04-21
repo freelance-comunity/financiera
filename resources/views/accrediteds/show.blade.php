@@ -159,9 +159,9 @@ Acreditado
 									<!-- timeline icon -->
 									<i class="fa fa-dollar bg-yellow"></i>
 									<div class="timeline-item">
+										<h3 class="timeline-header"><a href="{!! route('accrediteds.studiesAccredited', [$accredited->id])!!}">Estudio Socioeconomico</a></h3>
 										@foreach ($study as $element)
 										<span class="time"><i class="fa fa-clock-o"></i> {{$element->created_at}}</span>
-										<h3 class="timeline-header"><a>Estudio Socioeconomico</a></h3>
 										<div class="timeline-body">            		
 											<strong>Dependientes economicos: </strong>{{ $element->dependent}} <br>
 											<strong>Regimen de casamiento:</strong> {{ $element->regimen}} <br>
@@ -183,9 +183,9 @@ Acreditado
 										<!-- timeline icon -->
 										<i class="fa fa-book bg-red"></i>
 										<div class="timeline-item">
+											<h3 class="timeline-header"><a href="{!! route('accrediteds.avalsAccredited', [$accredited->id])!!}">Datos de aval</a></h3>
 											@foreach ($aval as $aval)
 											<span class="time"><i class="fa fa-clock-o"></i> {{$aval->created_at}}</span>
-											<h3 class="timeline-header"><a>Datos de aval</a></h3>
 											<div class="timeline-body">            		
 												<strong>Nombre: </strong>{{ $aval->name}} <br>
 												<strong>Apellido:</strong> {{ $aval->last_name}} <br>
