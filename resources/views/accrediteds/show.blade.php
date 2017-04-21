@@ -172,6 +172,8 @@ Acreditado
 											</div>	
 											@include('accrediteds.script-map')
 										</div>
+										<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myMapModal" id="trigger-btn">Pantalla completa</button>
+										@include('accrediteds.modal-map')
 									</div>
 
 								</li>
