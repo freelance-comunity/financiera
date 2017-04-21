@@ -69,16 +69,24 @@
      <!--- Branch Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('branch_id', 'Sucursal:') !!}
+        @if ($branches->isEmpty())
+            {!! Form::select('null', ['0' => 'No hay sucursales registradas'], null, ['class' => 'form-control']) !!} 
+        @else
         {!! Form::select('branch_id', $branches, null, ['class' => 'form-control'])!!}
+        @endif
     </div>
 
      <!--- User Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('user_id', 'Promotor:') !!}
         <select name="user_id" class="form-control" id="">
+        @if ($users->isEmpty())
+            <option>No hay promotores registrados</option>
+        @else
             @foreach ($users as $element)
                 <option value="{{$element->id}}">{{$element->name}} {{$element->last_name}}</option>
             @endforeach
+        @endif
         </select>
     </div>
 
@@ -87,6 +95,18 @@
         {!! Form::label('civil_status', 'Estado Civil:') !!}
         {!! Form::select('civil_status',['Soltero/a' => 'Soltero/a', 'Casado/a' => 'Casado/a',
         'Viudo/a' => 'Viudo/a', 'Divorciado/a' => 'Divorciado/a'], null, ['class' => 'form-control'])!!}
+    </div>
+
+    <div class="form-group col-sm-6 col-lg-6 gllpLatlonPicker">
+                <input type="text" class="gllpSearchField">
+                <input type="button" class="gllpSearchButton btn btn-success" value="Buscar">
+                <br/><br/>
+                <div class="gllpMap form-control">Google Maps</div>
+                <br/>
+                <input type="hidden" name="latitude" class="gllpLatitude" value="16.753239967660058"/>
+                <input type="hidden" name="length" class="gllpLongitude" value="-93.11789682636714"/>
+                Zoom: <input type="text" class="gllpZoom" value="12"/>
+                <br/>
     </div>
 
 

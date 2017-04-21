@@ -395,3 +395,12 @@ Route::get('profile/', function() {
 });
 
 Route::post('updatepassword', 'UserController@updatePassword');
+
+Route::get('gmaps', function() {
+    return view('gmaps');
+});
+
+Route::post('map', function(Illuminate\Http\Request $request) {
+    $input = $request->all();
+    dd($input);
+});

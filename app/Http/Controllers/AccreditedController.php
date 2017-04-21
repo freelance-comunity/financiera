@@ -79,6 +79,7 @@ class AccreditedController extends AppBaseController
 	public function store(CreateAccreditedRequest $request)
 	{
 		$input = $request->all();
+
 		$address = strtoupper($request->input('address'));
 		$input['address'] = $address;
 		$accredited = Accredited::create($input);

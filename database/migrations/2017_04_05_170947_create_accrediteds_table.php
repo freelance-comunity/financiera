@@ -23,6 +23,8 @@ class CreateAccreditedsTable extends Migration
 			$table->string('phone');
 			$table->string('email');
 			$table->string('address');
+			$table->string('latitude');
+			$table->string('length');
 			$table->string('nationality');
 			$table->string('ife');
 			$table->string('curp');

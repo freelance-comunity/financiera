@@ -19,6 +19,8 @@ class Accredited extends Model
 		"phone",
 		"email",
 		"address",
+		"latitude",
+		"length",
 		"nationality",
 		"ife",
 		"curp",

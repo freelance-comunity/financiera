@@ -11,7 +11,7 @@ Acreditado
 
 		<div class="row">
 			<div class="col-md-3">
-				 @include('sweet::alert')
+				@include('sweet::alert')
 				<!-- Profile Image -->
 				<div class="box box-primary">
 					<div class="box-body box-profile">
@@ -156,163 +156,184 @@ Acreditado
 									</li>
 									<li>
 										<!-- timeline icon -->
-										<i class="fa fa-dollar bg-yellow"></i>
+										<i class="fa fa-map-marker bg-white"></i>
 										<div class="timeline-item">
-											@foreach ($study as $element)
-											<span class="time"><i class="fa fa-clock-o"></i> {{$element->created_at}}</span>
-
-											<h3 class="timeline-header"><a>Estudio Socioeconomico</a></h3>
-
-											<div class="timeline-body">            		
-												<strong>Dependientes economicos: </strong>{{ $element->dependent}} <br>
-												<strong>Regimen de casamiento:</strong> {{ $element->regimen}} <br>
-												<strong>Tipo de vivienda:</strong> {{ $element->type_housing}} <br>	
-												<strong>La vivienda es:</strong> {{ $element->type_home}} <br>	
-												<strong>Tiempo de vivir en el mismo domicilio:</strong> {{ $element->time_address}} <br>
-												<strong>Nivel socioeconomico:</strong> {{$element->economic}} <br>	
-												<strong>Tipo de material de la vivienda:</strong> {{$element->type_material}} <br>	
-												<strong>Escolaridad:</strong> {{$element->scholarship}} <br>	
-												<strong>Grado:</strong> {{$element->school_grade}} <br>	
-												<strong>Rubro de la empresa:</strong> {{$element->sector}} <br>
-												<strong>Naturaleza jurídca de la empresa:</strong> {{$element->sector}}
-
-											</div>
-											<a href="{!! route('studies.editStudies', [$element->id]) !!}" class="btn btn-default">Editar</a>
-											@endforeach
-											
+											<h3 class="timeline-header"><a>Ubicación Google Maps</a></h3>
+											<div class="timeline-body">
+												<div class="container" style="width: 100%;
+												margin: 0 auto;
+												margin-top:5px;">
+												<div id="map_container" style="position: relative;"></div>
+												<div id="map" style=" height: 0;
+												overflow: hidden;
+												padding-bottom: 22.25%;
+												padding-top: 30px;
+												position: relative;"></div>
+											</div>	
+											@include('accrediteds.script-map')
 										</div>
+									</div>
 
+								</li>
+								<li>
+									<!-- timeline icon -->
+									<i class="fa fa-dollar bg-yellow"></i>
+									<div class="timeline-item">
+										@foreach ($study as $element)
+										<span class="time"><i class="fa fa-clock-o"></i> {{$element->created_at}}</span>
 
+										<h3 class="timeline-header"><a>Estudio Socioeconomico</a></h3>
 
-									</li>
-									<!-- END timeline item -->
-									<li>
-										<!-- timeline icon -->
-										<i class="fa fa-book bg-red"></i>
-										<div class="timeline-item">
-											@foreach ($aval as $aval)
-											<span class="time"><i class="fa fa-clock-o"></i> {{$aval->created_at}}</span>
+										<div class="timeline-body">            		
+											<strong>Dependientes economicos: </strong>{{ $element->dependent}} <br>
+											<strong>Regimen de casamiento:</strong> {{ $element->regimen}} <br>
+											<strong>Tipo de vivienda:</strong> {{ $element->type_housing}} <br>	
+											<strong>La vivienda es:</strong> {{ $element->type_home}} <br>	
+											<strong>Tiempo de vivir en el mismo domicilio:</strong> {{ $element->time_address}} <br>
+											<strong>Nivel socioeconomico:</strong> {{$element->economic}} <br>	
+											<strong>Tipo de material de la vivienda:</strong> {{$element->type_material}} <br>	
+											<strong>Escolaridad:</strong> {{$element->scholarship}} <br>	
+											<strong>Grado:</strong> {{$element->school_grade}} <br>	
+											<strong>Rubro de la empresa:</strong> {{$element->sector}} <br>
+											<strong>Naturaleza jurídca de la empresa:</strong> {{$element->sector}}
 
-											<h3 class="timeline-header"><a>Datos de aval</a></h3>
-
-											<div class="timeline-body">            		
-												<strong>Nombre: </strong>{{ $aval->name}} <br>
-												<strong>Apellido:</strong> {{ $aval->last_name}} <br>
-												<strong>Dirección:</strong> {{ $aval->address}} <br>	
-												<strong>Colonia:</strong> {{ $aval->colony}} <br>	
-												<strong>Municipio:</strong> {{ $aval->municipality}} <br>
-												<strong>Nacionalidad:</strong> {{$aval->nacionality}} <br>	
-												<strong>Lugar de nacimiento:</strong> {{$aval->place}} <br>	
-												<strong>Fecha de nacimiento:</strong> {{$aval->birthday}} <br>	
-												<strong>Folio IFE:</strong> {{$aval->ife}} <br>	
-												<strong>CURP:</strong> {{$aval->curp}} <br>
-												<strong>Teléfono de casa:</strong> {{$aval->phone}} <br>
-												<strong>Teléfono celular:</strong> {{$aval->cel}} <br>
-												<strong>Sexo:</strong> {{$aval->sex}} <br>
-												<strong>Ocupación:</strong> {{$aval->ocupation}} <br>
-												<strong>Dirrección de trabajo:</strong> {{$aval->address_work}} <br>
-											</div>
-											<a href="{!! route('avals.editAval', [$aval->id]) !!}" class="btn btn-default">Editar</a>
-											@endforeach
-											
 										</div>
+										<a href="{!! route('studies.editStudies', [$element->id]) !!}" class="btn btn-default">Editar</a>
+										@endforeach
+
+									</div>
 
 
 
-									</li>
-									<li>
-										<!-- timeline icon -->
-										<i class="fa fa-building-o bg-marron"></i>
-										<div class="timeline-item">
-											@foreach ($micros as $micros)
-											<span class="time"><i class="fa fa-clock-o"></i> {{$micros->created_at}}</span>
+								</li>
+								<!-- END timeline item -->
+								<li>
+									<!-- timeline icon -->
+									<i class="fa fa-book bg-red"></i>
+									<div class="timeline-item">
+										@foreach ($aval as $aval)
+										<span class="time"><i class="fa fa-clock-o"></i> {{$aval->created_at}}</span>
 
-											<h3 class="timeline-header"><a>Datos de la microempresa</a></h3>
+										<h3 class="timeline-header"><a>Datos de aval</a></h3>
 
-											<div class="timeline-body">            		
-												<strong>Nombre: </strong>{{ $micros->name}} <br>
-												<strong>Dirección:</strong> {{ $micros->address}} <br>	
-												<strong>Colonia:</strong> {{ $micros->colony}} <br>	
-												<strong>Municipio:</strong> {{ $micros->municipality}} <br>
-												<strong>Giro o actividad principal:</strong> {{$micros->activity}} <br>	
-												<strong>Antiguedad de la empresa:</strong> {{$micros->antiquity}} <br>	
-												<strong>Antiguedad en la localidad:</strong> {{$micros->antiquity_locality}} <br>	
-												<strong>Tipo de negocio:</strong> {{$micros->business_type}} <br>	
-												<strong>Horario de Atencion en su negocio:</strong> {{$micros->times}} <br>
-												<strong>Local comercial:</strong> {{$micros->local}} <br>
-											</div>
-											<a href="{!! route('micros.editMicros', [$micros->id]) !!}" class="btn btn-default">Editar</a>
-											@endforeach
-											
+										<div class="timeline-body">            		
+											<strong>Nombre: </strong>{{ $aval->name}} <br>
+											<strong>Apellido:</strong> {{ $aval->last_name}} <br>
+											<strong>Dirección:</strong> {{ $aval->address}} <br>	
+											<strong>Colonia:</strong> {{ $aval->colony}} <br>	
+											<strong>Municipio:</strong> {{ $aval->municipality}} <br>
+											<strong>Nacionalidad:</strong> {{$aval->nacionality}} <br>	
+											<strong>Lugar de nacimiento:</strong> {{$aval->place}} <br>	
+											<strong>Fecha de nacimiento:</strong> {{$aval->birthday}} <br>	
+											<strong>Folio IFE:</strong> {{$aval->ife}} <br>	
+											<strong>CURP:</strong> {{$aval->curp}} <br>
+											<strong>Teléfono de casa:</strong> {{$aval->phone}} <br>
+											<strong>Teléfono celular:</strong> {{$aval->cel}} <br>
+											<strong>Sexo:</strong> {{$aval->sex}} <br>
+											<strong>Ocupación:</strong> {{$aval->ocupation}} <br>
+											<strong>Dirrección de trabajo:</strong> {{$aval->address_work}} <br>
 										</div>
+										<a href="{!! route('avals.editAval', [$aval->id]) !!}" class="btn btn-default">Editar</a>
+										@endforeach
+
+									</div>
 
 
 
-									</li>
-									<li>
-										<!-- timeline icon -->
-										<i class="fa fa-money bg-green"></i>
-										<div class="timeline-item">
-											@foreach ($histories as $history)
-											<span class="time"><i class="fa fa-clock-o"></i> {{$history->created_at}}</span>
+								</li>
+								<li>
+									<!-- timeline icon -->
+									<i class="fa fa-building-o bg-marron"></i>
+									<div class="timeline-item">
+										@foreach ($micros as $micros)
+										<span class="time"><i class="fa fa-clock-o"></i> {{$micros->created_at}}</span>
 
-											<h3 class="timeline-header"><a>Antecedentes crediticios</a></h3>
+										<h3 class="timeline-header"><a>Datos de la microempresa</a></h3>
 
-											<div class="timeline-body">            		
-												<strong>Credito Actual: </strong>{{ $history->credit_actualy}} <br>
-												<strong>Nombre de la empresa:</strong> {{ $history->name_company}} <br>	
-												<strong>Monto recibido:</strong> {{ $history->amount}} <br>	
-												<strong>Plazo:</strong> {{ $history->term}} <br>
-												<strong>Monto de pago por amortización:</strong> {{$history->payment_amount}} <br>	
-											</div>
-											<a href="{!! route('histories.editHistories', [$history->id]) !!}" class="btn btn-default">Editar</a>
-											@endforeach
-											
+										<div class="timeline-body">            		
+											<strong>Nombre: </strong>{{ $micros->name}} <br>
+											<strong>Dirección:</strong> {{ $micros->address}} <br>	
+											<strong>Colonia:</strong> {{ $micros->colony}} <br>	
+											<strong>Municipio:</strong> {{ $micros->municipality}} <br>
+											<strong>Giro o actividad principal:</strong> {{$micros->activity}} <br>	
+											<strong>Antiguedad de la empresa:</strong> {{$micros->antiquity}} <br>	
+											<strong>Antiguedad en la localidad:</strong> {{$micros->antiquity_locality}} <br>	
+											<strong>Tipo de negocio:</strong> {{$micros->business_type}} <br>	
+											<strong>Horario de Atencion en su negocio:</strong> {{$micros->times}} <br>
+											<strong>Local comercial:</strong> {{$micros->local}} <br>
 										</div>
+										<a href="{!! route('micros.editMicros', [$micros->id]) !!}" class="btn btn-default">Editar</a>
+										@endforeach
+
+									</div>
 
 
 
-									</li>
-									<li>
-										<!-- timeline icon -->
-										<i class="fa fa-heart-o bg-black"></i>
-										<div class="timeline-item">
-											@foreach ($references as $references)
-											<span class="time"><i class="fa fa-clock-o"></i> {{$references->created_at}}</span>
+								</li>
+								<li>
+									<!-- timeline icon -->
+									<i class="fa fa-money bg-green"></i>
+									<div class="timeline-item">
+										@foreach ($histories as $history)
+										<span class="time"><i class="fa fa-clock-o"></i> {{$history->created_at}}</span>
 
-											<h3 class="timeline-header"><a>Referencias</a></h3>
+										<h3 class="timeline-header"><a>Antecedentes crediticios</a></h3>
 
-											<div class="timeline-body">            		
-												<strong>Nombre: </strong>{{ $references->name}} <br>
-												<strong>Apellido:</strong> {{ $references->last_name}} <br>	
-												<strong>Dirección:</strong> {{ $references->address}} <br>	
-												<strong>Teléfono:</strong> {{ $references->phone}} <br>
-												<strong>Perentezco:</strong> {{$references->relationship}} <br>	
-											</div>
-											<a href="{!! route('references.editReferences', [$references->id]) !!}" class="btn btn-default">Editar</a>
-											@endforeach
-											
+										<div class="timeline-body">            		
+											<strong>Credito Actual: </strong>{{ $history->credit_actualy}} <br>
+											<strong>Nombre de la empresa:</strong> {{ $history->name_company}} <br>	
+											<strong>Monto recibido:</strong> {{ $history->amount}} <br>	
+											<strong>Plazo:</strong> {{ $history->term}} <br>
+											<strong>Monto de pago por amortización:</strong> {{$history->payment_amount}} <br>	
 										</div>
+										<a href="{!! route('histories.editHistories', [$history->id]) !!}" class="btn btn-default">Editar</a>
+										@endforeach
+
+									</div>
 
 
 
-									</li>
+								</li>
+								<li>
+									<!-- timeline icon -->
+									<i class="fa fa-heart-o bg-black"></i>
+									<div class="timeline-item">
+										@foreach ($references as $references)
+										<span class="time"><i class="fa fa-clock-o"></i> {{$references->created_at}}</span>
 
-								</ul>
-								
-							</li>
-						</ul>
-					</div>
-					<!-- /.tab-pane -->
+										<h3 class="timeline-header"><a>Referencias</a></h3>
 
+										<div class="timeline-body">            		
+											<strong>Nombre: </strong>{{ $references->name}} <br>
+											<strong>Apellido:</strong> {{ $references->last_name}} <br>	
+											<strong>Dirección:</strong> {{ $references->address}} <br>	
+											<strong>Teléfono:</strong> {{ $references->phone}} <br>
+											<strong>Perentezco:</strong> {{$references->relationship}} <br>	
+										</div>
+										<a href="{!! route('references.editReferences', [$references->id]) !!}" class="btn btn-default">Editar</a>
+										@endforeach
+
+									</div>
+
+
+
+								</li>
+
+							</ul>
+
+						</li>
+					</ul>
 				</div>
-				<!-- /.tab-content -->
+				<!-- /.tab-pane -->
+
 			</div>
-			<!-- /.nav-tabs-custom -->
+			<!-- /.tab-content -->
 		</div>
-		<!-- /.col -->
+		<!-- /.nav-tabs-custom -->
 	</div>
-	<!-- /.row -->
+	<!-- /.col -->
+</div>
+<!-- /.row -->
 
 </section>
 <!-- /.content -->
