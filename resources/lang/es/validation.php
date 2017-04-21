@@ -280,6 +280,9 @@ return [
         'branch_id' => [
             'required' => 'El campo sucursal es obligatorio.',
         ],
+        'last_name' => [
+            'required' => 'El campo apellido es obligatorio.',
+        ],
 
 
     ],

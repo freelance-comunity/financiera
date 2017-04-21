@@ -22,10 +22,7 @@ class History extends Model
 
 	public static $rules = [
 	    "credit_actualy" => "required",
-		"name_company" => "required",
-		"amount" => "required",
-		"term" => "required",
-		"payment_amount" => "required"
+		
 	];
 	public function accredited()
     {

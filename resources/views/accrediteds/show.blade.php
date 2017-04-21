@@ -28,8 +28,29 @@ Acreditado
 							<li class="list-group-item">
 								<b>Grupos</b> <a class="pull-right">543</a>
 							</li>
+							@php
+								$count = App\Models\Branch::all();
+							@endphp
 							<li class="list-group-item">
-								<b>Sucursal</b> <a class="pull-right">13,287</a>
+							@if ($count->isEmpty())
+								<b>Sucursal</b> <a class="pull-right">Sin asignar</a>
+							@else
+							@foreach ($count as $branches)
+								<b>Sucursal</b> <a href="{{ url('/branches') }}" class="pull-right">{{$branches->nomenclature}}</a>
+							@endforeach
+							@endif
+							</li>
+							@php
+								$count = App\User::where('type', 'promotor')->get();;
+							@endphp
+							<li class="list-group-item">
+							@if ($count->isEmpty())
+								<b>Promotor</b> <a class="pull-right">Sin asignar</a>
+							@else
+							@foreach ($count as $users)
+								<b>Promotor</b> <a href="{{ url('/users') }}" class="pull-right">{{$users->name}} {{ $users->last_name}}</a>
+							@endforeach
+							@endif
 							</li>
 						</ul>
 					</div>
@@ -60,7 +81,7 @@ Acreditado
 
 						<strong><i class="fa fa-map-marker margin-r-5"></i> Dirección</strong>
 
-						<p class="text-muted">{{$accredited->cel}}</p>
+						<p class="text-muted">{{$accredited->address}}</p>
 
 						<hr>
 
@@ -96,7 +117,7 @@ Acreditado
 										<!-- timeline icon -->
 										<i class="fa fa-user bg-blue"></i>
 										<div class="timeline-item">
-											<span class="time"><i class="fa fa-clock-o"></i> {{$accredited->created_at}}</span>
+											<span class="time"> Creado el: {{$accredited->created_at}}</span>
 
 											<h3 class="timeline-header"><a>Datos Generales</a></h3>
 
@@ -128,14 +149,10 @@ Acreditado
 									<li>
 										<!-- timeline icon -->
 										<i class="fa fa-home bg-purple"></i>
-										<div class="timeline-item">
-
-											@foreach ($addresses as $addresses)
-											
-											<span class="time"><i class="fa fa-clock-o"></i> {{$addresses->created_at}}</span>
-
-											<h3 class="timeline-header"><a>Datos domiciliarios</a></h3>
-
+										<div class="timeline-item">											
+											<h3 class="timeline-header"><a href="{!! route('accrediteds.addressesAccredited', [$accredited->id])!!}">Datos domiciliarios</a></h3>
+											@foreach ($addresses as $addresses)											
+											<span class="time">Creado el: {{$addresses->created_at}}</span>
 											<div class="timeline-body">            		
 												<strong>Avenida: </strong>{{ $addresses->avenue}} <br>
 												<strong>Entre que calles:</strong> {{ $addresses->streets}} <br>
@@ -158,11 +175,9 @@ Acreditado
 										<!-- timeline icon -->
 										<i class="fa fa-dollar bg-yellow"></i>
 										<div class="timeline-item">
+											<h3 class="timeline-header"><a href="{!! route('accrediteds.studiesAccredited', [$accredited->id])!!}">Estudio Socioeconomico</a></h3>
 											@foreach ($study as $element)
-											<span class="time"><i class="fa fa-clock-o"></i> {{$element->created_at}}</span>
-
-											<h3 class="timeline-header"><a>Estudio Socioeconomico</a></h3>
-
+											<span class="time">Creado el: {{$element->created_at}}</span>
 											<div class="timeline-body">            		
 												<strong>Dependientes economicos: </strong>{{ $element->dependent}} <br>
 												<strong>Regimen de casamiento:</strong> {{ $element->regimen}} <br>
@@ -188,13 +203,11 @@ Acreditado
 									<!-- END timeline item -->
 									<li>
 										<!-- timeline icon -->
-										<i class="fa fa-book bg-red"></i>
+										 <i  class="fa fa-book bg-red"></i>
 										<div class="timeline-item">
+											<h3 class="timeline-header"><a  href="{!! route('accrediteds.avalsAccredited', [$accredited->id])!!}">Datos de aval</a></h3>
 											@foreach ($aval as $aval)
-											<span class="time"><i class="fa fa-clock-o"></i> {{$aval->created_at}}</span>
-
-											<h3 class="timeline-header"><a>Datos de aval</a></h3>
-
+											<span class="time">Creado el: {{$aval->created_at}}</span>
 											<div class="timeline-body">            		
 												<strong>Nombre: </strong>{{ $aval->name}} <br>
 												<strong>Apellido:</strong> {{ $aval->last_name}} <br>
@@ -223,12 +236,11 @@ Acreditado
 									<li>
 										<!-- timeline icon -->
 										<i class="fa fa-building-o bg-marron"></i>
-										<div class="timeline-item">
+										<div class="timeline-item">						
+											
+											<h3 class="timeline-header"><a href="{!! route('accrediteds.microsAccredited', [$accredited->id])!!}">Datos de la microempresa</a></h3>
 											@foreach ($micros as $micros)
-											<span class="time"><i class="fa fa-clock-o"></i> {{$micros->created_at}}</span>
-
-											<h3 class="timeline-header"><a>Datos de la microempresa</a></h3>
-
+											<span class="time">Creado el: {{$micros->created_at}}</span>
 											<div class="timeline-body">            		
 												<strong>Nombre: </strong>{{ $micros->name}} <br>
 												<strong>Dirección:</strong> {{ $micros->address}} <br>	
@@ -242,6 +254,8 @@ Acreditado
 												<strong>Local comercial:</strong> {{$micros->local}} <br>
 											</div>
 											<a href="{!! route('micros.editMicros', [$micros->id]) !!}" class="btn btn-default">Editar</a>
+											<a href="{!! route('micros.delete', [$micros->id]) !!}" onclick="return confirm('Are you sure wants to delete this History?')" class="btn btn-default">Eliminar</a>
+											<hr>
 											@endforeach
 											
 										</div>
@@ -253,11 +267,10 @@ Acreditado
 										<!-- timeline icon -->
 										<i class="fa fa-money bg-green"></i>
 										<div class="timeline-item">
+											
+											<h3 class="timeline-header"><a href="{!! route('accrediteds.historiesAccredited', [$accredited->id])!!}">Antecedentes crediticios</a></h3>
 											@foreach ($histories as $history)
-											<span class="time"><i class="fa fa-clock-o"></i> {{$history->created_at}}</span>
-
-											<h3 class="timeline-header"><a>Antecedentes crediticios</a></h3>
-
+											<span class="time">Creado el: {{$history->created_at}}</span>
 											<div class="timeline-body">            		
 												<strong>Credito Actual: </strong>{{ $history->credit_actualy}} <br>
 												<strong>Nombre de la empresa:</strong> {{ $history->name_company}} <br>	
@@ -266,6 +279,8 @@ Acreditado
 												<strong>Monto de pago por amortización:</strong> {{$history->payment_amount}} <br>	
 											</div>
 											<a href="{!! route('histories.editHistories', [$history->id]) !!}" class="btn btn-default">Editar</a>
+											<a href="{!! route('histories.delete', [$history->id]) !!}" onclick="return confirm('Are you sure wants to delete this History?')" class="btn btn-default">Eliminar</a>
+											<hr>
 											@endforeach
 											
 										</div>
@@ -277,11 +292,9 @@ Acreditado
 										<!-- timeline icon -->
 										<i class="fa fa-heart-o bg-black"></i>
 										<div class="timeline-item">
+											<h3 class="timeline-header"><a href="{!! route('accrediteds.referencesAccredited', [$accredited->id])!!}">Referencias</a></h3>
 											@foreach ($references as $references)
-											<span class="time"><i class="fa fa-clock-o"></i> {{$references->created_at}}</span>
-
-											<h3 class="timeline-header"><a>Referencias</a></h3>
-
+											<span class="time">Creado el: {{$references->created_at}}</span>
 											<div class="timeline-body">            		
 												<strong>Nombre: </strong>{{ $references->name}} <br>
 												<strong>Apellido:</strong> {{ $references->last_name}} <br>	

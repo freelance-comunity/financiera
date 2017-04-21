@@ -77,8 +77,7 @@ class HistoryController extends AppBaseController
 		$accrediteds = Accredited::find($accredited);
 		$histories = $accrediteds->history;
 
-		return view('histories.view-histories')
-		->with('histories', $histories);
+		return redirect(route('accrediteds.show',  [$accrediteds->id]));
 	
 }
 
@@ -145,7 +144,7 @@ class HistoryController extends AppBaseController
 
 		Alert::success('Datos actualizados exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('histories.index'));
+		return redirect(route('accrediteds.index'));
 	}
 
 	/**
@@ -168,14 +167,14 @@ class HistoryController extends AppBaseController
 
 		$history->delete();
 
-		Alert::success('Historial crediticio eliminado exitosamente.')->persistent('Cerrar');
+		Alert::error('Historial crediticio eliminado exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('histories.index'));
+		return redirect(route('accrediteds.index'));
 	}
 	public function editHistories($id)
 	{
 		$history = History::find($id);
-
+		
 		if(empty($history))
 		{
 			Flash::error('History not found');

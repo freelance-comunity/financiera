@@ -92,8 +92,7 @@ class AddressController extends AppBaseController
 		$accrediteds = Accredited::find($accredited);
 		$addresses = $accrediteds->addresses;
 
-		return view('addresses.view-addresses')
-		->with('addresses', $addresses);
+		return redirect(route('accrediteds.show',  [$accrediteds->id]));
 	}
 
 	/**
@@ -159,7 +158,9 @@ class AddressController extends AppBaseController
 
 		Alert::success('Domicilio editado exitosamente.')->persistent('Cerrar');
 		
-		return redirect(route('addresses.index'));
+		
+		return redirect(route('accrediteds.index'));
+		
 		
 	}
 

@@ -1,7 +1,7 @@
 <!--- Credit Actualy Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('credit_actualy', '¿Tiene crédito con alguna empresa actualmente?:') !!}
-     {!! Form::select('credit_actualy',['Si' => 'Si', 'No' => 'No'], null, ['class' => 'form-control'])!!}
+     {!! Form::select('credit_actualy',['Si' => 'Si'], null, ['class' => 'form-control'])!!}
 </div>
 
 <!--- Name Company Field --->

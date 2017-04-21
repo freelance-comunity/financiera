@@ -64,5 +64,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Branch');
     }
-
+    public static function promotor($id){
+        return Branch::where('branch_id','=',$id)
+        ->get();
+    }
 }

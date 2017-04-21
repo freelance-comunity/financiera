@@ -71,16 +71,17 @@
 <!--- User Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('branch_id', 'Sucursal:') !!}
-        <select name="user_id" class="form-control" id="">
+        <select name="branch_id" class="form-control" id="">
         @if ($count->isEmpty())
             <option value="">Aún no hay promotores dados de alta en el sistema</option>
-    @else
-        @endif
+        @else
+       
             @foreach ($count as $branches)
                 <option value="{{$branches->id}}" {{ ($branches->id == $accredited->branch_id) ? 'selected=selected' : '' }}>
-            {{$branches->name}} 
+            {{$branches->nomenclature}} 
         </option>
             @endforeach
+             @endif
         </select>
     </div>
 
@@ -94,13 +95,14 @@
         <select name="user_id" class="form-control" id="">
         @if ($count->isEmpty())
             <option value="">Aún no hay promotores dados de alta en el sistema</option>
-    @else
-        @endif
+        @else
+      
             @foreach ($count as $element)
                 <option value="{{$element->id}}" {{ ($element->id == $accredited->user_id) ? 'selected=selected' : '' }}>
             {{$element->name}} {{$element->last_name}}
         </option>
             @endforeach
+              @endif
         </select>
     </div>
 <!--- Civil Status Field --->

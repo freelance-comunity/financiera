@@ -21,7 +21,7 @@ class BranchController extends AppBaseController
 	 * @return Response
 	 */
 	public function index(Request $request)
-	{
+	{	
 		$query = Branch::query();
         $columns = Schema::getColumnListing('$TABLE_NAME$');
         $attributes = array();
@@ -38,7 +38,7 @@ class BranchController extends AppBaseController
 
         $branches = $query->get();
 
-        return view('branches.index')
+        return view('branches.index', compact('branches'))
             ->with('branches', $branches)
             ->with('attributes', $attributes);
 	}
@@ -160,5 +160,13 @@ class BranchController extends AppBaseController
 		Alert::message('Sucursal elimininada exitosamente.');
 
 		return redirect(route('branches.index'));
+	}
+	public function getPromotor(Request $request, $id)
+	{
+		if($request->ajax()){
+			$promotor = Branch::promotor($id);
+			return response()->json($promotor);
+
+		}
 	}
 }

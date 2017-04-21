@@ -395,3 +395,4 @@ Route::get('profile/', function() {
 });
 
 Route::post('updatepassword', 'UserController@updatePassword');
+
