@@ -112,6 +112,21 @@
     'Viudo/a' => 'Viudo/a', 'Divorciado/a' => 'Divorciado/a'], null, ['class' => 'form-control'])!!}
 </div>
 
+ <div class="form-group col-sm-12 col-lg-12">
+    <div class="gllpLatlonPicker">
+                 {!! Form::label('location', 'Introduce Dirección para localizar en Google Maps:') !!}
+                <input type="text" value="{{$accredited->address}}" class="gllpSearchField col-lg-8 form-control">
+                <hr>
+                <input type="button" class="gllpSearchButton btn btn-success" value="Buscar">
+                <br/><br/>
+                <div class="gllpMap form-control">Google Maps</div>
+                <br/>
+                <input type="hidden" name="latitude" class="gllpLatitude" value="{{$accredited->latitude}}"/>
+                <input type="hidden" name="length" class="gllpLongitude" value="{{$accredited->length}}"/>
+                <input type="hidden" class="gllpZoom" value="12"/>
+    </div>
+    </div>
+
 
 
 
