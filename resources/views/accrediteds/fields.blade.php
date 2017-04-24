@@ -106,21 +106,22 @@
     </div>
 
     <div class="form-group col-sm-12 col-lg-12">
-    <div class="row gllpLatlonPicker">
-                <input type="text" class="gllpSearchField">
+    <div class="gllpLatlonPicker">
+                 {!! Form::label('location', 'Introduce Dirección para localizar en Google Maps:') !!}
+                <input type="text" class="gllpSearchField col-lg-8 form-control">
+                <hr>
                 <input type="button" class="gllpSearchButton btn btn-success" value="Buscar">
                 <br/><br/>
                 <div class="gllpMap form-control">Google Maps</div>
                 <br/>
                 <input type="hidden" name="latitude" class="gllpLatitude" value="16.753239967660058"/>
                 <input type="hidden" name="length" class="gllpLongitude" value="-93.11789682636714"/>
-                Zoom: <input type="text" class="gllpZoom" value="12"/>
-                <br/>
+                <input type="hidden" class="gllpZoom" value="12"/>
     </div>
     </div>
 
 
     <!--- Submit Field --->
-    <div class="form-group col-sm-12">
+    <div class="form-group col-sm-6">
         {!! Form::submit('GUARDAR', ['class' => 'btn btn-primary']) !!}
     </div>
