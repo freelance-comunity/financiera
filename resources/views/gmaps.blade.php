@@ -16,11 +16,12 @@ Mapas
 				<div class="gllpMap">Google Maps</div>
 				<br/>
 				lat/lon:
-				<input type="hidden" name="latitud" class="gllpLatitude" value="16.753239967660058"/>
+				<input type="text" name="latitud" class="gllpLatitude" value="16.753239967660058"/>
 				/
-				<input type="hidden" name="longitud" class="gllpLongitude" value="-93.11789682636714"/>
+				<input type="text" name="longitud" class="gllpLongitude" value="-93.11789682636714"/>
 				zoom: <input type="text" name="zoom" class="gllpZoom" value="12"/>
 				<br/>
+				<div id="pano"></div>
 				<input type="submit">
 			</fieldset>
 		</form>

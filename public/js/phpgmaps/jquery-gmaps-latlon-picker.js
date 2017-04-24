@@ -34,10 +34,10 @@ $.fn.gMapsLatLonPicker = (function() {
 		queryElevationWhenLatLngChanges: true,
 		mapOptions : {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			mapTypeControl: false,
+			mapTypeControl: true,
 			disableDoubleClickZoom: true,
 			zoomControlOptions: true,
-			streetViewControl: false
+			streetViewControl: true
 		},
 		strings : {
 			markerText : "Drag this Marker",
