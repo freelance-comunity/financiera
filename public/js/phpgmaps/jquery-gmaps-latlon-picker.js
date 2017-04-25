@@ -34,15 +34,15 @@ $.fn.gMapsLatLonPicker = (function() {
 		queryElevationWhenLatLngChanges: true,
 		mapOptions : {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			mapTypeControl: false,
+			mapTypeControl: true,
 			disableDoubleClickZoom: true,
 			zoomControlOptions: true,
-			streetViewControl: false
+			streetViewControl: true
 		},
 		strings : {
-			markerText : "Drag this Marker",
-			error_empty_field : "Couldn't find coordinates for this place",
-			error_no_results : "Couldn't find coordinates for this place"
+			markerText : "Arrastre este marcador.",
+			error_empty_field : "No se encontraron coordenadas de este lugar.",
+			error_no_results : "No se encontraron coordenadas de este lugar."
 		},
 		displayError : function(message) {
 			alert(message);
