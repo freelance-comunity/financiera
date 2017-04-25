@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use YoHang88\LetterAvatar\LetterAvatar;
 
 class User extends Authenticatable
 {
@@ -67,5 +68,11 @@ class User extends Authenticatable
     public static function promotor($id){
         return Branch::where('branch_id','=',$id)
         ->get();
+    }
+
+    public function getAvatarAttribute()
+    {
+        return new LetterAvatar($this->name);
+
     }
 }
