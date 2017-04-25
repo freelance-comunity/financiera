@@ -1,4 +1,4 @@
-    <!--- Name Field --->
+        <!--- Name Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('name', 'Nombre(s):') !!}
         <input type="text" name="name"  value="{{ old('name') }}" class="form-control">
@@ -71,7 +71,7 @@
      <!--- Branch Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('branch_id', 'Sucursal:') !!}
-        <select name="branch_id" class="form-control" id="">
+        <select name="branch_id" value="" class="form-control" id="branch">
         @if($count ->isEmpty())
         <option value="">No hay sucursales registradas en el sistema</option>
         @else 
@@ -86,16 +86,8 @@
 @endphp
      <!--- User Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('user_id', 'Promotor:') !!}
-        <select name="user_id" class="form-control" id="">
-        @if($count ->isEmpty())
-        <option value="">No hay promotores registrados en el sistema</option>
-        @else
-            @foreach ($users as $element)
-                <option value="{{$element->id}}">{{$element->name}} {{$element->last_name}}</option>
-            @endforeach
-        @endif
-        </select>
+        {!! Form::label('user_id', 'Promotor:' ) !!}
+       {!! Form::select('user_id', ['placeholder'=>'seleccciona'],null, ['id'=>'user', 'class'=>"form-control"])!!}
     </div>
 
     <!--- Civil Status Field --->

@@ -19,6 +19,9 @@ Acreditado
 						<h3 class="profile-username text-center">{{ $accredited->name }} {{$accredited->last_name}}</h3>
 						<ul class="list-group list-group-unbordered">
 							<li class="list-group-item">
+								<p><a href="{{ url('/updatephoto') }}/{{$accredited->id}}" class="pull-center"><b>Cambiar foto</b></a></p>
+							</li>
+							<li class="list-group-item">
 								<b>Creditos activos</b> <a class="pull-right">1,322</a>
 							</li>
 							<li class="list-group-item">
@@ -34,7 +37,8 @@ Acreditado
 							$user = $accredited->user;
 							@endphp
 							<li class="list-group-item">
-								<b>Promotor</b> <a href="{{ url('/users') }}" class="pull-right">{{$user->name}} {{ $user->last_name}}</a>
+								<b>Promotor</b>
+								<p><a href="{{ url('/users') }}" class="pull-left">{{$user->name}} {{ $user->last_name}}</a></p> 
 							</li>
 						</ul>
 					</div>

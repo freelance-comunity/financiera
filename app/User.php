@@ -68,4 +68,10 @@ class User extends Authenticatable
         return Branch::where('branch_id','=',$id)
         ->get();
     }
+
+    public static function users($id){
+        return User::where('branch_id','=',$id)
+        ->get();
+    }
+
 }

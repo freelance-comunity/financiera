@@ -71,7 +71,7 @@
 <!--- User Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('branch_id', 'Sucursal:') !!}
-        <select name="branch_id" class="form-control" id="">
+        <select name="branch_id" class="form-control" id="branch">
         @if ($count->isEmpty())
             <option value="">Aún no hay promotores dados de alta en el sistema</option>
         @else
@@ -85,26 +85,14 @@
         </select>
     </div>
 
-@php
-    $count = App\User::where('type', 'promotor')->get();
-@endphp
 
 <!--- User Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('user_id', 'Promotor:') !!}
-        <select name="user_id" class="form-control" id="">
-        @if ($count->isEmpty())
-            <option value="">Aún no hay promotores dados de alta en el sistema</option>
-        @else
-      
-            @foreach ($count as $element)
-                <option value="{{$element->id}}" {{ ($element->id == $accredited->user_id) ? 'selected=selected' : '' }}>
-            {{$element->name}} {{$element->last_name}}
-        </option>
-            @endforeach
-              @endif
-        </select>
+        {!! Form::label('user_id', 'Promotor:' ) !!}
+       {!! Form::select('user_id', ['placeholder'=>'seleccciona'],null, ['id'=>'user', 'class'=>"form-control"])!!}
     </div>
+
+
 <!--- Civil Status Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('civil_status', 'Estado Civil:') !!}

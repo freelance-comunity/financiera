@@ -167,7 +167,7 @@ class MicroController extends AppBaseController
 
 		$micro->delete();
 
-		Alert::success('Datos eliminados exitosamente.')->persistent('Cerrar');
+		Alert::error('Datos eliminados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('accrediteds.index'));
 	}

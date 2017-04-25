@@ -30,7 +30,9 @@ class AccreditedController extends AppBaseController
 	}
 	
 	public function index(Request $request)
-	{
+	{	
+		$branches = Branch::lists('nomenclature', 'id');
+
 		$query = Accredited::query();
 		$columns = Schema::getColumnListing('$TABLE_NAME$');
 		$attributes = array();
@@ -49,8 +51,15 @@ class AccreditedController extends AppBaseController
 
 		return view('accrediteds.index')
 		->with('accrediteds', $accrediteds)
-		->with('attributes', $attributes);
+		->with('attributes', $attributes)
+		->with('branches', $branches);
 	}
+
+	public function prodfunct()
+	{
+		return view('accrediteds.index');
+	}
+	
 
 	/**
 	 * Show the form for creating a new Accredited.

@@ -107,8 +107,12 @@
   Route::get('accrediteds/{id}/delete', [
     'as' => 'accrediteds.delete',
     'uses' => 'AccreditedController@destroy',
+    
+    ]); 
 
-    ]);   
+  
+Route::get('accrediteds/users/{id}', 'BranchController@getUsers');
+Route::get('accrediteds/{users}/edit/{id}', 'BranchController@getUsers');
 
   Route::resource('addresses', 'AddressController');
 
@@ -404,3 +408,4 @@ Route::post('map', function(Illuminate\Http\Request $request) {
     $input = $request->all();
     dd($input);
 });
+
