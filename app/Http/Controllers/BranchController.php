@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Requests\CreateBranchRequest;
 use App\Models\Branch;
+use App\User;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
 use Response;
@@ -161,12 +162,13 @@ class BranchController extends AppBaseController
 
 		return redirect(route('branches.index'));
 	}
-	public function getPromotor(Request $request, $id)
+	public function getUsers(Request $request, $id)
 	{
 		if($request->ajax()){
-			$promotor = Branch::promotor($id);
-			return response()->json($promotor);
+			$users = User::users($id);
+			return response()->json($users);
 
 		}
 	}
+	
 }

@@ -70,9 +70,17 @@ class User extends Authenticatable
         ->get();
     }
 
+<<<<<<< HEAD
     public function getAvatarAttribute()
     {
         return new LetterAvatar($this->name);
 
     }
+=======
+    public static function users($id){
+        return User::where('branch_id','=',$id)
+        ->get();
+    }
+
+>>>>>>> remotes/origin/master
 }
