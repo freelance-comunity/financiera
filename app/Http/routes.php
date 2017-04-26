@@ -111,8 +111,8 @@
     ]); 
 
   
-Route::get('accrediteds/users/{id}', 'BranchController@getUsers');
-Route::get('accrediteds/{users}/edit/{id}', 'BranchController@getUsers');
+  Route::get('accrediteds/users/{id}', 'BranchController@getUsers');
+  Route::get('accrediteds/{users}/edit/{id}', 'BranchController@getUsers');
 
   Route::resource('addresses', 'AddressController');
 
@@ -392,20 +392,31 @@ Route::get('accrediteds/{users}/edit/{id}', 'BranchController@getUsers');
     'uses' => 'InformationController@destroy',
     ]);
 
-Route::get('profile/', function() {
+  Route::get('profile/', function() {
     $user = Auth::user();
     return view('users.profile')
     ->with('user', $user);
-});
+  });
 
-Route::post('updatepassword', 'UserController@updatePassword');
+  Route::post('updatepassword', 'UserController@updatePassword');
 
-Route::get('gmaps', function() {
+  Route::get('gmaps', function() {
     return view('gmaps');
-});
+  });
 
-Route::post('map', function(Illuminate\Http\Request $request) {
+  Route::post('map', function(Illuminate\Http\Request $request) {
     $input = $request->all();
     dd($input);
+  });
+
+/*
+* Credit application paths 
+*/
+Route::get('allacrediteds', function() {
+
+  $accrediteds = App\Models\Accredited::all();
+  return view('credits.acrediteds')
+  ->with('accrediteds', $accrediteds);
 });
 
+Route::get('show-request/{id}', 'CreditController@showRequest');
