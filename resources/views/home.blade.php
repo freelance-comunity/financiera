@@ -143,7 +143,7 @@ s&c  <small>Version 1.0</small>
 		</div>
 		<!-- /.box -->
 		@php
-		$accrediteds = App\Models\Accredited::all()->take(4);
+		$accrediteds = App\Models\Accredited::all();
 		@endphp
 		<div class="col-md-4">
 			<!-- USERS LIST -->

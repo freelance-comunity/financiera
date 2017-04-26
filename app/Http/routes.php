@@ -5,6 +5,16 @@
     return redirect('login');
   });
 
+  Route::get('testing', function(){
+    $accredited = App\Models\Accredited::find(3);
+    $branch = $accredited->branch;
+    $employes = $branch->users;
+    $employes2 = DB::table('users')->where('type', '=', 'promotor')->where('branch_id', '=', $branch->id)->get();
+    foreach ($employes2 as $key => $value) {
+      echo $value->name;
+    }
+  });
+
   Route::get('/rolescreate', function() {
     $propietario = new App\Role();
     $propietario->name         = 'propietario';
@@ -110,9 +120,9 @@
     
     ]); 
 
-  
+
   Route::get('accrediteds/users/{id}', 'BranchController@getUsers');
-  Route::get('accrediteds/{users}/edit/{id}', 'BranchController@getUsers');
+  
 
   Route::resource('addresses', 'AddressController');
 

@@ -78,7 +78,7 @@ class User extends Authenticatable
     }
 
     public static function users($id){
-        return User::where('branch_id','=',$id)
+        return User::where('branch_id','=',$id)->where('type','promotor')
         ->get();
     }
 

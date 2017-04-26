@@ -17,6 +17,7 @@
 <script src="{{ asset('/select2/js/select2.min.js') }}"></script>
 
 <script src="{{ asset('/js/dropdown.js')}}"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         // inicializamos el plugin
