@@ -87,7 +87,17 @@
      <!--- User Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('user_id', 'Promotor:' ) !!}
-       {!! Form::select('user_id', ['placeholder'=>'seleccciona'],null, ['id'=>'user', 'class'=>"form-control"])!!}
+        <select name="user_id" id="user" class="form-control">
+        @if($count ->isEmpty())
+         <option value="">No hay promotores registradios en el sistema</option>
+         @else
+        @foreach ($count as $users)
+        <option value="{{$users->id}}"></option>
+          @endforeach
+       @endif
+        </select>
+    
+
     </div>
 
     <!--- Civil Status Field --->

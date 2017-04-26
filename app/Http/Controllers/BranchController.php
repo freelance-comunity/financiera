@@ -170,5 +170,5 @@ class BranchController extends AppBaseController
 
 		}
 	}
-	
+
 }
