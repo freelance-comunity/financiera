@@ -1,29 +1,32 @@
 
-<!--- Date Field --->
+
+<!--- Phone Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('phone', 'No. de teléfono fijo:') !!}
-    <input type="text" name="phone" value="{{$accrediteds->phone}}", class="form-control" disabled>
+    {!! Form::label('phone', 'Número de teléfono fijo:') !!}
+    {!! Form::text('phone', $accredited->phone, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
 </div>
 
-<!--- Date Field --->
+<!--- Phone Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('cel', 'No. de celular:') !!}
-    <input type="text" name="cel" value="{{$accrediteds->cel}}", class="form-control" disabled>
+    {!! Form::label('cel', 'Número de teléfono celular:') !!}
+    {!! Form::text('cel', $accredited->cel, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+
 </div>
 
 <!--- Date Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('date', 'Fecha:') !!}
     <input type="date" name="date" class="form-control">
-     <input type="hidden" name="accredited_id" value="{{ $accrediteds->id}}">
+     <input type="hidden" name="accredited_id" value="{{ $accredited->id}}">
 </div>
 
+
 @php
-    $addresses = $accrediteds->addresses;
+    $addresses = $accredited->addresses;
 @endphp
      <!--- Aval Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('address_id', 'colonia:') !!}
+        {!! Form::label('address_id', 'Colonia/Población:') !!}
        
              @foreach ($addresses as $addresses)
                 <input type="text" name="address_id" value="{{$addresses->colony}} ", class="form-control" disabled>
@@ -31,11 +34,11 @@
        
     </div>
 @php
-    $addresses = $accrediteds->addresses;
+    $addresses = $accredited->addresses;
 @endphp
     <!--- Aval Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('address_id', 'colonia:') !!}
+        {!! Form::label('address_id', 'Municipio:') !!}
        
              @foreach ($addresses as $addresses)
                 <input type="text" name="address_id" value="{{$addresses->municipality}} ", class="form-control" disabled>
@@ -44,11 +47,11 @@
     </div>
 
 @php
-    $addresses = $accrediteds->addresses;
+    $addresses = $accredited->addresses;
 @endphp
     <!--- Aval Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('address_id', 'colonia:') !!}
+        {!! Form::label('address_id', 'Estado:') !!}
        
              @foreach ($addresses as $addresses)
                 <input type="text" name="address_id" value="{{$addresses->federative}} ", class="form-control" disabled>
@@ -63,7 +66,7 @@
     {!! Form::text('name_spouse', null, ['class' => 'form-control']) !!}
 </div>
 @php
-    $avals = $accrediteds->avals;
+    $avals = $accredited->avals;
 @endphp
      <!--- Aval Field --->
     <div class="form-group col-sm-6 col-lg-4">
@@ -87,7 +90,7 @@
     {!! Form::select('debts', ['Si'=>'Si','No'=>'No'], null, ['class' => 'form-control']) !!}
 </div>
 @php
-    $micros = $accrediteds->micros;
+    $micros = $accredited->micros;
 @endphp
 <!--- Economic Activity Field --->
 <div class="form-group col-sm-6 col-lg-4">
@@ -118,7 +121,7 @@
 <!--- Warranty Type Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('warranty_type', 'Tipo de garantía:') !!}
-    {!! Form::select('warranty_type',['Aval'=>'Aval','Prendaria'=>'Prendaria','Hipotecaria'=>'Hipotecari'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('warranty_type',['Aval'=>'Aval','Prendaria'=>'Prendaria','Hipotecaria'=>'Hipotecaria'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Warranty Value Field --->
@@ -158,13 +161,13 @@
    
 </div>
 @php
-    $user = $accrediteds->user;
+    $user = $accredited->user;
 @endphp
 
 <!--- Adviser Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('adviser', 'Asesor de Credito:') !!}
-    <input type="text" name="adviser" value="{{$accrediteds->user->name}} {{$accrediteds->user->last_name}}", class="form-control" disabled>
+    <input type="text" name="adviser" value="{{$accredited->user->name}} {{$accredited->user->last_name}}", class="form-control" disabled>
 </div>
 
 <!--- Observations Field --->

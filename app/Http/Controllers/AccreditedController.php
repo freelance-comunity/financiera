@@ -274,9 +274,18 @@ class AccreditedController extends AppBaseController
 	}
 	public function creditsAccredited($id)
 	{
-		$accrediteds = Accredited::find($id);
-		return view ('credits.create')
-		->with('accrediteds', $accrediteds);		
+		$accredited = Accredited::find($id);
+		$aval = $accredited->avals;
+		$address = $accredited->addresses;
+		if (empty($aval)) {
+			Alert::error('Este acreditado no cuenta con los datos necesarios para solicitar crédito, por favor verifique los datos del acreditado.')->persistent('Cerrar');
+			return redirect('allacrediteds');
+		}else{
+			return view ('credits.create')
+			->with('accredited', $accredited)
+			->with('aval', $aval)
+			->with('address', $address);	
+		}	
 	}
 
 	public function creditsCuotaAccredited($id)

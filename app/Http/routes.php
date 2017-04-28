@@ -1,4 +1,4 @@
-  <?php
+    <?php
 
   Route::get('/', function () {
     //return view('welcome');
@@ -457,4 +457,5 @@ Route::get('creditsCuotaAccredited/{id}/',[
     return view('credits.show')
     ->with('credits', $credits);
   });
+
 
