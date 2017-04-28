@@ -7,11 +7,10 @@
 
   Route::get('testing', function(){
     $accredited = App\Models\Accredited::find(3);
-    $branch = $accredited->branch;
-    $employes = $branch->users;
-    $employes2 = DB::table('users')->where('type', '=', 'promotor')->where('branch_id', '=', $branch->id)->get();
-    foreach ($employes2 as $key => $value) {
-      echo $value->name;
+    $address = $accredited->location;
+    $aval = $accredited->aval;
+    if (empty($aval)) {
+      echo "no hay datos";
     }
   });
 

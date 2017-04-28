@@ -1,8 +1,30 @@
+<!--- Phone Field --->
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('phone', 'Número de teléfono fijo:') !!}
+    {!! Form::text('phone', $accredited->phone, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+</div>
+
+<!--- Phone Field --->
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('cel', 'Número de teléfono celular:') !!}
+    {!! Form::text('cel', $accredited->cel, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+</div>
+
 <!--- Date Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('date', 'Fecha:') !!}
     <input type="date" name="date" class="form-control">
-     <input type="hidden" name="accredited_id" value="{{ $accrediteds->id}}">
+     <input type="hidden" name="accredited_id" value="{{ $accredited->id}}">
+</div>
+@php
+    $address = $accredited->addresses;
+@endphp
+<!--- Colony/Population Field --->
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('colony', 'Colonia/Población:') !!}
+    @foreach ($address as $element)
+        <input type="text" value="hola">
+    @endforeach
 </div>
 
 <!--- Name Spouse Field --->
@@ -11,7 +33,7 @@
     {!! Form::text('name_spouse', null, ['class' => 'form-control']) !!}
 </div>
 @php
-    $avals = $accrediteds->avals;
+    $avals = $accredited->avals;
 @endphp
      <!--- Aval Field --->
     <div class="form-group col-sm-6 col-lg-4">
@@ -102,13 +124,13 @@
    
 </div>
 @php
-    $user = $accrediteds->user;
+    $user = $accredited->user;
 @endphp
 
 <!--- Adviser Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('adviser', 'Asesor de Credito:') !!}
-    <input type="text" name="adviser" value="{{$accrediteds->user->name}} {{$accrediteds->user->last_name}}", class="form-control" disabled>
+    <input type="text" name="adviser" value="{{$accredited->user->name}} {{$accredited->user->last_name}}", class="form-control" disabled>
 </div>
 
 <!--- Observations Field --->

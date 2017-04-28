@@ -44,7 +44,6 @@ Lista de acreditados
              Comerzar solicitud
            </button>
            <a href="{{ url('view-credits',[$accredited->id])}}" class="uppercase btn btn-info btn-block">Ver credito</a>
-
          </td>
        </td>
      </tr>
@@ -63,7 +62,6 @@ Lista de acreditados
       </div>
       <div class="modal-body">
         <div class="text-center">
-          <img src="https://media.giphy.com/media/3dB5OgH1xd4je/giphy.gif" class="icon" />
           <h4>Selecciona una modalidad de crédito</h4>
         </div>
       </div>
@@ -72,7 +70,7 @@ Lista de acreditados
           <a href="{!! route('accrediteds.creditsAccredited', [$accredited->id])!!}" ><button type="button" class="btn btn-block btn-success">Crédito diario</button></a>
         </div>
         <div class="form-group col-sm-6 col-lg-6">
-        <a href="{!! route('accrediteds.creditsCuotaAccredited', [$accredited->id])!!}" ><button type="button" class="btn btn-block btn-success">Crédito diario cuota</button></a>
+          <a href="{!! route('accrediteds.creditsCuotaAccredited', [$accredited->id])!!}" ><button type="button" class="btn btn-block btn-success">Crédito diario cuota</button></a>
         </div>
       </div>
     </div>
