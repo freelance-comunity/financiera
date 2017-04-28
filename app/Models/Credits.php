@@ -35,7 +35,6 @@ class Credits extends Model
 		"address_id",
 		"aval_id",
 	];
-
 	public static $rules = [
 	    "date" => "required",
 		"name_spouse" => "required",

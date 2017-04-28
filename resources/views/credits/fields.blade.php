@@ -63,10 +63,10 @@
     @endphp
          <!--- Aval Field --->
         <div class="form-group col-sm-6 col-lg-4">
-            {!! Form::label('aval', 'Aval:') !!}
+            {!! Form::label('name', 'Aval:') !!}
            
                  @foreach ($avals as $aval)
-                    <input type="text" name="aval" value="{{$aval->name}} {{$aval->last_name}}", class="form-control" disabled>
+                    <input type="text" name="name" value="{{$aval->name}} {{$aval->last_name}}", class="form-control" disabled>
                  @endforeach
            
         </div>
@@ -137,14 +137,14 @@
 
     <!--- Frequency Payment Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('frequency_payment', 'Frecuencia de pago:') !!}
-        {!! Form::text('frequency_payment', $product->modality, ['class' => 'form-control', 'disabled']) !!}
+        {!! Form::label('frecuency_payment', 'Frecuencia de pago:') !!}
+        {!! Form::text('frecuency_payment', $product->modality, ['class' => 'form-control', 'disabled']) !!}
     </div>
 
     <!--- Interest Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('interest', 'Interés:') !!}
-        {!! Form::text('frequency_payment', $product->cup_interest, ['class' => 'form-control', 'disabled']) !!}
+        {!! Form::text('interest', $product->cup_interest, ['class' => 'form-control', 'disabled']) !!}
     </div>
     @php
         $user = $accredited->user;

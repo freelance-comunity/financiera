@@ -100,7 +100,7 @@
             <tr>
            
               <td>3</td>
-              
+              <td></td>
               <td>{{$credits->previous_credit}}</td>
               <td>{{$credits->debts}}</td>
               <td>{{$credits->economic_activity}}</td>
