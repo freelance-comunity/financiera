@@ -6,48 +6,78 @@ Lista de acreditados
 
 <div class="container">
 
-   @include('sweet::alert')
+ @include('sweet::alert')
 
-   <div class="row">
-    <h1 class="pull-left">Todos los acreditados</h1>
-    <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('accrediteds.create') !!}">Agregar Nuevo</a>
+ <div class="row">
+  <h1 class="pull-left">Todos los acreditados</h1>
+  <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('accrediteds.create') !!}">Agregar Nuevo</a>
 </div>
 
 <div class="row">
-    @if($accrediteds->isEmpty())
-    <div class="well text-center">No se encontraron acreditados</div>
-    @else
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
-            <thead>
-                <th>Nombre(s)</th>
-                <th>Apellidos</th>
-                <th>Celular</th>
-                <th>Teléfono</th>
-                <th>Dirección</th>
-                <th>Foto</th>
-                <th>Crédito</th>
-            </thead>
-            <tbody>
+  @if($accrediteds->isEmpty())
+  <div class="well text-center">No se encontraron acreditados</div>
+  @else
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+      <thead>
+        <th>Nombre(s)</th>
+        <th>Apellidos</th>
+        <th>Celular</th>
+        <th>Teléfono</th>
+        <th>Dirección</th>
+        <th>Foto</th>
+        <th>Crédito</th>
+      </thead>
+      <tbody>
 
-                @foreach($accrediteds as $accredited)
-                <tr>
-                    <td>{!! $accredited->name !!}</td>
-                    <td>{!! $accredited->last_name !!}</td>
-                    <td>{!! $accredited->cel !!}</td>
-                    <td>{!! $accredited->phone !!}</td>
-                    <td>{!! $accredited->address !!}</td>
-                    <td><img style="width: 50px; height: 50px; border-radius: 50%" src="{{ asset('/img/uploads/') }}/{{ $accredited->photo}}" alt="">
-                    </td>
-                    <td>
-                    <a href="{!! url('show-request', [$accredited->id]) !!}" class="uppercase btn btn-success btn-block">Comenzar solicitud</a>
+        @foreach($accrediteds as $accredited)
+        <tr>
+          <td>{!! $accredited->name !!}</td>
+          <td>{!! $accredited->last_name !!}</td>
+          <td>{!! $accredited->cel !!}</td>
+          <td>{!! $accredited->phone !!}</td>
+          <td>{!! $accredited->address !!}</td>
+          <td><img style="width: 50px; height: 50px; border-radius: 50%" src="{{ asset('/img/uploads/') }}/{{ $accredited->photo}}" alt="">
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary btn-block uppercase" data-toggle="modal" data-target="#myModal">
+             Comerzar solicitud
+           </button>
+           <a href="{{ url('view-credits',[$accredited->id])}}" class="uppercase btn btn-info btn-block">Ver credito</a>
 
-                    </td>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+         </td>
+       </td>
+     </tr>
+     @endforeach
+   </tbody>
+ </table>
+ <!-- Modal -->
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Elige la modalidad</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <img src="https://media.giphy.com/media/3dB5OgH1xd4je/giphy.gif" class="icon" />
+          <h4>Selecciona una modalidad de crédito</h4>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="form-group col-sm-6 col-lg-6">
+          <a href="{!! route('accrediteds.creditsAccredited', [$accredited->id])!!}" ><button type="button" class="btn btn-block btn-success">Crédito diario</button></a>
+        </div>
+        <div class="form-group col-sm-6 col-lg-6">
+        <a href="{!! route('accrediteds.creditsCuotaAccredited', [$accredited->id])!!}" ><button type="button" class="btn btn-block btn-success">Crédito diario cuota</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 @endif
 </div>

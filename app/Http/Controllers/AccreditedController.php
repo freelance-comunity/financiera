@@ -117,6 +117,7 @@ class AccreditedController extends AppBaseController
 
 		return view('accrediteds.show')->with('accredited', $accredited);
 	}
+	
 
 	/**
 	 * Show the form for editing the specified Accredited.
@@ -270,5 +271,18 @@ class AccreditedController extends AppBaseController
 			return redirect(route('accrediteds.show', [$accrediteds->id])); 
 		}
 		
+	}
+	public function creditsAccredited($id)
+	{
+		$accrediteds = Accredited::find($id);
+		return view ('credits.create')
+		->with('accrediteds', $accrediteds);		
+	}
+
+	public function creditsCuotaAccredited($id)
+	{
+		$accrediteds = Accredited::find($id);
+		return view ('credits.create-cuota')
+		->with('accrediteds', $accrediteds);		
 	}
 }

@@ -29,8 +29,8 @@
          <option value="">Aún no hay cuentas dadas de alta en el sistema</option>
     @else
         @foreach ($accounts as $element)
-           <option value="{{$element->account_number}}">
-            {{$element->account_number}}
+           <option value="{{$element->cup_interest}}">
+            {{$element->cup_interest}}
         </option>
         @endforeach
     @endif

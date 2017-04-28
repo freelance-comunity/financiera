@@ -81,4 +81,9 @@ class Accredited extends Model
         return $this->belongsTo('App\Models\Branch');
     }
 
+    public function credits()
+	{
+        return $this->hasMany('App\Models\Credits');
+    }
+
 }

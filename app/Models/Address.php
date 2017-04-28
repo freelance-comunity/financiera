@@ -40,4 +40,8 @@ class Address extends Model
     {
         return $this->belongsTo('App\Model\Accredited');
     }
+    public function credits()
+	{
+        return $this->hasMany('App\Models\Credits');
+    }
 }

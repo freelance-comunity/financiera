@@ -430,3 +430,31 @@ Route::get('allacrediteds', function() {
 });
 
 Route::get('show-request/{id}', 'CreditController@showRequest');
+
+
+
+Route::resource('credits', 'CreditsController');
+
+Route::get('credits/{id}/delete', [
+    'as' => 'credits.delete',
+    'uses' => 'CreditsController@destroy',
+]);
+
+Route::get('creditsAccredited/{id}/',[
+    'as' => 'accrediteds.creditsAccredited',
+    'uses' => 'AccreditedController@creditsAccredited',
+    ]);
+
+Route::get('creditsCuotaAccredited/{id}/',[
+    'as' => 'accrediteds.creditsCuotaAccredited',
+    'uses' => 'AccreditedController@creditsCuotaAccredited',
+    ]);
+
+ Route::get('view-credits/{id}', function($id){
+    $accrediteds = App\Models\Accredited::find($id);
+    $credits = $accrediteds->credits;
+
+    return view('credits.show')
+    ->with('credits', $credits);
+  });
+
