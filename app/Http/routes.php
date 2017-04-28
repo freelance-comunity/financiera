@@ -423,10 +423,11 @@
 * Credit application paths 
 */
 Route::get('allacrediteds', function() {
-
+  $products = App\Models\Product::all();
   $accrediteds = App\Models\Accredited::all();
   return view('credits.acrediteds')
-  ->with('accrediteds', $accrediteds);
+  ->with('accrediteds', $accrediteds)
+  ->with('products', $products);
 });
 
 Route::get('show-request/{id}', 'CreditController@showRequest');
@@ -440,7 +441,7 @@ Route::get('credits/{id}/delete', [
     'uses' => 'CreditsController@destroy',
 ]);
 
-Route::get('creditsAccredited/{id}/',[
+Route::get('creditsAccredited/{id}/{product}',[
     'as' => 'accrediteds.creditsAccredited',
     'uses' => 'AccreditedController@creditsAccredited',
     ]);

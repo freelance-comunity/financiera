@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateAccreditedRequest;
 use App\Role;
 use App\User;
+use App\Models\Product;
 use App\Models\Accredited;
 use App\Models\Branch;
 use Illuminate\Http\Request;
@@ -272,20 +273,23 @@ class AccreditedController extends AppBaseController
 		}
 		
 	}
-	public function creditsAccredited($id)
-	{
+	public function creditsAccredited($id, $product)
+	{	
+		$product = Product::find($product);
 		$accredited = Accredited::find($id);
 		$aval = $accredited->avals;
 		$address = $accredited->addresses;
-		if (empty($aval)) {
-			Alert::error('Este acreditado no cuenta con los datos necesarios para solicitar crédito, por favor verifique los datos del acreditado.')->persistent('Cerrar');
+		$micros = $accredited->micros;
+		if ($aval->count() == 0 or $address->count() == 0 or $micros->count() == 0) {
+			Alert::error('Este acreditado no cuenta con los datos registrados para la solicitud de un prestamo')->persistent('Cerrar');
 			return redirect('allacrediteds');
 		}else{
 			return view ('credits.create')
+			->with('product', $product)
 			->with('accredited', $accredited)
 			->with('aval', $aval)
-			->with('address', $address);	
-		}	
+			->with('address', $address);
+		}
 	}
 
 	public function creditsCuotaAccredited($id)

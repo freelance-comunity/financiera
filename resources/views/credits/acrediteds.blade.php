@@ -29,8 +29,39 @@ Lista de acreditados
         <th>Crédito</th>
       </thead>
       <tbody>
-
         @foreach($accrediteds as $accredited)
+        <!-- Modal -->
+        <div class="modal fade" id="myModal{{$accredited->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Elige la modalidad</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="text-center">
+                  <h4>Selecciona una modalidad de crédito</h4>
+                </div>
+              </div>
+              <div class="modal-footer">
+                @if ($products->isEmpty())
+                <a href="{{ url('products') }}" class="btn btn-block btn-danger">No hay productos registrados</a>
+                @else
+                @foreach ($products as $product)
+                <div class="form-group col-sm-6 col-lg-6">
+                  <a href="{{ url('creditsAccredited') }}/{{$accredited->id}}/{{$product->id}}" ><button type="button" class="btn btn-block btn-success">Crédito diario</button></a>
+                </div>
+                @endforeach
+                @endif
+               <!--<div class="form-group col-sm-6 col-lg-6">
+                  <a href="{!! route('accrediteds.creditsCuotaAccredited', [$accredited->id])!!}" ><button type="button" class="btn btn-block btn-success">Crédito diario cuota</button></a>
+                </div>-->
+              </div>
+            </div>
+          </div>
+        </div>
         <tr>
           <td>{!! $accredited->name !!}</td>
           <td>{!! $accredited->last_name !!}</td>
@@ -40,7 +71,7 @@ Lista de acreditados
           <td><img style="width: 50px; height: 50px; border-radius: 50%" src="{{ asset('/img/uploads/') }}/{{ $accredited->photo}}" alt="">
           </td>
           <td>
-            <button type="button" class="btn btn-primary btn-block uppercase" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-primary btn-block uppercase" data-toggle="modal" data-target="#myModal{{$accredited->id}}">
              Comerzar solicitud
            </button>
            <a href="{{ url('view-credits',[$accredited->id])}}" class="uppercase btn btn-info btn-block">Ver credito</a>
@@ -50,32 +81,6 @@ Lista de acreditados
      @endforeach
    </tbody>
  </table>
- <!-- Modal -->
- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Elige la modalidad</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="text-center">
-          <h4>Selecciona una modalidad de crédito</h4>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <div class="form-group col-sm-6 col-lg-6">
-          <a href="{!! route('accrediteds.creditsAccredited', [$accredited->id])!!}" ><button type="button" class="btn btn-block btn-success">Crédito diario</button></a>
-        </div>
-        <div class="form-group col-sm-6 col-lg-6">
-          <a href="{!! route('accrediteds.creditsCuotaAccredited', [$accredited->id])!!}" ><button type="button" class="btn btn-block btn-success">Crédito diario cuota</button></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </div>
 @endif
 </div>
