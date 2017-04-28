@@ -1,9 +1,61 @@
+
+<!--- Date Field --->
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('phone', 'No. de teléfono fijo:') !!}
+    <input type="text" name="phone" value="{{$accrediteds->phone}}", class="form-control" disabled>
+</div>
+
+<!--- Date Field --->
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('cel', 'No. de celular:') !!}
+    <input type="text" name="cel" value="{{$accrediteds->cel}}", class="form-control" disabled>
+</div>
+
 <!--- Date Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('date', 'Fecha:') !!}
     <input type="date" name="date" class="form-control">
      <input type="hidden" name="accredited_id" value="{{ $accrediteds->id}}">
 </div>
+
+@php
+    $addresses = $accrediteds->addresses;
+@endphp
+     <!--- Aval Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('address_id', 'colonia:') !!}
+       
+             @foreach ($addresses as $addresses)
+                <input type="text" name="address_id" value="{{$addresses->colony}} ", class="form-control" disabled>
+             @endforeach
+       
+    </div>
+@php
+    $addresses = $accrediteds->addresses;
+@endphp
+    <!--- Aval Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('address_id', 'colonia:') !!}
+       
+             @foreach ($addresses as $addresses)
+                <input type="text" name="address_id" value="{{$addresses->municipality}} ", class="form-control" disabled>
+             @endforeach
+       
+    </div>
+
+@php
+    $addresses = $accrediteds->addresses;
+@endphp
+    <!--- Aval Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('address_id', 'colonia:') !!}
+       
+             @foreach ($addresses as $addresses)
+                <input type="text" name="address_id" value="{{$addresses->federative}} ", class="form-control" disabled>
+             @endforeach
+       
+    </div>
+
 
 <!--- Name Spouse Field --->
 <div class="form-group col-sm-6 col-lg-4">
@@ -34,11 +86,15 @@
     {!! Form::label('debts', 'Deudas con otras financieras  :') !!}
     {!! Form::select('debts', ['Si'=>'Si','No'=>'No'], null, ['class' => 'form-control']) !!}
 </div>
-
+@php
+    $micros = $accrediteds->micros;
+@endphp
 <!--- Economic Activity Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('economic_activity', 'Actividad económica:') !!}
-    {!! Form::text('economic_activity', null, ['class' => 'form-control']) !!}
+    @foreach ($micros as $micros)
+   <input type="text" name="economic_activity" value="{{$micros->name}}", class="form-control" disabled>
+   @endforeach
 </div>
 
 <!--- Amount Requested Field --->
@@ -90,7 +146,7 @@
 </div>
 
 @php
-    $product = App\Models\Product::where(1);
+    $product = App\Models\Product::all();
 @endphp
 <!--- Interest Field --->
 <div class="form-group col-sm-6 col-lg-4">

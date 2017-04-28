@@ -98,13 +98,9 @@
               <td>{{$credits->status}}</td>
             </tr>
             <tr>
-            @php
-              $avals = $credits->avals;
-            @endphp
+           
               <td>3</td>
-              @foreach ($avals as avals)
-              <td>{{$credits->avals->name}} {{ $credits->avals->last_name}}</td>
-              @endforeach
+              
               <td>{{$credits->previous_credit}}</td>
               <td>{{$credits->debts}}</td>
               <td>{{$credits->economic_activity}}</td>
