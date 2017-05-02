@@ -287,7 +287,4 @@ Acreditado
 		<!-- /.row -->
 	</section>
 	<!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-</div>
-@endsection
+	@endsection
