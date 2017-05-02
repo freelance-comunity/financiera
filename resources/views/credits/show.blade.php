@@ -156,11 +156,11 @@
         </div>
         <!-- accepted payments column -->
         <div class="col-xs-6">
-          <p class="lead">Payment Methods: {{$credits->requested}}</p>         
+          <p class="lead">Solicitud levantada en: {{$credits->requested}}</p>         
         </div>
         <!-- accepted payments column -->
         <div class="col-xs-6">
-          <p class="lead">Calificaión: {{$credits->qualification}}</p>        
+          <p class="lead">Calificación: {{$credits->qualification}}</p>        
         </div>
       </div>
       <!-- /.row -->

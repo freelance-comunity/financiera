@@ -283,8 +283,36 @@ return [
         'last_name' => [
             'required' => 'El campo apellido es obligatorio.',
         ],
-
-
+        'date' => [
+            'required' => 'El campo fecha es obligatorio.',
+        ],
+        'name_spouse' => [
+            'required' => 'El campo nombre del conyugue es obligatorio.',
+        ],
+        'previous_credit' => [
+            'required' => 'El campo de crédito anterior es obligatorio.',
+        ],
+        'last_name' => [
+            'required' => 'El campo apellido es obligatorio.',
+        ],
+        'amount_requested' => [
+            'required' => 'El campo monto solicitado es obligatorio.',
+        ],
+        'authorized_amount' => [
+            'required' => 'El campo monto autorizado es obligatorio.',
+        ],
+        'warranty' => [
+            'required' => 'El campo garantía líquida es obligatorio.',
+        ],
+        'warranty_value' => [
+            'required' => 'El campo valor de la garantia es obligatorio.',
+        ],
+        'sequence' => [
+            'required' => 'El campo secuencia es obligatorio.',
+        ],
+        'observations' => [
+            'required' => 'El campo observaciones es obligatorio.',
+        ],
     ],
 
     /*
