@@ -1,13 +1,13 @@
     <!--- Phone Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('phone', 'Número de teléfono fijo:') !!}
-        {!! Form::text('phone', $accredited->phone, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+        {!! Form::text('phone', $accredited->phone, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
     </div>
 
     <!--- Phone Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('cel', 'Número de teléfono celular:') !!}
-        {!! Form::text('cel', $accredited->cel, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+        {!! Form::text('cel', $accredited->cel, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
     </div>
 
     <!--- Date Field --->
@@ -22,7 +22,7 @@
             {!! Form::label('colony', 'Colonia/Población:') !!}
            
             @foreach ($address as $address)
-             {!! Form::text('colony', $address->colony, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+             {!! Form::text('colony', $address->colony, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
              @endforeach
            
     </div>
@@ -34,7 +34,7 @@
             {!! Form::label('municipality', 'Municipio:') !!}
            
                  @foreach ($addresses as $addresses)
-                    <input type="text" name="municipality" value="{{$addresses->municipality}} ", class="form-control" disabled>
+                    <input type="text" name="municipality" value="{{$addresses->municipality}} ", class="form-control" readonly>
                  @endforeach
            
         </div>
@@ -44,10 +44,10 @@
     @endphp
         <!--- Aval Field --->
         <div class="form-group col-sm-6 col-lg-4">
-            {!! Form::label('federative', 'Estado:') !!}
+            {!! Form::label('state', 'Estado:') !!}
            
                  @foreach ($addresses as $addresses)
-                    <input type="text" name="federative" value="{{$addresses->federative}} ", class="form-control" disabled>
+                    <input type="text" name="state" value="{{$addresses->federative}} ", class="form-control" readonly>
                  @endforeach
            
         </div>
@@ -63,10 +63,10 @@
     @endphp
          <!--- Aval Field --->
         <div class="form-group col-sm-6 col-lg-4">
-            {!! Form::label('name', 'Aval:') !!}
+            {!! Form::label('aval', 'Aval:') !!}
            
                  @foreach ($avals as $aval)
-                    <input type="text" name="name" value="{{$aval->name}} {{$aval->last_name}}", class="form-control" disabled>
+                    <input type="text" name="aval" value="{{$aval->name}} {{$aval->last_name}}", class="form-control" readonly>
                  @endforeach
            
         </div>
@@ -89,7 +89,7 @@
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('economic_activity', 'Actividad económica:') !!}
         @foreach ($micros as $micros)
-       <input type="text" name="economic_activity" value="{{$micros->name}}", class="form-control" disabled>
+       <input type="text" name="economic_activity" value="{{$micros->name}}", class="form-control" readonly>
        @endforeach
     </div>
 
@@ -137,14 +137,14 @@
 
     <!--- Frequency Payment Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('frecuency_payment', 'Frecuencia de pago:') !!}
-        {!! Form::text('frecuency_payment', $product->modality, ['class' => 'form-control', 'disabled']) !!}
+        {!! Form::label('frequency_payment', 'Frecuencia de pago:') !!}
+        {!! Form::text('frequency_payment', $product->modality, ['class' => 'form-control', 'readonly']) !!}
     </div>
 
     <!--- Interest Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('interest', 'Interés:') !!}
-        {!! Form::text('interest', $product->cup_interest, ['class' => 'form-control', 'disabled']) !!}
+        {!! Form::text('interest', $product->cup_interest, ['class' => 'form-control', 'readonly']) !!}
     </div>
     @php
         $user = $accredited->user;
@@ -153,7 +153,7 @@
     <!--- Adviser Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('adviser', 'Asesor de Credito:') !!}
-        <input type="text" name="adviser" value="{{$accredited->user->name}} {{$accredited->user->last_name}}", class="form-control" disabled>
+        <input type="text" name="adviser" value="{{$accredited->user->name}} {{$accredited->user->last_name}}", class="form-control" readonly>
     </div>
 
     <!--- Observations Field --->

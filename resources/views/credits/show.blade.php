@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('main-content')
-
+@section('contentheader_title')
+ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V. 
+@endsection
 <div class="container">
 
  @include('sweet::alert')
@@ -17,8 +19,7 @@
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-globe"></i> Solicitud de <strong>{{ $credits->accredited->name}} {{ $credits->accredited->last_name}}</strong>
-            <small class="pull-right">Fecha: {{ $credits->date}}</small>
+            <i class="fa fa-globe"></i> Solicitud de crédito individual de: <strong>{{ $credits->accredited->name}} {{ $credits->accredited->last_name}}</strong>
           </h2>
         </div>
         <!-- /.col -->
@@ -26,32 +27,25 @@
       <!-- info row -->
       <div class="row invoice-info">
         <div class="col-sm-4 invoice-col">
-          De:
           <address>
-            <strong>{{$credits->accredited->address}}</strong><br>
-            Teléfono celular: {{$credits->accredited->cel}}<br>            
-            Teléfono fijo: {{$credits->accredited->phone}}<br>
-            Email: {{$credits->accredited->email}}
+            <strong>Fecha: {{ $credits->date}}</strong><br>
           </address>
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-          To
           <address>
-            <strong>John Doe</strong><br>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            Phone: (555) 539-1037<br>
-            Email: john.doe@example.com
+            <strong>Colonia:</strong>  {{$credits->colony}}<br>
+            <strong>Municipio:</strong> {{$credits->municipality}}<br>
+            <strong>Estado:</strong> {{$credits->state}}<br>
           </address>
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-          <b>Invoice #007612</b><br>
-          <br>
-          <b>Order ID:</b> 4F3S8J<br>
-          <b>Payment Due:</b> 2/22/2014<br>
-          <b>Account:</b> 968-34567
+          <address>
+            <strong>Teléfono fijo:</strong>  {{$credits->accredited->phone}}<br>
+            <strong>Teléfono celular:</strong> {{$credits->accredited->cel}}<br>
+            <strong>Correo electrónico:</strong> {{$credits->accredited->email}}<br>
+          </address>
         </div>
         <!-- /.col -->
       </div>
@@ -89,25 +83,25 @@
             <tr>
               <td>2</td>
               <td>{{$credits->name_spouse}} </td>
-              <td>{{$credits->previous_credit}}</td>
-              <td>{{$credits->debts}}</td>
-              <td>{{$credits->economic_activity}}</td>
-              <td>{{$credits->amount_requested}}</td>
-              <td>{{$credits->authorized_amount}}</td>
-              <td>{{$credits->warranty}}</td>
-              <td>{{$credits->status}}</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
             <tr>
            
               <td>3</td>
+              <td>{{ $credits->aval}}</td>
               <td></td>
-              <td>{{$credits->previous_credit}}</td>
-              <td>{{$credits->debts}}</td>
-              <td>{{$credits->economic_activity}}</td>
-              <td>{{$credits->amount_requested}}</td>
-              <td>{{$credits->authorized_amount}}</td>
-              <td>{{$credits->warranty}}</td>
-              <td>{{$credits->status}}</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
             
             </tbody>

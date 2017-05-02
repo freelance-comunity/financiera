@@ -17,7 +17,11 @@ class CreateCreditsTable extends Migration
 		{
 			$table->increments('id');
 			$table->string('date');
+			$table->string('colony');
+			$table->string('municipality');
+			$table->string('state');
 			$table->string('name_spouse');
+			$table->string('aval');
 			$table->string('previous_credit');
 			$table->string('debts');
 			$table->string('economic_activity');
@@ -36,8 +40,6 @@ class CreateCreditsTable extends Migration
 			$table->string('qualification');
 			$table->string('status');
 			$table->integer('accredited_id')->unsigned()->foreign('accredited_id')->references('id')->on('accrediteds');
-			$table->integer('address_id')->unsigned()->foreign('address_id')->references('id')->on('addresses');
-			$table->integer('aval_id')->unsigned()->foreign('aval_id')->references('id')->on('avals');
 			$table->timestamps();
 		});
 	}

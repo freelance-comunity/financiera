@@ -13,7 +13,11 @@ class Credits extends Model
 
 	public $fillable = [
 	    "date",
+	    "colony",
+	    "municipality",
+	    "state",
 		"name_spouse",
+		"aval",
 		"previous_credit",
 		"debts",
 		"economic_activity",
@@ -37,7 +41,11 @@ class Credits extends Model
 	];
 	public static $rules = [
 	    "date" => "required",
+	    "colony" => "required",
+	    "municipality" => "required",
+	    "state" => "required",
 		"name_spouse" => "required",
+		"aval" => "required",
 		"previous_credit" => "required",
 		"debts" => "required",
 		"economic_activity" => "required",
