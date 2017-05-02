@@ -93,8 +93,8 @@ h2.name {
 
 /**/
 table {
-  text-align: left;
-  line-height: 30px;
+  text-align: center;
+  line-height: 20px;
   border-collapse: relative;
   border-spacing: 0;
   border: 2px solid #303d51;

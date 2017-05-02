@@ -38,50 +38,50 @@
 <table>
   <thead>
     <tr>
-      <th>#</th>
+      <th style="width: 50px">#</th>
       <th>Nombres y apellidos</th>
       <th>Crédito anterior</th>
-      <th>Deudas con otras financieras</th>
+      <th style="width: 50px">Deudas con otras financieras</th>
       <th>Actividad economica</th>
       <th>Monto solicitado</th>
       <th>Monto autorizado</th>
       <th>Garantía líquida</th>
-      <th>firma</th>
+      <th style="width: 100px;">firma</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-     <td>1</td>
+     <td style="width: 50px">1</td>
      <td><strong>Solicitante: </strong> {{$credit->accredited->name}} {{ $credit->accredited->last_name}}</td>
      <td>{{$credit->previous_credit}}</td>
-     <td>{{$credit->debts}}</td>
+     <td style="width: 50px">{{$credit->debts}}</td>
      <td>{{$credit->economic_activity}}</td>
      <td>{{$credit->amount_requested}}</td>
      <td>{{$credit->authorized_amount}}</td>
      <td>{{$credit->warranty}}</td>
-     <td></td>
+     <td style="width: 100px;"></td>
    </tr>
    <tr>
-    <td>2</td>
+    <td style="width: 50px">2</td>
     <td><strong>Conyugue: </strong>{{$credit->name_spouse}} </td>
     <td></td>
+    <td style="width: 50px"></td>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td style="width: 100px;"></td>
   </tr>
   <tr>
-    <td>3</td>
+    <td style="width: 50px">3</td>
     <td><strong>Aval: </strong>{{ $credit->aval}}</td>
     <td></td>
+    <td style="width: 50px"></td>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td style="width: 100px;"></td>
   </tr>
 </tbody>
 </table>
@@ -100,31 +100,32 @@
     PLAZO: <strong>{{$credit->term}} días</strong>
   </p>
   <p>
-    FRECUENCIA DE PAGO: <strong>{{$credit->frequency}}</strong>
+    FRECUENCIA DE PAGO: <strong>{{$credit->frequency_payment}}</strong>
   </p>
   <p>
     INTERES: <strong>{{$credit->interest}} %</strong>
   </p>
+  <br>
   <p>
-    ASESOR DE CRÉDITO: <strong>{{$credit->adviser}}</strong>
+    ASESOR DE CRÉDITO: <strong style="text-decoration: underline;">{{$credit->adviser}}</strong>
   </p>
 </div>
 <div class="part2">
   <div>
-    <p><strong>Observaciones:</strong>
-      {{$credit->observations}}
+    <p>Observaciones:
+      <strong>{{$credit->observations}}</strong>
     </p>
   </div>
   <br>
   <div>
-    <p><strong>Solicitud levantada: </strong>
-      {{$credit->requested}}
+    <p>Solicitud levantada: 
+      <strong>{{$credit->requested}}</strong>
     </p>
   </div>
   <br>
   <div>
-    <p><strong>Calificación:</strong>
-      {{$credit->qualification}}
+    <p>Calificación:
+      <strong>{{$credit->qualification}}</strong>
     </p>
   </div>
 </div>
