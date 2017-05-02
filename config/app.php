@@ -173,6 +173,8 @@ return [
         */
         GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
 
+        Barryvdh\DomPDF\ServiceProvider::class,
+
         ],
 
     /*
@@ -240,6 +242,8 @@ return [
     ** Google Maps 
     */
     'Gmaps' => GeneaLabs\Phpgmaps\Facades\PhpgmapsFacade::class,
+
+    'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

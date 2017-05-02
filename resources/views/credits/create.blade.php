@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('main-content')
+@section('contentheader_title')
+Crear solicitud de crédito individual
+@endsection
 <div class="container">
 
     @include('common.errors')

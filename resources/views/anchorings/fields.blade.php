@@ -28,9 +28,9 @@
     @if ($count->isEmpty())
          <option value="">Aún no hay cuentas dadas de alta en el sistema</option>
     @else
-        @foreach ($accounts as $element)
-           <option value="{{$element->cup_interest}}">
-            {{$element->cup_interest}}
+        @foreach ($count as $element)
+           <option value="{{$element->account_number}}">
+            {{$element->name_bank}} / {{$element->account_number}}
         </option>
         @endforeach
     @endif
