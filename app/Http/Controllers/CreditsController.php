@@ -40,7 +40,7 @@ class CreditsController extends AppBaseController
 
         $credits = $query->get();
 
-        return view('credits.view-credits')
+        return view('credits.show')
             ->with('credits', $credits)
             ->with('attributes', $attributes);
 	}

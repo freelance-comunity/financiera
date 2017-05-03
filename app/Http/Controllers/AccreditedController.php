@@ -7,6 +7,7 @@ use App\User;
 use App\Models\Product;
 use App\Models\Accredited;
 use App\Models\Branch;
+use App\Models\credits;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
 use Response;
@@ -277,14 +278,21 @@ class AccreditedController extends AppBaseController
 	{	
 		$product = Product::find($product);
 		$accredited = Accredited::find($id);
+		$credits = $accredited->credits;
 		$aval = $accredited->avals;
 		$address = $accredited->addresses;
 		$micros = $accredited->micros;
 		if ($aval->count() == 0 or $address->count() == 0 or $micros->count() == 0) {
 			Alert::error('Este acreditado no cuenta con los datos registrados para la solicitud de un prestamo')->persistent('Cerrar');
 			return redirect('allacrediteds');
-		}else{
+		}elseif ($credits->count() == 3) {
+			Alert::error('Este acreditado ya cuenta con tres prestamos')->persistent('Cerrar');
+			return redirect('allacrediteds');
+		}
+
+		else{
 			return view ('credits.create')
+			->with('credits',$credits)
 			->with('product', $product)
 			->with('accredited', $accredited)
 			->with('aval', $aval)

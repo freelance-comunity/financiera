@@ -17,7 +17,7 @@
   @else
   <table class="table" id="myTable">
     <thead>
-      <th>Date</th>
+      <th>Fecha</th>
       <th>Name Spouse</th>
       <th>Previous Credit</th>
       <th>Debts</th>
