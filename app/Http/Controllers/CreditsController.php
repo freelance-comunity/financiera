@@ -25,6 +25,7 @@ class CreditsController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = Credits::query();
+<<<<<<< HEAD
         $columns = Schema::getColumnListing('$TABLE_NAME$');
         $attributes = array();
 
@@ -43,6 +44,26 @@ class CreditsController extends AppBaseController
         return view('credits.show')
             ->with('credits', $credits)
             ->with('attributes', $attributes);
+=======
+		$columns = Schema::getColumnListing('$TABLE_NAME$');
+		$attributes = array();
+
+		foreach($columns as $attribute){
+			if($request[$attribute] == true)
+			{
+				$query->where($attribute, $request[$attribute]);
+				$attributes[$attribute] =  $request[$attribute];
+			}else{
+				$attributes[$attribute] =  null;
+			}
+		};
+
+		$credits = $query->get();
+
+		return view('credits.view-credits')
+		->with('credits', $credits)
+		->with('attributes', $attributes);
+>>>>>>> remotes/origin/master
 	}
 
 	/**
@@ -71,13 +92,15 @@ class CreditsController extends AppBaseController
 	 */
 	public function store(CreateCreditsRequest $request)
 	{	
-        $input = $request->all();
-        $accredited = $request->input('accredited_id');
+		$input = $request->all();
+		$accredited = $request->input('accredited_id');
 		$credits = Credits::create($input);
 		Flash::message('Credits saved successfully.');
 		$accrediteds = Accredited::find($accredited);
 		$credits = $accrediteds->credits;
-		return redirect(route('credits.index'));
+
+		return view('credits.show')
+		->with('credits', $credits);
 		
 	}
 
