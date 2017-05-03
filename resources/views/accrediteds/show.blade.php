@@ -3,9 +3,7 @@
 Acreditado
 @endsection
 @section('main-content')
-<div class="container">
-	
-	
+
 	<!-- Main content -->
 	<section class="content">
 
