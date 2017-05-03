@@ -8,7 +8,7 @@
     Route::get('export-pdf/{id}', function($id){
       $credit = App\Models\Credits::find($id)->first();
       $pdf = PDF::loadView('credits.pdf', compact('credit'))->setPaper('a4','landscape')->setWarnings(false);
-      return $pdf->download('invoice.pdf');
+      return $pdf->download('solicitud.pdf');
     });
 
     Route::get('testing2', function() {

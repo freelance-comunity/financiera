@@ -17,7 +17,7 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
   <!-- title row -->
   <div class="row">
     <div class="col-xs-12">
-      <div class="box box-info">
+    <div class="box box-default">
         <div class="box-header with-border">
           <h3 class="box-title"><i class="fa fa-paperclip"></i> Solicitud de crédito individual de: <strong>{{ $credits->accredited->name}} {{ $credits->accredited->last_name}}</strong></h3>
 
