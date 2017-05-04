@@ -52,13 +52,13 @@
 
  <!--- Nationality Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('type', 'Rol del usuario:') !!}
+        {!! Form::label('type', 'Puesto:') !!}
         {!! Form::select('type',['Promotor' => 'Promotor', 'Caja' => 'Caja', 'Propietario' => 'Propietario', 'Coordinador' => 'Coordinador', 'Mesa' => 'Mesa', 'Dirección' => 'Dirección'], null, ['class' => 'form-control'])!!}
     </div>
 
 <!--- Position Field --->
 <div class="form-group col-sm-6 col-lg-12">
-    {!! Form::label('position', 'Puesto:') !!}
+    {!! Form::label('position', 'Rol del usuario:') !!}
     <select name="position[]" multiple="multiple" class="form-control select2" id="position"></select>
 </div>
 

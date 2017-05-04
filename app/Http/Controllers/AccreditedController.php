@@ -289,7 +289,6 @@ class AccreditedController extends AppBaseController
 			Alert::error('Este acreditado ya cuenta con tres prestamos')->persistent('Cerrar');
 			return redirect('allacrediteds');
 		}
-
 		else{
 			return view ('credits.create')
 			->with('credits',$credits)

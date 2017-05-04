@@ -12,7 +12,7 @@
     });
 
     Route::get('testing2', function() {
-        return view('credits.export-pdf');
+        echo "hola";
     });
 
     Route::get('/rolescreate', function() {

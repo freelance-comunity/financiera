@@ -22,29 +22,16 @@ class CreditsController extends AppBaseController
 	 *
 	 * @return Response
 	 */
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
 	public function index(Request $request)
 	{
 		$query = Credits::query();
-<<<<<<< HEAD
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
-
-        $credits = $query->get();
-
-        return view('credits.show')
-            ->with('credits', $credits)
-            ->with('attributes', $attributes);
-=======
 		$columns = Schema::getColumnListing('$TABLE_NAME$');
 		$attributes = array();
 
@@ -63,7 +50,6 @@ class CreditsController extends AppBaseController
 		return view('credits.view-credits')
 		->with('credits', $credits)
 		->with('attributes', $attributes);
->>>>>>> remotes/origin/master
 	}
 
 	/**
