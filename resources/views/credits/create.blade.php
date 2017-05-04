@@ -5,7 +5,7 @@
 Crear solicitud de crédito individual
 @endsection
 <div class="container">
-
+ @include('sweet::alert')
     @include('common.errors')
 
     {!! Form::open(['route' => 'credits.store']) !!}

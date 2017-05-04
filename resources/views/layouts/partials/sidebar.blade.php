@@ -63,7 +63,7 @@
             <a href="#"><i class='fa fa-dollar'></i> <span>Prestamos</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
                 <li><a href="{{ url('/allacrediteds') }}">Nuevo prestamo</a></li>
-                <li><a href="#">Lista de prestamos</a></li>
+                <li><a href="{{ url('/credits')}}">Lista de prestamos</a></li>
                 <li><a href="#">Nuevo pago</a></li>
                 <li><a href="#">Lista de pagos</a></li>
                 <li><a href="#">Nuevo anticipo</a></li>

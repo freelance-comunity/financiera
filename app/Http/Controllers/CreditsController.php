@@ -5,12 +5,15 @@ use App\Http\Requests\CreateCreditsRequest;
 use App\Models\Credits;
 use App\Models\Accredited;
 use App\Models\Aval;
+use App\Models\Product;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
+use Alert;
+
 
 class CreditsController extends AppBaseController
 {
@@ -25,26 +28,7 @@ class CreditsController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = Credits::query();
-<<<<<<< HEAD
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
-
-        $credits = $query->get();
-
-        return view('credits.show')
-            ->with('credits', $credits)
-            ->with('attributes', $attributes);
-=======
 		$columns = Schema::getColumnListing('$TABLE_NAME$');
 		$attributes = array();
 
@@ -63,7 +47,6 @@ class CreditsController extends AppBaseController
 		return view('credits.view-credits')
 		->with('credits', $credits)
 		->with('attributes', $attributes);
->>>>>>> remotes/origin/master
 	}
 
 	/**
@@ -94,14 +77,19 @@ class CreditsController extends AppBaseController
 	{	
 		$input = $request->all();
 		$accredited = $request->input('accredited_id');
-		$credits = Credits::create($input);
-		Flash::message('Credits saved successfully.');
 		$accrediteds = Accredited::find($accredited);
-		$credits = $accrediteds->credits;
-
-		return view('credits.show')
-		->with('credits', $credits);
-		
+		$product = Product::find($request->input('type_product'));
+		if ($request->input('term') > $product->maximum_term) {
+			Alert::error('El plazo máximo en días ha sido rebasado');			
+			return redirect()->back()->withInput($request->all());		
+		}else{
+			$credits = Credits::create($input);		
+			Alert::success('Prestamo guardado exitosamente.')->persistent('Cerrar');
+			$accrediteds = Accredited::find($accredited);
+			$credits = $accrediteds->credits;
+			return view('credits.show')
+			->with('credits', $credits);
+		}		
 	}
 
 	/**
@@ -165,7 +153,7 @@ class CreditsController extends AppBaseController
 		$credits->fill($request->all());
 		$credits->save();
 
-		Flash::message('Credits updated successfully.');
+		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('credits.index'));
 	}
@@ -190,7 +178,7 @@ class CreditsController extends AppBaseController
 
 		$credits->delete();
 
-		Flash::message('Credits deleted successfully.');
+		Alert::error('Datos eliminados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('credits.index'));
 	}

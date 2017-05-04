@@ -313,6 +313,9 @@ return [
         'observations' => [
             'required' => 'El campo observaciones es obligatorio.',
         ],
+        'term' => [
+            'required' => 'El campo plazo en dias es obligatorio.',
+        ],
     ],
 
     /*

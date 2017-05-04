@@ -76,7 +76,7 @@ class AccreditedController extends AppBaseController
 		return view('accrediteds.create')
 		->with('users', $users)
 		->with('roles', $roles)
-		->with('branches', $branches);
+		->with('branches', $branches);	
 
 	}
 
@@ -296,7 +296,8 @@ class AccreditedController extends AppBaseController
 			->with('product', $product)
 			->with('accredited', $accredited)
 			->with('aval', $aval)
-			->with('address', $address);
+			->with('address', $address)
+			->with('micros', $micros);
 		}
 	}
 

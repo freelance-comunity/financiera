@@ -63,7 +63,7 @@
     @endphp
          <!--- Aval Field --->
         <div class="form-group col-sm-6 col-lg-4">
-            {!! Form::label('aval', 'Aval:') !!}
+            {!! Form::label('aval', 'Nombre del aval:') !!}
            
                  @foreach ($avals as $aval)
                     <input type="text" name="aval" value="{{$aval->name}} {{$aval->last_name}}", class="form-control" readonly>
@@ -99,12 +99,7 @@
         {!! Form::text('amount_requested', null, ['class' => 'form-control']) !!}
     </div>
 
-    <!--- Authorized Amount Field --->
-    <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('authorized_amount', 'Monto autorizado:') !!}
-        {!! Form::text('authorized_amount', null, ['class' => 'form-control']) !!}
-    </div>
-
+    
     <!--- Warranty Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('warranty', 'Garantía líquida:') !!}
@@ -131,14 +126,14 @@
 
     <!--- Term Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('term', 'Plazo:') !!}
-        {!! Form::text('term', null, ['class' => 'form-control']) !!}
+        {!! Form::label('term', 'Plazo en días:') !!}
+        {!! Form::text('term', null, ['class' => 'form-control', 'maxlength' => 3]) !!}
     </div>
 
     <!--- Frequency Payment Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('frequency_payment', 'Frecuencia de pago:') !!}
-        {!! Form::text('frequency_payment', $product->modality, ['class' => 'form-control', 'readonly']) !!}
+        {!! Form::label('frequency_payment', 'Frecuencia de pago:') !!}       
+        {!! Form::text('frequency_payment', $product->modality, ['class' => 'form-control', 'readonly']) !!}       
     </div>
 
     <!--- Interest Field --->
@@ -176,8 +171,9 @@
 
     <!--- Qualification Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('status', 'status:') !!}
-        {!! Form::select('status',['Revisión' =>'Revisión', 'Rechazada'=> 'Rechazada', 'Aprobada' =>'Aprobada'], null, ['class' => 'form-control']) !!}
+        {!! Form::label('status', 'Estatus:') !!}
+         <input type="text" name="status" value="Revisión", class="form-control" readonly>
+        <input type="hidden" name="type_product" value="{{$product->id}}">
     </div>
 
 
