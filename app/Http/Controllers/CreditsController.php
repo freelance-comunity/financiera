@@ -115,7 +115,7 @@ class CreditsController extends AppBaseController
 			return redirect(route('credits.index'));
 		}
 
-		return view('credits.show')->with('credits', $credits);
+		return view('credits.credit')->with('credits', $credits);
 	}
 
 	/**

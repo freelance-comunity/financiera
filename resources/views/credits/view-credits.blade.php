@@ -1,16 +1,12 @@
 @extends('layouts.app')
-
+@section('contentheader_title')
+Lista de solicitudes
+@endsection
 @section('main-content')
-
 <div class="container">
-
- @include('sweet::alert')
-
  <div class="row">
-  <h1 class="pull-left">Credits</h1>
-
+  <h1 class="pull-left">Creditos</h1>
 </div>
-
 <div class="row table-responsive">
   @if($credits->isEmpty())
   <div class="well text-center">No Credits found.</div>
@@ -26,7 +22,7 @@
       <th>Frecuencia de Pago</th>
       <th>Interés</th>
       <th>Promotor</th>
-      <th width="50px">Acción</th>
+      <th width="50px">Estatus</th>
       <th>Ver crédito</th>
     </thead>
     <tbody>
@@ -43,15 +39,15 @@
         <td>{!! $credits->interest!!} %</td>
         <td>{!! $credits->adviser!!}</td>
         <td>
-          <a href="{!! route('credits.delete', [$credits->id]) !!}" onclick="return confirm('Are you sure wants to delete this Credits?')"><i class="glyphicon glyphicon-remove"></i></a>
+          <h4><span class="label label-warning">{{$credits->status}}</span></h4>
         </td>
         <td>
-           <a href="{{ url('view-credit',[$credits->id])}}" class="uppercase btn btn-info btn-block">Ver crédito</a>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-  @endif
-</div>
+          <a href="{!! route('credits.show', [$credits->id]) !!}" class="uppercase btn btn-info btn-block">Ver crédito</a>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+    @endif
+  </div>
 </div>
 @endsection
