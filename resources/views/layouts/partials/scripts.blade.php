@@ -5,6 +5,7 @@
 <script src="{{ asset('/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('plugins/morris/morris.min.js')}}"></script>
 <!-- DataTables -->
 <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
@@ -17,7 +18,6 @@
 <script src="{{ asset('/select2/js/select2.min.js') }}"></script>
 
 <script src="{{ asset('/js/dropdown.js')}}"></script>
-
 <script type="text/javascript">
     $(document).ready(function () {
         // inicializamos el plugin
