@@ -467,3 +467,7 @@ Route::get('view-credit/{id}', function($id){
   ->with('credits', $credits);
 });
 
+Route::get('credit/{id}/{accredited}',[
+  'as' => 'credits.credits',
+  'uses' => 'CreditsController@credits',
+  ]);
