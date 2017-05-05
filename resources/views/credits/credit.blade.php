@@ -6,18 +6,12 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
 @endsection
 
 @include('sweet::alert')
-
-
-@if($credits->isEmpty())
-<div class="well text-center">No se encontraron solicitudes.</div>
-@else
-@foreach ($credits as $credits)
 <!-- Main content -->
 <section class="invoice">
   <!-- title row -->
   <div class="row">
     <div class="col-xs-12">
-    <div class="box box-default">
+      <div class="box box-default">
         <div class="box-header with-border">
           <h3 class="box-title"><i class="fa fa-paperclip"></i> Solicitud de crédito individual de: <strong>{{ $credits->accredited->name}} {{ $credits->accredited->last_name}}</strong></h3>
 
@@ -177,8 +171,4 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
   <!-- Table row -->
 </section>
 <!-- /.content -->
-
-@endforeach
-@endif
-
 @endsection

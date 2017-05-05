@@ -17,7 +17,8 @@ Lista de cuentas
         @if($accounts->isEmpty())
         <div class="well text-center">No hay cuentas registradas.</div>
         @else
-       <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+        <div class="table-responsive">
+         <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th>Nombre del Banco</th>
                 <th>Número de Cuenta / Número de Sucursal</th>
@@ -39,7 +40,8 @@ Lista de cuentas
                 @endforeach
             </tbody>
         </table>
-        @endif
     </div>
+    @endif
+</div>
 </div>
 @endsection

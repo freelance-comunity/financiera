@@ -17,25 +17,27 @@ Editar
         <div class="well text-center">No Este rol no tiene ningun permiso asignado.</div>
         @else
         {!! Form::open(['url' => 'permissionEdit']) !!}
-        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
-            <thead>
-                <th><input type="checkbox" name="select-all" id="select-all" /> <label for="select-all">Todos</label></th>
-                <th>Nombre</th>
-                <th>Nombre opcional</th>
-                <th>Descripción</th>
-            </thead>
-            <tbody>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+                <thead>
+                    <th><input type="checkbox" name="select-all" id="select-all" /> <label for="select-all">Todos</label></th>
+                    <th>Nombre</th>
+                    <th>Nombre opcional</th>
+                    <th>Descripción</th>
+                </thead>
+                <tbody>
 
-                @foreach($permissions as $permission)
-                <tr>
-                    <td><input type="checkbox" name="rows[{{$permission->id}}][id]" value="{{$permission->id}}"></td>
-                    <td>{!! $permission->name !!}</td>
-                    <td>{!! $permission->display_name !!}</td>
-                    <td>{!! $permission->description !!}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                    @foreach($permissions as $permission)
+                    <tr>
+                        <td><input type="checkbox" name="rows[{{$permission->id}}][id]" value="{{$permission->id}}"></td>
+                        <td>{!! $permission->name !!}</td>
+                        <td>{!! $permission->display_name !!}</td>
+                        <td>{!! $permission->description !!}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         <div class="form-group col-sm-6 col-lg-4">
             <input type="hidden" name="rol_id" value="{{$role->id}}">
             <input type="submit" value="quitar" class="btn uppercase bt-success">

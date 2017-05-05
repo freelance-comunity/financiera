@@ -15,6 +15,7 @@
         @if($branches->isEmpty())
         <div class="well text-center">No hay sucursales dadas de alta.</div>
         @else
+        <div class="table-responsive">
          <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th>Nomenclatura</th>
@@ -45,6 +46,7 @@
                 @endforeach
             </tbody>
         </table>
+        </div>
         @endif
     </div>
 </div>

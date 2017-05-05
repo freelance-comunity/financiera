@@ -459,6 +459,7 @@ Route::get('view-credits/{id}', function($id){
   ->with('credits', $credits);
 });
 
+
 Route::get('view-credit/{id}', function($id){
   $accrediteds = App\Models\Accredited::find($id);
   $credits = $accrediteds->credits;
@@ -467,7 +468,4 @@ Route::get('view-credit/{id}', function($id){
   ->with('credits', $credits);
 });
 
-Route::get('credit/{id}/{accredited}',[
-  'as' => 'credits.credits',
-  'uses' => 'CreditsController@credits',
-  ]);
+

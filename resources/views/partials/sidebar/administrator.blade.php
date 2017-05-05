@@ -11,7 +11,7 @@
             </ul>
         </li>
         <li class="treeview">
-            <a href="#"><i class='fa fa-building'></i> <span>Compañia</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <a href="#"><i class='fa fa-building'></i> <span>Compañía</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
                 <li><a href="{{ url('/users') }}">Usuarios</a></li>
                 <li><a href="{{ url('/branches') }}">Sucursales</a></li>
@@ -29,10 +29,10 @@
             </ul>
         </li>
         <li class="treeview">
-            <a href="#"><i class='fa fa-dollar'></i> <span>Prestamos</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <a href="#"><i class='fa fa-dollar'></i> <span>Préstamos</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-                <li><a href="{{ url('/allacrediteds') }}">Nuevo prestamo</a></li>
-                <li><a href="#">Lista de prestamos</a></li>
+                <li><a href="{{ url('/allacrediteds') }}">Nuevo préstamo</a></li>
+                <li><a href="{{ url('credits') }}">Lista de préstamos</a></li>
                 <li><a href="#">Nuevo pago</a></li>
                 <li><a href="#">Lista de pagos</a></li>
                 <li><a href="#">Nuevo anticipo</a></li>

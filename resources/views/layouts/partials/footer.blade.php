@@ -5,5 +5,5 @@
        
     </div>
     <!-- Default to the left -->
-    <strong>Todos los Derechos reservados &copy; 2017 <a href="#">S&C EMPRESARIAL</a>.
+    <strong>Todos los Derechos Reservados &copy; 2017 <a href="#">S&C EMPRESARIAL</a>.
 </footer>
