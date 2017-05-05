@@ -60,11 +60,14 @@
 <!-- /.row -->
 <div class="row">
 	<div class="col-sm-12">
+		@php
+		$credits = App\Models\Credits::all();
+		@endphp
 		<div class="col-md-8">
 			<!-- TABLE: LATEST ORDERS -->
 			<div class="box box-info">
 				<div class="box-header with-border">
-					<h3 class="box-title">Ultimas solicitudes de crédito</h3>
+					<h3 class="box-title">Últimas solicitudes de crédito</h3>
 
 					<div class="box-tools pull-right">
 						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -75,57 +78,39 @@
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="table-responsive">
+						@if($credits->isEmpty())
+						<div class="well text-center">No Credits found.</div>
+						@else
 						<table class="table no-margin">
 							<thead>
 								<tr>
 									<th>Folio</th>
 									<th>Acreditado</th>
-									<th>Status</th>
-									<th>Monto</th>
+									<th>Estatus</th>
+									<th>Monto Solicitado</th>
 								</tr>
 							</thead>
 							<tbody>
+								@foreach ($credits as $credit)
 								<tr>
-									<td><a href="pages/examples/invoice.html">OR9842</a></td>
-									<td>Call of Duty IV</td>
-									<td><span class="label label-success">Shipped</span></td>
+									<td><a href="{!! route('credits.show', [$credit->id]) !!}">S-{{$credit->id}}</a></td>
+									<td>{{$credit->accredited->name}} {{$credit->accredited->last_name}}</td>
+									<td><span class="label label-warning">{{$credit->status}}</span></td>
 									<td>
-										<div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+										<div class="sparkbar" data-color="#00a65a" data-height="20">${!! $credit->amount_requested!!}</div>
 									</td>
 								</tr>
-								<tr>
-									<td><a href="pages/examples/invoice.html">OR1848</a></td>
-									<td>Samsung Smart TV</td>
-									<td><span class="label label-warning">Pending</span></td>
-									<td>
-										<div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-									</td>
-								</tr>
-								<tr>
-									<td><a href="pages/examples/invoice.html">OR7429</a></td>
-									<td>iPhone 6 Plus</td>
-									<td><span class="label label-danger">Delivered</span></td>
-									<td>
-										<div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-									</td>
-								</tr>
-								<tr>
-									<td><a href="pages/examples/invoice.html">OR7429</a></td>
-									<td>Samsung Smart TV</td>
-									<td><span class="label label-info">Processing</span></td>
-									<td>
-										<div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-									</td>
-								</tr>
+								@endforeach
 							</tbody>
 						</table>
+						@endif
 					</div>
 					<!-- /.table-responsive -->
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer clearfix">
-					<a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Realizar nueva solicitud</a>
-					<a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Ver todas las solicitudes</a>
+					<a href="{{ url('/allacrediteds') }}" class="btn btn-sm btn-info btn-flat pull-left">Realizar nueva solicitud</a>
+					<a href="{{ url('credits') }}" class="btn btn-sm btn-default btn-flat pull-right">Ver todas las solicitudes</a>
 				</div>
 				<!-- /.box-footer -->
 			</div>
