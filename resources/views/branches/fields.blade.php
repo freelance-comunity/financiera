@@ -12,7 +12,7 @@
 
 <!--- Status Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('status', 'Status:') !!}
+    {!! Form::label('status', 'Estatus:') !!}
     {!! Form::select('status',['1' => 'ACTIVA', '0' => 'INACTIVA'] ,null, ['class' => 'form-control']) !!}
 </div>
 

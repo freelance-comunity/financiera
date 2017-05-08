@@ -7,7 +7,7 @@
 
 <!--- Regimen Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('regimen', 'Regimen de casamiento:') !!}
+    {!! Form::label('regimen', 'Régimen de casamiento:') !!}
     {!! Form::select('regimen',['Bienes Mancomunados' => 'Bienes Mancomunados', 'Bienes Separados' => 'Bienes Separados', 'No estoy casado/a'=> 'No estoy casado/a'], null, ['class' => 'form-control'])!!}
     
 </div>

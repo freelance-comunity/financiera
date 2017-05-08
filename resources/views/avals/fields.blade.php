@@ -170,7 +170,7 @@
 
 <!--- Ife Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('ife', 'Folio de Ife:') !!}
+    {!! Form::label('ife', 'Folio INE:') !!}
     <input type="text" name="ife"   value="{{ old('ife') }}" class="form-control">
 </div>
 

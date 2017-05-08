@@ -46,10 +46,10 @@
             <a href="#"><i class='fa fa-cogs'></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
                 @if ($information->isEmpty())
-                <li><a href="{!! route('information.create') !!}">Detalles de la compañia</a></li>
+                <li><a href="{!! route('information.create') !!}">Detalles de la compañía</a></li>
                 @else
                 @foreach ($information as $element)
-                <li><a href="{!! route('information.show', [$element->id]) !!}">Detalles de la compañia</a></li>
+                <li><a href="{!! route('information.show', [$element->id]) !!}">Detalles de la compañía</a></li>
                 @endforeach
                 @endif
             </ul>

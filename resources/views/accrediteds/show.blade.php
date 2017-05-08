@@ -88,7 +88,7 @@ Acreditado
 										<div class="timeline-item">
 											<span class="time"> Creado el: {{$accredited->created_at}}</span>
 
-											<h3 class="timeline-header"><a>Datos Generales</a></h3>
+											<h3 class="timeline-header"><a>Datos generales</a></h3>
 
 											<div class="timeline-body">            		
 												<strong>Fecha de nacimiento: </strong>{{ $accredited->birthdate}} <br>
@@ -97,7 +97,7 @@ Acreditado
 												<strong>Correo electrónico:</strong> {{ $accredited->email}} <br>	
 												<strong>Dirección:</strong> {{ $accredited->address}} <br>
 												<strong>Nacionalidad:</strong> {{$accredited->nationality}} <br>	
-												<strong>Folio IFE:</strong> {{$accredited->ife}} <br>	
+												<strong>Folio INE:</strong> {{$accredited->ife}} <br>	
 												<strong>CURP:</strong> {{$accredited->curp}} <br>	
 												<strong>Sexo:</strong> {{$accredited->sex}} <br>	
 												<strong>Estado civil:</strong> {{$accredited->civil_status}}
@@ -161,12 +161,12 @@ Acreditado
 									<!-- timeline icon -->
 									<i class="fa fa-dollar bg-yellow"></i>
 									<div class="timeline-item">
-										<h3 class="timeline-header"><a href="{!! route('accrediteds.studiesAccredited', [$accredited->id])!!}">Estudio Socioeconomico</a></h3>
+										<h3 class="timeline-header"><a href="{!! route('accrediteds.studiesAccredited', [$accredited->id])!!}">Estudio socioeconómico</a></h3>
 										@foreach ($study as $element)
 										<span class="time"><i class="fa fa-clock-o"></i> {{$element->created_at}}</span>
 										<div class="timeline-body">            		
 											<strong>Dependientes economicos: </strong>{{ $element->dependent}} <br>
-											<strong>Regimen de casamiento:</strong> {{ $element->regimen}} <br>
+											<strong>Régimen de casamiento:</strong> {{ $element->regimen}} <br>
 											<strong>Tipo de vivienda:</strong> {{ $element->type_housing}} <br>	
 											<strong>La vivienda es:</strong> {{ $element->type_home}} <br>	
 											<strong>Tiempo de vivir en el mismo domicilio:</strong> {{ $element->time_address}} <br>

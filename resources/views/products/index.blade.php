@@ -20,11 +20,11 @@
                 <thead>
                     <th>Nombre</th>
                     <th>Descripción</th>
-                    <th>Monto Minimo</th>
-                    <th>Monto Maximo</th>
-                    <th>Plazo Minimo</th>
-                    <th>Plazo Maximo</th>
-                    <th>Taza de Interes</th>
+                    <th>Monto Mínimo</th>
+                    <th>Monto Máximo</th>
+                    <th>Plazo Mínimo</th>
+                    <th>Plazo Máximo</th>
+                    <th>Tasa de Interés</th>
                     <th>Recargo</th>
                     <th>Modalidad</th>
                     <th width="50px">Acción</th>
