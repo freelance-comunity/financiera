@@ -19,7 +19,7 @@ class ApplyController extends Controller
     if ($request->hasFile('photo')) {
       $photo = $request->file('photo');
       $filename = time() . '.' . $photo->getClientOriginalExtension();
-    Image::make($photo)->resize(300, 300)->save(public_path('/img/uploads/' . $filename));
+      Image::make($photo)->resize(300, 300)->save(public_path('/img/uploads/' . $filename));
 
       $accredited->photo = $filename;
       $accredited->save();
