@@ -20,7 +20,7 @@ Lista de estudio de negocios
         <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th>Dependientes economicos</th>
-                <th>Regimen de casamiento</th>
+                <th>Régimen de casamiento</th>
                 <th>Tipo de vivienda</th>
                 <th>La vivienda es</th>
                 <th>Tiempo de vivir en el mismo domicilio</th>            

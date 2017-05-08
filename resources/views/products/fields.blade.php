@@ -12,31 +12,31 @@
 
 <!--- Minimum Amount Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('minimum_amount', 'Monto Minimo:') !!}
+    {!! Form::label('minimum_amount', 'Monto Mínimo:') !!}
     {!! Form::text('minimum_amount', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Maximum Amount Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('maximum_amount', 'Monto Maximo:') !!}
+    {!! Form::label('maximum_amount', 'Monto Máximo:') !!}
     {!! Form::text('maximum_amount', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Minimum Term Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('minimum_term', 'Plazo Minimo:') !!}
+    {!! Form::label('minimum_term', 'Plazo Mínimo:') !!}
     {!! Form::text('minimum_term', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Maximum Term Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('maximum_term', 'Plazo Maximo:') !!}
+    {!! Form::label('maximum_term', 'Plazo Máximo:') !!}
     {!! Form::text('maximum_term', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Cup Interest Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('cup_interest', 'Tasa de Interes:') !!}
+    {!! Form::label('cup_interest', 'Tasa de Interés:') !!}
     {!! Form::text('cup_interest', null, ['class' => 'form-control']) !!}
 </div>
 

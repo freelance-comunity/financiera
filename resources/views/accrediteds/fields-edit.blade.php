@@ -46,7 +46,7 @@
     {!! Form::select('nationality',['Mexicana' => 'Mexicana'], null, ['class' => 'form-control'])!!}
 </div>
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('ife', 'Folio IFE:') !!}
+    {!! Form::label('ife', 'Folio INE:') !!}
     {!! Form::text('ife', null, ['class' => 'form-control']) !!}
 </div>
 

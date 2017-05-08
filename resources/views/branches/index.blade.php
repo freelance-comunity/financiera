@@ -20,7 +20,7 @@
             <thead>
                 <th>Nomenclatura</th>
                 <th>Municipio</th>
-                <th>Status</th>
+                <th>Estatus</th>
                 <th>Ejercicio</th>
                 <th width="50px">Acción</th>
             </thead>

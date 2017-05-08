@@ -25,7 +25,7 @@ Miembros del Sistema
                 <thead>
                     <th>Nombre </th>
                     <th>Apellidos</th>
-                    <th>dirección</th>
+                    <th>Dirección</th>
                     <th>Teléfono</th>
                     <th>Fecha de nacimiento</th>
                     <th>Puestos ocupados</th>
