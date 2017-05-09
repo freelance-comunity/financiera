@@ -96,7 +96,13 @@
     <!--- Amount Requested Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('amount_requested', 'Monto solicitado:') !!}
-        {!! Form::text('amount_requested', null, ['class' => 'form-control']) !!}
+        {!! Form::text('amount_requested', null, ['class' => 'form-control', 'maxlength' => 5]) !!}
+    </div>
+
+    <!--- Authorized Amount Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('authorized_amount', 'Monto autorizado:') !!}
+        {!! Form::text('authorized_amount', null, ['class' => 'form-control', 'maxlength' => 5]) !!}
     </div>
 
     

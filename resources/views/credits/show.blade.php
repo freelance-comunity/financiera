@@ -20,11 +20,9 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
     <div class="box box-default">
         <div class="box-header with-border">
           <h3 class="box-title"><i class="fa fa-paperclip"></i> Solicitud de crédito individual de: <strong>{{ $credits->accredited->name}} {{ $credits->accredited->last_name}}</strong></h3>
-
+          
           <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-minus"></i></button>
           </div>
         </div>
         <!-- info row -->
@@ -166,7 +164,7 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
         <!-- this row will not appear when printing -->
         <div class="row no-print">
           <div class="col-xs-12">
-            <a href="{{ url('export-pdf') }}/{{$credits->id}}" class="btn btn-info"><i class="fa fa-print"></i> Imprimir</a>
+            <a href="{{ url('export-pdf') }}/{{$credits->id}}" class="btn btn-default"><i class="fa fa-file-pdf-o"></i> Descargar PDF</a>
           </div>
         </div>
       </div>
