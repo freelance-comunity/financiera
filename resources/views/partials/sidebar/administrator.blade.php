@@ -18,7 +18,7 @@
                 <li><a href="{{ url('/accounts') }}">Cuentas bancarias</a></li>
                 <li><a href="{{ url('/anchorings') }}">Fondeo</a></li>
                 <li><a href="{{ url('/products') }}">Productos</a></li>
-                <li><a href="#">Grupos</a></li>
+                <li><a href="{{ url('/groups') }}">Grupos</a></li>
             </ul>
         </li>
         <li class="treeview">

@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('main-content')
-
 <div class="container">
 
     @include('common.errors')
 
-    {!! Form::open(['route' => 'information.store', 'enctype' => 'multipart/form-data']) !!}
+    {!! Form::model($group, ['route' => ['groups.update', $group->id], 'method' => 'patch']) !!}
 
-        @include('information.fields')
+        @include('groups.fields')
 
     {!! Form::close() !!}
 </div>

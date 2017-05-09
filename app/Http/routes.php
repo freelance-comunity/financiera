@@ -12,7 +12,7 @@
     });
 
     Route::get('testing2', function() {
-        echo "hola";
+      echo "hola";
     });
 
     Route::get('/rolescreate', function() {
@@ -468,4 +468,29 @@ Route::get('view-credit/{id}', function($id){
   ->with('credits', $credits);
 });
 
+Route::resource('groups', 'GroupController');
+
+Route::get('groups/{id}/delete', [
+  'as' => 'groups.delete',
+  'uses' => 'GroupController@destroy',
+  ]);
+
+Route::get('addmember/{id}', function($id) {
+ $group = App\Models\Group::find($id);
+ $accrediteds = App\Models\Accredited::all();
+ return view('groups.add-member')
+ ->with('accrediteds', $accrediteds)
+ ->with('group', $group);
+});
+
+Route::post('agregar', function(Illuminate\Http\Request $request) {
+  $input = $request->all();
+
+  foreach ($input['rows'] as $row) {
+    $id_member = $row['id'];
+    $accredited = App\Models\Accredited::find($id_member);
+    echo $accredited->name;
+    echo "<br>";
+  } 
+});
 

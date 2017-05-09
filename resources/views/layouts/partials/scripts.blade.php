@@ -6,6 +6,17 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('plugins/morris/morris.min.js')}}"></script>
+<!-- bootstrap datepicker -->
+<script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+<script>
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+  });
+    $('#datepicker2').datepicker({
+      autoclose: true
+  });
+</script>
 <!-- DataTables -->
 <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
@@ -55,9 +66,19 @@
 			buttons: [
 			'excel', 'pdf', 'print'
 			]
-            
+
 		});
 	});
+</script>
+<script>
+    $(document).ready(function(){
+        $('#myTableCustom').DataTable({
+            responsive: true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+            }
+        });
+    });
 </script>
 <script>
 	$('#select-all').click(function(event) {

@@ -158,5 +158,35 @@
 			<!--/.box -->
 		</div>
 		<!-- /.col -->
+		<div class="col-md-4">
+			<!-- USERS LIST -->
+			<div class="box box-success">
+				<div class="box-header with-border">
+					<h3 class="box-title">Hora local</h3>
+
+					<div class="box-tools pull-right">
+						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body no-padding">
+					<ul class="users-list clearfix">
+						<div style="height: 200px; position: relative;">
+							<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+								<center>
+									<span id="time" style="font-size: 80px;"></span>
+									<span id="location">Cargando...</span>
+								</center>
+							</div>
+						</div>
+						@include('partials.home.clock')
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!--/.box -->
+			</div>
+			<!-- /.col -->
+
+		</div>
 	</div>
-</div>

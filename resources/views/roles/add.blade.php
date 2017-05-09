@@ -24,7 +24,6 @@ Asignar permisos
                     <th>Nombre</th>
                     <th>Nombre opcional</th>
                     <th>Descripción</th>
-                    <th width="50px">Acción</th>
                 </thead>
                 <tbody>
 
@@ -34,10 +33,6 @@ Asignar permisos
                         <td>{!! $permission->name !!}</td>
                         <td>{!! $permission->display_name !!}</td>
                         <td>{!! $permission->description !!}</td>
-                        <td>
-
-                            <a href="{!! route('permissions.delete', [$permission->id]) !!}" onclick="return confirm('Are you sure wants to delete this Permission?')"><i class="glyphicon glyphicon-remove"></i></a>
-                        </td>
                     </tr>
                     @endforeach
                 </tbody>

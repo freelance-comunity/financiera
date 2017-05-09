@@ -1,5 +1,5 @@
  <!-- Modal -->
- <div id="roles{{$user->id}}" class="modal fade" role="dialog">
+ <div id="roles{{$user->id}}" class="modal fade modal-success" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
