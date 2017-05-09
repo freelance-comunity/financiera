@@ -6,6 +6,7 @@ use App\Models\Credits;
 use App\Models\Accredited;
 use App\Models\Aval;
 use App\Models\Product;
+use App\Models\Anchoring;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
@@ -86,9 +87,24 @@ class CreditsController extends AppBaseController
 		$accrediteds = Accredited::find($accredited);
 		$product = Product::find($request->input('type_product'));
 		if ($request->input('term') > $product->maximum_term) {
-			Alert::error('El plazo máximo en días ha sido rebasado');			
+			Alert::error('El plazo máximo en días ha sido rebasado')->persistent('Cerrar');			
 			return redirect()->back()->withInput($request->all());		
-		}else{
+		}elseif ($request->input('amount_requested') > $product->maximum_amount) {
+			Alert::error('El monto solicitado máximo es de $15000')->persistent('Cerrar');			
+			return redirect()->back()->withInput($request->all());
+		}elseif ($request->input('amount_requested') < $product->minimum_amount) {
+			Alert::error('El monto solicitado mínimo es de $1000')->persistent('Cerrar');			
+			return redirect()->back()->withInput($request->all());
+		}
+		elseif ($request->input('authorized_amount') > $product->maximum_amount) {
+			Alert::error('El monto autorizado máximo es de $15000')->persistent('Cerrar');			
+			return redirect()->back()->withInput($request->all());
+		}
+		elseif ($request->input('authorized_amount') < $product->minimum_amount) {
+			Alert::error('El monto autorizado mínimo es de $1000')->persistent('Cerrar');			
+			return redirect()->back()->withInput($request->all());
+		}
+		else{
 			$credits = Credits::create($input);		
 			Alert::success('Prestamo guardado exitosamente.')->persistent('Cerrar');
 			$accrediteds = Accredited::find($accredited);

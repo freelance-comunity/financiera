@@ -7,7 +7,8 @@ use App\User;
 use App\Models\Product;
 use App\Models\Accredited;
 use App\Models\Branch;
-use App\Models\credits;
+use App\Models\Credits;
+use App\Models\Anchoring;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
 use Response;
@@ -282,11 +283,15 @@ class AccreditedController extends AppBaseController
 		$aval = $accredited->avals;
 		$address = $accredited->addresses;
 		$micros = $accredited->micros;
+		$anchoring = Anchoring::all();
 		if ($aval->count() == 0 or $address->count() == 0 or $micros->count() == 0) {
 			Alert::error('Este acreditado no cuenta con los datos registrados para la solicitud de un prestamo')->persistent('Cerrar');
 			return redirect('allacrediteds');
 		}elseif ($credits->count() == 3) {
 			Alert::error('Este acreditado ya cuenta con tres prestamos')->persistent('Cerrar');
+			return redirect('allacrediteds');
+		}elseif ($anchoring->count() == 0) {
+			Alert::error('Actualmente no se cuenta con Fondeo')->persistent('Cerrar');
 			return redirect('allacrediteds');
 		}
 		else{
@@ -296,7 +301,8 @@ class AccreditedController extends AppBaseController
 			->with('accredited', $accredited)
 			->with('aval', $aval)
 			->with('address', $address)
-			->with('micros', $micros);
+			->with('micros', $micros)
+			->with('anchoring', $anchoring);
 		}
 	}
 
