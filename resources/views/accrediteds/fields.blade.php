@@ -13,14 +13,8 @@
     <!--- Birthdate Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('birthdate', 'Fecha de Nacimiento:') !!}
-        <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" name="birthdate" class="form-control pull-right" id="datepicker" value="{{ old('birthdate') }}">
-                </div>
-                <!-- /.input group -->
-            </div>
+        <input type="date" name="birthdate" class="form-control">   
+    </div>
 
     <!--- Cel Field --->
     <div class="form-group col-sm-6 col-lg-4">

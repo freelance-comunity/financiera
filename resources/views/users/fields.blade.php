@@ -25,26 +25,14 @@
 <!--- Birthday Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('birthday', 'Fecha de Nacimiento:') !!}
-    <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" name="birthday" class="form-control pull-right" id="datepicker" value="{{ old('birthday') }}">
-                </div>
-                <!-- /.input group -->
-            </div>
+    <input type="date" name="birthday" class="form-control">
+</div>
 
 <!--- Start Date Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('start_date', 'Fecha de inicio de contrato:') !!}
-      <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" name="start_date" class="form-control pull-right" id="datepicker2" value="{{ old('start_date') }}">
-                </div>
-                <!-- /.input group -->
-            </div>
+    <input type="date" name="start_date" class="form-control">
+</div>
 
 <!--- Email Field --->
 <div class="form-group col-sm-6 col-lg-4">
