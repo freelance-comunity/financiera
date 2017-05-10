@@ -6,14 +6,13 @@
     });
 
     Route::get('export-pdf/{id}', function($id){
-      $credit = App\Models\Credits::find($id)->first();
+      $credit = App\Models\Credits::find($id);
       $pdf = PDF::loadView('credits.pdf', compact('credit'))->setPaper('a4','landscape')->setWarnings(false);
       return $pdf->download('solicitud.pdf');
     });
     Route::get('accredited-pdf/{id}', function($id){
-      $accredited = App\Models\Accredited::find($id)->first();
-      $paper_size = array(0,0,800,800);
-      $pdf = PDF::loadView('accrediteds.pdf', compact('accredited'))->setPaper($paper_size)->setWarnings(false);
+      $accredited = App\Models\Accredited::find($id);
+      $pdf = PDF::loadView('accrediteds.pdf', compact('accredited'))->setPaper('a4')->setWarnings(false);
       return $pdf->download('expediente.pdf');
     });
 

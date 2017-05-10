@@ -142,3 +142,15 @@ td:last-child {
   float: left;
   padding-right: 100px;
 }
+
+.part3{
+  width: 45%;
+  float: left;
+  padding: 30px;
+}
+
+.part4{
+  width: 55%;
+  float: left;
+  padding-right: 100px;
+}
