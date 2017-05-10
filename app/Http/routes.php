@@ -10,10 +10,19 @@
       $pdf = PDF::loadView('credits.pdf', compact('credit'))->setPaper('a4','landscape')->setWarnings(false);
       return $pdf->download('solicitud.pdf');
     });
+    Route::get('accredited-pdf/{id}', function($id){
+      $accredited = App\Models\Accredited::find($id)->first();
+      $paper_size = array(0,0,800,800);
+      $pdf = PDF::loadView('accrediteds.pdf', compact('accredited'))->setPaper($paper_size)->setWarnings(false);
+      return $pdf->download('expediente.pdf');
+    });
+
+     
 
     Route::get('testing2', function() {
       echo "hola";
     });
+     
 
     Route::get('/rolescreate', function() {
       $propietario = new App\Role();

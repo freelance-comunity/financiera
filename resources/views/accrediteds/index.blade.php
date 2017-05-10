@@ -56,7 +56,10 @@ Lista de acreditados
                             <li><a href="{!! route('accrediteds.microsAccredited', [$accredited->id])!!}">Datos de la Microempresa</a></li>
                             <li><a href="{!! route('accrediteds.historiesAccredited', [$accredited->id])!!}">Antecedentes crediticios</a></li>
                             <li><a href="{!! route('accrediteds.referencesAccredited', [$accredited->id])!!}">Referencias</a></li> 
-                            <li><a href="{{ url('/updatephoto') }}/{{$accredited->id}}">Actualizar foto</a></li>                
+                            <li><a href="{{ url('/updatephoto') }}/{{$accredited->id}}">Actualizar foto</a></li>
+                            <li>
+                                <a href="{{ url('accredited-pdf') }}/{{$accredited->id}}"></i> Descargar Expediente</a>
+                            </li>               
                         </ul>
 
                     </div>
