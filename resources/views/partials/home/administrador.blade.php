@@ -172,7 +172,7 @@
 				<!-- /.box-header -->
 				<div class="box-body no-padding">
 					<ul class="users-list clearfix">
-						<div style="height: 200px; position: relative;">
+						<div style="height: 150px; position: relative;">
 							<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 								<center>
 									<span id="time" style="font-size: 80px;"></span>

@@ -29,12 +29,13 @@ Grupos
                 <tbody>
 
                     @foreach($groups as $group)
+                    @include('groups.modal-add')
                     <tr>
                         <td>{!! $group->date_create !!}</td>
                         <td>{!! $group->branch !!}</td>
-                        <td>{!! $group->folio !!}</td>
+                        <td><h4><span class="label label-info">{!! $group->folio !!}</span></h4></td>
                         <td>
-                            <button type="button" class="uppercase btn btn-default" data-toggle="modal" data-target="#addModal">
+                            <button type="button" class="uppercase btn btn-default" data-toggle="modal" data-target="#addModal{{$group->id}}">
                               Ver
                           </button>
                           <a class="uppercase btn btn-default" href="{{ url('addmember') }}/{{$group->id}}">Agregar</a>
@@ -51,5 +52,4 @@ Grupos
     @endif
 </div>
 </div>
-@include('groups.modal-add')
 @endsection

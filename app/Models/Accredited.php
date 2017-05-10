@@ -90,4 +90,9 @@ class Accredited extends Model
 		return $this->hasMany('App\Models\Credits');
 	}
 
+	public function groups()
+	{
+		return $this->belongsToMany('App\Models\Group');
+	}
+
 }

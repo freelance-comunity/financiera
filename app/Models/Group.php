@@ -22,4 +22,9 @@ class Group extends Model
 		"branch" => "required",
 	];
 
+	public function accrediteds()
+	{
+		return $this->belongsToMany('App\Models\Accredited');
+	}
+
 }

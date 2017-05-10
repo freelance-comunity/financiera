@@ -12,7 +12,11 @@
     });
 
     Route::get('testing2', function() {
-      echo "hola";
+      $group = App\Models\Group::find(7);
+      echo $group->folio;
+      foreach ($group->accrediteds()->get() as $accredited) {
+        echo $accredited->name;
+      }
     });
 
     Route::get('/rolescreate', function() {
@@ -477,20 +481,15 @@ Route::get('groups/{id}/delete', [
 
 Route::get('addmember/{id}', function($id) {
  $group = App\Models\Group::find($id);
- $accrediteds = App\Models\Accredited::all();
+ $accrediteds_all = App\Models\Accredited::all();
+ $accrediteds_group = $group->accrediteds;
+
+ $collection = $accrediteds_all;
+ $accrediteds = $collection->diff($accrediteds_group);
+
  return view('groups.add-member')
  ->with('accrediteds', $accrediteds)
  ->with('group', $group);
 });
 
-Route::post('agregar', function(Illuminate\Http\Request $request) {
-  $input = $request->all();
-
-  foreach ($input['rows'] as $row) {
-    $id_member = $row['id'];
-    $accredited = App\Models\Accredited::find($id_member);
-    echo $accredited->name;
-    echo "<br>";
-  } 
-});
-
+Route::post('addmembertogroup','GroupController@addMember');
