@@ -13,6 +13,7 @@ use App\Models\Branch;
 use App\Models\Accredited;
 use Carbon\Carbon;
 
+
 class GroupController extends AppBaseController
 {
 
@@ -26,25 +27,25 @@ class GroupController extends AppBaseController
 	public function index(Request $request)
 	{
 		$query = Group::query();
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
-        $accrediteds = Accredited::all();
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
+		$columns = Schema::getColumnListing('$TABLE_NAME$');
+		$attributes = array();
+		$accrediteds = Accredited::all();
+		foreach($columns as $attribute){
+			if($request[$attribute] == true)
+			{
+				$query->where($attribute, $request[$attribute]);
+				$attributes[$attribute] =  $request[$attribute];
+			}else{
+				$attributes[$attribute] =  null;
+			}
+		};
 
-        $groups = $query->get();
+		$groups = $query->get();
 
-        return view('groups.index')
-            ->with('groups', $groups)
-            ->with('attributes', $attributes)
-            ->with('accrediteds', $accrediteds);
+		return view('groups.index')
+		->with('groups', $groups)
+		->with('attributes', $attributes)
+		->with('accrediteds', $accrediteds);
 	}
 
 	/**
@@ -68,13 +69,13 @@ class GroupController extends AppBaseController
 	 */
 	public function store(CreateGroupRequest $request)
 	{
-        $input = $request->all();
-        $date = new Carbon($request->input('date_create'));
-        $count = Group::count();
-        $number = Group::max('id') + 1;
-        $input['date_create'] = $date;
-        $input['folio'] = $date->year.$request->input('branch').'000'.$number;
-        
+		$input = $request->all();
+		$date = new Carbon($request->input('date_create'));
+		$count = Group::count();
+		$number = Group::max('id') + 1;
+		$input['date_create'] = $date;
+		$input['folio'] = $date->year.$request->input('branch').'000'.$number;
+
 		$group = Group::create($input);
 
 		Alert::success('Grupo creado Exitosamente')->persistent('Cerrar');
@@ -171,5 +172,19 @@ class GroupController extends AppBaseController
 		Flash::message('Group deleted successfully.');
 
 		return redirect(route('groups.index'));
+	}
+
+	public function addMember(Request $request)
+	{	
+		$input = $request->all();
+		$group = Group::find($request->input('group_id'));
+		echo $group->folio;
+		foreach ($input['rows'] as $row) {
+			$id_accredited = $row['id'];
+			$accredited = Accredited::find($id_accredited);
+			$accredited->groups()->attach($group);
+		} 
+		Alert::success('Se agregaron los acreditados al grupo.')->persistent('Cerrar');
+		return redirect()->back();
 	}
 }

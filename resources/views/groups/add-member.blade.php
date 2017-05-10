@@ -18,7 +18,7 @@ Agregar acreditados al Grupo <span class="label label-success">{{$group->folio}}
 		<div class="well text-center">No se encontraron acreditados</div>
 		@else
 		<div class="table-responsive">
-			{!! Form::open(['url' => 'agregar']) !!}
+			{!! Form::open(['url' => 'addmembertogroup']) !!}
 			<table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTableCustom">
 				<thead>
 					<th>Seleccionar</th>
@@ -46,6 +46,7 @@ Agregar acreditados al Grupo <span class="label label-success">{{$group->folio}}
 				@endforeach
 			</tbody>
 		</table>
+		<input type="hidden" name="group_id" value="{{$group->id}}">
 		<input type="submit" class="btn btn-success" value="AGREGAR">
 		{!! Form::close() !!}
 	</div>

@@ -20,7 +20,7 @@ Lista de acreditados
     <div class="well text-center">No se encontraron acreditados</div>
     @else
     <div class="table-responsive">
-        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTableCustom">
             <thead>
                 <th><i class="fa fa-picture-o" aria-hidden="true"></i></th>
                 <th>Nombre(s)</th>

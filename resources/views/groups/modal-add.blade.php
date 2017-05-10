@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal modal-success" id="addModal">
+<div class="modal modal-success" id="addModal{{$group->id}}">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,11 +8,12 @@
           <h4 class="modal-title">Lista de Acreditados</h4>
         </div>
         <div class="modal-body">
-        
+          @foreach ($group->accrediteds()->get() as $element)
+          <a href="{!! route('accrediteds.show', [$element->id]) !!}"" class="btn btn-outline btn-warning">{{$element->name}} {{$element->last_name}}</a>
+          @endforeach
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-outline">Agregar al Grupo</button>
         </div>
       </div>
       <!-- /.modal-content -->
