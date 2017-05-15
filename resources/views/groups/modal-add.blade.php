@@ -13,7 +13,7 @@
           @endforeach
         </div>
         <div class="modal-footer">
-          <button type="button" class="uppercase btn btn-info pull-left" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="uppercase btn bg-teal pull-left" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
       <!-- /.modal-content -->

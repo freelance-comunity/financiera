@@ -12,11 +12,7 @@
     });
 
     Route::get('testing2', function() {
-      $group = App\Models\Group::find(7);
-      echo $group->folio;
-      foreach ($group->accrediteds()->get() as $accredited) {
-        echo $accredited->name;
-      }
+      echo '<input type="file" accept="image/*" onchange="picChange(event)"/>';
     });
 
     Route::get('/rolescreate', function() {

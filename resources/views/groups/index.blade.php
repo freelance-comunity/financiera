@@ -35,10 +35,10 @@ Grupos
                         <td>{!! $group->branch !!}</td>
                         <td><h4><span class="label label-info">{!! $group->folio !!}</span></h4></td>
                         <td>
-                            <button type="button" class="uppercase btn btn-default" data-toggle="modal" data-target="#addModal{{$group->id}}">
+                            <button type="button" class="uppercase btn bg-navy" data-toggle="modal" data-target="#addModal{{$group->id}}">
                               Ver
                           </button>
-                          <a class="uppercase btn btn-default" href="{{ url('addmember') }}/{{$group->id}}">Agregar</a>
+                          <a class="uppercase btn bg-yellow" href="{{ url('addmember') }}/{{$group->id}}">Agregar</a>
                       </td>
                       <td>
                         <a href="{!! route('groups.edit', [$group->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
