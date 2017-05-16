@@ -494,3 +494,8 @@ Route::get('pagare', function() {
   $pdf = PDF::loadView('documentation.pagare');
   return $pdf->download('pagare.pdf');
 });
+
+Route::get('number-to-letter', function() {
+    $letras = NumeroALetras::convertir(5000.86, 'pesos', 'centavos');
+    echo $letras;
+});
