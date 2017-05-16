@@ -511,5 +511,5 @@ Route::get('pagare', function() {
 
 Route::get('number-to-letter', function() {
     $letras = NumeroALetras::convertir(5000.86, 'pesos', 'centavos');
-    echo $letras;
+    echo $letras. ' 0/100 M.N.';
 });
