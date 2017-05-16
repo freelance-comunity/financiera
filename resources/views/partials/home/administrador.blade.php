@@ -1,59 +1,76 @@
+@php
+$accrediteds = App\Models\Accredited::all()->count();
+@endphp
 <!-- Info boxes -->
 <div class="row">
-	<div class="col-md-3 col-sm-6 col-xs-12">
-		<div class="info-box">
-			<span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+	<div class="col-lg-3 col-xs-6">
+		<!-- small box -->
+		<div class="small-box bg-olive">
+			<div class="inner">
+				<h3>90 %</h3>
 
-			<div class="info-box-content">
-				<span class="info-box-text">% disponible de crédito</span>
-				<span class="info-box-number">90<small>%</small></span>
+				<p>Crédito Disponible</p>
 			</div>
-			<!-- /.info-box-content -->
+			<div class="icon">
+				<i class="fa fa-area-chart"></i>
+			</div>
+			<a href="#" class="small-box-footer">
+				Ver <i class="fa fa-arrow-circle-right"></i>
+			</a>
 		</div>
-		<!-- /.info-box -->
 	</div>
 	<!-- /.col -->
-	<div class="col-md-3 col-sm-6 col-xs-12">
-		<div class="info-box">
-			<span class="info-box-icon bg-red"><i class="fa fa-remove"></i></span>
+	<div class="col-lg-3 col-xs-6">
+		<!-- small box -->
+		<div class="small-box bg-red">
+			<div class="inner">
+				<h3>$ 41,410</h3>
 
-			<div class="info-box-content">
-				<span class="info-box-text">Monto atrasado</span>
-				<span class="info-box-number">41,410</span>
+				<p>Monto Atrasado</p>
 			</div>
-			<!-- /.info-box-content -->
+			<div class="icon">
+				<i class="fa fa-bell"></i>
+			</div>
+			<a href="#" class="small-box-footer">
+				Ver <i class="fa fa-arrow-circle-right"></i>
+			</a>
 		</div>
-		<!-- /.info-box -->
 	</div>
 	<!-- /.col -->
 
 	<!-- fix for small devices only -->
 	<div class="clearfix visible-sm-block"></div>
+	<div class="col-lg-3 col-xs-6">
+		<!-- small box -->
+		<div class="small-box bg-teal">
+			<div class="inner">
+				<h3>59</h3>
 
-	<div class="col-md-3 col-sm-6 col-xs-12">
-		<div class="info-box">
-			<span class="info-box-icon bg-green"><i class="fa fa-money"></i></span>
-
-			<div class="info-box-content">
-				<span class="info-box-text">Créditos esta semana</span>
-				<span class="info-box-number">760</span>
+				<p>Créditos Aprobados</p>
 			</div>
-			<!-- /.info-box-content -->
+			<div class="icon">
+				<i class="fa fa-check-circle-o"></i>
+			</div>
+			<a href="#" class="small-box-footer">
+				Ver <i class="fa fa-arrow-circle-right"></i>
+			</a>
 		</div>
-		<!-- /.info-box -->
 	</div>
-	<!-- /.col -->
-	<div class="col-md-3 col-sm-6 col-xs-12">
-		<div class="info-box">
-			<span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+	<div class="col-lg-3 col-xs-6">
+		<!-- small box -->
+		<div class="small-box bg-yellow">
+			<div class="inner">
+				<h3>{{$accrediteds}}</h3>
 
-			<div class="info-box-content">
-				<span class="info-box-text">Acreditados registrados</span>
-				<span class="info-box-number">2,000</span>
+				<p>Acreditados Registrados</p>
 			</div>
-			<!-- /.info-box-content -->
+			<div class="icon">
+				<i class="fa fa-users"></i>
+			</div>
+			<a href="#" class="small-box-footer">
+				Ver <i class="fa fa-arrow-circle-right"></i>
+			</a>
 		</div>
-		<!-- /.info-box -->
 	</div>
 	<!-- /.col -->
 </div>
@@ -79,7 +96,7 @@
 				<div class="box-body">
 					<div class="table-responsive">
 						@if($credits->isEmpty())
-						<div class="well text-center">No Credits found.</div>
+						<div class="well text-center">No hay solicitudes.</div>
 						@else
 						<table class="table no-margin">
 							<thead>
@@ -118,14 +135,17 @@
 		<!-- /.box -->
 		@php
 		$accrediteds = App\Models\Accredited::all();
+		$chunk = $accrediteds->take(-8);
+		$chunk->all();
 		@endphp
 		<div class="col-md-4">
 			<!-- USERS LIST -->
 			<div class="box box-danger">
 				<div class="box-header with-border">
-					<h3 class="box-title">Nuevos acreditados</h3>
+					<h3 class="box-title">Nuevos Acreditados</h3>
 
 					<div class="box-tools pull-right">
+						<span class="label label-danger">{{$chunk->count()}} Nuevos miembros</span>
 						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
 						</button>
 						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
@@ -135,10 +155,10 @@
 				<!-- /.box-header -->
 				<div class="box-body no-padding">
 					<ul class="users-list clearfix">
-						@if ($accrediteds->isEmpty())
-						No hay acreditados nuevos.
+						@if ($chunk->isEmpty())
+						<div class="well text-center">No hay nuevos acreditados.</div>
 						@else
-						@foreach ($accrediteds as $element)
+						@foreach ($chunk as $element)
 						<li>
 							<img style="width: 50px; height: 50px; border-radius: 50%" src="{{ asset('/img/uploads/') }}/{{ $element->photo}}" alt="">
 							<a class="users-list-name" href="{!! route('accrediteds.show', [$element->id]) !!}">{{$element->name}} {{$element->last_name}}</a>

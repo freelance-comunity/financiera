@@ -20,10 +20,13 @@
                 <li><a href="{{ url('/products') }}">Productos</a></li>
             </ul>
         </li>
+        @php
+            $groups = App\Models\Group::all()->count();
+        @endphp
         <li class="treeview">
             <a href="#"><i class='fa fa-users'></i> <span>Acreditados</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-             <li><a href="{{ url('/groups') }}">Grupos <span class="pull-right-container"><small class="label pull-right bg-green">3</small></span></a></li>
+             <li><a href="{{ url('/groups') }}">Grupos <span class="pull-right-container"><small class="label pull-right bg-green">{{$groups}}</small></span></a></li>
              <li><a href="{{ url('/accrediteds') }}">Lista de clientes</a></li>
              <li><a href="#">Lista negra de clientes</a></li>
          </ul>

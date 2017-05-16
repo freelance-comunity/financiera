@@ -25,11 +25,7 @@
 
 
     Route::get('testing2', function() {
-      $group = App\Models\Group::find(7);
-      echo $group->folio;
-      foreach ($group->accrediteds()->get() as $accredited) {
-        echo $accredited->name;
-      }
+      echo '<input type="file" accept="image/*" onchange="picChange(event)"/>';
     });
 
 
@@ -507,3 +503,8 @@ Route::get('addmember/{id}', function($id) {
 });
 
 Route::post('addmembertogroup','GroupController@addMember');
+
+Route::get('pagare', function() {
+  $pdf = PDF::loadView('documentation.pagare');
+  return $pdf->download('pagare.pdf');
+});
