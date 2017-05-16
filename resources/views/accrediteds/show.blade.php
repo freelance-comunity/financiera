@@ -112,6 +112,7 @@ Acreditado
 									$micros = $accredited->micros;
 									$histories = $accredited->history;
 									$references = $accredited->references;
+									$economic = $accredited->economic;
 									@endphp
 									<li>
 										<!-- timeline icon -->
@@ -230,6 +231,28 @@ Acreditado
 											</div>
 											<a href="{!! route('micros.editMicros', [$micros->id]) !!}" class="btn btn-default">Editar</a>
 											<a href="{!! route('micros.delete', [$micros->id]) !!}" onclick="return confirm('Are you sure wants to delete this History?')" class="btn btn-default">Eliminar</a>
+											@endforeach
+										</div>
+									</li>
+									<li>
+										<!-- timeline icon -->
+										<i class="fa fa-building-o bg-maroon"></i>
+										<div class="timeline-item">
+											<h3 class="timeline-header"><a href="{!! route('accrediteds.economicAccredited', [$accredited->id])!!}">Evaluación economica</a></h3>
+											@foreach ($economic as $economic)
+											<span class="time"><i class="fa fa-clock-o"></i> {{$economic->created_at}}</span>
+											<div class="timeline-body">            		
+												<strong>Lugar: </strong>{{ $economic->place}} <br>
+												<strong>Fecha:</strong> {{ $economic->date}} <br>	
+												<strong>Actividad economica:</strong> {{ $economic->activity_economic}} <br>	
+												<strong>Venta:</strong> {{ $economic->sales}} <br>
+												<strong>Compra:</strong> {{$economic->buy}} <br>	
+												<strong>Utilidad bruta:</strong> {{$economic->gross_profit}} <br>	
+												<strong>Otros ingresos:</strong> {{$economic->other_income}} <br>	
+												<strong>Otros gastos:</strong> {{$economic->other_expenses}} <br>	
+												<strong>Gastos familiares:</strong> {{$economic->familiar_costs}} <br>
+												<strong>Utilidad neta mensual:</strong> {{$economic->montly_net_income}} <br>
+											</div>											
 											@endforeach
 										</div>
 									</li>

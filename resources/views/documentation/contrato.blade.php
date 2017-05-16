@@ -47,7 +47,7 @@
 	día 28 de Mayo de 2017, sin necesidad de previo cobro. 
 	<br><br>
 	TERCERA: Convienen las partes, que le importe del adeudo es decir la cantidad de
-	${{$credit->authorized_amount}}({{$letras}}), causara un interés del {{$credit->interest}} %, los cuales serán pagados de Forma diaria
+	${{$credit->authorized_amount}} ({{$letras}}), causara un interés del {{$credit->interest}} %, los cuales serán pagados de Forma diaria
 	integrando capital hasta vencimiento de contrato (se anexa calendario de pago).
 	<br><br>
 	CUARTA: Sera causa de cobro de interés moratorio en caso de que el

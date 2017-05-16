@@ -54,6 +54,7 @@ Lista de acreditados
                             <li><a href="{!! route('accrediteds.studiesAccredited', [$accredited->id])!!}">Estudio Socioeconómico</a></li>
                             <li><a href="{!! route('accrediteds.avalsAccredited', [$accredited->id])!!}">Aval</a></li>
                             <li><a href="{!! route('accrediteds.microsAccredited', [$accredited->id])!!}">Datos de la Microempresa</a></li>
+                            <li><a href="{!! route('accrediteds.economicAccredited', [$accredited->id])!!}">Evaluación Economica</a></li>
                             <li><a href="{!! route('accrediteds.historiesAccredited', [$accredited->id])!!}">Antecedentes crediticios</a></li>
                             <li><a href="{!! route('accrediteds.referencesAccredited', [$accredited->id])!!}">Referencias</a></li> 
                             <li><a href="{{ url('/updatephoto') }}/{{$accredited->id}}">Actualizar foto</a></li>
