@@ -46,19 +46,19 @@
 <!--- Sales Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('sales', 'Ventas:') !!}
-    {!! Form::text('sales', null, ['class' => 'form-control']) !!}
+    {!! Form::text('sales', null, ['class' => 'form-control', 'id' => 'sales']) !!}
 </div>
 
 <!--- Buy Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('buy', 'Compras:') !!}
-    {!! Form::text('buy', null, ['class' => 'form-control']) !!}
+    {!! Form::text('buy', null, ['class' => 'form-control', 'id' => 'buy']) !!}
 </div>
 
 <!--- Gross Profit Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('gross_profit', 'Utilidad Bruta:') !!}
-    {!! Form::text('gross_profit', null, ['class' => 'form-control']) !!}
+    {!! Form::text('gross_profit', null, ['class' => 'form-control', 'id' => 'utilidad_bruta']) !!}
 </div>
 
 <!--- Other Income Field --->
@@ -89,5 +89,4 @@
 <!--- Submit Field --->
 <div class="form-group col-sm-12">
     {!! Form::submit('Guardar', ['class' => 'uppercase btn btn-primary']) !!}
-    {!! Form::submit('Aplicar Formulas', ['class' => 'uppercase btn bg-navy']) !!}
 </div>
