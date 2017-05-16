@@ -18,12 +18,11 @@
 
     Route::get('contrato-pdf/{id}', function($id){
       $credit = App\Models\Credits::find($id);
-      $pdf = PDF::loadView('documentation.contrato', compact('credit'))->setPaper('a4')->setWarnings(false);
+      $letras = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+      $pdf = PDF::loadView('documentation.contrato', compact('credit','letras'))->setPaper('a4')->setWarnings(false);
       return $pdf->download('contrato.pdf');
     });
-
-
-
+  
     Route::get('testing2', function() {
       echo '<input type="file" accept="image/*" onchange="picChange(event)"/>';
     });
@@ -510,6 +509,6 @@ Route::get('pagare', function() {
 });
 
 Route::get('number-to-letter', function() {
-    $letras = NumeroALetras::convertir(5000.86, 'pesos', 'centavos');
+    $letras = NumeroALetras::convertir(15000.09, 'pesos', 'centavos');
     echo $letras;
 });
