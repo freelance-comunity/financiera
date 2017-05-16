@@ -18,7 +18,7 @@
 
     Route::get('contrato-pdf/{id}', function($id){
       $credit = App\Models\Credits::find($id);
-      $pdf = PDF::loadView('credits.contrato', compact('credit'))->setPaper('a4')->setWarnings(false);
+      $pdf = PDF::loadView('documentation.contrato', compact('credit'))->setPaper('a4')->setWarnings(false);
       return $pdf->download('contrato.pdf');
     });
 

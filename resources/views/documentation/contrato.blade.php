@@ -9,7 +9,7 @@
 	S.A. De C.V. representada por el señor Licenciado Víctor Manuel Salazar Molina y de la
 	otra como “DEUDORA” EL(A) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}}, al tenor las siguientes
 	declaraciones y clausulas:
-</p><br>
+</p>
 <p style="text-align: center">DECLARACIONES
 </p>
 <p align="justify">PRIMERA. EL ACREDITANTE <br>
@@ -35,7 +35,7 @@
 	Crecimiento Empresarial S.A. de C. V.
 </p>
 <p style="text-align: center">CLAUSULAS
-</p><br>
+</p>
 <p align="justify">
 	PRIMERA: Solución y Crecimiento Empresarial, S.A. DE C.V. y/o el Licenciado Víctor
 	Manuel Salazar Molina, por este conducto otorgan al(a) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}}, la suma de ${{$credit->authorized_amount}} (Mil Quinientos Pesos 00/100 Moneda Nacional), para ser
@@ -80,20 +80,20 @@
 </p>
 <br>
 <p style="text-align: center">PARTE ACREEDORA
-</p><br><br>
+</p><br>
 <p style="text-align: center">____________________________________________________________
 </p>
 <p style="text-align: center">Licenciado en Economía Agrícola Víctor Manuel Salazar Molina <br>
 Representante Legal de Solución y Crecimiento Empresarial <br>
 S.A. de C.V. 
 </p>
-<br><br>
+<br>
 <p style="text-align: center">PARTE DEUDORA
-</p><br><br>
+</p><br>
 <p style="text-align: center">_____________________________________________________
 </p>
 <p style="text-align: center">{{$credit->accredited->name}} {{$credit->accredited->last_name}}
-</p><br><br><br><br>
+</p><br><br>
 <p style="text-align: center">TESTIGOS
 </p><br><br>
 <p style="text-align: left;">___________________________ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___________________________
