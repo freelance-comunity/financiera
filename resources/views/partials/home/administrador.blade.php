@@ -67,7 +67,7 @@ $accrediteds = App\Models\Accredited::all()->count();
 			<div class="icon">
 				<i class="fa fa-users"></i>
 			</div>
-			<a href="#" class="small-box-footer">
+			<a href="{{ url('accrediteds') }}" class="small-box-footer">
 				Ver <i class="fa fa-arrow-circle-right"></i>
 			</a>
 		</div>
