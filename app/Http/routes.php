@@ -16,7 +16,13 @@
       return $pdf->download('expediente.pdf');
     });
 
-     
+    Route::get('contrato-pdf/{id}', function($id){
+      $credit = App\Models\Credits::find($id);
+      $pdf = PDF::loadView('credits.contrato', compact('credit'))->setPaper('a4')->setWarnings(false);
+      return $pdf->download('contrato.pdf');
+    });
+
+
 
     Route::get('testing2', function() {
       $group = App\Models\Group::find(7);
@@ -25,7 +31,7 @@
         echo $accredited->name;
       }
     });
-     
+
 
     Route::get('/rolescreate', function() {
       $propietario = new App\Role();

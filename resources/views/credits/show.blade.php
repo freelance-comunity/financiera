@@ -165,6 +165,7 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
         <div class="row no-print">
           <div class="col-xs-12">
             <a href="{{ url('export-pdf') }}/{{$credits->id}}" class="btn btn-default"><i class="fa fa-file-pdf-o"></i> Descargar PDF</a>
+            <a href="{{ url('contrato-pdf') }}/{{$credits->id}}" class="btn btn-default"><i class="fa fa-file-pdf-o"></i> Contrato</a>
           </div>
         </div>
       </div>
