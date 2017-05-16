@@ -489,3 +489,8 @@ Route::get('addmember/{id}', function($id) {
 });
 
 Route::post('addmembertogroup','GroupController@addMember');
+
+Route::get('pagare', function() {
+  $pdf = PDF::loadView('documentation.pagare');
+  return $pdf->download('pagare.pdf');
+});

@@ -1,8 +1,11 @@
+@php
+$accrediteds = App\Models\Accredited::all()->count();
+@endphp
 <!-- Info boxes -->
 <div class="row">
 	<div class="col-lg-3 col-xs-6">
 		<!-- small box -->
-		<div class="small-box bg-aqua">
+		<div class="small-box bg-olive">
 			<div class="inner">
 				<h3>90 %</h3>
 
@@ -43,7 +46,7 @@
 			<div class="inner">
 				<h3>59</h3>
 
-				<p>Créditos esta semana</p>
+				<p>Créditos Aprobados</p>
 			</div>
 			<div class="icon">
 				<i class="fa fa-check-circle-o"></i>
@@ -57,7 +60,7 @@
 		<!-- small box -->
 		<div class="small-box bg-yellow">
 			<div class="inner">
-				<h3>89</h3>
+				<h3>{{$accrediteds}}</h3>
 
 				<p>Acreditados Registrados</p>
 			</div>

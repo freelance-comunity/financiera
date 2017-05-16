@@ -4,7 +4,6 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title">Ubicación Google Maps</h4>
-
       </div>
       <div class="modal-body">
         <div class="container">
@@ -13,17 +12,18 @@
             padding: 0;
             height: 100%;
             width:550px;
-            height:480px;"></div>
+            height:480px;">
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
     </div>
-    <!-- /.modal-content -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    </div>
   </div>
-  <!-- /.modal-dialog -->
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
 
