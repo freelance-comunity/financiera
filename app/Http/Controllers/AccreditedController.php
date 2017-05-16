@@ -278,9 +278,9 @@ class AccreditedController extends AppBaseController
 
 	public function economicAccredited($id)
 	{
-		$accrediteds = Accredited::find($id);
+		$accredited = Accredited::find($id);
 		return view ('economicEvaluations.create')
-		->with('accrediteds', $accrediteds);
+		->with('accredited', $accredited);
 		
 	}
 

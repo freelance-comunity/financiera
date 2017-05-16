@@ -3,11 +3,13 @@
 use App\Http\Requests;
 use App\Http\Requests\CreateEconomicEvaluationRequest;
 use App\Models\EconomicEvaluation;
+use App\Models\Accredited;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
+use Alert;
 
 class EconomicEvaluationController extends AppBaseController
 {
@@ -62,12 +64,14 @@ class EconomicEvaluationController extends AppBaseController
 	public function store(CreateEconomicEvaluationRequest $request)
 	{
         $input = $request->all();
-
+        $accredited = $request->input('accredited_id');
 		$economicEvaluation = EconomicEvaluation::create($input);
 
-		Flash::message('EconomicEvaluation saved successfully.');
+		Alert::success('Datos guardados exitosamente.')->persistent('Cerrar');
+		$accrediteds = Accredited::find($accredited);
+		$economicEvaluation = $accrediteds->economicEvaluation;
 
-		return redirect(route('economicEvaluations.index'));
+		return redirect(route('accrediteds.show',  [$accrediteds->id]));
 	}
 
 	/**
