@@ -13,7 +13,7 @@
 <!--- Name Accredited Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('name_accredited', 'Nombre del Acreditado:') !!}
-    {!! Form::text('name_accredited', null, ['class' => 'form-control']) !!}
+    {!! Form::text('name_accredited', null,  ['class' => 'form-control']) !!}
 </div>
 
 <!--- Activity Economic Field --->

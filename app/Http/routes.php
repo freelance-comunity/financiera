@@ -520,3 +520,8 @@ Route::get('economicEvaluations/{id}/delete', [
     'as' => 'economicEvaluations.delete',
     'uses' => 'EconomicEvaluationController@destroy',
 ]);
+
+  Route::get('economicAccredited/{id}/',[
+      'as' => 'accrediteds.economicAccredited',
+      'uses' => 'AccreditedController@economicAccredited',
+      ]);
