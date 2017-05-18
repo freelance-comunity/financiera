@@ -7,19 +7,19 @@
 <!--- Date Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('date', 'Fecha:') !!}
-     {!! Form::text('date', null, ['class' => 'form-control']) !!}
+    <input type="date" name="date" class="form-control" id="theDate">
 </div>
 
 <!--- Name Accredited Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('name_accredited', 'Nombre del Acreditado:') !!}
-    {!! Form::text('name_accredited',   $accredited->last_name, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
+  <input type="text" name="name_accredited" value="{{ $accredited->last_name}} {{ $accredited->name}}" class="form-control" readonly="readonly">
     <input type="hidden" name="accredited_id" value="{{ $accredited->id}}">
 </div>
 
 <!--- Activity Economic Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('activity_economic', 'Activiadad Economica:') !!}
+    {!! Form::label('activity_economic', 'Actividad Economica:') !!}
     {!! Form::text('activity_economic', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -43,47 +43,85 @@
         <strong>DATOS SUJETOS A VERIFICACIÓN</strong>
     </p>
 </div>
+<script>
+    function calcular()
+    {
+        ventas = eval(document.getElementById('ventas').value);
+        compras = eval(document.getElementById('compras').value);
+        utilidad = ventas - compras;
 
+        document.getElementById('utilidad_bruta').value=utilidad;
+
+        otros_ingresos = eval(document.getElementById('otros_ingresos').value);
+        otros_gastos = eval(document.getElementById('otros_gastos').value);
+        gastos_familiares = eval(document.getElementById('gastos_familiares').value);
+
+        utilidad_neta = utilidad + otros_ingresos - otros_gastos - gastos_familiares;
+
+        document.getElementById('utilidad_neta_mensual').value=utilidad_neta;
+    }
+</script>
 <!--- Sales Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('sales', 'Ventas:') !!}
-    {!! Form::text('sales', null, ['class' => 'form-control', 'id' => 'sales']) !!}
+    <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">$</span>
+    {!! Form::text('sales', null, ['class' => 'form-control', 'id' => 'ventas', 'value' => '0', 'onkeyup' => 'calcular()']) !!}
+    </div>
 </div>
 
 <!--- Buy Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('buy', 'Compras:') !!}
-    {!! Form::text('buy', null, ['class' => 'form-control', 'id' => 'buy']) !!}
+    <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">$</span>
+    {!! Form::text('buy', null, ['class' => 'form-control', 'id' => 'compras', 'value' => '0', 'onkeyup' => 'calcular()']) !!}
+    </div>
 </div>
 
 <!--- Gross Profit Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('gross_profit', 'Utilidad Bruta:') !!}
+    <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">$</span>
     {!! Form::text('gross_profit', null, ['class' => 'form-control', 'id' => 'utilidad_bruta']) !!}
+    </div>
 </div>
 
 <!--- Other Income Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('other_income', 'Otros Ingresos:') !!}
-    {!! Form::text('other_income', null, ['class' => 'form-control']) !!}
+    <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">$</span>
+    {!! Form::text('other_income', null, ['class' => 'form-control', 'id' => 'otros_ingresos', 'value' => '0', 'onkeyup' => 'calcular()']) !!}
+    </div>
 </div>
 
 <!--- Other Expenses Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('other_expenses', 'Otros Gastos:') !!}
-    {!! Form::text('other_expenses', null, ['class' => 'form-control']) !!}
+     <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">$</span>
+    {!! Form::text('other_expenses', null, ['class' => 'form-control', 'id' => 'otros_gastos', 'value' => '0', 'onkeyup' => 'calcular()']) !!}
+    </div>
 </div>
 
 <!--- Familiar Costs Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('familiar_costs', 'Gastos Familiares:') !!}
-    {!! Form::text('familiar_costs', null, ['class' => 'form-control']) !!}
+     <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">$</span>
+    {!! Form::text('familiar_costs', null, ['class' => 'form-control', 'id' => 'gastos_familiares', 'value' => '0', 'onkeyup' => 'calcular()']) !!}
+    </div>
 </div>
 
 <!--- Montly Net Income Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('montly_net_income', 'Utilidad Neta Mensual:') !!}
-    {!! Form::text('montly_net_income', null, ['class' => 'form-control']) !!}
+     <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">$</span>
+     {!! Form::text('montly_net_income', null, ['class' => 'form-control', 'id' => 'utilidad_neta_mensual']) !!}
+    </div>   
 </div>
 
 

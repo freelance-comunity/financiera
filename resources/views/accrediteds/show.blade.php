@@ -245,13 +245,13 @@ Acreditado
 												<strong>Lugar: </strong>{{ $economic->place}} <br>
 												<strong>Fecha:</strong> {{ $economic->date}} <br>	
 												<strong>Actividad economica:</strong> {{ $economic->activity_economic}} <br>	
-												<strong>Venta:</strong> {{ $economic->sales}} <br>
-												<strong>Compra:</strong> {{$economic->buy}} <br>	
-												<strong>Utilidad bruta:</strong> {{$economic->gross_profit}} <br>	
-												<strong>Otros ingresos:</strong> {{$economic->other_income}} <br>	
-												<strong>Otros gastos:</strong> {{$economic->other_expenses}} <br>	
-												<strong>Gastos familiares:</strong> {{$economic->familiar_costs}} <br>
-												<strong>Utilidad neta mensual:</strong> {{$economic->montly_net_income}} <br>
+												<strong>Venta:</strong> ${{ $economic->sales}} <br>
+												<strong>Compra:</strong> ${{$economic->buy}} <br>	
+												<strong>Utilidad bruta:</strong> ${{$economic->gross_profit}} <br>	
+												<strong>Otros ingresos:</strong> ${{$economic->other_income}} <br>	
+												<strong>Otros gastos:</strong> ${{$economic->other_expenses}} <br>	
+												<strong>Gastos familiares:</strong> ${{$economic->familiar_costs}} <br>
+												<strong>Utilidad neta mensual:</strong> ${{$economic->montly_net_income}} <br>
 											</div>											
 											@endforeach
 										</div>
