@@ -517,11 +517,24 @@ Route::get('number-to-letter', function() {
 Route::resource('economicEvaluations', 'EconomicEvaluationController');
 
 Route::get('economicEvaluations/{id}/delete', [
-    'as' => 'economicEvaluations.delete',
-    'uses' => 'EconomicEvaluationController@destroy',
-]);
+  'as' => 'economicEvaluations.delete',
+  'uses' => 'EconomicEvaluationController@destroy',
+  ]);
 
-  Route::get('economicAccredited/{id}/',[
-      'as' => 'accrediteds.economicAccredited',
-      'uses' => 'AccreditedController@economicAccredited',
-      ]);
+Route::get('economicAccredited/{id}/',[
+  'as' => 'accrediteds.economicAccredited',
+  'uses' => 'AccreditedController@economicAccredited',
+  ]);
+
+Route::get('calendar', function() {
+    $holidays = App\Models\Holidays::all();
+    return view('calendar')
+    ->with('holidays', $holidays);
+});
+
+Route::resource('holidays', 'HolidaysController');
+
+Route::get('holidays/{id}/delete', [
+    'as' => 'holidays.delete',
+    'uses' => 'HolidaysController@destroy',
+]);

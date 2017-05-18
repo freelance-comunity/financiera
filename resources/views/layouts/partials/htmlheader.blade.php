@@ -28,7 +28,10 @@
         <!-- Sweet Alert -->
         <link rel="stylesheet" href="{{ asset('/sweetalert/sweetalert.css') }}">
         <script src="{{ asset('/sweetalert/sweetalert.min.js')}}"></script>
-
+        <!-- FullCalendar-->
+        <link rel="stylesheet" href="{{ asset('/plugins/fullcalendar/fullcalendar.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/plugins/fullcalendar/fullcalendar.print.css') }}" media="print">
+        <link rel="stylesheet" href="{{ asset('/plugins/colorpicker/bootstrap-colorpicker.min.css') }}">
         <!-- Select2 -->
         <link rel="stylesheet" href="{{ asset('/select2/css/select2.min.css') }}">
         <!-- jQuery 2.1.4 -->
@@ -39,8 +42,6 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCHCpQVaYUmdj1ld0VcCCD5Wj-6XubYw"></script>
         <link rel="stylesheet" href="{{ asset('css/phpgmaps/jquery-gmaps-latlon-picker.css') }}">
         <script src="{{ asset('js/phpgmaps/jquery-gmaps-latlon-picker.js')}}"></script>
-        <!-- Calculate -->
-       <!-- <script src="{{ asset('/js/calculate.js')}}"></script>-->
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
