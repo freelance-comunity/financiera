@@ -18,6 +18,7 @@
                 <li><a href="{{ url('/accounts') }}">Cuentas bancarias</a></li>
                 <li><a href="{{ url('/anchorings') }}">Fondeo</a></li>
                 <li><a href="{{ url('/products') }}">Productos</a></li>
+                <li><a href="{{ url('/holidays') }}">Calendario de Operaciones</a></li>
             </ul>
         </li>
         @php
