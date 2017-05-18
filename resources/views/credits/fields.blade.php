@@ -126,7 +126,7 @@
 
     <!--- Sequence Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('sequence', 'Secuencia:') !!}
+        {!! Form::label('sequence', 'Frecuencia en:') !!}
         {!! Form::text('sequence', null, ['class' => 'form-control']) !!}
     </div>
 
@@ -165,7 +165,7 @@
 
     <!--- Requested Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('requested', 'Solicitud levantada en:') !!}
+        {!! Form::label('requested', 'Atención en:') !!}
         {!! Form::select('requested',['Campo'=>'Campo', 'Oficina'=>'Oficina'], null, ['class' => 'form-control']) !!}
     </div>
 

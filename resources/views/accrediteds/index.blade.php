@@ -22,6 +22,7 @@ Lista de acreditados
     <div class="table-responsive">
         <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTableCustom">
             <thead>
+            <th>ID</th>
                 <th><i class="fa fa-picture-o" aria-hidden="true"></i></th>
                 <th>Nombre(s)</th>
                 <th>Apellidos</th>
@@ -35,7 +36,8 @@ Lista de acreditados
             <tbody>
 
                 @foreach($accrediteds as $accredited)
-                <tr>    
+                <tr>
+                <th>{!! $accredited->id!!}</th>    
                  <td><img style="width: 50px; height: 50px; border-radius: 50%" src="{{ asset('/img/uploads/') }}/{{ $accredited->photo}}" alt=""></td>
                  <td>{!! $accredited->name !!}</td>
                  <td>{!! $accredited->last_name !!}</td>

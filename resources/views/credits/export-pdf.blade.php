@@ -13,7 +13,7 @@
     </div>
     <div id="company">
      <h2 class="name">SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S.A. DE C.V.</h2>
-     <div>Av. Central y 5a. Poniente #119, Villaflores, Chiapas C.P. 30470</div>
+     <div>Av. Central Poniente #119, Villaflores, Chiapas C.P. 30470</div>
      <div>(965) 652-0397</div>
      <div><a href="#">contacto@sc-empresarial.com.mx</a></div>
    </div>

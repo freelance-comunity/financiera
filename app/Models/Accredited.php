@@ -35,8 +35,8 @@ class Accredited extends Model
 	"last_name" => "required|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
 	"birthdate" => "required",
 	"cel" => "required|digits:10",
-	"phone" => "required|digits:10",
-	"email" => "required|email",
+	
+	
 	"address" => "required",
 	"nationality" => "required",
 	"ife" =>"required",

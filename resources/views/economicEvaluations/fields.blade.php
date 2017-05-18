@@ -13,7 +13,7 @@
 <!--- Name Accredited Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('name_accredited', 'Nombre del Acreditado:') !!}
-    {!! Form::text('name_accredited',   $accredited->last_name, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
+    {!! Form::text('name_accredited',  $accredited->name.$accredited->last_name, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
     <input type="hidden" name="accredited_id" value="{{ $accredited->id}}">
 </div>
 

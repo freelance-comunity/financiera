@@ -279,8 +279,17 @@ class AccreditedController extends AppBaseController
 	public function economicAccredited($id)
 	{
 		$accredited = Accredited::find($id);
-		return view ('economicEvaluations.create')
+		$economicEvaluations = $accredited->economicEvaluations;
+		if (Empty($economicEvaluations)) {
+			return view ('economicEvaluations.create')
 		->with('accredited', $accredited);
+		}
+		else
+		{
+			Alert::info('Este acreditado ya tiene su referencia en el sistema.');
+			return redirect(route('accrediteds.show', [$accrediteds->id])); 
+		}
+		
 		
 	}
 
