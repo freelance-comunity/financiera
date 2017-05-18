@@ -6,6 +6,7 @@ Calendario de Operaciones
 @endsection
 <div class="container">
 @include('sweet::alert')
+@include('common.errors')
     <div class="row">
         <div class="col-md-3">
             <div class="box box-solid">

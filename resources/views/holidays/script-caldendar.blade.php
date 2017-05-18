@@ -40,7 +40,7 @@
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: 'month,agendaWeek,agendaDay',
+        right: 'month',
       },
       buttonText: {
         today: 'Hoy',
@@ -55,9 +55,9 @@
       {
         title: '{{$holiday->name}}',
         start: '{{$holiday->date}}',
-        url: 'http://google.com/',
-          backgroundColor: "{{$holiday->color}}", //Primary (light-blue)
-          borderColor: "#fff" //Primary (light-blue)
+        url: '{!! route('holidays.edit', [$holiday->id]) !!}',
+        backgroundColor: "{{$holiday->color}}", //Primary (light-blue)
+        borderColor: "#fff" //Primary (light-blue)
         },
         @endforeach
         ],
