@@ -123,12 +123,44 @@
         {!! Form::label('warranty_value', 'Valor de la garantía:') !!}
         {!! Form::text('warranty_value', null, ['class' => 'form-control']) !!}
     </div>
+    
+
 
     <!--- Sequence Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('sequence', 'Frecuencia en:') !!}
-        {!! Form::text('sequence', null, ['class' => 'form-control']) !!}
+        {!! Form::label('sequence', 'Frecuencia en:') !!}       
+   <select  name="sequence" id="e9" style="width:350px" class="populate">
+        <optgroup label="Diario">
+        <option value="30">30 días</option>
+        <option value="45">45 días</option>
+        <option value="60">60 días</option>
+        <option value="90">90 días</option>
+        <option value="120">120 días</option>
+        <option value="180">180 días</option>
+      </optgroup>
+      <optgroup label="Diario Cuota">
+        <option value="20"> 20 cuotas</option>
+        <option value="30"> 30 cuotas</option>
+        <option value="45"> 45 cuotas</option>
+        <option value="60"> 60 cuotas</option>
+         <option value="90"> 90 cuotas</option>
+      </optgroup>
+    </select>
     </div>
+<script>
+$(function(){
+           $("#e9").select2({
+            placeholder: "Seleccione"
+           });
+      });
+ 
+     $("#e9").on("change", function(e) { 
+        var selections = (JSON.stringify({val:e.val}));
+        $("#valor").val(selections);
+ })
+</script>
+    
+
 
     <!--- Term Field --->
     <div class="form-group col-sm-6 col-lg-4">
@@ -178,7 +210,7 @@
     <!--- Qualification Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('status', 'Estatus:') !!}
-         <input type="text" name="status" value="Revisión", class="form-control" readonly>
+        {!! Form::select('status',['revision' =>'revision', 'aprobado'=>'aprobado','ministrado'=>'ministrado'], null, ['class' => 'form-control']) !!}
         <input type="hidden" name="type_product" value="{{$product->id}}">
     </div>
 

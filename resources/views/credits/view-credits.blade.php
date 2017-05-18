@@ -38,8 +38,16 @@ Lista de solicitudes
         <td>{!! $credits->frequency_payment!!}</td>
         <td>{!! $credits->interest!!} %</td>
         <td>{!! $credits->adviser!!}</td>
-        <td>
-          <h4><span class="label label-warning">{{$credits->status}}</span></h4>
+        <td>      
+
+          @if ($credits->status === 'revision') 
+          <a href="{!! route('credits.show', [$credits->id]) !!}"><span class="mj_btn btn btn-warning">Revisión</span></a>
+          @elseif ($credits->status === 'aprobado')
+          <span  class="mj_btn btn btn-info">Aprobado</span>
+          @elseif ($credits->status == 'ministrado')
+          <span class="mj_btn btn btn-success">Ministrado</span>
+          @endif
+
         </td>
         <td>
           <a href="{!! route('credits.show', [$credits->id]) !!}" class="uppercase btn btn-info btn-block">Ver crédito</a>

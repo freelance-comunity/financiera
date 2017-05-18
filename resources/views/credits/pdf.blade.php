@@ -46,7 +46,7 @@
       <th>Monto solicitado</th>
       <th>Monto autorizado</th>
       <th>Garantía líquida</th>
-      <th style="width: 100px;">firma</th>
+      <th style="width: 100px;">Firma</th>
     </tr>
   </thead>
   <tbody>

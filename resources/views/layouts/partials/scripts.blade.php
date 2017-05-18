@@ -89,4 +89,40 @@
 		}
 	});
 </script>
+<script>
+    var date = new Date();
 
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;
+
+
+    document.getElementById('theDate').value = today;
+</script>
+<script>
+    var products = {};
+products['diario'] = ['30', '45', '60','90','120','180'];
+products['cuota'] = ['20', '30', '45', '60','90'];
+
+function ChengeProductList() {
+    var ProductList = document.getElementById("product");
+    var term = document.getElementById("frecuencia");
+    var selCar = ProductList.options[ProductList.selectedIndex].value;
+    while (term.options.length) {
+        term.remove(0);
+    }
+    var cars = products[selCar];
+    if (cars) {
+        var i;
+        for (i = 0; i < cars.length; i++) {
+            var product = new Option(cars[i], i);
+            term.options.add(product);
+        }
+    }
+} 
+</script>
