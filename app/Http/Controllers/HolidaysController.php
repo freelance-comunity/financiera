@@ -20,28 +20,29 @@ class HolidaysController extends AppBaseController
 	 *
 	 * @return Response
 	 */
-	public function index(Request $request)
-	{
-		$query = Holidays::query();
-        $columns = Schema::getColumnListing('$TABLE_NAME$');
-        $attributes = array();
 
-        foreach($columns as $attribute){
-            if($request[$attribute] == true)
-            {
-                $query->where($attribute, $request[$attribute]);
-                $attributes[$attribute] =  $request[$attribute];
-            }else{
-                $attributes[$attribute] =  null;
-            }
-        };
+    public function index(Request $request)
+    {
+    	$query = Holidays::query();
+    	$columns = Schema::getColumnListing('$TABLE_NAME$');
+    	$attributes = array();
 
-        $holidays = $query->get();
+    	foreach($columns as $attribute){
+    		if($request[$attribute] == true)
+    		{
+    			$query->where($attribute, $request[$attribute]);
+    			$attributes[$attribute] =  $request[$attribute];
+    		}else{
+    			$attributes[$attribute] =  null;
+    		}
+    	};
 
-        return view('holidays.index')
-            ->with('holidays', $holidays)
-            ->with('attributes', $attributes);
-	}
+    	$holidays = $query->get();
+
+    	return view('holidays.index')
+    	->with('holidays', $holidays)
+    	->with('attributes', $attributes);
+    }
 
 	/**
 	 * Show the form for creating a new Holidays.
@@ -62,7 +63,7 @@ class HolidaysController extends AppBaseController
 	 */
 	public function store(CreateHolidaysRequest $request)
 	{
-        $input = $request->all();
+		$input = $request->all();
 
 		$holidays = Holidays::create($input);
 
@@ -132,7 +133,7 @@ class HolidaysController extends AppBaseController
 		$holidays->fill($request->all());
 		$holidays->save();
 
-		Flash::message('Holidays updated successfully.');
+		Alert::info('Fecha actualizada del calendario de operaciones.');
 
 		return redirect(route('holidays.index'));
 	}
@@ -157,7 +158,7 @@ class HolidaysController extends AppBaseController
 
 		$holidays->delete();
 
-		Flash::message('Holidays deleted successfully.');
+		Alert::info('Fecha eliminada del calendario de operaciones.');
 
 		return redirect(route('holidays.index'));
 	}

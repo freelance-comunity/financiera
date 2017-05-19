@@ -83,6 +83,7 @@
   <script>
     $(document).ready(function(){
       $('#myTableCustom').DataTable({
+        "pageLength": 3,
         responsive: true,
         "language": {
           "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
