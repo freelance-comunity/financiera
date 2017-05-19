@@ -40,12 +40,12 @@ Lista de solicitudes
         <td>{!! $credits->adviser!!}</td>
         <td>      
 
-          @if ($credits->status === 'revision') 
-          <a href="{!! route('credits.show', [$credits->id]) !!}"><span class="mj_btn btn btn-warning">Revisión</span></a>
-          @elseif ($credits->status === 'aprobado')
-          <span  class="mj_btn btn btn-info">Aprobado</span>
-          @elseif ($credits->status == 'ministrado')
-          <span class="mj_btn btn btn-success">Ministrado</span>
+          @if ($credits->status === 'Revisión') 
+          <a href="{!! route('credits.edit', [$credits->id]) !!}"><span class="btn btn btn-warning btn-block">Revisión</span></a>
+          @elseif ($credits->status === 'Aprobado')
+          <a href="{!! route('credits.edit', [$credits->id]) !!}"><span  class="btn btn btn-info btn-block">Aprobado</span></a>          
+          @elseif ($credits->status == 'Ministrado')
+          <a href="{!! route('credits.edit', [$credits->id]) !!}"><span class="btn btn btn-success btn-block">Ministrado</span></a>          
           @endif
 
         </td>

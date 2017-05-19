@@ -59,7 +59,7 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
                   <th>Monto solicitado</th>
                   <th>Monto autorizado</th>
                   <th>Garantía líquida</th>
-                  <th>Status</th>
+                  <th>Estatus</th>
                 </tr>
               </thead>
               <tbody>

@@ -100,10 +100,11 @@ class CreditsController extends AppBaseController
 			Alert::error('El monto autorizado máximo es de $15000')->persistent('Cerrar');			
 			return redirect()->back()->withInput($request->all());
 		}
-		elseif ($request->input('authorized_amount') < $product->minimum_amount) {
+		/*elseif ($request->input('authorized_amount') < $product->minimum_amount) {
 			Alert::error('El monto autorizado mínimo es de $1000')->persistent('Cerrar');			
 			return redirect()->back()->withInput($request->all());
-		}
+		}*/
+
 		else{
 			$credits = Credits::create($input);		
 			Alert::success('Prestamo guardado exitosamente.')->persistent('Cerrar');

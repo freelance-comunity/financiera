@@ -1,5 +1,5 @@
 <p class="center" align="justify">
-	En la ciudad de Villaflores, Chipas, México, siendo las 15:00 horas del día 13 de Abril del
+	En la ciudad de Villaflores, Chipas, México, siendo las{{ $credit->updated_at}} horas del día 13 de Abril del
 	año Dos Mil Diecisiete, se reúnen los señores Licenciado Víctor Manuel Salazar Molina en
 	representación de Solución y Crecimiento Empresarial S.A. de C.V. y el(a) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} ,
 	ambos con capacidad legal para convenir, con la finalidad de llevar a

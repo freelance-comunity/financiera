@@ -1,108 +1,76 @@
-    <!--- Phone Field --->
-    <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('phone', 'Número de teléfono fijo:') !!}
-        {!! Form::text('phone', $accredited->phone, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
-    </div>
-
-    <!--- Phone Field --->
-    <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('cel', 'Número de teléfono celular:') !!}
-        {!! Form::text('cel', $accredited->cel, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
-    </div>
+ 
 
     <!--- Date Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('date', 'Fecha:') !!}
-        <input type="date" value="{{ old('date') }}" name="date" class="form-control">
-         <input type="hidden" name="accredited_id" value="{{ $accredited->id}}">
+        {!! Form::text('date', null, ['class' => 'form-control', 'readonly' =>'readonly']) !!}      
     </div>
 
     <!--- Aval Field --->
     <div class="form-group col-sm-6 col-lg-4">
-            {!! Form::label('colony', 'Colonia/Población:') !!}
-           
-            @foreach ($address as $address)
-             {!! Form::text('colony', $address->colony, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
-             @endforeach
-           
+            {!! Form::label('colony', 'Colonia/Población:') !!}              
+            {!! Form::text('colony', null, ['class' => 'form-control', 'readonly' =>'readonly']) !!}           
     </div>
-    @php
-        $addresses = $accredited->addresses;
-    @endphp
+   
         <!--- Aval Field --->
         <div class="form-group col-sm-6 col-lg-4">
-            {!! Form::label('municipality', 'Municipio:') !!}
-           
-                 @foreach ($addresses as $addresses)
-                    <input type="text" name="municipality" value="{{$addresses->municipality}} ", class="form-control" readonly>
-                 @endforeach
-           
-        </div>
+            {!! Form::label('municipality', 'Municipio:') !!}           
+            {!! Form::text('municipality', null, ['class' => 'form-control','readonly' =>'readonly']) !!}            
+          </div>
 
-    @php
-        $addresses = $accredited->addresses;
-    @endphp
         <!--- Aval Field --->
         <div class="form-group col-sm-6 col-lg-4">
-            {!! Form::label('state', 'Estado:') !!}
-           
-                 @foreach ($addresses as $addresses)
-                    <input type="text" name="state" value="{{$addresses->federative}} ", class="form-control" readonly>
-                 @endforeach
-           
+            {!! Form::label('state', 'Estado:') !!}          
+            {!! Form::text('state', null, ['class' => 'form-control','readonly' =>'readonly']) !!}              
         </div>
 
 
     <!--- Name Spouse Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('name_spouse', 'Nombre del Conyugue:') !!}
-        {!! Form::text('name_spouse', null, ['class' => 'form-control']) !!}
+        {!! Form::text('name_spouse', null, ['class' => 'form-control', 'readonly' =>'readonly']) !!}
     </div>
-    @php
-        $avals = $accredited->avals;
-    @endphp
+  
          <!--- Aval Field --->
         <div class="form-group col-sm-6 col-lg-4">
-            {!! Form::label('aval', 'Nombre del aval:') !!}
-           
-                 @foreach ($avals as $aval)
-                    <input type="text" name="aval" value="{{$aval->name}} {{$aval->last_name}}", class="form-control" readonly>
-                 @endforeach
-           
-        </div>
+            {!! Form::label('aval', 'Nombre del aval:') !!}       
+            {!! Form::text('aval', null, ['class' => 'form-control','readonly' =>'readonly']) !!}           
+         </div>
 
     <!--- Previous Credit Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('previous_credit', 'Credito anterior:') !!}
-        {!! Form::text('previous_credit', null, ['class' => 'form-control']) !!}
+        {!! Form::text('previous_credit', null, ['class' => 'form-control', 'readonly' =>'readonly']) !!}
     </div>
 
     <!--- Debts Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('debts', 'Deudas con otras financieras  :') !!}
-        {!! Form::select('debts', ['Si'=>'Si','No'=>'No'], null, ['class' => 'form-control']) !!}
+        {!! Form::select('debts', ['Si'=>'Si','No'=>'No'], null, ['class' => 'form-control', 'readonly' =>'readonly']) !!}
     </div>
-    @php
-        $micros = $accredited->micros;
-    @endphp
+  
     <!--- Economic Activity Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('economic_activity', 'Actividad económica:') !!}
-        @foreach ($micros as $micros)
-       <input type="text" name="economic_activity" value="{{$micros->name}}", class="form-control" readonly>
-       @endforeach
+        {!! Form::text('economic_activity', null, ['class' => 'form-control', 'readonly' =>'readonly']) !!}
     </div>
 
     <!--- Amount Requested Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('amount_requested', 'Monto solicitado:') !!}
-        {!! Form::text('amount_requested', null, ['class' => 'form-control', 'maxlength' => 5]) !!}
+        {!! Form::text('amount_requested', null, ['class' => 'form-control','readonly' => 'readonly', 'maxlength' => 5]) !!}
+    </div>
+
+    <!--- Authorized Amount Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('authorized_amount', 'Monto autorizado:') !!}
+        {!! Form::text('authorized_amount', null, ['class' => 'form-control', 'maxlength' => 5]) !!}
     </div>
     
     <!--- Warranty Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('warranty', 'Garantía líquida:') !!}
-        {!! Form::text('warranty', null, ['class' => 'form-control']) !!}
+        {!! Form::text('warranty', null, ['class' => 'form-control', 'readonly' =>'readonly']) !!}
     </div>
 
     <!--- Warranty Type Field --->
@@ -116,9 +84,6 @@
         {!! Form::label('warranty_value', 'Valor de la garantía:') !!}
         {!! Form::text('warranty_value', null, ['class' => 'form-control']) !!}
     </div>
-    
-
-
     <!--- Sequence Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('sequence', 'Frecuencia en:') !!}       
@@ -151,8 +116,7 @@ $(function(){
         var selections = (JSON.stringify({val:e.val}));
         $("#valor").val(selections);
  })
-</script>
-    
+</script>    
 
 
     <!--- Term Field --->
@@ -164,22 +128,20 @@ $(function(){
     <!--- Frequency Payment Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('frequency_payment', 'Frecuencia de pago:') !!}       
-        {!! Form::text('frequency_payment', $product->modality, ['class' => 'form-control', 'readonly']) !!}       
+        {!! Form::text('frequency_payment', null, ['class' => 'form-control', 'readonly']) !!}       
     </div>
 
     <!--- Interest Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('interest', 'Interés:') !!}
-        {!! Form::text('interest', $product->cup_interest, ['class' => 'form-control', 'readonly']) !!}
+        {!! Form::text('interest', null,  ['class' => 'form-control', 'readonly']) !!}
     </div>
-    @php
-        $user = $accredited->user;
-    @endphp
+  
 
     <!--- Adviser Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('adviser', 'Asesor de Credito:') !!}
-        <input type="text" name="adviser" value="{{$accredited->user->name}} {{$accredited->user->last_name}}", class="form-control" readonly>
+         {!! Form::text('adviser', null, ['class' => 'form-control', 'readonly']) !!}
     </div>
 
     <!--- Observations Field --->
@@ -204,7 +166,7 @@ $(function(){
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('status', 'Estatus:') !!}
         {!! Form::select('status',['Revisión' =>'Revisión', 'Aprobado'=>'Aprobado','Ministrado'=>'Ministrado'], null, ['class' => 'form-control']) !!}
-        <input type="hidden" name="type_product" value="{{$product->id}}">
+        
     </div>
 
 

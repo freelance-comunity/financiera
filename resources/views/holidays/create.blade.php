@@ -5,9 +5,9 @@
 
     @include('common.errors')
 
-    {!! Form::model($credits, ['route' => ['credits.update', $credits->id], 'method' => 'patch']) !!}
+    {!! Form::open(['route' => 'holidays.store']) !!}
 
-        @include('credits.fields-edit')
+        @include('holidays.fields')
 
     {!! Form::close() !!}
 </div>
