@@ -31,31 +31,35 @@ Calendario de Operaciones
            </div>
            <div class="box box-solid">
             <div class="box-header with-border">
-                <h3 class="box-title">Todos lós días feriados</h3>
+                <h3 class="box-title">Todos los días feriados</h3>
             </div>
             <div class="box-body">
-                <div class="table-responsive">
-                   <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTableCustom">
-                    <thead>
-                        <th>Nombre</th>
-                        <th>Fecha</th>
-                        <th width="50px">Acción</th>
-                    </thead>
-                    <tbody>
-                        @foreach($holidays as $holiday)
-                        <tr>
+             @if($holidays->isEmpty())
+             <div class="well text-center">No hay fechas registradas.</div>
+             @else
+             <div class="table-responsive">
+               <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTableCustom">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th width="50px">Acción</th>
+                </thead>
+                <tbody>
+                    @foreach($holidays as $holiday)
+                    <tr>
                         <td>{!! $holiday->name !!}</td>
-                            <td>{!! $holiday->date !!}</td>
-                            <td>
+                        <td>{!! $holiday->date !!}</td>
+                        <td>
                             <a href="{!! route('holidays.delete', [$holiday->id]) !!}" onclick="return confirm('¿Estas seguro de borrar esta fecha del calendario?')"><i class="glyphicon glyphicon-remove"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            @endif
         </div>
     </div>
+</div>
 </div>
 <!-- /.col -->
 <div class="col-md-9">
