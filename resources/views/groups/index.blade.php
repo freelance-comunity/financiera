@@ -7,7 +7,7 @@ Grupos
 <div class="container">
 
     @include('sweet::alert')
-
+    @include('common.errors')
     <div class="row">
         <h1 class="pull-left">Todos los grupos</h1>
         <a class="uppercase btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('groups.create') !!}">Agregar Nuevo</a>
@@ -35,7 +35,7 @@ Grupos
                         <td>{!! $group->branch !!}</td>
                         <td><h4><span class="label label-info">{!! $group->folio !!}</span></h4></td>
                         <td>
-                            <button type="button" class="uppercase btn bg-navy" data-toggle="modal" data-target="#addModal{{$group->id}}">
+                            <button type="button" class="uppercase btn-lg btn bg-navy" data-toggle="modal" data-target="#addModal{{$group->id}}">
                               Ver
                           </button>
                           <a class="uppercase btn bg-yellow" href="{{ url('addmember') }}/{{$group->id}}">Agregar</a>

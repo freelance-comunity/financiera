@@ -7,7 +7,7 @@
 
     {!! Form::model($holidays, ['route' => ['holidays.update', $holidays->id], 'method' => 'patch']) !!}
 
-        @include('holidays.fields')
+        @include('holidays.fields-edit')
 
     {!! Form::close() !!}
 </div>
