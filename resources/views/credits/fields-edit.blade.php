@@ -2,7 +2,7 @@
 
     <!--- Date Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('date', 'Fecha:') !!}
+        {!! Form::label('date', 'Fecha de solicitud:') !!}
         {!! Form::text('date', null, ['class' => 'form-control', 'readonly' =>'readonly']) !!}      
     </div>
 
@@ -93,7 +93,7 @@
     <!--- Term Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('term', 'Plazo en días:') !!}
-        {!! Form::text('term', null, ['class' => 'form-control', 'maxlength' => 3]) !!}
+        {!! Form::text('term', null, ['class' => 'form-control', 'readonly']) !!}
     </div>
 
     <!--- Frequency Payment Field --->

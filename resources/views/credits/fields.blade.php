@@ -12,7 +12,7 @@
 
     <!--- Date Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('date', 'Fecha:') !!}
+        {!! Form::label('date', 'Fecha de solicitud:') !!}
         <input type="date" value="{{ old('date') }}" name="date" class="form-control">
          <input type="hidden" name="accredited_id" value="{{ $accredited->id}}">
     </div>
@@ -116,13 +116,11 @@
         {!! Form::label('warranty_value', 'Valor de la garantía:') !!}
         {!! Form::text('warranty_value', null, ['class' => 'form-control']) !!}
     </div>
-    
-
-
-    <!--- Sequence Field --->
+   
+<!--- Sequence Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('sequence', 'Frecuencia en:') !!}       
-   <select  name="sequence" id="e9" style="width:350px" class="populate">
+   <select  name="sequence" id="mySelect" style="width:350px" class="form-control" onclick="myFunction()">
         <optgroup label="Diario">
         <option value="1">30 días</option>
         <option value="1.5">45 días</option>
@@ -140,26 +138,19 @@
       </optgroup>
     </select>
     </div>
-<script>
-$(function(){
-           $("#e9").select2({
-            placeholder: "Seleccione"
-           });
-      });
- 
-     $("#e9").on("change", function(e) { 
-        var selections = (JSON.stringify({val:e.val}));
-        $("#valor").val(selections);
- })
-</script>
-    
 
+<script>
+function myFunction() {
+    var x = document.getElementById("mySelect").value;
+    document.getElementById("demo").innerHTML = x;
+}
+</script>
 
     <!--- Term Field --->
     <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('term', 'Plazo en días:') !!}
-        {!! Form::text('term', null, ['class' => 'form-control', 'maxlength' => 3, ]) !!}
-    </div>
+        {!! Form::label('term', 'Plazo en días:') !!}        
+       {!! Form::select('term',['20' => '20', '30' => '30', '45' => '45', '60' => '60', '90' => '90', '120' => '120', '180' => '180'], null, ['class' => 'form-control',])!!}
+    </div> 
 
     <!--- Frequency Payment Field --->
     <div class="form-group col-sm-6 col-lg-4">
