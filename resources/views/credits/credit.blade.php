@@ -72,103 +72,111 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
                   <td>${{$credits->amount_requested}}</td>
                   <td>${{$credits->authorized_amount}}</td>
                   <td>{{$credits->warranty}}</td>
-                  <td>{{$credits->status}}</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td><strong>Conyugue: </strong>{{$credits->name_spouse}} </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
+                  <td>
+                   @if ($credits->status === 'Revisión') 
+                   <a href="{!! route('credits.edit', [$credits->id]) !!}"><span class="label label-warning">Revisión</span></a>
+                   @elseif ($credits->status === 'Aprobado')
+                   <a href="{!! route('credits.edit', [$credits->id]) !!}"><span  class="label label-info">Aprobado</span></a>          
+                   @elseif ($credits->status == 'Ministrado')
+                   <a href="{!! route('credits.edit', [$credits->id]) !!}"><span class="label label-success">Ministrado</span></a>          
+                   @endif</td>
+                 </td>
+               </tr>
+               <tr>
+                <td>2</td>
+                <td><strong>Conyugue: </strong>{{$credits->name_spouse}} </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
 
-                  <td>3</td>
-                  <td><strong>Aval: </strong>{{ $credits->aval}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                <td>3</td>
+                <td><strong>Aval: </strong>{{ $credits->aval}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
 
-              </tbody>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      <div class="row">
+        <!-- /.col -->
+        <div class="col-xs-6">
+          <p class="lead">Tipo de Garantía: {{ $credits->warranty_type}}</p>
+
+          <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <th style="width:50%">Valor de la garantía:</th>
+                <td>{{$credits->warranty_value}}</td>
+              </tr>
+              <tr>
+                <th>Secuencia</th>
+                <td>{{$credits->sequence}}</td>
+              </tr>
+              <tr>
+                <th>Plazo</th>
+                <td>{{$credits->term}}</td>
+              </tr>
+              <tr>
+                <th>Frecuencia de pago:</th>
+                <td>{{$credits->frequency_payment}}</td>
+              </tr>
+              <tr>
+                <th>Interés:</th>
+                <td>{{$credits->interest}} %</td>
+              </tr>
+              <tr>
+                <th>Asesor de Credito:</th>
+                <td>{{$credits->adviser}}</td>
+              </tr>
             </table>
           </div>
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
-        <div class="row">
-          <!-- /.col -->
-          <div class="col-xs-6">
-            <p class="lead">Tipo de Garantía: {{ $credits->warranty_type}}</p>
+        <!-- /.col -->
+        <!-- accepted payments column -->
+        <div class="col-xs-6">
+          <p class="lead">Observaciones:</p>         
 
-            <div class="table-responsive">
-              <table class="table">
-                <tr>
-                  <th style="width:50%">Valor de la garantía:</th>
-                  <td>{{$credits->warranty_value}}</td>
-                </tr>
-                <tr>
-                  <th>Secuencia</th>
-                  <td>{{$credits->sequence}}</td>
-                </tr>
-                <tr>
-                  <th>Plazo</th>
-                  <td>{{$credits->term}}</td>
-                </tr>
-                <tr>
-                  <th>Frecuencia de pago:</th>
-                  <td>{{$credits->frequency_payment}}</td>
-                </tr>
-                <tr>
-                  <th>Interés:</th>
-                  <td>{{$credits->interest}} %</td>
-                </tr>
-                <tr>
-                  <th>Asesor de Credito:</th>
-                  <td>{{$credits->adviser}}</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <!-- /.col -->
-          <!-- accepted payments column -->
-          <div class="col-xs-6">
-            <p class="lead">Observaciones:</p>         
-
-            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-              {{$credits->observations}}
-            </p>
-          </div>
-          <!-- accepted payments column -->
-          <div class="col-xs-6">
-            <p class="lead">Solicitud levantada en: {{$credits->requested}}</p>         
-          </div>
-          <!-- accepted payments column -->
-          <div class="col-xs-6">
-            <p class="lead">Calificación: {{$credits->qualification}}</p>        
-          </div>
+          <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+            {{$credits->observations}}
+          </p>
         </div>
-        <!-- /.row -->
-        <!-- this row will not appear when printing -->
-        <div class="row no-print">
-          <div class="col-xs-12">
-            <a href="{{ url('export-pdf') }}/{{$credits->id}}" class="btn btn-info"><i class="fa fa-print"></i> Imprimir</a>
-          </div>
+        <!-- accepted payments column -->
+        <div class="col-xs-6">
+          <p class="lead">Solicitud levantada en: {{$credits->requested}}</p>         
+        </div>
+        <!-- accepted payments column -->
+        <div class="col-xs-6">
+          <p class="lead">Calificación: {{$credits->qualification}}</p>        
+        </div>
+      </div>
+      <!-- /.row -->
+      <!-- this row will not appear when printing -->
+      <div class="row no-print">
+        <div class="col-xs-12">
+          <a href="{{ url('export-pdf') }}/{{$credits->id}}" class="btn btn-info"><i class="fa fa-print"></i> Imprimir</a>
         </div>
       </div>
     </div>
-    <!-- /.col -->
   </div>
-  <!-- /.row -->
-  <!-- Table row -->
+  <!-- /.col -->
+</div>
+<!-- /.row -->
+<!-- Table row -->
 </section>
 <!-- /.content -->
 @endsection

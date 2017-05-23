@@ -10,7 +10,7 @@ Lista de acreditados
 
  <div class="row">
   <h1 class="pull-left">Todos los acreditados</h1>
-  <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('accrediteds.create') !!}">Agregar Nuevo</a>
+  <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('accrediteds.create') !!}">Agregar Nuevo Acreditado</a>
 </div>
 
 <div class="row">
@@ -20,10 +20,11 @@ Lista de acreditados
   <div class="table-responsive">
     <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
       <thead>
+        <th>ID</th>
         <th>Nombre(s)</th>
         <th>Apellidos</th>
         <th>Celular</th>
-        <th>Teléfono</th>
+        <th>Teléfono de casa</th>
         <th>Dirección</th>
         <th>Foto</th>
         <th>Crédito</th>
@@ -63,6 +64,7 @@ Lista de acreditados
           </div>
         </div>
         <tr>
+          <td>{!! $accredited->id!!}</td>
           <td>{!! $accredited->name !!}</td>
           <td>{!! $accredited->last_name !!}</td>
           <td>{!! $accredited->cel !!}</td>

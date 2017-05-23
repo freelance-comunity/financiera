@@ -22,6 +22,7 @@ class Credits extends Model
 		"debts",
 		"economic_activity",
 		"amount_requested",
+		"authorized_amount",
 		"warranty",
 		"warranty_type",
 		"warranty_value",

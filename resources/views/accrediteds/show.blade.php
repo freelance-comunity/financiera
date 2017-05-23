@@ -3,7 +3,9 @@
 Acreditado
 @endsection
 @section('main-content')
-
+@php
+	$credits = App\Models\Credits::where('status','Ministrado')->count();
+@endphp
 	<!-- Main content -->
 	<section class="content">
 
@@ -20,7 +22,7 @@ Acreditado
 								<p><a href="{{ url('/updatephoto') }}/{{$accredited->id}}" class="pull-center"><b>Cambiar foto</b></a></p>
 							</li>
 							<li class="list-group-item">
-								<b>Creditos activos</b> <a class="pull-right">1,322</a>
+								<b>Creditos activos</b> <a class="pull-right">{{$credits}}</a>
 							</li>
 							<li class="list-group-item">
 								<b>Grupos</b> <a class="pull-right">543</a>

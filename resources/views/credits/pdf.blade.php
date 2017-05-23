@@ -94,7 +94,7 @@
     VALOR DE LA GARANTÍA: <strong>{{$credit->warranty_value}}</strong>
   </p>
   <p>
-    SECUENCIA: <strong>{{$credit->sequence}}</strong>
+    Frecuencia en: <strong>{{$credit->sequence}} días</strong>
   </p>
   <p>
     PLAZO: <strong>{{$credit->term}} días</strong>

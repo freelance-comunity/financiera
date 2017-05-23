@@ -124,19 +124,19 @@
         {!! Form::label('sequence', 'Frecuencia en:') !!}       
    <select  name="sequence" id="e9" style="width:350px" class="populate">
         <optgroup label="Diario">
-        <option value="30">30 días</option>
-        <option value="45">45 días</option>
-        <option value="60">60 días</option>
-        <option value="90">90 días</option>
-        <option value="120">120 días</option>
-        <option value="180">180 días</option>
+        <option value="1">30 días</option>
+        <option value="1.5">45 días</option>
+        <option value="2">60 días</option>
+        <option value="3">90 días</option>
+        <option value="4">120 días</option>
+        <option value="6">180 días</option>
       </optgroup>
       <optgroup label="Diario Cuota">
-        <option value="20"> 20 cuotas</option>
-        <option value="30"> 30 cuotas</option>
-        <option value="45"> 45 cuotas</option>
-        <option value="60"> 60 cuotas</option>
-         <option value="90"> 90 cuotas</option>
+        <option value="1"> 20 cuotas</option>
+        <option value="1.5"> 30 cuotas</option>
+        <option value="2.25"> 45 cuotas</option>
+        <option value="3"> 60 cuotas</option>
+         <option value="4.5"> 90 cuotas</option>
       </optgroup>
     </select>
     </div>
@@ -158,7 +158,7 @@ $(function(){
     <!--- Term Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('term', 'Plazo en días:') !!}
-        {!! Form::text('term', null, ['class' => 'form-control', 'maxlength' => 3]) !!}
+        {!! Form::text('term', null, ['class' => 'form-control', 'maxlength' => 3, ]) !!}
     </div>
 
     <!--- Frequency Payment Field --->

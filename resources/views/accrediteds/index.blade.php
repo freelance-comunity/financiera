@@ -20,14 +20,14 @@ Lista de acreditados
     <div class="well text-center">No se encontraron acreditados</div>
     @else
     <div class="table-responsive">
-        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTableCustom">
+        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
             <thead>
             <th>ID</th>
                 <th><i class="fa fa-picture-o" aria-hidden="true"></i></th>
                 <th>Nombre(s)</th>
                 <th>Apellidos</th>
                 <th>Celular</th>
-                <th>Teléfono</th>
+                <th>Teléfono de casa</th>
                 <th>Dirección</th>
                 <th>Agregar</th>
                 <th>Ver datos</th>

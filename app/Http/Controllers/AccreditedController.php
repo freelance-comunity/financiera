@@ -303,8 +303,9 @@ class AccreditedController extends AppBaseController
 		$micros = $accredited->micros;
 		$study = $accredited->studies;
 		$references = $accredited->references;
+		$economic = $accredited->economic;
 		$anchoring = Anchoring::all();
-		if ($aval->count() == 0 or $address->count() == 0 or $micros->count() == 0 or $study->count() == 0 or $references->count() == 0) {
+		if ($aval->count() == 0 or $address->count() == 0 or $micros->count() == 0 or $study->count() == 0 or $references->count() == 0 or $economic->count() == 0) {
 			Alert::error('Este acreditado no cuenta con los datos registrados para la solicitud de un prestamo')->persistent('Cerrar');
 			return redirect('allacrediteds');
 		}elseif ($credits->count() == 3) {
@@ -324,6 +325,7 @@ class AccreditedController extends AppBaseController
 			->with('micros', $micros)
 			->with('studies', $study)
 			->with('references', $references)
+			->with('economic', $economic)
 			->with('anchoring', $anchoring);
 		}
 	}
