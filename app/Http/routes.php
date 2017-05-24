@@ -527,14 +527,19 @@ Route::get('economicAccredited/{id}/',[
   ]);
 
 Route::get('calendar', function() {
-    $holidays = App\Models\Holidays::all();
-    return view('calendar')
-    ->with('holidays', $holidays);
+  $holidays = App\Models\Holidays::all();
+  return view('calendar')
+  ->with('holidays', $holidays);
 });
 
 Route::resource('holidays', 'HolidaysController');
 
 Route::get('holidays/{id}/delete', [
-    'as' => 'holidays.delete',
-    'uses' => 'HolidaysController@destroy',
-]);
+  'as' => 'holidays.delete',
+  'uses' => 'HolidaysController@destroy',
+  ]);
+
+Route::get('download-documents', function() {
+  $pdf = PDF::loadView('documentation.case-file');
+  return $pdf->download('expediente.pdf');
+});

@@ -31,7 +31,7 @@ Lista de solicitudes
 
         @foreach($credits as $credits)
         <tr>
-          <td>{!! $credits->accredited_id!!}</td>
+          <td>{!! $credits->id!!}</td>
           <td>{!! $credits->date !!}</td>
           <td>{{$credits->accredited->name}} {{$credits->accredited->last_name}}</td>
           <td>{!! $credits->aval!!}</td>
@@ -48,7 +48,8 @@ Lista de solicitudes
             @elseif ($credits->status === 'Aprobado')
             <a href="{!! route('credits.edit', [$credits->id]) !!}"><span  class="btn btn btn-info btn-block">Aprobado</span></a>          
             @elseif ($credits->status == 'Ministrado')
-            <a href="{!! route('credits.edit', [$credits->id]) !!}"><span class="btn btn btn-success btn-block">Ministrado</span></a>          
+            <a href="{!! route('credits.edit', [$credits->id]) !!}"><span class="btn btn btn-success btn-block">Ministrado</span></a> 
+            <a href="{{ url('download-documents') }}" class="btn bg-navy"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>         
             @endif
 
           </td>
