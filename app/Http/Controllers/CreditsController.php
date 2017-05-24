@@ -166,21 +166,21 @@ class CreditsController extends AppBaseController
 	{
 		/** @var Credits $credits */
 		$credits = Credits::find($id);
-		$status = $request->input('status');
+		/*$status = $request->input('status');*/
 		if(empty($credits))
 		{
 			Flash::error('Credits not found');
 			return redirect(route('credits.index'));
 		}
 
-		if ($status == 'Ministrado') {
+		/*if ($status == 'Ministrado') {
 			echo "comenzamos operación";
 			$amount = $credits->authorized_amount;
 			$interest = $credits->interest;
 			$months = $credits->sequence;
 			$capital = $amount/$credits->term;
 			echo "<br>";
-			echo $amount;
+			echo "monto solicitado: ".$amount;
 			echo "<br>";
 			echo $interest;
 			echo "<br>";
@@ -202,15 +202,15 @@ class CreditsController extends AppBaseController
 			}
 		}else{
 			echo "Aún en proceso";
-		}
-		/*
+		}*/
+		
 		$credits->fill($request->all());
 		$credits->save();
 
 		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('credits.index'));*/
-	}
+		return redirect(route('credits.index'));
+	}	
 
 	/**
 	 * Remove the specified Credits from storage.
