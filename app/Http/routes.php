@@ -27,6 +27,12 @@
       echo '<input type="file" accept="image/*" onchange="picChange(event)"/>';
     });
 
+Route::get('testing3/{id}', function($id){
+      $credit = App\Models\Credits::find($id);
+       return view('documentation.test')
+      ->with('credit', $credit);
+    });
+    
 
     Route::get('/rolescreate', function() {
       $propietario = new App\Role();
