@@ -175,6 +175,8 @@ return [
 
         Barryvdh\DomPDF\ServiceProvider::class,
 
+        'Jenssegers\Date\DateServiceProvider',
+
         ],
 
     /*
@@ -244,6 +246,8 @@ return [
     'Gmaps' => GeneaLabs\Phpgmaps\Facades\PhpgmapsFacade::class,
 
     'PDF' => Barryvdh\DomPDF\Facade::class,
+
+    'Date' => Jenssegers\Date\Date::class,
 
     ],
 

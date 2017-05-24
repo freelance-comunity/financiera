@@ -539,7 +539,17 @@ Route::get('holidays/{id}/delete', [
   'uses' => 'HolidaysController@destroy',
   ]);
 
-Route::get('download-documents', function() {
-  $pdf = PDF::loadView('documentation.case-file');
+Route::get('download-documents/{id}', function($id) {
+  $credit = App\Models\Credits::find($id);
+
+  $amount = $credit->authorized_amount;
+  $interest = $credit->interest;
+  $months = $credit->sequence;
+  $capital = $amount/$credit->term;
+  $f = (($amount*$interest)+($amount/$months))/30;
+  $rest = ceil($f)-$capital;
+
+  $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+  $pdf = PDF::loadView('documentation.case-file', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
   return $pdf->download('expediente.pdf');
 });

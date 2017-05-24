@@ -48,8 +48,8 @@ Lista de solicitudes
             @elseif ($credits->status === 'Aprobado')
             <a href="{!! route('credits.edit', [$credits->id]) !!}"><span  class="btn btn btn-info btn-block">Aprobado</span></a>          
             @elseif ($credits->status == 'Ministrado')
-            <a href="{!! route('credits.edit', [$credits->id]) !!}"><span class="btn btn btn-success btn-block">Ministrado</span></a> 
-            <a href="{{ url('download-documents') }}" class="btn bg-navy"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>         
+           <button class="btn btn-success btn-block disabled">Ministrado</button>
+            <a href="{!! url('download-documents', [$credits->id]) !!}" class="btn bg-navy"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>         
             @endif
 
           </td>
