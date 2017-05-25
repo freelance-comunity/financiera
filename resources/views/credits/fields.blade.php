@@ -163,6 +163,11 @@ function myFunction() {
         {!! Form::label('interest', 'Interés:') !!}
         {!! Form::text('interest', $product->cup_interest, ['class' => 'form-control', 'readonly']) !!}
     </div>
+     <!--- Interest Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('days', 'Días:') !!}
+        {!! Form::text('days', $product->days, ['class' => 'form-control', 'readonly']) !!}
+    </div>
     @php
         $user = $accredited->user;
     @endphp

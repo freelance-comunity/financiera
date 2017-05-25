@@ -52,6 +52,12 @@
     {!! Form::select('modality', ['Diario' => 'Diario', 'Diario cuota' => 'Diario cuota', 'Semanal' => 'Semanal', 'Catorcenal' => 'Catorcenal', 'Mensual' => 'Mensual'], null, ['class' => 'form-control']) !!}
 </div>
 
+<!--- Days Field --->
+<div class="form-group col-sm-6 col-lg-4">
+    {!! Form::label('days', 'Días:') !!}
+    {!! Form::select('days', ['20' => '20', '30' => '30'], null, ['class' => 'form-control']) !!}
+</div>
+
 
 <!--- Submit Field --->
 <div class="form-group col-sm-12">

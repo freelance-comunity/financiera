@@ -27,11 +27,6 @@
       echo '<input type="file" accept="image/*" onchange="picChange(event)"/>';
     });
 
-Route::get('testing3/{id}', function($id){
-      $credit = App\Models\Credits::find($id);
-       return view('documentation.test')
-      ->with('credit', $credit);
-    });
     
 
     Route::get('/rolescreate', function() {
@@ -533,14 +528,29 @@ Route::get('economicAccredited/{id}/',[
   ]);
 
 Route::get('calendar', function() {
-    $holidays = App\Models\Holidays::all();
-    return view('calendar')
-    ->with('holidays', $holidays);
+  $holidays = App\Models\Holidays::all();
+  return view('calendar')
+  ->with('holidays', $holidays);
 });
 
 Route::resource('holidays', 'HolidaysController');
 
 Route::get('holidays/{id}/delete', [
-    'as' => 'holidays.delete',
-    'uses' => 'HolidaysController@destroy',
-]);
+  'as' => 'holidays.delete',
+  'uses' => 'HolidaysController@destroy',
+  ]);
+
+Route::get('download-documents/{id}', function($id) {
+  $credit = App\Models\Credits::find($id);
+  $days = $credit->days;
+  $amount = $credit->authorized_amount;
+  $interest = $credit->interest;
+  $months = $credit->sequence;
+  $capital = $amount/$credit->term;
+  $f = (($amount*$interest)+($amount/$months))/$days;
+  $rest = ceil($f)-$capital;
+
+  $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+  $pdf = PDF::loadView('documentation.case-file', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
+  return $pdf->download('expediente.pdf');
+});
