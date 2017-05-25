@@ -163,11 +163,10 @@ function myFunction() {
         {!! Form::label('interest', 'Interés:') !!}
         {!! Form::text('interest', $product->cup_interest, ['class' => 'form-control', 'readonly']) !!}
     </div>
-     <!--- Interest Field --->
-    <div class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('days', 'Días:') !!}
-        {!! Form::text('days', $product->days, ['class' => 'form-control', 'readonly']) !!}
-    </div>
+   
+       
+         <input type="hidden" name="days" value="{{$product->days}}">
+  
     @php
         $user = $accredited->user;
     @endphp
@@ -199,7 +198,7 @@ function myFunction() {
     <!--- Qualification Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('status', 'Estatus:') !!}
-        {!! Form::select('status',['Revisión' =>'Revisión', 'Aprobado'=>'Aprobado','Ministrado'=>'Ministrado'], null, ['class' => 'form-control']) !!}
+        {!! Form::select('status',['Revisión' =>'Revisión'], null, ['class' => 'form-control', 'readonly']) !!}
         <input type="hidden" name="type_product" value="{{$product->id}}">
     </div>
 

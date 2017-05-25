@@ -564,3 +564,18 @@ Route::get('download-documents/{id}', function($id) {
   $pdf = PDF::loadView('documentation.case-file', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
   return $pdf->download('expediente.pdf');
 });
+
+Route::get('download-documents-cuota/{id}', function($id) {
+  $credit = App\Models\Credits::find($id);
+  $days = $credit->days;
+  $amount = $credit->authorized_amount;
+  $interest = $credit->interest;
+  $months = $credit->sequence;
+  $capital = $amount/$credit->term;
+  $f = (($amount*$interest)+($amount/$months))/$days;
+  $rest = ceil($f)-$capital;
+
+  $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+  $pdf = PDF::loadView('documentation.case-file-cuota', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
+  return $pdf->download('expediente.pdf');
+});
