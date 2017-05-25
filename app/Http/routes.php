@@ -24,14 +24,17 @@
     });
     
     Route::get('testing2', function() {
-      $dias = DB::select('select date from holidays');
-      $calendar = array($dias);
-      for ($i=1; $i <= 20 ; $i++) { 
+      $dias = App\Models\Holidays::all();
+      for ($i=1; $i <= 10 ; $i++) { 
         $pago = \Carbon\Carbon::now()->addDays($i)->toDateString();
-        $array[] = $pago;
+        echo $pago;
+        echo "<br>";
       }
-      //dd($array);
-      dd($calendar);
+      echo "<hr>";
+      foreach ($dias as $key => $value) {
+        echo $value->date;
+        echo "<br>";
+      }
     });
 
     
