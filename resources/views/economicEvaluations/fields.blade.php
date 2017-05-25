@@ -84,7 +84,7 @@
     {!! Form::label('gross_profit', 'Utilidad Bruta:') !!}
     <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">$</span>
-    {!! Form::text('gross_profit', null, ['class' => 'form-control', 'id' => 'utilidad_bruta']) !!}
+    {!! Form::text('gross_profit', null, ['class' => 'form-control', 'id' => 'utilidad_bruta', 'readonly' => 'readonly']) !!}
     </div>
 </div>
 
@@ -120,7 +120,7 @@
     {!! Form::label('montly_net_income', 'Utilidad Neta Mensual:') !!}
      <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">$</span>
-     {!! Form::text('montly_net_income', null, ['class' => 'form-control', 'id' => 'utilidad_neta_mensual']) !!}
+     {!! Form::text('montly_net_income', null, ['class' => 'form-control', 'id' => 'utilidad_neta_mensual', 'readonly' => 'readonly']) !!}
     </div>   
 </div>
 

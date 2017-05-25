@@ -97,7 +97,7 @@ class Accredited extends Model
 
 	public function economic()
 	{
-		return $this->hasMany('App\Models\EconomicEvaluation');
+		return $this->hasOne('App\Models\EconomicEvaluation');
 	}
 
 }

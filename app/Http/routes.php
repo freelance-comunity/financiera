@@ -24,7 +24,14 @@
     });
     
     Route::get('testing2', function() {
-      echo '<input type="file" accept="image/*" onchange="picChange(event)"/>';
+      $dias = DB::select('select date from holidays');
+      $calendar = array($dias);
+      for ($i=1; $i <= 20 ; $i++) { 
+        $pago = \Carbon\Carbon::now()->addDays($i)->toDateString();
+        $array[] = $pago;
+      }
+      //dd($array);
+      dd($calendar);
     });
 
 
