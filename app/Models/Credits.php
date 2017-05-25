@@ -30,6 +30,7 @@ class Credits extends Model
 		"term",
 		"frequency_payment",
 		"interest",
+		"days",
 		"adviser",
 		"observations",
 		"requested",
@@ -57,6 +58,7 @@ class Credits extends Model
 		"term" => "required|regex:/^[1-9]\d*$/|min:1|max:3'",
 		"frequency_payment" => "required",
 		"interest" => "required",
+		
 		"adviser" => "required",
 		"observations" => "required",
 		"requested" => "required",

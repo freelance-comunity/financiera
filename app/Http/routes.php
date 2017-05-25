@@ -34,6 +34,7 @@
       dd($calendar);
     });
 
+    
 
     Route::get('/rolescreate', function() {
       $propietario = new App\Role();
@@ -548,12 +549,12 @@ Route::get('holidays/{id}/delete', [
 
 Route::get('download-documents/{id}', function($id) {
   $credit = App\Models\Credits::find($id);
-
+  $days = $credit->days;
   $amount = $credit->authorized_amount;
   $interest = $credit->interest;
   $months = $credit->sequence;
   $capital = $amount/$credit->term;
-  $f = (($amount*$interest)+($amount/$months))/30;
+  $f = (($amount*$interest)+($amount/$months))/$days;
   $rest = ceil($f)-$capital;
 
   $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');

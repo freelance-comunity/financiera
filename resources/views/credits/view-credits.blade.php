@@ -44,9 +44,9 @@ Lista de solicitudes
           <td>      
 
             @if ($credits->status === 'Revisión') 
-            <a href="{!! route('credits.edit', [$credits->id]) !!}"><span class="btn btn btn-warning btn-block">Revisión</span></a>
+            <a href="{!! route('credits.edit', [$credits->id]) !!}"><button class="btn btn btn-warning btn-block">Revisión</button></a>
             @elseif ($credits->status === 'Aprobado')
-            <a href="{!! route('credits.edit', [$credits->id]) !!}"><span  class="btn btn btn-info btn-block">Aprobado</span></a>          
+            <a href="{!! route('credits.edit', [$credits->id]) !!}"><button  class="btn btn btn-info btn-block">Aprobado</button></a>          
             @elseif ($credits->status == 'Ministrado')
            <button class="btn btn-success btn-block disabled">Ministrado</button>
             <a href="{!! url('download-documents', [$credits->id]) !!}" class="btn bg-navy"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>         

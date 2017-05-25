@@ -288,24 +288,26 @@
 			<td>&nbsp;DOMICILIO:&nbsp; <strong>@foreach ($avals as $aval)
 				{{$aval->address}}
 				@endforeach</strong></td>
-			</tr>
-			<tr>
-				<td>&nbsp;POBLACIÓN:&nbsp; <strong> @foreach ($colonys as $colony)
-					{{$colony->colony}}
-					@endforeach</strong></td>
-					<td>&nbsp;POBLACIÓN: <strong>@foreach ($avals as $aval)
-						{{$aval->colony}}
-						@endforeach
-					</strong></td>
-				</tr>
-				<tr>
-					<td>&nbsp;MUNICIPIO: <strong>@foreach ($colonys as $colony)
-						{{$colony->municipality}}
-						@endforeach</strong></td>
-						<td>&nbsp;MUNICIPIO: <strong>@foreach ($avals as $aval)
-							{{$aval->municipality}}
-							@endforeach</strong></td>
-						</tr>
+		</tr>
+		<tr>
+			<td>&nbsp;POBLACIÓN:&nbsp; <strong> @foreach ($colonys as $colony)
+				{{$colony->colony}}
+				@endforeach</strong></td>
+			<td>&nbsp;POBLACIÓN: <strong>@foreach ($avals as $aval)
+				{{$aval->colony}}
+				@endforeach
+				</strong>
+				</td>
+		</tr>
+		<tr>
+			<td>&nbsp;MUNICIPIO: <strong>@foreach ($colonys as $colony)
+				{{$colony->municipality}}
+				@endforeach</strong></td>
+			<td>&nbsp;MUNICIPIO: <strong>@foreach ($avals as $aval)
+				{{$aval->municipality}}
+				@endforeach</strong>
+			</td>
+		</tr>
 						<tr>
 							<td>&nbsp;ESTADO:&nbsp; <strong>@foreach ($colonys as $colony)
 								{{$colony->federative}}
@@ -324,7 +326,7 @@
 										<td>&nbsp;NOMBRE Y FIRMA<br><br><br><br><br><br><strong>SR(A). {{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong><br><br></td>
 										<td>NOMBRE Y FIRMA<br><br><br><br><br><br><strong>SR(A). {{$credit->aval}}</strong><br><br></td>
 									</tr>
-									<tbody>
-									</table>
-								</body>
-								</html>
+		<tbody>
+	</table>
+</body>
+</html>

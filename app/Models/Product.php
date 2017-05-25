@@ -20,7 +20,8 @@ class Product extends Model
 		"maximum_term",
 		"cup_interest",
 		"surcharge",
-		"modality"
+		"modality",
+		"days"
 	];
 
 	public static $rules = [
@@ -32,7 +33,8 @@ class Product extends Model
 		"maximum_term" => "required",
 		"cup_interest" => "required",
 		"surcharge" => "required",
-		"modality" => "required"
+		"modality" => "required",
+		"days" => "required"
 	];
 
 	 

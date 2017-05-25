@@ -166,35 +166,51 @@ class CreditsController extends AppBaseController
 	{
 		/** @var Credits $credits */
 		$credits = Credits::find($id);
-		$status = $request->input('status');
+		/*$status = $request->input('status');*/
 		if(empty($credits))
 		{
 			Flash::error('Credits not found');
 			return redirect(route('credits.index'));
 		}
 
-		$credits->fill($request->all());
-		$credits->save();
-
-		if ($status == 'Ministrado') {
+		/*if ($status == 'Ministrado') {
+			echo "comenzamos operación";
 			$amount = $credits->authorized_amount;
 			$interest = $credits->interest;
 			$months = $credits->sequence;
 			$capital = $amount/$credits->term;
-
+			echo "<br>";
+			echo "monto solicitado: ".$amount;
+			echo "<br>";
+			echo $interest;
+			echo "<br>";
+			echo $months;
+			echo "<br>";
+			echo "Capital: ".$capital;
+			echo "<br>";
+			echo "A pagar en: ".$credits->term." días";
+			echo "<br>";
 			$f = (($amount*$interest)+($amount/$months))/30;
-			
-			Alert::success('Crédito Ministrado.')->persistent('Cerrar');
-			return redirect(route('credits.index'));
+			$rest = $f - $capital;
+			echo "Interes: ".$rest;
+			echo "<br>";
+			echo "Tus pagos diarios seran de: $".$f;
+			echo "<br>";
+			for ($i=1; $i <= $credits->term ; $i++) { 
+				echo $i;
+				echo "<br>";
+			}
 		}else{
-			Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
-			return redirect(route('credits.index'));
-		}
-		/*
+			echo "Aún en proceso";
+		}*/
 		
+		$credits->fill($request->all());
+		$credits->save();
 
-		*/
-	}
+		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
+
+		return redirect(route('credits.index'));
+	}	
 
 	/**
 	 * Remove the specified Credits from storage.

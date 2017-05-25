@@ -18,7 +18,8 @@
         "barryvdh/laravel-dompdf": "^0.8.0",
         "nesbot/carbon": "^1.22",
         "arielcr/numero-a-letras": "dev-master",
-        "jenssegers/date": "^3.2"
+        "jenssegers/date": "^3.2",
+        "doctrine/dbal": "2.5.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
