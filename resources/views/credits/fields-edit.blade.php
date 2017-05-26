@@ -142,7 +142,7 @@
  <!--- Date Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('date_ministration', 'Fecha de ministración:') !!}      
-             <input type="date" value="{{ old('date_ministration') }}" name="date_ministration" class="form-control">
+             <input type="date" value="{{$credits->date_ministration }}" name="date_ministration" class="form-control">
     </div>
     @endif
 
