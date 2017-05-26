@@ -24,6 +24,13 @@ class GroupController extends AppBaseController
 	 *
 	 * @return Response
 	 */
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('lock');
+	}
+	
 	public function index(Request $request)
 	{
 		$query = Group::query();
