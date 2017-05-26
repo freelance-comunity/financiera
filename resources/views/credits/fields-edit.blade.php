@@ -1,9 +1,3 @@
-@php
-     $accredited = $credits->accredited;
-     $economic_evaluation = $accredited->economic;
-     $utility = $economic_evaluation->montly_net_income; 
-     $sugested = ($utility*$credits->term)*0.07;
- @endphp 
 
     <!--- Date Field --->
     <div class="form-group col-sm-6 col-lg-4">

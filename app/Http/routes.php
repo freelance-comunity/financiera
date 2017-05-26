@@ -5,6 +5,9 @@
       return redirect('login');
     });
 
+    Route::get('lockscreen', 'LockAccountController@lockscreen');
+    Route::post('lockscreen', 'LockAccountController@unlock');
+
     Route::get('export-pdf/{id}', function($id){
       $credit = App\Models\Credits::find($id);
       $pdf = PDF::loadView('credits.pdf', compact('credit'))->setPaper('a4','landscape')->setWarnings(false);
