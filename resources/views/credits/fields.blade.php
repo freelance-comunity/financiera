@@ -121,7 +121,8 @@
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('sequence', 'Frecuencia en:') !!}       
    <select  name="sequence" id="mySelect" style="width:350px" class="form-control" onclick="myFunction()">
-        <optgroup label="Diario">
+   @if ($product->modality == "Diario")
+       <optgroup label="Diario">
         <option value="1">30 días</option>
         <option value="1.5">45 días</option>
         <option value="2">60 días</option>
@@ -129,6 +130,7 @@
         <option value="4">120 días</option>
         <option value="6">180 días</option>
       </optgroup>
+   @else      
       <optgroup label="Diario Cuota">
         <option value="1"> 20 cuotas</option>
         <option value="1.5"> 30 cuotas</option>
@@ -136,6 +138,7 @@
         <option value="3"> 60 cuotas</option>
          <option value="4.5"> 90 cuotas</option>
       </optgroup>
+    @endif
     </select>
     </div>
 
