@@ -70,11 +70,13 @@
                  @endforeach
            
         </div>
-
+@php
+$count = $credits->where('status', 'Ministrado')->count();
+@endphp
     <!--- Previous Credit Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('previous_credit', 'Credito anterior:') !!}
-        {!! Form::text('previous_credit', null, ['class' => 'form-control']) !!}
+        {!! Form::text('previous_credit', $count, ['class' => 'form-control','readonly']) !!}
     </div>
 
     <!--- Debts Field --->

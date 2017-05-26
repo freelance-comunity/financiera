@@ -82,7 +82,7 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
                    @elseif ($credits->status === 'Aprobado')
                    <a href="{!! route('credits.edit', [$credits->id]) !!}"><span  class="label label-info">Aprobado</span></a>          
                    @elseif ($credits->status == 'Ministrado')
-                   <a href="{!! route('credits.edit', [$credits->id]) !!}"><span class="label label-success">Ministrado</span></a>          
+                   <span class="label label-success">Ministrado</span>          
                    @endif</td>
                  </td>
                </tr>

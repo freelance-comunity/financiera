@@ -36,6 +36,7 @@ class Credits extends Model
 		"requested",
 		"qualification",
 		"status",
+		"date_ministration",
 		"accredited_id",
 		"address_id",
 		"aval_id",

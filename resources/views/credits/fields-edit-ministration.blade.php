@@ -1,10 +1,3 @@
-@php
-     $accredited = $credits->accredited;
-     $economic_evaluation = $accredited->economic;
-     $utility = $economic_evaluation->montly_net_income; 
-     $sugested = ($utility*$credits->term)*0.07;
- @endphp 
-
     <!--- Date Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('date', 'Fecha de solicitud:') !!}
@@ -69,7 +62,7 @@
     <!--- Authorized Amount Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('authorized_amount', 'Monto autorizado:') !!}
-        {!! Form::text('authorized_amount', null, ['class' => 'form-control', 'maxlength' => 5]) !!}
+        {!! Form::text('authorized_amount', null, ['class' => 'form-control', 'readonly']) !!}
     </div>
     
     <!--- Warranty Field --->
@@ -81,13 +74,13 @@
     <!--- Warranty Type Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('warranty_type', 'Tipo de garantía:') !!}
-        {!! Form::select('warranty_type',['Aval'=>'Aval','Prendaria'=>'Prendaria','Hipotecaria'=>'Hipotecaria'], null, ['class' => 'form-control']) !!}
+        {!! Form::text('warranty_type', null, ['class' => 'form-control','readonly']) !!}
     </div>
 
     <!--- Warranty Value Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('warranty_value', 'Valor de la garantía:') !!}
-        {!! Form::text('warranty_value', null, ['class' => 'form-control']) !!}
+        {!! Form::text('warranty_value', null, ['class' => 'form-control','readonly']) !!}
     </div>
     <!--- Sequence Field --->
     <div class="form-group col-sm-6 col-lg-4">
@@ -123,28 +116,28 @@
     <!--- Observations Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('observations', 'Observaciones:') !!}
-        {!! Form::text('observations', null, ['class' => 'form-control']) !!}
+        {!! Form::text('observations', null, ['class' => 'form-control','readonly']) !!}
     </div>
 
     <!--- Requested Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('requested', 'Atención en:') !!}
-        {!! Form::select('requested',['Campo'=>'Campo', 'Oficina'=>'Oficina'], null, ['class' => 'form-control']) !!}
+        {!! Form::text('requested', null, ['class' => 'form-control','readonly']) !!}
     </div>
 
     <!--- Qualification Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('qualification', 'Calificación:') !!}
-        {!! Form::select('qualification',['1' =>'1', '2'=>'2','3'=>'3','4'=>'4','5'=>'5', '6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10'], null, ['class' => 'form-control']) !!}
+        {!! Form::text('qualification', null, ['class' => 'form-control','readonly']) !!}
     </div>
 
     <!--- Qualification Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('status', 'Estatus:') !!}
-        {!! Form::select('status',['Aprobado' =>'Aprobado', 'Ministrado'=>'Ministrado'], null, ['class' => 'form-control']) !!}
+        {!! Form::text('status',null, ['class' => 'form-control','readonly']) !!}
         
     </div>
-     @if ($credits->status == "Aprobado")
+     @if ($credits->status == "Aprobado" or "Ministrado")
  <!--- Date Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('date_ministration', 'Fecha de ministración:') !!}      

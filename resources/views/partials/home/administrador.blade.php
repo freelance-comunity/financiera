@@ -119,7 +119,7 @@ $credits = App\Models\Credits::where('status','Ministrado')->count();
 										@elseif ($credit->status === 'Aprobado')
 										<a href="{!! route('credits.edit', [$credit->id]) !!}"><span  class="label label-info">Aprobado</span></a>          
 										@elseif ($credit->status == 'Ministrado')
-										<a href="{!! route('credits.edit', [$credit->id]) !!}"><span class="label label-success">Ministrado</span></a>          
+										<span class="label label-success">Ministrado</span>          
 										@endif</td>
 										<td>
 											<div class="sparkbar" data-color="#00a65a" data-height="20">${!! $credit->amount_requested!!}</div>

@@ -537,6 +537,7 @@ Route::get('economicAccredited/{id}/',[
   'uses' => 'AccreditedController@economicAccredited',
   ]);
 
+
 Route::get('calendar', function() {
   $holidays = App\Models\Holidays::all();
   return view('calendar')
@@ -579,3 +580,8 @@ Route::get('download-documents-cuota/{id}', function($id) {
   $pdf = PDF::loadView('documentation.case-file-cuota', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
   return $pdf->download('expediente.pdf');
 });
+
+Route::get('editCredits/{id}/',[
+      'as' => 'credits.editCredits',
+      'uses' => 'CreditsController@editCredits',
+      ]);

@@ -153,7 +153,18 @@ class CreditsController extends AppBaseController
 
 		return view('credits.edit')->with('credits', $credits);
 	}
+	public function editCredits($id)
+	{
+		$credits = Credits::find($id);
 
+		if(empty($credits))
+		{
+			Flash::error('Credits not found');
+			return redirect(route('credits.index'));
+		}
+
+		return view('credits.editCredits')->with('credits', $credits);
+	}
 	/**
 	 * Update the specified Credits in storage.
 	 *

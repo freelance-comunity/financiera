@@ -244,7 +244,8 @@ $credits = App\Models\Credits::where('status','Ministrado')->count();
 										<h3 class="timeline-header"><a href="{!! route('accrediteds.economicAccredited', [$accredited->id])!!}">Evaluación economica</a></h3>
 										@else
 										<h3 class="timeline-header"><a href="#">Evaluación economica</a></h3>
-										<span class="time"><i class="fa fa-clock-o"></i> {{$economic->created_at}}</span>
+										
+											<span class="time"><i class="fa fa-clock-o"></i> {{$economic->created_at}}</span>
 										<div class="timeline-body">            		
 											<strong>Lugar: </strong>{{ $economic->place}} <br>
 											<strong>Fecha:</strong> {{ $economic->date}} <br>	
@@ -257,6 +258,7 @@ $credits = App\Models\Credits::where('status','Ministrado')->count();
 											<strong>Gastos familiares:</strong> ${{$economic->familiar_costs}} <br>
 											<strong>Utilidad neta mensual:</strong> ${{$economic->montly_net_income}} <br>
 										</div>	
+																		
 										@endif										
 									</div>
 								</li>
