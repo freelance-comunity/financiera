@@ -24,6 +24,7 @@ class ProductController extends AppBaseController
 	public function __construct()
 	{
 		$this->middleware('auth');
+		$this->middleware('lock');
 	}
 
 	public function index(Request $request)

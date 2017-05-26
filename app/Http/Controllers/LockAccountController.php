@@ -31,6 +31,6 @@ class LockAccountController extends Controller
 			$request->session()->forget('locked');
 			return redirect('/home');
 		}
-		return back()->withErrors('Contraseña incorrecta. Por favor iontenta nuevamente.');
+		return back()->withErrors('Contraseña incorrecta. Por favor intenta nuevamente.');
 	}
 }
