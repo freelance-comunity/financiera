@@ -154,7 +154,26 @@ function myFunction() {
     <!--- Term Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('term', 'Plazo en días:') !!}        
-       {!! Form::select('term',['20' => '20', '30' => '30', '45' => '45', '60' => '60', '90' => '90', '120' => '120', '180' => '180'], null, ['class' => 'form-control',])!!}
+         <select  name="term" id="mySelect" style="width:350px" class="form-control" onclick="myFunction()">
+   @if ($product->modality == "Diario")
+       <optgroup label="Diario">
+        <option value="30">30 días</option>
+        <option value="45">45 días</option>
+        <option value="60">60 días</option>
+        <option value="90">90 días</option>
+        <option value="120">120 días</option>
+        <option value="180">180 días</option>
+      </optgroup>
+   @else      
+      <optgroup label="Diario Cuota">
+        <option value="20"> 20 cuotas</option>
+        <option value="30"> 30 cuotas</option>
+        <option value="45"> 45 cuotas</option>
+        <option value="60"> 60 cuotas</option>
+         <option value="90"> 90 cuotas</option>
+      </optgroup>
+    @endif
+    </select>
     </div> 
 
     <!--- Frequency Payment Field --->

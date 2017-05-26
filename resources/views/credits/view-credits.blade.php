@@ -42,7 +42,11 @@ Lista de solicitudes
           <td>{!! $credits->frequency_payment!!}</td>
           <td>{!! $credits->interest!!} %</td>
           <td>{!! $credits->adviser!!}</td>
-          <td>{!! $credits->date_ministration!!}</td>
+          @if ($credits->date_ministration)
+             <td>{!! $credits->date_ministration!!}</td>
+          @else
+         <td>Sin fecha</td>
+         @endif
           <td>      
 
             @if ($credits->status === 'Revisión') 
@@ -50,10 +54,10 @@ Lista de solicitudes
             @elseif ($credits->status === 'Aprobado')
             <a href="{!! route('credits.edit', [$credits->id]) !!}"><button  class="btn btn btn-info btn-block">Aprobado</button></a>          
             @elseif (($credits->status == 'Ministrado') && ($credits->days == '30'))
-            <a href="{!! route('credits.editCredits', [$credits->id]) !!}"><button class="btn btn-success btn-block">Ministrado</button></a>          
+            <button class="btn btn-success btn-block disabled">Ministrado</button>        
             <a href="{!! url('download-documents', [$credits->id]) !!}" class="btn bg-navy"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>
             @elseif (($credits->status == 'Ministrado') && ($credits->days == '20'))
-            <a href="{!! route('credits.editCredits', [$credits->id]) !!}"><button class="btn btn-success btn-block">Ministrado</button></a>          
+          <button class="btn btn-success btn-block disabled">Ministrado</button>          
             <a href="{!! url('download-documents-cuota', [$credits->id]) !!}" class="btn bg-navy"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>        
             @endif
 

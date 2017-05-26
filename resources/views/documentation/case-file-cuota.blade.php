@@ -84,7 +84,7 @@
 	</div>
 </header>
 <p class="center" align="justify">
-	En la ciudad de Villaflores, Chiapas, México, siendo las {{ \Carbon\Carbon::now()->toTimeString()}} horas del {{ Date::now()->format('l j F Y') }}, se reúnen los señores Licenciado Víctor Manuel Salazar Molina en
+	En la ciudad de Villaflores, Chiapas, México, con fecha de {{$credit->date_ministration}}, se reúnen los señores Licenciado Víctor Manuel Salazar Molina en
 	representación de Solución y Crecimiento Empresarial S.A. de C.V. y el(a) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} ,
 	ambos con capacidad legal para convenir, con la finalidad de llevar a
 	cabo un CONTRATO DE CREDITO DE MICROFINANCIAMIENTO CON RECONOCIMIENTO
@@ -121,17 +121,17 @@
 </p>
 <p align="justify">
 	PRIMERA: Solución y Crecimiento Empresarial, S.A. DE C.V. y/o el Licenciado Víctor
-	Manuel Salazar Molina, por este conducto otorgan al(a) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}}, la suma de ${{$credit->authorized_amount}} ({{$amount_letter}}), para ser
+	Manuel Salazar Molina, por este conducto otorgan al(a) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}}, la suma de ${{number_format($credit->authorized_amount)}} ({{$amount_letter}}), para ser
 	devuelta en un plazo de un mes y medio a partir de la fecha de este contrato.
 	<br><br>
 	SEGUNDA: El(a) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}}, reconoce deber a Solución y
 	Crecimiento Empresarial, S.A. DE C.V. y/o al Licenciado Víctor Manuel Salazar Molina, la
-	cantidad de ${{$credit->authorized_amount}} ({{$amount_letter}})   y que se obliga a
+	cantidad de ${{number_format($credit->authorized_amount)}} ({{$amount_letter}})   y que se obliga a
 	pagar dentro Un mes y medio a partir de la fecha de este contrato, para ser más exacto el
 	día 28 de Mayo de 2017, sin necesidad de previo cobro. 
 	<br><br>
 	TERCERA: Convienen las partes, que le importe del adeudo es decir la cantidad de
-	${{$credit->authorized_amount}} ({{$amount_letter}}), causara un interés del {{$credit->interest}} %, los cuales serán pagados de Forma diaria
+	${{number_format($credit->authorized_amount)}} ({{$amount_letter}}), causara un interés del {{$credit->interest}} %, los cuales serán pagados de Forma diaria
 	integrando capital hasta vencimiento de contrato (se anexa calendario de pago).
 	<br><br>
 	CUARTA: Sera causa de cobro de interés moratorio en caso de que el

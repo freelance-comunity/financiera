@@ -84,7 +84,7 @@
 	</div>
 </header>
 <p class="center" align="justify">
-	En la ciudad de Villaflores, Chiapas, México, siendo las {{ \Carbon\Carbon::now()->toTimeString()}} horas del {{ Date::now()->format('l j F Y') }}, se reúnen los señores Licenciado Víctor Manuel Salazar Molina en
+	En la ciudad de Villaflores, Chiapas, México, con fecha de {{$credit->date_ministration}}, se reúnen los señores Licenciado Víctor Manuel Salazar Molina en
 	representación de Solución y Crecimiento Empresarial S.A. de C.V. y el(a) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} ,
 	ambos con capacidad legal para convenir, con la finalidad de llevar a
 	cabo un CONTRATO DE CREDITO DE MICROFINANCIAMIENTO CON RECONOCIMIENTO
