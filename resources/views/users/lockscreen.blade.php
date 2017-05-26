@@ -52,7 +52,7 @@ Log in
     Ingrese su contraseña para recuperar su sesión
 </div>
 <div class="text-center">
-    <a href="{{ url('/') }}">O inicie sesión como un usuario diferente</a>
+    <!--<a href="{{ url('/') }}">O inicie sesión como un usuario diferente</a>-->
 </div>
 <div class="lockscreen-footer text-center">
     Copyright &copy; 2017 <b><a href="#" class="text-black"><b>S&C</b> EMPRESARIAL</a></b><br>

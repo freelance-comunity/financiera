@@ -233,6 +233,8 @@
 		@endfor
 	</tbody>
 </table>
+<h1 style="text-align: center;">"EVITE RECARGOS PAGUE PUNTUAL"</h1>
+<h2 style="text-align: center;">SE LE RECUERDA QUE EL HORARIO DE ATENCIÓN ES DE 9:00 DE LA MAÑANA A 4:30 DE LA TARDE DE LUNES A VIERNES.</h2>
 <div class="page-break"></div>
 <header class="clearfix">
 	<div id="logo">
