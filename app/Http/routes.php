@@ -40,6 +40,19 @@
       }
     });
 
+    Route::get('testing3', function(){
+      $holidays = App\Models\Holidays::all();
+      for ($i=0; $i <=10 ; $i++) { 
+        $pago = \Carbon\Carbon::now()->addDays($i)->toDateString();
+        echo $pago;
+        echo "<br>";
+       } 
+       foreach ($holidays as $key => $value) {
+        echo "<br>";
+        echo $value->date;
+       }
+    });
+
     
 
     Route::get('/rolescreate', function() {
