@@ -24,7 +24,7 @@ class LockAccountController extends Controller
 		$password = $request->input('password');
 
 		$this->validate($request, [
-			'password' => 'required',
+			'password' => 'required|min:6',
 			]);
 
 		if (\Hash::check($password, \Auth::user()->password)) {
