@@ -42,7 +42,9 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCHCpQVaYUmdj1ld0VcCCD5Wj-6XubYw"></script>
         <link rel="stylesheet" href="{{ asset('css/phpgmaps/jquery-gmaps-latlon-picker.css') }}">
         <script src="{{ asset('js/phpgmaps/jquery-gmaps-latlon-picker.js')}}"></script>
+        @if (Auth::check())
         <meta http-equiv="refresh" content = "60; url={{ url('lockscreen') }}">
+        @endif
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
