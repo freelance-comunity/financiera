@@ -82,6 +82,11 @@ class Credits extends Model
         return $this->belongsTo('App\Models\Aval');
     }
 
+    public function debt()
+    {
+    	return $this->hasOne('App\Models\Debt');
+    } 
+
     
 
 }

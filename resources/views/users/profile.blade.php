@@ -8,7 +8,7 @@ Actualizar Contraseña
   <div class="row">
   @include('sweet::alert')
     <div class="col-md-10 col-md-offset-1">
-      <!--<img src="{{ asset('/img/uploads/') }}/{{$user->photo}}" style="width: 150px; height: 150px; float: left; border-radius: 50%; margin-right: 25px; " alt="">-->
+      <img src="{{Auth::user()->avatar}}" style="width: 120px; height: 120px; float: left; border-radius: 50%; margin-right: 25px; " alt="">
       <h2>{{ $user->name}} {{$user->last_name}}</h2>
       <form action="{{ url('updatepassword') }}" method="POST">
         {{ csrf_field() }}

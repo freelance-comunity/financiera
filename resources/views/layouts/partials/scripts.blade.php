@@ -91,6 +91,16 @@
       });
     });
   </script>
+    <script>
+    $(document).ready(function(){
+      $('#myTableCustom2').DataTable({
+        responsive: true,
+        "language": {
+          "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+        }
+      });
+    });
+  </script>
   <script>
    $('#select-all').click(function(event) {
     if(this.checked) {

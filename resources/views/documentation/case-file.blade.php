@@ -67,6 +67,14 @@
 			font-weight: normal;
 			margin: 0;
 		}
+		.left
+		{
+			width: 50%;
+		}
+		.right
+		{
+			width: 50%;
+		}
 	</style>
 </head>
 <body>
@@ -225,9 +233,9 @@
 		<tr>
 			<td>&nbsp;{{$i}}</td>
 			<td>&nbsp;{{ \Carbon\Carbon::now()->addDays($i)->toDateString()}}</td>
-			<td>&nbsp;{{ number_format($capital,2)}}</td>
-			<td>&nbsp;{{ number_format($rest,2)}}</td>
-			<td>&nbsp;{{ number_format(ceil($f),2)}}</td>
+			<td>&nbsp;${{ number_format($capital,2)}}</td>
+			<td>&nbsp;${{ number_format($rest,2)}}</td>
+			<td>&nbsp;${{ number_format(ceil($f),2)}}</td>
 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		@endfor
@@ -235,6 +243,38 @@
 </table>
 <h1 style="text-align: center;">"EVITE RECARGOS PAGUE PUNTUAL"</h1>
 <h2 style="text-align: center;">SE LE RECUERDA QUE EL HORARIO DE ATENCIÓN ES DE 9:00 DE LA MAÑANA A 4:30 DE LA TARDE DE LUNES A VIERNES.</h2>
+<div class="page-break"></div>
+<header class="clearfix">
+	<div id="logo">
+		<img src="{{asset('img/pdf/logo_sc.png')}}">
+	</div>
+	<div id="company">
+		<strong><h2 class="name">TABLA DE AMORTIZACIONES</h2></strong>
+		<h2 class="name">SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S.A. DE C.V.</h2>
+		<div>Av. Central  Poniente #119, Villaflores, Chiapas C.P. 30470</div>
+		<div>(965) 652-0397</div>
+		<div>contacto@sc-empresarial.com.mx</div>
+	</div>
+</div>
+</header>
+<table class="demo">
+	<thead>
+		<tr>
+			<th>NÚMERO DE LA AMORTIZACIÓN</th>
+			<th>IMPORTE</th>
+			<th>VTO DE LA AMORTIZACIÓN</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for ($i = 1; $i <= $credit->term; $i++)
+		<tr>
+			<td>&nbsp;{{$i}}</td>
+			<td>&nbsp;${{ number_format(ceil($f),2)}}</td>
+			<td>&nbsp;{{ \Carbon\Carbon::now()->addDays($i)->toDateString()}}</td>
+		</tr>
+		@endfor
+	</tbody>
+</table>
 <div class="page-break"></div>
 <header class="clearfix">
 	<div id="logo">
@@ -290,45 +330,45 @@
 			<td>&nbsp;DOMICILIO:&nbsp; <strong>@foreach ($avals as $aval)
 				{{$aval->address}}
 				@endforeach</strong></td>
-		</tr>
-		<tr>
-			<td>&nbsp;POBLACIÓN:&nbsp; <strong> @foreach ($colonys as $colony)
-				{{$colony->colony}}
-				@endforeach</strong></td>
-			<td>&nbsp;POBLACIÓN: <strong>@foreach ($avals as $aval)
-				{{$aval->colony}}
-				@endforeach
-				</strong>
+			</tr>
+			<tr>
+				<td>&nbsp;POBLACIÓN:&nbsp; <strong> @foreach ($colonys as $colony)
+					{{$colony->colony}}
+					@endforeach</strong></td>
+					<td>&nbsp;POBLACIÓN: <strong>@foreach ($avals as $aval)
+						{{$aval->colony}}
+						@endforeach
+					</strong>
 				</td>
-		</tr>
-		<tr>
-			<td>&nbsp;MUNICIPIO: <strong>@foreach ($colonys as $colony)
-				{{$colony->municipality}}
-				@endforeach</strong></td>
-			<td>&nbsp;MUNICIPIO: <strong>@foreach ($avals as $aval)
-				{{$aval->municipality}}
-				@endforeach</strong>
-			</td>
-		</tr>
+			</tr>
+			<tr>
+				<td>&nbsp;MUNICIPIO: <strong>@foreach ($colonys as $colony)
+					{{$colony->municipality}}
+					@endforeach</strong></td>
+					<td>&nbsp;MUNICIPIO: <strong>@foreach ($avals as $aval)
+						{{$aval->municipality}}
+						@endforeach</strong>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;ESTADO:&nbsp; <strong>@foreach ($colonys as $colony)
+						{{$colony->federative}}
+						@endforeach</strong></td>
+						<td>&nbsp;&nbsp;ESTADO:&nbsp; <strong>@foreach ($avals as $aval)
+							{{$aval->place}}
+							@endforeach</strong></td>
+						</tr>
 						<tr>
-							<td>&nbsp;ESTADO:&nbsp; <strong>@foreach ($colonys as $colony)
-								{{$colony->federative}}
+							<td>&nbsp;TELÉFONO: <strong>{{$credit->accredited->phone}}</strong>&nbsp;</td>
+							<td>&nbsp;TELÉFONO: <strong>@foreach ($avals as $aval)
+								{{$aval->phone}}
 								@endforeach</strong></td>
-								<td>&nbsp;&nbsp;ESTADO:&nbsp; <strong>@foreach ($avals as $aval)
-									{{$aval->place}}
-									@endforeach</strong></td>
-								</tr>
-								<tr>
-									<td>&nbsp;TELÉFONO: <strong>{{$credit->accredited->phone}}</strong>&nbsp;</td>
-									<td>&nbsp;TELÉFONO: <strong>@foreach ($avals as $aval)
-										{{$aval->phone}}
-										@endforeach</strong></td>
-									</tr>
-									<tr>
-										<td>&nbsp;NOMBRE Y FIRMA<br><br><br><br><br><br><strong>SR(A). {{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong><br><br></td>
-										<td>NOMBRE Y FIRMA<br><br><br><br><br><br><strong>SR(A). {{$credit->aval}}</strong><br><br></td>
-									</tr>
-		<tbody>
-	</table>
-</body>
-</html>
+							</tr>
+							<tr>
+								<td>&nbsp;NOMBRE Y FIRMA<br><br><br><br><br><br><strong>SR(A). {{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong><br><br></td>
+								<td>NOMBRE Y FIRMA<br><br><br><br><br><br><strong>SR(A). {{$credit->aval}}</strong><br><br></td>
+							</tr>
+							<tbody>
+							</table>
+						</body>
+						</html>
