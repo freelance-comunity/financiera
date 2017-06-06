@@ -248,4 +248,11 @@ class CreditsController extends AppBaseController
 
 		return redirect(route('credits.index'));
 	}
+	
+	public function moratoria($id) {
+		$credits = Credits::find($id);
+			return view('moratoria.create')
+			->with('credits', $credits);		
+	}
+	
 }

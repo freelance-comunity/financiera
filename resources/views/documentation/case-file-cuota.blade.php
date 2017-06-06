@@ -75,7 +75,7 @@
 			<img src="{{asset('img/pdf/logo_sc.png')}}">
 		</div>
 		<div id="company">
-			<h2 class="name">CONTRATO</h2>
+			<h2 class="name"></h2>
 			<h2 class="name">SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S.A. DE C.V.</h2>
 			<div>Av. Central  Poniente #119, Villaflores, Chiapas C.P. 30470</div>
 			<div>(965) 652-0397</div>
@@ -84,104 +84,180 @@
 	</div>
 </header>
 <p class="center" align="justify">
-	En la ciudad de Villaflores, Chiapas, México, con fecha de {{$credit->date_ministration}}, se reúnen los señores Licenciado Víctor Manuel Salazar Molina en
-	representación de Solución y Crecimiento Empresarial S.A. de C.V. y el(a) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} ,
-	ambos con capacidad legal para convenir, con la finalidad de llevar a
-	cabo un CONTRATO DE CREDITO DE MICROFINANCIAMIENTO CON RECONOCIMIENTO
-	DE ADEDUDO, en el que celebran como “ACREEDOR” Solución y Crecimiento Empresarial,
-	S.A. De C.V. representada por el señor Licenciado Víctor Manuel Salazar Molina y de la
-	otra como “DEUDORA” EL(A) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}}, al tenor las siguientes
-	declaraciones y clausulas:
+
+	<p style="text-align: center"><strong>CONTRATO DE CRÉDITO</strong>
+	</p>
+	En la ciudad de Villaflores, Chiapas, México, siendo las {{ Date::now()->format(' H:i:s') }} horas del día {{date('d m Y', strtotime($credit->date_ministration))}}, se reúnen en calidad de “Acreedor” Solución y Crecimiento
+	Empresarial S.A. de C.V. representado por el LEA Víctor Manuel Salazar Molina y el (a)
+	Sr.(a.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} en calidad de “Acreditado y/o Garante Prendario”, asi
+	mismo el (a) Sr.(a.) Damaris Isamar Corzo Camas como “Obligado Solidario y/o Garante
+	Prendario”, todos con capacidad legal para celebrar el presente CONTRATO DE
+	CREDITO SIMPLE DIARIO CON OBLIGACION SOLIDARIA Y GARANTIA
+	PRENDARIA, cuyos nombres y firmas aparecen en el apartado de firmas del presente
+	contrato de conformidad con las declaraciones y clausulas siguientes:
 </p>
-<p style="text-align: center">DECLARACIONES
+<p style="text-align: center"><strong>DECLARACIONES</strong>
 </p>
-<p align="justify">PRIMERA. EL ACREDITANTE <br>
-	PERSONALIDAD. <br><br>
-	Solución y Crecimiento Empresarial S.A. DE C.V. se constituyó como una Sociedad
-	Anónima de Capital Variable mediante la escritura pública No. 16,053, otorgada el 27
-	de Febrero del año de 2012, ante fe pública del Lic. Edgar Trujillo Casas, Notario Público
-	número 21 del Estado, con Jurisdicción en la ciudad de Tuxtla Gutiérrez, Chiapas. <br><br>
-	REPRESENTACIÓN <br><br>
-	El Licenciado Víctor Manuel Salazar Molina, acredita su calidad de Representante Legal de
+@php
+$colonys = $credit->accredited->addresses;
+$avals = $credit->accredited->avals;
+@endphp
+<p align="justify"><strong>PRIMERA. EL ACREDITANTE</strong> <br>
+	<strong>PERSONALIDAD</strong> <br><br>
+	Solución y Crecimiento Empresarial se constituyó como una Sociedad Anónima de Capital
+	Variable mediante la escritura pública No. 15,844, el 29 de Septiembre del año de 2011,
+	ante fe pública del Lic. Edgar Trujillo Casas, Notario Público número 21 del Estado de
+	Chiapas. Legalmente constituida y con las autorizaciones necesarias para operar. <br><br>
+	Manifiesta tener su domicilio fiscal para oír y recibir todo tipo de notificaciones en Avenida
+	Central Poniente No. 119, en la ciudad de Villaflores, Chiapas, México. <br><br>
+	<strong>REPRESENTACIÓN</strong> <br><br>
+	El LEA. Víctor Manuel Salazar Molina, acredita su calidad de Representante Legal de
 	Solución y Crecimiento Empresarial S.A. de C. V. con el testimonio de la escritura pública
-	364 otorgada ante la Fe del notario Lorena del Rosario Zozaya Bassoul, que desempeña el
-	cargo de notario público número 132 del estado de Chiapas en la cual constan las
-	facultades que se le confirieron, suficientes para la celebración de este contrato.
+	364 de fecha 7 de Julio de 2015 otorgada ante la Fe del Notario 132 del Estado de
+	Chiapas Lorena del Rosario Zozaya Bassoul, en la cual constan las facultades que se le
+	confirieron, suficientes para la celebración de este contrato y que a la fecha no le han sido
+	modificados o restringidos ni revocadas en forma alguna.
+
 	<br><br>
-	SEGUNDA EL ACREDITADO. Declara bajo protesta de decir verdad, que:
+	<strong>SEGUNDA EL ACREDITADO.</strong> Declara el Acreditado y/o Garante Prendario en lo
+	personal y por su propio derecho, o bien, representado por la persona cuyo nombre y
+	firma aparece en el apartado de firmas del presente contrato, bajo protesta de decir
+	verdad, que:
+
 	<br><br>
-	1. PERSONALIDAD.
+	<strong>1. PERSONALIDAD.</strong>
 	<br><br>
-	EL(A) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}}, manifiesta que es una persona física, con
-	domicilio en {{ $credit->accredited->address}}, quien desea accesar a
-	un Microcrédito para actividades de comercialización y/o servicios a través de Solución y
-	Crecimiento Empresarial S.A. de C. V.
+	El(a) Sr.(a.) {{$credit->accredited->name}} {{$credit->accredited->last_name}} y {{$credit->aval}}, manifiestan tener
+	su domicilio en {{$credit->accredited->address}} y @foreach ($avals as $aval) {{$aval->address}} @endforeach
+	respectivamente, en @foreach ($colonys as $colony)  {{$colony->municipality}}; {{$colony->federative}}, @endforeach quienes desean accesar a un Microcrédito para
+	actividades de comercialización y/o servicios a través de Solución y Crecimiento
+	Empresarial S.A. de C. V.
+	<br><br>
+	Así mismo declaran:
+	<br><br>
+	a. Por su propia cuenta e interés, es su voluntad celebrar el presente contrato; <br>
+	b. Son personas físicas con capacidad legal plena y facultades necesarias para la
+	celebración del presente contrato;<br>
+	c. Cuenta con la capacidad económica necesaria para cumplir cabalmente con todas y
+	cada una de sus obligaciones estipuladas en este contrato; <br>
+	d. A esta fecha no tiene pendiente, ni existe amenaza de que vaya a iniciarse, alguna
+	acción o procedimiento, ya sea judicial o extrajudicial, que afecte o pudiera afectar
+	la legalidad, validez o exigibilidad del presente contrato. <br>
+	e. Están de acuerdo en constituirse como garante prendario respecto de los bienes
+	adquiridos con el crédito, sin que exista lesión ni vicios en su consentimiento, por
+	lo que reconoce sus alcances y validez de sus obligaciones y previo a la firma del
+	presente contrato.
+	<br>
+	f. Señalan como domicilio legal y convencional el indicado con anterioridad. <br>
 </p>
-<p style="text-align: center">CLAUSULAS
+<p style="text-align: center"><strong>CLAUSULAS</strong>
 </p>
 <p align="justify">
-	PRIMERA: Solución y Crecimiento Empresarial, S.A. DE C.V. y/o el Licenciado Víctor
-	Manuel Salazar Molina, por este conducto otorgan al(a) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}}, la suma de ${{number_format($credit->authorized_amount)}} ({{$amount_letter}}), para ser
-	devuelta en un plazo de un mes y medio a partir de la fecha de este contrato.
+	<strong>PRIMERA: OTORGAMIENTO.</strong> Solución y Crecimiento Empresarial, S.A. de C.V.,
+	por este conducto otorgan al(a) Sr.(a.) {{$credit->accredited->name}} {{$credit->accredited->last_name}} y {{$credit->aval}}
+	Camas, financiamiento por la cantidad de ${{number_format($credit->authorized_amount)}} ({{$amount_letter}} 00/100  MONEDA NACIONAL), para capital de trabajo mismo que será devuelta de forma diaria en un plazo {{$credit->term}}
+	dias que comenzará a partir del día siguiente en que se celebro el contrato.
+
 	<br><br>
-	SEGUNDA: El(a) Sr.(Sra.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}}, reconoce deber a Solución y
-	Crecimiento Empresarial, S.A. DE C.V. y/o al Licenciado Víctor Manuel Salazar Molina, la
-	cantidad de ${{number_format($credit->authorized_amount)}} ({{$amount_letter}})   y que se obliga a
-	pagar dentro Un mes y medio a partir de la fecha de este contrato, para ser más exacto el
-	día 28 de Mayo de 2017, sin necesidad de previo cobro. 
+	<strong>SEGUNDA: TASA DE INTERÉS.</strong> Convienen las partes, que el importe del
+	adeudo es decir la cantidad de ${{number_format($credit->authorized_amount)}} ({{$amount_letter}} 00/100  MONEDA NACIONAL), causara un interés del ocho por ciento mensual más el Impuesto al
+	Valor Agregado, los cuales serán pagados de forma diaria integrando accesorios,
+	intereses y capital hasta vencimiento de contrato (se anexa calendario de pago). El
+	Acreditado manifiesta que previo a la contratación del crédito que se documenta
+	en este instrumento, constato que la tasa de interés se ajusta a las condiciones del
+	mercado, sin que existan lesiones ni vicios en su consentimiento.
 	<br><br>
-	TERCERA: Convienen las partes, que le importe del adeudo es decir la cantidad de
-	${{number_format($credit->authorized_amount)}} ({{$amount_letter}}), causara un interés del {{$credit->interest}} %, los cuales serán pagados de Forma diaria
-	integrando capital hasta vencimiento de contrato (se anexa calendario de pago).
+	<strong>TERCERA: RECONOCIMIENTO DE ADUEDO.</strong> El(a) Sr.(a.) {{$credit->accredited->name}} {{$credit->accredited->last_name}} y {{$credit->aval}}, reconoce deber a Solución y Crecimiento
+	Empresarial, S.A. DE C.V., la cantidad de ${{number_format($credit->authorized_amount)}} ({{$amount_letter}} 00/100  MONEDA NACIONAL).
 	<br><br>
-	CUARTA: Sera causa de cobro de interés moratorio en caso de que el
-	“DEUDOR” incumpla con uno o varios pagos; por lo que El intereses moratorio se cobrara
-	a razón de multiplicar por dos la tasa fija ordinaria pactada en la Cláusula Tercera, y que
-	se aplicaran: 1. Sobre cualquier saldo(s) vencido (s) no pagado (s) oportunamente; 2.
-	Sobre el saldo total adeudado si éste se diere por vencido anticipadamente.
+	<strong>CUARTA: AVISO DE PRIVACIDAD.</strong> De conformidad con el Artículo 15, de la Ley
+	Federal de protección de datos personales en posesión de los particulares, Solución y
+	Crecimiento Empresarial, S.A. de C.V. le informa al Acreditado y al Obligado Solidario que
+	mediante este contrato de crédito, los documentos personales y la información de sus
+	actividades económicas, quedaran bajo custodia y tratados de forma confidencial. Salvo en
+	caso de que el Acreditado incumpla con la pactado en este contrato y se haga necesario
+	integrar la documentación como testimonial ante un juicio.
 	<br><br>
-	QUINTA: serán causas por la que “EL ACREEDOR” podrá dar por vencido
-	anticipadamente el plazo estipulado en el presente contrato si la parte DEUDORA no
-	cumpliera con el pago de los intereses más el capital pactados de forma de Forma
-	Catorcenal descrito en la Cláusula Tercera del presente contrato.
+	<strong>QUINTA: SANCIONES.</strong> Sera causa de cobro de recargos por incumplimiento de
+	pago por un monto de $20.00 (Veinte Pesos 00/100 M.N.) por día de atraso, se aplicaran:
+	1. Sobre cualquier saldo(s) vencido (s) no pagado (s) oportunamente; 2. Sobre el saldo
+	total adeudado si éste se diere por vencido anticipadamente. Esto con base a lo pactado y
+	aceptado por el acreditado.
 	<br><br>
-	SEXTA: Llegado el plazo de vencimiento y al parte deudora no liquide el importe de
-	su adeudo, “EL ACREEDOR” tendrá expedito su derecho para exigir su cumplimiento por la
-	vía Jurídica correspondiente. 
+	<strong>SEXTA: LUGAR Y FORMA DE PAGO.</strong> El Acreditado podrá efectuar sus
+	pagos en las ventanillas de las instalaciones de Solución y Crecimiento Empresarial
+	S.A DE C.V. dentro de sus horarios de operaciones de lunes a viernes estipulado
+	en el calendario de pago sin necesidad de cobro previo.
+
 	<br><br>
-	SEPTIMA: Los contratantes declaran que el presente contrato lo suscriben de su
-	libre y espontánea voluntad y con toda licitud, sin que exista error, dolo, mala fe, ni
-	ningún vicio del consentimiento por el cual pudiere nulificarse o rescindirse, por lo que de
-	común acuerdo renuncian a las acciones que por ello pudiera ejercer. 
+	<strong>SEPTIMA: APLICACIÓN DE PAGOS.</strong> El orden de prelación para la
+	aplicación de los pagos recibidos será de la siguiente forma: a) gastos hechos por
+	Solución y Crecimiento Empresarial S.A DE C.V., por cuenta del Acreditado, b),
+	comisiones c) recargos, d) intereses ordinarios, e) suerte principal, y f) impuestos.
+
 	<br><br>
-	OCTAVA: Para los efectos de interpretación y cumplimiento de las obligaciones
-	derivadas de este contrato, las partes se someten a la jurisdicción y competencia de los
-	tribunales judiciales de esta ciudad de Villaflores, Chiapas.
+	<strong>OCTAVA: OBLIGACION SOLIDARIA.</strong> Mediante la suscripción del
+	presente contrato, el obligado solidario se obliga irrevocable y solidariamente para
+	con y en favor de Solución y Crecimiento empresarial S.A DE C.V., Al cumplimiento
+	total y oportuno de las obligaciones pactadas y a cargo del Acreditado, cuando
+	este deje de realizar dichos pagos por el motivo que pudiese presentar, el obligado
+	solidario se obliga a realizar y cubrir todos y cada uno de los pagos que estuviesen
+	pendientes de pago.
+	<br><br>
+	<strong>NOVENA: GARANTE PRENDARIO.</strong> El garante prendario garantiza el pago
+	puntual y exacto cumplimiento de todas y cada una de las obligaciones que se
+	deriven del crédito formalizado por virtud del presente contrato, el cual consiste en
+	dejar a favor de Solución y Crecimiento Empresarial S.A DE C.V., los bienes de su
+	propiedad tanto muebles como inmuebles, hasta donde alcance, para cumplir con
+	sus obligaciones de pago.
+	<br><br>
+	<strong>DECIMA: VENCIMINETO ANTICIPADO.</strong> Serán causas por la que “EL
+	ACREEDOR” podrá dar por vencido anticipadamente el plazo estipulado en el
+	presente contrato si la parte DEUDORA no cumpliera con el pago de los intereses
+	más el capital pactados, descrito en la Cláusula Tercera del presente contrato.
+	<br><br>
+	<strong>DECIMA PRIMERA: GASTOS Y HONORARIOS.</strong> -Los gastos que en su
+	caso se originen por las gestiones judiciales o extrajudiciales que deban hacerse
+	para el cumplimiento forzado de las obligaciones del Acreditado. Serán a cargo
+	indistintamente del Acreditado u Obligado Solidario.
+	<br><br>
+	<strong>DECIMA SEGUNDA: DOMICILIOS, AVISOS Y NOTIFICACIONES.</strong> El
+	Acreditado acepta que cualquier aviso podrá realizarse por escrito, a través de
+	cualquier medio electrónico, de computo o tele-comunicaciones derivados de la
+	ciencia y la tecnología, las partes están de acuerdo en que las notificaciones
+	podrán realizarse cualquier día del año y con cualquier persona que habite el
+	domicilio.
+	<br><br>
+	<strong>DECIMA TERCERA:</strong>  Llegado el plazo de vencimiento y la parte deudora no liquide
+	el importe de su adeudo, “EL ACREEDOR” tendrá expedito su derecho para exigir su
+	cumplimiento por la vía Jurídica correspondiente. 
+	<br><br>
+	<strong>DECIMA CUARTA: </strong>Los contratantes declaran que el presente contrato lo
+	suscriben de su libre y espontánea voluntad y con toda licitud, sin que exista error, dolo,
+	mala fe, ni ningún vicio del consentimiento por el cual pudiere nulificarse o rescindirse, por
+	lo que de común acuerdo renuncian a las acciones que por ello pudiera ejercer. 
+	<br><br>
+	<strong>DECIMA QUINTA: </strong>Para los efectos de interpretación y cumplimiento de las
+	obligaciones derivadas de este contrato, las partes se someten a la jurisdicción y
+	competencia de los tribunales judiciales de esta ciudad de Villaflores, Chiapas.
 	<br><br>
 	Para darle la debida validez al presente contrato firmas al calce las partes que en el
 	intervinieron.
 </p>
 <br>
-<p style="text-align: center">PARTE ACREEDORA
-</p><br>
-<p style="text-align: center">____________________________________________________________
+<p style="text-align: center"><strong>LEA. Víctor Manuel Salazar Molina</strong><br><strong>Representante Legal</strong><br><strong>Solución y Crecimiento Empresarial S.A. de C.V. </strong>
 </p>
-<p style="text-align: center">Licenciado en Economía Agrícola Víctor Manuel Salazar Molina <br>
-	Representante Legal de Solución y Crecimiento Empresarial <br>
-	S.A. de C.V. 
+<br><br><br>
+<p style="text-align: left"><strong>Sr.(a) {{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Sr. (a) {{$credit->aval}}</strong>
+	<br><strong>ACREDITADO” Y/O “GARANTE </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>OBLIGADO SOLIDARIO Y/O GARANTE</strong> <br>
+	<strong>PRENDARIO</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>PRENDARIO</strong>
 </p>
-<br>
-<p style="text-align: center">PARTE DEUDORA
-</p><br>
-<p style="text-align: center">_____________________________________________________
-</p>
-<p style="text-align: center">{{$credit->accredited->name}} {{$credit->accredited->last_name}}
+<br><br>
+<p style="text-align: center"><strong>TESTIGOS</strong>
 </p><br><br>
-<p style="text-align: center">TESTIGOS
-</p><br><br>
-<p style="text-align: left;">___________________________ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___________________________
-</p>
-<p style="text-align: left; ">{{$credit->adviser}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$credit->accredited->name}} {{$credit->accredited->last_name}}
+
+<p style="text-align: left; "><strong>{{$credit->adviser}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Ing. Julio Octavio Medina de la Cruz</strong>
+
 </p>
 
 
@@ -205,7 +281,7 @@
 		<p>CLIENTE: <strong>{{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  PROMOTOR: <strong>{{$credit->accredited->user->name}} {{$credit->accredited->user->last_name}}</strong></p>
 	</caption>
 	<caption>
-		<p>FECHA DE MINISTRACIÓN: <strong>{{ Date::now()->format('l j F Y H:i:s') }}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </strong></p>
+		<p>FECHA DE MINISTRACIÓN: <strong>{{$credit->date_ministration}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </strong></p>
 	</caption>
 	<caption>
 		<p>MONTO: <strong>${{$credit->authorized_amount}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FRECUENCIA:<strong>{{$credit->term}} días</strong></p>
@@ -218,40 +294,63 @@
 			<th>INTERES</th>
 			<th>TOTAL PAGO</th>
 			<th>FIRMA DE RECIBIDO</th>
+			
 		</tr>
 	</thead>
+	
 	<tbody>
-		@for ($i = 1; $i <= $credit->term; $i++)
-		<tr>
-			<td>&nbsp;{{$i}}</td>
-			<td>&nbsp;{{ \Carbon\Carbon::now()->addWeekday($i)->toDateString()}}</td>
-			<td>&nbsp;{{ number_format($capital,2)}}</td>
-			<td>&nbsp;{{ number_format($rest,2)}}</td>
-			<td>&nbsp;{{ number_format(ceil($f),2)}}</td>
-			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		</tr>
-		@endfor
-	</tbody>
-</table>
-<div class="page-break"></div>
-<header class="clearfix">
-	<div id="logo">
-		<img src="{{asset('img/pdf/logo_sc.png')}}">
+		<?php 
+		$holidays = ["2017-06-05", "2017-06-06","2017-06-07","2017-06-08","2017-06-09","2017-06-10","2017-06-11"];
+		$fechas = ["2017-06-12", "2017-06-13","2017-06-14","2017-06-15","2017-06-16","2017-06-17","2017-06-18"];
+		$date = \Carbon\Carbon::now();
+		$MyDateCarbon = \Carbon\Carbon::now()->parse($date);
+
+		$MyDateCarbon->addDays(1);
+
+		for ($i = 1; $i <= $credit->term; $i++) {
+
+			if (in_array(\Carbon\Carbon::now()->parse($date)->addDays($i)->toDateString(),$holidays)) {
+
+				$MyDateCarbon->addDay();
+
+			}
+		}
+		?>	
+		@for ($j = 1; $j <= $credit->term; $j++)
+		<tr> 
+			<td>&nbsp;{{$j}}</td>		
+			<td>@foreach ($fechas as $key => $value)
+				&nbsp;{{$value}}
+				@endforeach</td> 
+				<td>&nbsp;{{ number_format($capital,2)}}</td>
+				<td>&nbsp;{{ number_format($rest,2)}}</td>
+				<td>&nbsp;{{ number_format(ceil($f),2)}}</td>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			@endfor
+		</tbody>
+	</table>
+	<h1 style="text-align: center;">"EVITE RECARGOS PAGUE PUNTUAL"</h1>
+	<h2 style="text-align: center;">SE LE RECUERDA QUE EL HORARIO DE ATENCIÓN ES DE 9:00 DE LA MAÑANA A 4:30 DE LA TARDE DE LUNES A VIERNES.</h2>
+	<div class="page-break"></div>
+	<header class="clearfix">
+		<div id="logo">
+			<img src="{{asset('img/pdf/logo_sc.png')}}">
+		</div>
+		<div id="company">
+			<strong><h2 class="name">PAGARÉ</h2></strong>
+			<h2 class="name">SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S.A. DE C.V.</h2>
+			<div>Av. Central  Poniente #119, Villaflores, Chiapas C.P. 30470</div>
+			<div>(965) 652-0397</div>
+			<div>contacto@sc-empresarial.com.mx</div>
+		</div>
 	</div>
-	<div id="company">
-		<strong><h2 class="name">PAGARÉ</h2></strong>
-		<h2 class="name">SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S.A. DE C.V.</h2>
-		<div>Av. Central  Poniente #119, Villaflores, Chiapas C.P. 30470</div>
-		<div>(965) 652-0397</div>
-		<div>contacto@sc-empresarial.com.mx</div>
-	</div>
-</div>
 </header>
 <p>
 	BUENO POR LA CANTIDAD DE <strong>${{$credit->authorized_amount}}.00</strong>
 </p>
 <p>
-	<strong>VILLAFLORES, CHIAPAS, MÉXICO A </strong><strong>{{ Date::now()->format('l j F Y H:i:s') }}.</strong>
+	<strong>VILLAFLORES, CHIAPAS, MÉXICO A </strong><strong>{{ $credit->date_ministration }}.</strong>
 </p>
 <p>
 	DEBEMOS Y PAGAREMOS INCONDICIONALMENTE POR ESTE PAGARÉ A LA ORDEN DE <strong>SOLUCION Y
@@ -288,45 +387,45 @@
 			<td>&nbsp;DOMICILIO:&nbsp; <strong>@foreach ($avals as $aval)
 				{{$aval->address}}
 				@endforeach</strong></td>
-		</tr>
-		<tr>
-			<td>&nbsp;POBLACIÓN:&nbsp; <strong> @foreach ($colonys as $colony)
-				{{$colony->colony}}
-				@endforeach</strong></td>
-			<td>&nbsp;POBLACIÓN: <strong>@foreach ($avals as $aval)
-				{{$aval->colony}}
-				@endforeach
-				</strong>
+			</tr>
+			<tr>
+				<td>&nbsp;POBLACIÓN:&nbsp; <strong> @foreach ($colonys as $colony)
+					{{$colony->colony}}
+					@endforeach</strong></td>
+					<td>&nbsp;POBLACIÓN: <strong>@foreach ($avals as $aval)
+						{{$aval->colony}}
+						@endforeach
+					</strong>
 				</td>
-		</tr>
-		<tr>
-			<td>&nbsp;MUNICIPIO: <strong>@foreach ($colonys as $colony)
-				{{$colony->municipality}}
-				@endforeach</strong></td>
-			<td>&nbsp;MUNICIPIO: <strong>@foreach ($avals as $aval)
-				{{$aval->municipality}}
-				@endforeach</strong>
-			</td>
-		</tr>
+			</tr>
+			<tr>
+				<td>&nbsp;MUNICIPIO: <strong>@foreach ($colonys as $colony)
+					{{$colony->municipality}}
+					@endforeach</strong></td>
+					<td>&nbsp;MUNICIPIO: <strong>@foreach ($avals as $aval)
+						{{$aval->municipality}}
+						@endforeach</strong>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;ESTADO:&nbsp; <strong>@foreach ($colonys as $colony)
+						{{$colony->federative}}
+						@endforeach</strong></td>
+						<td>&nbsp;&nbsp;ESTADO:&nbsp; <strong>@foreach ($avals as $aval)
+							{{$aval->place}}
+							@endforeach</strong></td>
+						</tr>
 						<tr>
-							<td>&nbsp;ESTADO:&nbsp; <strong>@foreach ($colonys as $colony)
-								{{$colony->federative}}
+							<td>&nbsp;TELÉFONO: <strong>{{$credit->accredited->phone}}</strong>&nbsp;</td>
+							<td>&nbsp;TELÉFONO: <strong>@foreach ($avals as $aval)
+								{{$aval->phone}}
 								@endforeach</strong></td>
-								<td>&nbsp;&nbsp;ESTADO:&nbsp; <strong>@foreach ($avals as $aval)
-									{{$aval->place}}
-									@endforeach</strong></td>
-								</tr>
-								<tr>
-									<td>&nbsp;TELÉFONO: <strong>{{$credit->accredited->phone}}</strong>&nbsp;</td>
-									<td>&nbsp;TELÉFONO: <strong>@foreach ($avals as $aval)
-										{{$aval->phone}}
-										@endforeach</strong></td>
-									</tr>
-									<tr>
-										<td>&nbsp;NOMBRE Y FIRMA<br><br><br><br><br><br><strong>SR(A). {{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong><br><br></td>
-										<td>NOMBRE Y FIRMA<br><br><br><br><br><br><strong>SR(A). {{$credit->aval}}</strong><br><br></td>
-									</tr>
-		<tbody>
-	</table>
-</body>
-</html>
+							</tr>
+							<tr>
+								<td>&nbsp;NOMBRE Y FIRMA<br><br><br><br><br><br><strong>SR(A). {{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong><br><br></td>
+								<td>NOMBRE Y FIRMA<br><br><br><br><br><br><strong>SR(A). {{$credit->aval}}</strong><br><br></td>
+							</tr>
+							<tbody>
+							</table>
+						</body>
+						</html>

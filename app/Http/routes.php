@@ -25,6 +25,11 @@
       $pdf = PDF::loadView('documentation.contrato', compact('credit','letras'))->setPaper('a4')->setWarnings(false);
       return $pdf->download('contrato.pdf');
     });
+     Route::get('moratorio-pdf/{id}', function($id){
+      $credit = App\Models\Credits::find($id);
+      $pdf = PDF::loadView('documentation.moratorio', compact('credit'))->setPaper('a4','landscape')->setWarnings(false);
+      return $pdf->download('moratorio.pdf');
+    });
     
     Route::get('testing2', function() {
       $dias = App\Models\Holidays::all();
@@ -39,21 +44,6 @@
         echo "<br>";
       }
     });
-
-    Route::get('testing3', function(){
-      $holidays = App\Models\Holidays::all();
-      for ($i=0; $i <=10 ; $i++) { 
-        $pago = \Carbon\Carbon::now()->addDays($i)->toDateString();
-        echo $pago;
-        echo "<br>";
-       } 
-       foreach ($holidays as $key => $value) {
-        echo "<br>";
-        echo $value->date;
-       }
-    });
-
-    
 
     Route::get('/rolescreate', function() {
       $propietario = new App\Role();
@@ -598,6 +588,58 @@ Route::get('download-documents-cuota/{id}', function($id) {
 });
 
 Route::get('editCredits/{id}/',[
-      'as' => 'credits.editCredits',
-      'uses' => 'CreditsController@editCredits',
-      ]);
+  'as' => 'credits.editCredits',
+  'uses' => 'CreditsController@editCredits',
+  ]);
+
+Route::get('prueba', function(){
+      $holidays = ["2017-06-05", "2017-06-06","2017-06-07","2017-06-08","2017-06-09","2017-06-10","2017-06-11"];
+      $fechas = ["2017-06-12", "2017-06-13","2017-06-14","2017-06-15","2017-06-16","2017-06-17","2017-06-18"];
+      $date = \Carbon\Carbon::now()->toDateString();
+      $MyDateCarbon = \Carbon\Carbon::now()->parse($date);
+
+      $MyDateCarbon->addDays(1);
+
+      for ($i = 1; $i <=7; $i++) {
+
+        if (in_array(\Carbon\Carbon::now()->parse($date)->addDays($i)->toDateString(), $holidays)) {
+          $MyDateCarbon->addDay();
+        }        
+      }
+
+
+      foreach ($fechas as  $value) {
+       echo "$value <br>";
+     }
+
+     echo "<br>";         
+     echo "$MyDateCarbon<br>";
+     echo "<br>";
+     echo $date;
+
+   });
+    Route::get('prueba1', function() {
+     $start = \Carbon\Carbon::now()->addDays(30);
+
+     for ($i = 0 ; $i <= 30; $i++) {
+      $dates[] = $start->copy()->addDays($i);
+    }
+    echo $dates[0];
+  });
+
+
+
+
+
+
+Route::resource('moratoria', 'MoratoriumController');
+
+Route::get('moratoria/{id}/delete', [
+    'as' => 'moratoria.delete',
+    'uses' => 'MoratoriumController@destroy',
+]);
+
+Route::get('moratoria/{id}/',[
+  'as' => 'credits.moratoria',
+  'uses' => 'CreditsController@moratoria',
+  ]);

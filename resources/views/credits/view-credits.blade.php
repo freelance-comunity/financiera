@@ -63,7 +63,8 @@ Lista de solicitudes
 
           </td>
           <td>
-            <a href="{!! route('credits.show', [$credits->id]) !!}" class="uppercase btn btn-info btn-block">Ver crédito</a>
+            <a href="{!! route('credits.show', [$credits->id]) !!}" class="uppercase btn bg-blue btn-block">Ver crédito</a>
+             <a href="{!! route('credits.moratoria', [$credits->id]) !!}" class="btn bg-navy"><i class="fa fa-area-chart"></i> Crear Moratorio</a>
           </tr>
           @endforeach
         </tbody>

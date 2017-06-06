@@ -169,6 +169,7 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
       <div class="row no-print">
         <div class="col-xs-12">
           <a href="{{ url('export-pdf') }}/{{$credits->id}}" class="btn btn-info"><i class="fa fa-print"></i> Imprimir</a>
+           <a href="{!! route('credits.moratoria', [$credits->id]) !!}" class="btn btn-default"><i class="fa fa-file-pdf-o"></i> Crear Moratorio</a>
         </div>
       </div>
     </div>

@@ -81,6 +81,10 @@ class Credits extends Model
     {
         return $this->belongsTo('App\Models\Aval');
     }
+    public function moratorium()
+	{
+		return $this->hasMany('App\Models\Moratorium');
+	}
 
     
 
