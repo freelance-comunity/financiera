@@ -55,7 +55,7 @@ Tabla de pagos
             <div class="well text-center">No Payments found.</div>
             @else
             <div class="table-responsive">
-                <table class="table" id="myTableCustom2">
+                <table class="table table-hover" id="myTableCustom2">
                     <thead>
                         <th width="30px">No. pago</th>
                         <th width="50px">Cuota</th>
@@ -93,7 +93,7 @@ Tabla de pagos
                             </td>
                         </tr>
                         @else
-                        <tr>
+                        <tr class="info">
                             <td>{!! $payments->number !!}</td>
                             <td>${!! $payments->ammount !!}</td>
                             <td>${!! $payments->surcharge !!}</td>

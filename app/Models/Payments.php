@@ -34,4 +34,9 @@ class Payments extends Model
 		return $this->belongsTo('App\Models\Debt');
 	}
 
+	public function user()
+	{
+		return $this->belongsTo('App\User');
+	}
+
 }

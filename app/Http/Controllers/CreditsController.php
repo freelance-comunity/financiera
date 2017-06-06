@@ -191,6 +191,9 @@ class CreditsController extends AppBaseController
 		$credits->fill($request->all());
 		$credits->save();
 
+		$accredited = Accredited::find($credits->accredited_id);
+		$user = $accredited->user;
+
 		$status = $credits->status;
 		$days = $credits->days;
 		$amount = $credits->authorized_amount;
@@ -215,6 +218,7 @@ class CreditsController extends AppBaseController
 				$payment->status = "Pendiente";
 				$payment->payment_date = $var;
 				$payment->debt_id = $debt->id;
+				$payment->user_id = $user->id;
 				$payment->save();
 			}
 		}

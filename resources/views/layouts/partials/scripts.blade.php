@@ -36,6 +36,8 @@
   <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
   <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
   <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+  <script src="//cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js"></script>
+
   <script src="{{ asset('/select2/js/select2.min.js') }}"></script>
 
   <script src="{{ asset('/js/dropdown.js')}}"></script>
@@ -91,7 +93,30 @@
       });
     });
   </script>
-    <script>
+  <script>
+    $(document).ready(function() {
+      $('#example').DataTable( {
+        dom: 'Bfrtip',
+        "language": {
+          "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+        },
+        buttons: [
+        {
+          extend: 'print',
+          exportOptions: {
+            columns: ':visible'
+          }
+        },
+        'colvis'
+        ],
+        columnDefs: [ {
+          targets: -1,
+          visible: false
+        } ]
+      } );
+    } );
+  </script>
+  <script>
     $(document).ready(function(){
       $('#myTableCustom2').DataTable({
         responsive: true,
@@ -127,26 +152,26 @@
 </script>
 <script>
 
-    var products = {};
-products['diario'] = ['30', '45', '60','90','120','180'];
-products['cuota'] = ['20', '30', '45', '60','90'];
+  var products = {};
+  products['diario'] = ['30', '45', '60','90','120','180'];
+  products['cuota'] = ['20', '30', '45', '60','90'];
 
-function ChengeProductList() {
+  function ChengeProductList() {
     var ProductList = document.getElementById("product");
     var term = document.getElementById("frecuencia");
     var selCar = ProductList.options[ProductList.selectedIndex].value;
     while (term.options.length) {
-        term.remove(0);
+      term.remove(0);
     }
     var cars = products[selCar];
     if (cars) {
-        var i;
-        for (i = 0; i < cars.length; i++) {
-            var product = new Option(cars[i], i);
-            term.options.add(product);
-        }
+      var i;
+      for (i = 0; i < cars.length; i++) {
+        var product = new Option(cars[i], i);
+        term.options.add(product);
+      }
     }
-} 
+  } 
 </script>
 <script>
  $(function () {
