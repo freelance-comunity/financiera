@@ -45,7 +45,7 @@ $payments = $user->payments;
                     <th>Acción</th>
                 </thead>
                 <tbody>
-                    @foreach ($payments as $payment)
+                @foreach ($payments as $payment)
                     @php
                     $debt = $payment->debt;
                     $credit = App\Models\Credits::find($debt->credits_id);

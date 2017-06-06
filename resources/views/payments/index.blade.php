@@ -54,6 +54,10 @@ Tabla de pagos
             @if($payments->isEmpty())
             <div class="well text-center">No Payments found.</div>
             @else
+            @php
+            $date_now = Carbon\Carbon::now()->toDateString();
+            $date_tomorrow = Carbon\Carbon::now()->addDay()->toDateString();
+            @endphp
             <div class="table-responsive">
                 <table class="table table-hover" id="myTableCustom2">
                     <thead>
@@ -89,7 +93,11 @@ Tabla de pagos
                             <td>{!! $payments->payment_date !!}</td>
                             <td>{!! $payments->status !!}</td>
                             <td>
+                                @if ($payments->payment_date === $date_now AND $payments->payment_date == $date_tomorrow)
                                 <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>
+                                @else
+                                <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block disabled" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>
+                                @endif
                             </td>
                         </tr>
                         @else
@@ -101,17 +109,21 @@ Tabla de pagos
                             <td>{!! $payments->payment_date !!}</td>
                             <td>{!! $payments->status !!}</td>
                             <td>
-                                <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>
-                            </td>
-                        </tr>
-                        @endif
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-            @endif
-        </div>
-        <div class="col-sm-4 col-lg-4">
+                            @if ($payments->payment_date === $date_now or $payments->payment_date == $date_tomorrow)
+                              <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>
+                              @else
+                              <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block disabled" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>
+                              @endif
+                          </td>
+                      </tr>
+                      @endif
+                      @endforeach
+                  </tbody>
+              </table>
+          </div>
+          @endif
+      </div>
+      <div class="col-sm-4 col-lg-4">
           <!-- /.info-box -->
           <div class="info-box bg-teal">
             <span class="info-box-icon"><i class="fa fa-list-ol"></i></span>
