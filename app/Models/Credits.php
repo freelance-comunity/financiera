@@ -86,6 +86,11 @@ class Credits extends Model
 		return $this->hasMany('App\Models\Moratorium');
 	}
 
+    public function debt()
+    {
+    	return $this->hasOne('App\Models\Debt');
+    } 
+
     
 
 }

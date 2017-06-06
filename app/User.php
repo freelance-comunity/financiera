@@ -56,9 +56,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role');
     }
 
-    public function accredited()
+    public function accrediteds()
     {
-        return $this->hasOne('App\Models\Accredited');
+        return $this->hasMany('App\Models\Accredited');
     }
 
     public function branch()

@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
+        
         <!-- Sweet Alert -->
         <link rel="stylesheet" href="{{ asset('/sweetalert/sweetalert.css') }}">
         <script src="{{ asset('/sweetalert/sweetalert.min.js')}}"></script>
@@ -43,7 +44,7 @@
         <link rel="stylesheet" href="{{ asset('css/phpgmaps/jquery-gmaps-latlon-picker.css') }}">
         <script src="{{ asset('js/phpgmaps/jquery-gmaps-latlon-picker.js')}}"></script>
         @if (Auth::check())
-        <meta http-equiv="refresh" content = "60; url={{ url('lockscreen') }}">
+        <meta http-equiv="refresh" content = "600; url={{ url('lockscreen') }}">
         @endif
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

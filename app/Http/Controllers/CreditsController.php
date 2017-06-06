@@ -8,12 +8,15 @@ use App\Models\Aval;
 use App\Models\Product;
 use App\Models\Anchoring;
 use App\Models\Address;
+use App\Models\Debt;
+use App\Models\Payments;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
 use Schema;
 use Alert;
+use Carbon\Carbon;
 
 
 class CreditsController extends AppBaseController
@@ -184,40 +187,37 @@ class CreditsController extends AppBaseController
 			Flash::error('Credits not found');
 			return redirect(route('credits.index'));
 		}
-
-		/*if ($status == 'Ministrado') {
-			echo "comenzamos operación";
-			$amount = $credits->authorized_amount;
-			$interest = $credits->interest;
-			$months = $credits->sequence;
-			$capital = $amount/$credits->term;
-			echo "<br>";
-			echo "monto solicitado: ".$amount;
-			echo "<br>";
-			echo $interest;
-			echo "<br>";
-			echo $months;
-			echo "<br>";
-			echo "Capital: ".$capital;
-			echo "<br>";
-			echo "A pagar en: ".$credits->term." días";
-			echo "<br>";
-			$f = (($amount*$interest)+($amount/$months))/30;
-			$rest = $f - $capital;
-			echo "Interes: ".$rest;
-			echo "<br>";
-			echo "Tus pagos diarios seran de: $".$f;
-			echo "<br>";
-			for ($i=1; $i <= $credits->term ; $i++) { 
-				echo $i;
-				echo "<br>";
-			}
-		}else{
-			echo "Aún en proceso";
-		}*/
 		
 		$credits->fill($request->all());
 		$credits->save();
+
+		$status = $credits->status;
+		$days = $credits->days;
+		$amount = $credits->authorized_amount;
+		$interest = $credits->interest;
+		$months = $credits->sequence;
+		$f = (($amount*$interest)+($amount/$months))/$days;
+		$date = new Carbon($credits->date_ministration);
+
+		if ($status == 'Ministrado') {
+			$debt = new Debt;
+			$debt->ammount = $credits->authorized_amount;
+			$debt->status = "Pendiente";
+			$debt->credits_id = $credits->id;
+			$debt->save();
+			for ($i=1; $i <= $credits->term; $i++) { 
+				$var = $date->addDay(1)->toDateString();
+				$payment = new Payments;
+				$payment->number = $i;
+				$payment->ammount = ceil($f);
+				$payment->surcharge = '0';
+				$payment->total = ceil($f) + 0; 
+				$payment->status = "Pendiente";
+				$payment->payment_date = $var;
+				$payment->debt_id = $debt->id;
+				$payment->save();
+			}
+		}
 
 		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
 

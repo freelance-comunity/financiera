@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('htmlheader_title')
-Log in
+Sesión Bloqueada
 @endsection
 
 @section('content')

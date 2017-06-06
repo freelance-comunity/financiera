@@ -32,16 +32,30 @@
     });
     
     Route::get('testing2', function() {
-      $dias = App\Models\Holidays::all();
-      for ($i=1; $i <= 10 ; $i++) { 
-        $pago = \Carbon\Carbon::now()->addDays($i)->toDateString();
-        echo $pago;
+      $date_now = Carbon\Carbon::now()->toDateString();
+      $hour_now = Carbon\Carbon::now()->toTimeString();
+      $payments = App\Models\Payments::where('payment_date', $date_now)->where('status', 'Pendiente')->get();
+      echo "<h1>".$hour_now."</h1>";
+      echo "<br>";
+      echo "Los pagos del día ".$date_now."son: ";
+      echo "<br><br>";
+      foreach ($payments as $key => $value) {
+        echo $value->ammount. "/**********/". $value->payment_date;
         echo "<br>";
-      }
-      echo "<hr>";
-      foreach ($dias as $key => $value) {
-        echo $value->date;
-        echo "<br>";
+        if ($hour_now >= '11:40:00') {
+          echo "Estamos listos para bloquear";
+          echo "<hr>";
+          echo "Estamos enviando lista de clientes morosos vía email a: jncrlsmontejo@gmail.com";
+          $data['name'] = 'Juan Carlos';
+          $data['pass'] = 'morosos';
+          $data['email'] = 'jncrlsmontejo@gmail.com';
+
+          Mail::send('mails.late-payments', ['data' => $data], function($mail) use($data){
+            $mail->subject('Lista de pagos atrasados');
+            $mail->to($data['email']);
+          });
+          //return view('mails.late-payments');
+        }
       }
     });
 
@@ -643,3 +657,35 @@ Route::get('moratoria/{id}/',[
   'as' => 'credits.moratoria',
   'uses' => 'CreditsController@moratoria',
   ]);
+
+Route::resource('debts', 'DebtController');
+
+Route::get('debts/{id}/delete', [
+  'as' => 'debts.delete',
+  'uses' => 'DebtController@destroy',
+  ]);
+
+
+Route::resource('payments', 'PaymentsController');
+
+Route::get('payments/{id}/delete', [
+  'as' => 'payments.delete',
+  'uses' => 'PaymentsController@destroy',
+  ]);
+
+Route::get('payments', function() {
+  $credits = App\Models\Credits::all();
+  return view ('payments.credits')
+  ->with('credits', $credits);
+});
+
+Route::get('payments-list/{id}', function($id) {
+  $credit = App\Models\Credits::find($id);
+  $payments = $credit->debt->payments;
+  return view('payments.index')
+  ->with('payments', $payments)
+  ->with('credit', $credit);
+});
+
+Route::get('pay/{id}', 'PaymentsController@pay');
+
