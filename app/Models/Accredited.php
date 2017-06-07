@@ -99,5 +99,6 @@ class Accredited extends Model
 	{
 		return $this->hasOne('App\Models\EconomicEvaluation');
 	}
+	
 
 }
