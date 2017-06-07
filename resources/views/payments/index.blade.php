@@ -93,7 +93,7 @@ Tabla de pagos
                             <td>{!! $payments->payment_date !!}</td>
                             <td>{!! $payments->status !!}</td>
                             <td>
-                                @if ($payments->payment_date === $date_now AND $payments->payment_date == $date_tomorrow)
+                                @if ($payments->payment_date === $date_now or $payments->payment_date == $date_tomorrow)
                                 <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>
                                 @else
                                 <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block disabled" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>

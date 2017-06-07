@@ -18,7 +18,7 @@ Roles del sistema
         <div class="well text-center">No se encontraron roles</div>
         @else
         <div class="table-responsive">
-            <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+            <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTable">
                 <thead>
                     <th>Nombre</th>
                     <th>Nombre para mostrar</th>
@@ -29,7 +29,7 @@ Roles del sistema
                 <tbody>
 
                     @foreach($roles as $roles)
-                    <tr>
+                    <tr class="info">
                         <td>{!! $roles->name !!}</td>
                         <td>{!! $roles->display_name !!}</td>
                         <td>{!! $roles->description !!}</td>

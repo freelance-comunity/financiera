@@ -17,7 +17,7 @@ Permisos del sistema
         @if($permissions->isEmpty())
         <div class="well text-center">No hay Permisos registrados.</div>
         @else
-       <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+        <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th>Nombre</th>
                 <th>Nombre opcional</th>
@@ -27,7 +27,7 @@ Permisos del sistema
             <tbody>
 
                 @foreach($permissions as $permission)
-                <tr>
+                <tr class="info">
                     <td>{!! $permission->name !!}</td>
                     <td>{!! $permission->display_name !!}</td>
                     <td>{!! $permission->description !!}</td>

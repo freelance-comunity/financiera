@@ -12,7 +12,7 @@ Lista de solicitudes
     @if($credits->isEmpty())
     <div class="well text-center">No se encontraron créditos.</div>
     @else
-    <table class="table" id="myTable">
+    <table class="table table-hover" id="myTable">
       <thead>
         <th>ID</th>
         <th>Fecha</th>
@@ -31,7 +31,7 @@ Lista de solicitudes
       <tbody>
 
         @foreach($credits as $credits)
-        <tr>
+        <tr class="info">
           <td>{!! $credits->id!!}</td>
           <td>{!! $credits->date !!}</td>
           <td>{{$credits->accredited->name}} {{$credits->accredited->last_name}}</td>

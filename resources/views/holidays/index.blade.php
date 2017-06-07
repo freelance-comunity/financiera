@@ -38,7 +38,7 @@ Calendario de Operaciones
              <div class="well text-center">No hay fechas registradas.</div>
              @else
              <div class="table-responsive">
-               <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTableCustom">
+               <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTableCustom">
                 <thead>
                     <th>Nombre</th>
                     <th>Fecha</th>
@@ -46,7 +46,7 @@ Calendario de Operaciones
                 </thead>
                 <tbody>
                     @foreach($holidays as $holiday)
-                    <tr>
+                    <tr class="info">
                         <td>{!! $holiday->name !!}</td>
                         <td>{!! $holiday->date !!}</td>
                         <td>

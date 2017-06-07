@@ -18,7 +18,7 @@ Lista de acreditados
   <div class="well text-center">No se encontraron acreditados</div>
   @else
   <div class="table-responsive">
-    <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+    <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTable">
       <thead>
         <th>ID</th>
         <th>Nombre(s)</th>
@@ -63,7 +63,7 @@ Lista de acreditados
             </div>
           </div>
         </div>
-        <tr>
+        <tr class="info">
           <td>{!! $accredited->id!!}</td>
           <td>{!! $accredited->name !!}</td>
           <td>{!! $accredited->last_name !!}</td>

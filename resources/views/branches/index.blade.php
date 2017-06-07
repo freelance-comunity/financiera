@@ -16,7 +16,7 @@
         <div class="well text-center">No hay sucursales dadas de alta.</div>
         @else
         <div class="table-responsive">
-         <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+         <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th>Nomenclatura</th>
                 <th>Municipio</th>
@@ -27,7 +27,7 @@
             <tbody>
 
                 @foreach($branches as $branch)
-                <tr>
+                <tr class="info">
                     <td>{!! $branch->nomenclature !!}</td>
                     <td>{!! $branch->municipality !!}</td>
                     <td>
