@@ -94,7 +94,7 @@
 <p class="center" align="justify">
 <p style="text-align: center"><strong>CONTRATO DE CRÉDITO</strong>
 </p>
-	En la ciudad de Villaflores, Chiapas, México, siendo las {{ Date::now()->format(' H:i:s') }} horas del día {{$credit->date_ministration1}}, se reúnen en calidad de “Acreedor” Solución y Crecimiento
+	En la ciudad de Villaflores, Chiapas, México, siendo las {{ Date::now()->format(' H:i:s') }} horas del día {{$credit->date_ministration}}, se reúnen en calidad de “Acreedor” Solución y Crecimiento
 	Empresarial S.A. de C.V. representado por el LEA Víctor Manuel Salazar Molina y el (a)
 	Sr.(a.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} en calidad de “Acreditado y/o Garante Prendario”, asi
 	mismo el (a) Sr.(a.) Damaris Isamar Corzo Camas como “Obligado Solidario y/o Garante
@@ -306,7 +306,7 @@ for ($i = 0; $i <=$credit->term ; $i++){
 		<p>CLIENTE: <strong>{{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  PROMOTOR: <strong>{{$credit->accredited->user->name}} {{$credit->accredited->user->last_name}}</strong></p>
 	</caption>
 	<caption>
-		<p>FECHA DE MINISTRACIÓN: <strong>{{ Date::now()->format('l j F Y H:i:s') }}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </strong></p>
+		<p>FECHA DE MINISTRACIÓN: <strong>{{$credit->date_ministration}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </strong></p>
 	</caption>
 	<caption>
 		<p>MONTO: <strong>${{$credit->authorized_amount}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FRECUENCIA:<strong>{{$credit->term}} días</strong></p>
@@ -366,7 +366,7 @@ for ($i = 0; $i <=$credit->term ; $i++){
 		<tr>
 			<td>&nbsp;{{$i}}</td>
 			<td>&nbsp;${{ number_format(ceil($f),2)}}</td>
-			<td>&nbsp;{{ \Carbon\Carbon::now()->addDays($i)->toDateString()}}</td>
+			<td>&nbsp;{{ $fechaPago[$i-1] }}</td>
 		</tr>
 		@endfor
 	</tbody>

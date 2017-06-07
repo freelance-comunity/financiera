@@ -87,7 +87,7 @@
 
 	<p style="text-align: center"><strong>CONTRATO DE CRÉDITO</strong>
 	</p>
-	En la ciudad de Villaflores, Chiapas, México, siendo las {{ Date::now()->format(' H:i:s') }} horas del día {{date('d m Y', strtotime($credit->date_ministration))}}, se reúnen en calidad de “Acreedor” Solución y Crecimiento
+	En la ciudad de Villaflores, Chiapas, México, siendo las {{ Date::now()->format(' H:i:s') }} horas del día {{$credit->date_ministration}}, se reúnen en calidad de “Acreedor” Solución y Crecimiento
 	Empresarial S.A. de C.V. representado por el LEA Víctor Manuel Salazar Molina y el (a)
 	Sr.(a.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} en calidad de “Acreditado y/o Garante Prendario”, asi
 	mismo el (a) Sr.(a.) Damaris Isamar Corzo Camas como “Obligado Solidario y/o Garante
@@ -279,32 +279,26 @@ $avals = $credit->accredited->avals;
 $holidays = App\Models\Holidays::all();
 $dateToday = new \Carbon\Carbon($credit->date_ministration);
 for ($i = 0; $i <=$credit->term ; $i++){
-	$dateToday->addDay(); 
-
+	$dateToday->addDay();
 	while ($dateToday->isWeekend())
 	{
-		$dateToday->addDay(); 
+		$dateToday->addDay(); 		
 	}
-
 	$fechaPago[$i] = $dateToday->toDateString();
-
-
 	foreach ($holidays as $value){ 
 		if ($value->date == $fechaPago[$i]){
-			$dateToday->addDay();
-			$fechaPago[$i] = $dateToday->toDateString();
-			
+			$dateToday->addDay()->addWeekDay();
+			$fechaPago[$i] = $dateToday->toDateString();			
 		}
-	}
-
+	} 
 }
 ?>	
 <table class="demo">
 	<caption>
-		<p>CLIENTE: <strong>{{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  PROMOTOR: <strong>{{$credit->accredited->user->name}} {{$credit->accredited->user->last_name}}</strong></p>
+		<p>CLIENTE: <strong>{{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  PROMOTOR: <strong>{{$credit->accredited->user->name}} {{$credit->accredited->user->last_name}}</strong></p>
 	</caption>
 	<caption>
-		<p>FECHA DE MINISTRACIÓN: <strong>{{ Date::now()->format('l j F Y H:i:s') }}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </strong></p>
+		<p>FECHA DE MINISTRACIÓN: <strong>{{ $credit->date_ministration }}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </strong></p>
 	</caption>
 	<caption>
 		<p>MONTO: <strong>${{$credit->authorized_amount}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FRECUENCIA:<strong>{{$credit->term}} días</strong></p>
@@ -335,21 +329,53 @@ for ($i = 0; $i <=$credit->term ; $i++){
 		@endfor
 	</tbody>
 </table>
-	<h1 style="text-align: center;">"EVITE RECARGOS PAGUE PUNTUAL"</h1>
-	<h2 style="text-align: center;">SE LE RECUERDA QUE EL HORARIO DE ATENCIÓN ES DE 9:00 DE LA MAÑANA A 4:30 DE LA TARDE DE LUNES A VIERNES.</h2>
-	<div class="page-break"></div>
-	<header class="clearfix">
-		<div id="logo">
-			<img src="{{asset('img/pdf/logo_sc.png')}}">
-		</div>
-		<div id="company">
-			<strong><h2 class="name">PAGARÉ</h2></strong>
-			<h2 class="name">SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S.A. DE C.V.</h2>
-			<div>Av. Central  Poniente #119, Villaflores, Chiapas C.P. 30470</div>
-			<div>(965) 652-0397</div>
-			<div>contacto@sc-empresarial.com.mx</div>
-		</div>
+<h1 style="text-align: center;">"EVITE RECARGOS PAGUE PUNTUAL"</h1>
+<h2 style="text-align: center;">SE LE RECUERDA QUE EL HORARIO DE ATENCIÓN ES DE 9:00 DE LA MAÑANA A 4:30 DE LA TARDE DE LUNES A VIERNES.</h2>
+<div class="page-break"></div>
+<header class="clearfix">
+	<div id="logo">
+		<img src="{{asset('img/pdf/logo_sc.png')}}">
 	</div>
+	<div id="company">
+		<strong><h2 class="name">TABLA DE AMORTIZACIONES</h2></strong>
+		<h2 class="name">SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S.A. DE C.V.</h2>
+		<div>Av. Central  Poniente #119, Villaflores, Chiapas C.P. 30470</div>
+		<div>(965) 652-0397</div>
+		<div>contacto@sc-empresarial.com.mx</div>
+	</div>
+</div>
+</header>
+<table class="demo">
+	<thead>
+		<tr>
+			<th>NÚMERO DE LA AMORTIZACIÓN</th>
+			<th>IMPORTE</th>
+			<th>VTO DE LA AMORTIZACIÓN</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for ($i = 1; $i <= $credit->term; $i++)
+		<tr>
+			<td>&nbsp;{{$i}}</td>
+			<td>&nbsp;${{ number_format(ceil($f),2)}}</td>
+			<td>&nbsp;{{ $fechaPago[$i-1] }}</td>
+		</tr>
+		@endfor
+	</tbody>
+</table>
+<div class="page-break"></div>
+<header class="clearfix">
+	<div id="logo">
+		<img src="{{asset('img/pdf/logo_sc.png')}}">
+	</div>
+	<div id="company">
+		<strong><h2 class="name">PAGARÉ</h2></strong>
+		<h2 class="name">SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S.A. DE C.V.</h2>
+		<div>Av. Central  Poniente #119, Villaflores, Chiapas C.P. 30470</div>
+		<div>(965) 652-0397</div>
+		<div>contacto@sc-empresarial.com.mx</div>
+	</div>
+</div>
 </header>
 <p>
 	BUENO POR LA CANTIDAD DE <strong>${{$credit->authorized_amount}}.00</strong>

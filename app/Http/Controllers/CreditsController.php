@@ -254,7 +254,7 @@ class CreditsController extends AppBaseController
 				$payment->status = "Pendiente";
 				foreach ($holidays as $value) {
 					if ($value->date == $fechaPago[$i]){
-						$date->addDay();
+						$date->addDay()->addWeekDay();
 						$fechaPago[$i] = $date->toDateString();
 
 					}
