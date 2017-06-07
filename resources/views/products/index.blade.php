@@ -16,7 +16,7 @@
         <div class="well text-center">No hay productos registrados.</div>
         @else
         <div class="table-responsive">
-            <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+            <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTable">
                 <thead>
                     <th>Nombre</th>
                     <th>Descripción</th>
@@ -32,7 +32,7 @@
                 <tbody>
 
                     @foreach($products as $product)
-                    <tr>
+                    <tr class="info">
                         <td>{!! $product->name !!}</td>
                         <td>{!! $product->description !!}</td>
                         <td>{!! $product->minimum_amount !!}</td>

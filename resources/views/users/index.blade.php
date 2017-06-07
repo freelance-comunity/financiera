@@ -21,7 +21,7 @@ Miembros del Sistema
         <div class="well text-center">No hay usuarios registrados.</div>
         @else
         <div class="table-responsive">
-            <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+            <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTable">
                 <thead>
                     <th>Nombre </th>
                     <th>Apellidos</th>
@@ -38,7 +38,7 @@ Miembros del Sistema
                     @foreach($users as $user)
                     @include('users.roles')
                     @include('users.addroles')
-                    <tr>
+                    <tr class="info">
                         <td>{!! $user->name !!}</td>
                         <td>{!! $user->last_name !!}</td>
                         <td>{!! $user->address !!}</td>

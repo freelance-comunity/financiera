@@ -20,7 +20,7 @@ Lista de acreditados
     <div class="well text-center">No se encontraron acreditados</div>
     @else
     <div class="table-responsive">
-        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+        <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTable">
             <thead>
             <th>ID</th>
                 <th><i class="fa fa-picture-o" aria-hidden="true"></i></th>
@@ -36,7 +36,7 @@ Lista de acreditados
             <tbody>
 
                 @foreach($accrediteds as $accredited)
-                <tr>
+                <tr class="info">
                 <th>{!! $accredited->id!!}</th>    
                  <td><img style="width: 50px; height: 50px; border-radius: 50%" src="{{ asset('/img/uploads/') }}/{{ $accredited->photo}}" alt=""></td>
                  <td>{!! $accredited->name !!}</td>

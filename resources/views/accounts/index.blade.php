@@ -18,7 +18,7 @@ Lista de cuentas
         <div class="well text-center">No hay cuentas registradas.</div>
         @else
         <div class="table-responsive">
-         <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+           <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTable">
             <thead>
                 <th>Nombre del Banco</th>
                 <th>Número de Cuenta / Número de Sucursal</th>
@@ -28,7 +28,7 @@ Lista de cuentas
             <tbody>
 
                 @foreach($accounts as $account)
-                <tr>
+                <tr class="info">
                     <td>{!! $account->name_bank !!}</td>
                     <td>{!! $account->account_number !!}</td>
                     <td>{!! $account->account_type !!}</td>

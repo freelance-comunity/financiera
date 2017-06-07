@@ -18,7 +18,7 @@ Grupos
         <div class="well text-center">No hay grupos registrados.</div>
         @else
         <div class="table-responsive">
-            <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+            <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTable">
                 <thead>
                     <th>Fecha de Creación</th>
                     <th>Sucursal</th>
@@ -30,7 +30,7 @@ Grupos
 
                     @foreach($groups as $group)
                     @include('groups.modal-add')
-                    <tr>
+                    <tr class="info">
                         <td>{!! $group->date_create !!}</td>
                         <td>{!! $group->branch !!}</td>
                         <td><h4><span class="label label-info">{!! $group->folio !!}</span></h4></td>
