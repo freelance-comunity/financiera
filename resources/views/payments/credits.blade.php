@@ -9,7 +9,7 @@ Lista de creditos
     @if($credits->isEmpty())
     <div class="well text-center">No se encontraron créditos.</div>
     @else
-    <table class="table" id="myTable">
+    <table class="table table-hover" id="myTable">
       <thead>
         <th>ID</th>
         <th>Nombre del Solicitante</th>
@@ -22,7 +22,8 @@ Lista de creditos
       <tbody>
 
         @foreach($credits as $credits)
-        <tr>
+        @if ($credits->status === 'Ministrado')
+        <tr class="info">
           <td>{!! $credits->id!!}</td>
           <td>{{$credits->accredited->name}} {{$credits->accredited->last_name}}</td>
           <td>${!! $credits->authorized_amount!!}</td>
@@ -34,9 +35,10 @@ Lista de creditos
           <td>Sin fecha</td>
           @endif
           <td>      
-          <a href="{{ url('payments-list') }}/{{$credits->id}}" class="uppercase btn bg-navy"><i class="fa fa-calculator"></i> Nuevo pago</a>
+            <a href="{{ url('payments-list') }}/{{$credits->id}}" class="uppercase btn bg-navy"><i class="fa fa-calculator"></i> Nuevo pago</a>
           </td>
         </tr>
+        @endif
         @endforeach
       </tbody>
     </table>

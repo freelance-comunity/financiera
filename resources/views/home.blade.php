@@ -12,4 +12,9 @@ s&c  <small>Version 1.0</small>
 	@role('administrador')
 		@include('partials.home.administrador')
 	@endrole
+
+	@role('promotor de credito')
+		@include('partials.home.promotor')
+	@endrole
+	
 @endsection

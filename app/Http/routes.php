@@ -32,31 +32,23 @@
     });
     
     Route::get('testing2', function() {
+      $user = App\User::find(2);
       $date_now = Carbon\Carbon::now()->toDateString();
-      $hour_now = Carbon\Carbon::now()->toTimeString();
-      $payments = App\Models\Payments::where('payment_date', $date_now)->where('status', 'Pendiente')->get();
-      echo "<h1>".$hour_now."</h1>";
-      echo "<br>";
-      echo "Los pagos del día ".$date_now."son: ";
-      echo "<br><br>";
-      foreach ($payments as $key => $value) {
-        echo $value->ammount. "/**********/". $value->payment_date;
-        echo "<br>";
-        if ($hour_now >= '11:40:00') {
-          echo "Estamos listos para bloquear";
-          echo "<hr>";
-          echo "Estamos enviando lista de clientes morosos vía email a: jncrlsmontejo@gmail.com";
-          $data['name'] = 'Juan Carlos';
-          $data['pass'] = 'morosos';
-          $data['email'] = 'jncrlsmontejo@gmail.com';
+      $payments = $user->payments;
 
-          Mail::send('mails.late-payments', ['data' => $data], function($mail) use($data){
-            $mail->subject('Lista de pagos atrasados');
-            $mail->to($data['email']);
-          });
-          //return view('mails.late-payments');
+      echo $user->name;
+      echo "<br>";
+      echo "Tu ruta de cobro del día ".$date_now." es:";
+      echo "<br>";
+      foreach ($payments as $payment) {
+        $debt = $payment->debt;
+        $credit = App\Models\Credits::find($debt->credits_id);
+        $accredited = $credit->accredited;
+        if ($payment->payment_date == $date_now) {
+          echo $accredited->name;
         }
       }
+      
     });
 
     Route::get('/rolescreate', function() {
@@ -620,7 +612,7 @@ Route::get('prueba', function(){
           $MyDateCarbon->addDay();
         }        
       }
-
+      
 
       foreach ($fechas as  $value) {
        echo "$value <br>";
@@ -632,19 +624,6 @@ Route::get('prueba', function(){
      echo $date;
 
    });
-    Route::get('prueba1', function() {
-     $start = \Carbon\Carbon::now()->addDays(30);
-
-     for ($i = 0 ; $i <= 30; $i++) {
-      $dates[] = $start->copy()->addDays($i);
-    }
-    echo $dates[0];
-  });
-
-
-
-
-
 
 Route::resource('moratoria', 'MoratoriumController');
 
@@ -657,6 +636,8 @@ Route::get('moratoria/{id}/',[
   'as' => 'credits.moratoria',
   'uses' => 'CreditsController@moratoria',
   ]);
+
+ 
 
 Route::resource('debts', 'DebtController');
 
@@ -689,3 +670,6 @@ Route::get('payments-list/{id}', function($id) {
 
 Route::get('pay/{id}', 'PaymentsController@pay');
 
+Route::get('myaccrediteds/{id}', 'UserController@myAccrediteds');
+
+Route::get('routepayments/{id}','UserController@routePayments');

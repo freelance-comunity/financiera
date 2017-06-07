@@ -6,7 +6,7 @@ Lista de solicitudes
 <div class="container">
   @include('sweet::alert')
   <div class="row">
-    <h1 class="pull-left">Creditos</h1>
+    <h1 class="pull-left">Créditos</h1>
   </div>
   <div class="row table-responsive">
     @if($credits->isEmpty())
@@ -43,10 +43,10 @@ Lista de solicitudes
           <td>{!! $credits->interest!!} %</td>
           <td>{!! $credits->adviser!!}</td>
           @if ($credits->date_ministration)
-             <td>{!! $credits->date_ministration!!}</td>
+          <td>{!! $credits->date_ministration!!}</td>
           @else
-         <td>Sin fecha</td>
-         @endif
+          <td>Sin fecha</td>
+          @endif
           <td>      
 
             @if ($credits->status === 'Revisión') 
@@ -55,16 +55,18 @@ Lista de solicitudes
             <a href="{!! route('credits.edit', [$credits->id]) !!}"><button  class="btn btn btn-info btn-block">Aprobado</button></a>          
             @elseif (($credits->status == 'Ministrado') && ($credits->days == '30'))
             <button class="btn btn-success btn-block disabled">Ministrado</button>        
-            <a href="{!! url('download-documents', [$credits->id]) !!}" class="btn bg-navy"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>
+            <a href="{!! url('download-documents', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>
             @elseif (($credits->status == 'Ministrado') && ($credits->days == '20'))
-          <button class="btn btn-success btn-block disabled">Ministrado</button>          
-            <a href="{!! url('download-documents-cuota', [$credits->id]) !!}" class="btn bg-navy"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>        
+            <button class="btn btn-success btn-block disabled">Ministrado</button>          
+            <a href="{!! url('download-documents-cuota', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>        
             @endif
 
           </td>
           <td>
             <a href="{!! route('credits.show', [$credits->id]) !!}" class="uppercase btn bg-blue btn-block">Ver crédito</a>
-             <a href="{!! route('credits.moratoria', [$credits->id]) !!}" class="btn bg-navy"><i class="fa fa-area-chart"></i> Crear Moratorio</a>
+            @if ($credits->status == 'Ministrado')
+            <a href="{!! route('credits.moratoria', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-area-chart"></i> Crear Moratorio</a>
+            @endif
           </tr>
           @endforeach
         </tbody>

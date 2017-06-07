@@ -10,6 +10,7 @@ use App\Models\Anchoring;
 use App\Models\Address;
 use App\Models\Debt;
 use App\Models\Payments;
+use App\Models\Holidays;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
 use Response;
@@ -191,33 +192,80 @@ class CreditsController extends AppBaseController
 		$credits->fill($request->all());
 		$credits->save();
 
+		$accredited = Accredited::find($credits->accredited_id);
+		$user = $accredited->user;
+
 		$status = $credits->status;
+		$frequency = $credits->frequency_payment;
 		$days = $credits->days;
 		$amount = $credits->authorized_amount;
 		$interest = $credits->interest;
 		$months = $credits->sequence;
 		$f = (($amount*$interest)+($amount/$months))/$days;
 		$date = new Carbon($credits->date_ministration);
+		$holidays = Holidays::all();
 
-		if ($status == 'Ministrado') {
+		if ($status == 'Ministrado' and $frequency == "Diario" ) {
 			$debt = new Debt;
 			$debt->ammount = $credits->authorized_amount;
 			$debt->status = "Pendiente";
 			$debt->credits_id = $credits->id;
 			$debt->save();
-			for ($i=1; $i <= $credits->term; $i++) { 
-				$var = $date->addDay(1)->toDateString();
+			for ($i=0; $i <= $credits->term; $i++) { 
+				$var = $date->addDay();
+
+				$fechaPago[$i] = $date->toDateString();
 				$payment = new Payments;
 				$payment->number = $i;
 				$payment->ammount = ceil($f);
 				$payment->surcharge = '0';
 				$payment->total = ceil($f) + 0; 
 				$payment->status = "Pendiente";
+				foreach ($holidays as $value) {
+					if ($value->date == $fechaPago[$i]){
+						$date->addDay();
+						$fechaPago[$i] = $date->toDateString();
+
+					}
+				}
 				$payment->payment_date = $var;
 				$payment->debt_id = $debt->id;
+				$payment->user_id = $user->id;
+				$payment->save();
+			}
+		}elseif ($status == 'Ministrado' && $frequency == 'Diario cuota') {
+			$debt = new Debt;
+			$debt->ammount = $credits->authorized_amount;
+			$debt->status = "Pendiente";
+			$debt->credits_id = $credits->id;
+			$debt->save();
+			for ($i=0; $i <= $credits->term; $i++) { 
+				$var = $date->addDay();
+				while ($date->isWeekend())
+				{
+					$date->addDay(); 
+				}
+				$fechaPago[$i] = $date->toDateString();
+				$payment = new Payments;
+				$payment->number = $i;
+				$payment->ammount = ceil($f);
+				$payment->surcharge = '0';
+				$payment->total = ceil($f) + 0; 
+				$payment->status = "Pendiente";
+				foreach ($holidays as $value) {
+					if ($value->date == $fechaPago[$i]){
+						$date->addDay();
+						$fechaPago[$i] = $date->toDateString();
+
+					}
+				}
+				$payment->payment_date = $var;
+				$payment->debt_id = $debt->id;
+				$payment->user_id = $user->id;
 				$payment->save();
 			}
 		}
+
 
 		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
 
@@ -249,10 +297,11 @@ class CreditsController extends AppBaseController
 		return redirect(route('credits.index'));
 	}
 	
-	public function moratoria($id) {
+	public function moratoria($id) 
+	{
 		$credits = Credits::find($id);
-			return view('moratoria.create')
-			->with('credits', $credits);		
+		return view('moratoria.create')
+		->with('credits', $credits);		
 	}
 	
 }

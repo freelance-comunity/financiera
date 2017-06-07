@@ -17,7 +17,7 @@ class Moratorium extends Model
 		"expiration_from",
 		"expiration_to",
 		"justification",
-		"accredited_id"
+		"credit_id"
 	];
 
 	public static $rules = [
@@ -27,8 +27,8 @@ class Moratorium extends Model
 		"expiration_to" => "required",
 		"justification" => "required"
 	];
-	 public function accredited()
+	 public function credits()
     {
-        return $this->belongsTo('App\Models\Accredited');
+        return $this->belongsTo('App\Models\Credits');
     }
 }

@@ -218,4 +218,20 @@ class UserController extends AppBaseController
 		Alert::success('Contraseña actualizada con éxito');
 		return redirect()->back();
 	}
+
+	public function myAccrediteds($id)
+	{
+		$user = User::find($id);
+		$accrediteds = $user->accrediteds;
+		return view('users.my-accrediteds')
+		->with('accrediteds', $accrediteds);
+	}
+
+	public function routePayments($id)
+	{	
+		$user = User::find($id);
+		$payments = $user->payments;
+		return view('users.route-payments')
+		->with('payments', $payments);
+	}
 }

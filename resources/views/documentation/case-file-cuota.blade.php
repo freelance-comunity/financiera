@@ -275,13 +275,36 @@ $avals = $credit->accredited->avals;
 	</div>
 </div>
 </header>
+<?php 
+$holidays = App\Models\Holidays::all();
+$dateToday = new \Carbon\Carbon($credit->date_ministration);
+for ($i = 0; $i <=$credit->term ; $i++){
+	$dateToday->addDay(); 
 
+	while ($dateToday->isWeekend())
+	{
+		$dateToday->addDay(); 
+	}
+
+	$fechaPago[$i] = $dateToday->toDateString();
+
+
+	foreach ($holidays as $value){ 
+		if ($value->date == $fechaPago[$i]){
+			$dateToday->addDay();
+			$fechaPago[$i] = $dateToday->toDateString();
+			
+		}
+	}
+
+}
+?>	
 <table class="demo">
 	<caption>
 		<p>CLIENTE: <strong>{{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  PROMOTOR: <strong>{{$credit->accredited->user->name}} {{$credit->accredited->user->last_name}}</strong></p>
 	</caption>
 	<caption>
-		<p>FECHA DE MINISTRACIÓN: <strong>{{$credit->date_ministration}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </strong></p>
+		<p>FECHA DE MINISTRACIÓN: <strong>{{ Date::now()->format('l j F Y H:i:s') }}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </strong></p>
 	</caption>
 	<caption>
 		<p>MONTO: <strong>${{$credit->authorized_amount}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FRECUENCIA:<strong>{{$credit->term}} días</strong></p>
@@ -294,42 +317,24 @@ $avals = $credit->accredited->avals;
 			<th>INTERES</th>
 			<th>TOTAL PAGO</th>
 			<th>FIRMA DE RECIBIDO</th>
-			
 		</tr>
 	</thead>
-	
 	<tbody>
-		<?php 
-		$holidays = ["2017-06-05", "2017-06-06","2017-06-07","2017-06-08","2017-06-09","2017-06-10","2017-06-11"];
-		$fechas = ["2017-06-12", "2017-06-13","2017-06-14","2017-06-15","2017-06-16","2017-06-17","2017-06-18"];
-		$date = \Carbon\Carbon::now();
-		$MyDateCarbon = \Carbon\Carbon::now()->parse($date);
 
-		$MyDateCarbon->addDays(1);
-
-		for ($i = 1; $i <= $credit->term; $i++) {
-
-			if (in_array(\Carbon\Carbon::now()->parse($date)->addDays($i)->toDateString(),$holidays)) {
-
-				$MyDateCarbon->addDay();
-
-			}
-		}
-		?>	
 		@for ($j = 1; $j <= $credit->term; $j++)
 		<tr> 
-			<td>&nbsp;{{$j}}</td>		
-			<td>@foreach ($fechas as $key => $value)
-				&nbsp;{{$value}}
-				@endforeach</td> 
-				<td>&nbsp;{{ number_format($capital,2)}}</td>
-				<td>&nbsp;{{ number_format($rest,2)}}</td>
-				<td>&nbsp;{{ number_format(ceil($f),2)}}</td>
-				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-			</tr>
-			@endfor
-		</tbody>
-	</table>
+			<td>&nbsp;{{$j}}</td>
+			<td>&nbsp;{{ $fechaPago[$j-1] }}</td>
+			<td>&nbsp;{{ number_format($capital,2)}}</td>
+			<td>&nbsp;{{ number_format($rest,2)}}</td>
+			<td>&nbsp;{{ number_format(ceil($f),2)}}</td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+
+
+		@endfor
+	</tbody>
+</table>
 	<h1 style="text-align: center;">"EVITE RECARGOS PAGUE PUNTUAL"</h1>
 	<h2 style="text-align: center;">SE LE RECUERDA QUE EL HORARIO DE ATENCIÓN ES DE 9:00 DE LA MAÑANA A 4:30 DE LA TARDE DE LUNES A VIERNES.</h2>
 	<div class="page-break"></div>

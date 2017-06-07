@@ -50,8 +50,10 @@ class MoratoriumController extends AppBaseController
 	 * @return Response
 	 */
 	public function create()
-	{
+	{	
+		
 		return view('moratoria.create');
+		
 	}
 
 	/**
@@ -65,11 +67,13 @@ class MoratoriumController extends AppBaseController
 	{
         $input = $request->all();
         $credits = $request->input('credit_id');
-		$moratoria = Moratorium::create($input);
+        $moratoria = Moratorium::find($input);
+		
 
 		Alert::success('Moratorio creado exitosamente.')->persistent('Cerrar');
 		$credits = Credits::find($credits);
-		$moratoria = $credits->moratorium;
+		$moratorium= $credits->moratoria;
+		
 		return redirect(route('credits.show', [$credits->id]));
 	}
 
