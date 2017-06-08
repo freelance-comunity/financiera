@@ -286,7 +286,7 @@ for ($i = 0; $i <=$credit->term ; $i++){
 	}
 	$fechaPago[$i] = $dateToday->toDateString();
 	foreach ($holidays as $value){ 
-		if ($value->date == $fechaPago[$i] && $dateToday->dayOfWeek === \Carbon\Carbon::THURSDAY){
+		if ($value->date == $fechaPago[$i]){
 			$dateToday->addDay();			
 			$fechaPago[$i] = $dateToday->toDateString();
 

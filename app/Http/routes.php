@@ -677,19 +677,26 @@ Route::get('routepayments/{id}','UserController@routePayments');
 Route::get('jueves', function(){
 
  $dateToday = \Carbon\Carbon::now();
- $dateToday->addDay();
+ $dateToday->addDay()->addWeekday();
+ $dateToday->subDay();
+ $dateToday->subDay();
+ $dateToday->subDay();
+$dateToday->addWeekday();
+
  if($dateToday->dayOfWeek === \Carbon\Carbon::THURSDAY) {
- echo "Es jueves";
- 
-}elseif ($dateToday->dayOfWeek === \Carbon\Carbon::FRIDAY) {
- echo "Es viernes";
+   echo "Es jueves";
+
+ }elseif ($dateToday->dayOfWeek === \Carbon\Carbon::FRIDAY) {
+   echo "Es viernes";
  }elseif ($dateToday->dayOfWeek === \Carbon\Carbon::SATURDAY) {
- echo "Es SABADO";
+   echo "Es SABADO";
  }
  elseif ($dateToday->dayOfWeek === \Carbon\Carbon::SUNDAY) {
- echo "Es DOMINGO";
+   echo "Es DOMINGO";
  }elseif ($dateToday->dayOfWeek === \Carbon\Carbon::MONDAY) {
- echo "Es LUNES";
+   echo "Es LUNES";
  }
+ echo '<br>'.$dateToday;
+ 
 
 });
