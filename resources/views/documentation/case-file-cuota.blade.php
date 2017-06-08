@@ -282,13 +282,14 @@ for ($i = 0; $i <=$credit->term ; $i++){
 	$dateToday->addDay();
 	while ($dateToday->isWeekend())
 	{
-		$dateToday->addDay(); 		
+		$dateToday->addDay();		
 	}
 	$fechaPago[$i] = $dateToday->toDateString();
 	foreach ($holidays as $value){ 
-		if ($value->date == $fechaPago[$i]){
-			$dateToday->addDay()->addWeekDay();
-			$fechaPago[$i] = $dateToday->toDateString();			
+		if ($value->date == $fechaPago[$i] && $dateToday->dayOfWeek === \Carbon\Carbon::THURSDAY){
+			$dateToday->addDay();			
+			$fechaPago[$i] = $dateToday->toDateString();
+
 		}
 	} 
 }

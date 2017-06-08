@@ -211,7 +211,7 @@ class CreditsController extends AppBaseController
 			$debt->status = "Pendiente";
 			$debt->credits_id = $credits->id;
 			$debt->save();
-			for ($i=0; $i <= $credits->term; $i++) { 
+			for ($i=1; $i <= $credits->term; $i++) { 
 				$var = $date->addDay();
 
 				$fechaPago[$i] = $date->toDateString();
@@ -239,7 +239,7 @@ class CreditsController extends AppBaseController
 			$debt->status = "Pendiente";
 			$debt->credits_id = $credits->id;
 			$debt->save();
-			for ($i=0; $i <= $credits->term; $i++) { 
+			for ($i=1; $i <= $credits->term; $i++) { 
 				$var = $date->addDay();
 				while ($date->isWeekend())
 				{
