@@ -101,7 +101,7 @@ Tabla de pagos
                             </td>
                         </tr>
                         @else
-                        <tr class="info">
+                        <tr>
                             <td>{!! $payments->number !!}</td>
                             <td>${!! $payments->ammount !!}</td>
                             <td>${!! $payments->surcharge !!}</td>
