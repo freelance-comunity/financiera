@@ -689,7 +689,7 @@ Route::get('jueves', function(){
  $dateToday->subDay();
  $dateToday->subDay();
  $dateToday->subDay();
-$dateToday->addWeekday();
+ $dateToday->addWeekday();
 
  if($dateToday->dayOfWeek === \Carbon\Carbon::THURSDAY) {
    echo "Es jueves";
@@ -712,7 +712,14 @@ $dateToday->addWeekday();
 
 });
 
-Route::get('notification', function(){
-  Alert::success('Acreditado creado exitosamente.')->persistent('Cerrar');
-return view('documentation.notification');
-});
+
+
+
+/* Box Cute */
+Route::get('sales-promoters', 'BoxController@salesPromoters');
+
+Route::get('cut-promoter/{id}', 'BoxController@cutPromoter');
+
+Route::get('sales-branches', 'BoxController@salesBranches');
+
+Route::get('cut-branch/{id}', 'BoxController@cutBranch');
