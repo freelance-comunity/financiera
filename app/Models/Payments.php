@@ -17,7 +17,10 @@ class Payments extends Model
 		"surcharge",
 		"status",
 		"payment_date",
-		"status"
+		"status",
+		"debt_id",
+		"user_id",
+		"branch_id"
 	];
 
 	public static $rules = [
@@ -38,5 +41,10 @@ class Payments extends Model
 	{
 		return $this->belongsTo('App\User');
 	}
+
+	public function branch()
+    {
+        return $this->belongsTo('App\Models\Branch');
+    }
 
 }

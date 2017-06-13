@@ -231,6 +231,7 @@ class CreditsController extends AppBaseController
 				$payment->payment_date = $var;
 				$payment->debt_id = $debt->id;
 				$payment->user_id = $user->id;
+				$payment->branch_id = $user->branch_id;
 				$payment->save();
 			}
 		}elseif ($status == 'Ministrado' && $frequency == 'Diario cuota') {
@@ -262,6 +263,7 @@ class CreditsController extends AppBaseController
 				$payment->payment_date = $var;
 				$payment->debt_id = $debt->id;
 				$payment->user_id = $user->id;
+				$payment->branch_id = $user->branch_id;
 				$payment->save();
 			}
 		}

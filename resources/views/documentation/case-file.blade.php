@@ -91,17 +91,17 @@
 		</div>
 	</div>
 </header>
-<p class="center" align="justify">
 <p style="text-align: center"><strong>CONTRATO DE CRÉDITO</strong>
 </p>
-	En la ciudad de Villaflores, Chiapas, México, siendo las {{ Date::now()->format(' H:i:s') }} horas del día {{$credit->date_ministration}}, se reúnen en calidad de “Acreedor” Solución y Crecimiento
-	Empresarial S.A. de C.V. representado por el LEA Víctor Manuel Salazar Molina y el (a)
-	Sr.(a.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} en calidad de “Acreditado y/o Garante Prendario”, asi
-	mismo el (a) Sr.(a.) Damaris Isamar Corzo Camas como “Obligado Solidario y/o Garante
-	Prendario”, todos con capacidad legal para celebrar el presente CONTRATO DE
-	CREDITO SIMPLE DIARIO CON OBLIGACION SOLIDARIA Y GARANTIA
-	PRENDARIA, cuyos nombres y firmas aparecen en el apartado de firmas del presente
-	contrato de conformidad con las declaraciones y clausulas siguientes:
+<p align="justify">
+En la ciudad de Villaflores, Chiapas, México, siendo las {{ Date::now()->format(' H:i:s') }} horas del día {{$credit->date_ministration}}, se reúnen en calidad de “Acreedor” Solución y Crecimiento
+Empresarial S.A. de C.V. representado por el LEA Víctor Manuel Salazar Molina y el (a)
+Sr.(a.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} en calidad de “Acreditado y/o Garante Prendario”, asi
+mismo el (a) Sr.(a.) Damaris Isamar Corzo Camas como “Obligado Solidario y/o Garante
+Prendario”, todos con capacidad legal para celebrar el presente CONTRATO DE
+CREDITO SIMPLE DIARIO CON OBLIGACION SOLIDARIA Y GARANTIA
+PRENDARIA, cuyos nombres y firmas aparecen en el apartado de firmas del presente
+contrato de conformidad con las declaraciones y clausulas siguientes:
 </p>
 <p style="text-align: center"><strong>DECLARACIONES</strong>
 </p>
@@ -256,8 +256,8 @@ $avals = $credit->accredited->avals;
 </p>
 <br><br><br>
 <p style="text-align: left"><strong>Sr.(a) {{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Sr. (a) {{$credit->aval}}</strong>
-<br><strong>ACREDITADO” Y/O “GARANTE </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>OBLIGADO SOLIDARIO Y/O GARANTE</strong> <br>
-<strong>PRENDARIO</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>PRENDARIO</strong>
+	<br><strong>ACREDITADO” Y/O “GARANTE </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>OBLIGADO SOLIDARIO Y/O GARANTE</strong> <br>
+	<strong>PRENDARIO</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>PRENDARIO</strong>
 </p>
 <br><br>
 <p style="text-align: center"><strong>TESTIGOS</strong>
@@ -389,7 +389,7 @@ for ($i = 0; $i <=$credit->term ; $i++){
 	BUENO POR LA CANTIDAD DE <strong>${{number_format($credit->authorized_amount)}}</strong>
 </p>
 <p>
-	<strong>VILLAFLORES, CHIAPAS, MÉXICO A </strong><strong>{{ Date::now()->format('l j F Y H:i:s') }}.</strong>
+	<strong>VILLAFLORES, CHIAPAS, MÉXICO A </strong><strong>{{$credit->date_ministration}}.</strong>
 </p>
 <p>
 	DEBEMOS Y PAGAREMOS INCONDICIONALMENTE POR ESTE PAGARÉ A LA ORDEN DE <strong>SOLUCION Y

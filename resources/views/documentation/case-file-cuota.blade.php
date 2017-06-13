@@ -83,10 +83,9 @@
 		</div>
 	</div>
 </header>
-<p class="center" align="justify">
-
-	<p style="text-align: center"><strong>CONTRATO DE CRÉDITO</strong>
-	</p>
+<p style="text-align: center"><strong>CONTRATO DE CRÉDITO</strong>
+</p>
+<p align="justify">
 	En la ciudad de Villaflores, Chiapas, México, siendo las {{ Date::now()->format(' H:i:s') }} horas del día {{$credit->date_ministration}}, se reúnen en calidad de “Acreedor” Solución y Crecimiento
 	Empresarial S.A. de C.V. representado por el LEA Víctor Manuel Salazar Molina y el (a)
 	Sr.(a.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} en calidad de “Acreditado y/o Garante Prendario”, asi

@@ -24,6 +24,7 @@ class CreatePaymentsTable extends Migration
 			$table->date('payment_date');
 			$table->integer('debt_id')->unsigned()->foreign('debt_id')->references('id')->on('debts');
 			$table->integer('user_id')->unsigned()->foreign('user_id')->references('id')->on('users');
+			$table->integer('branch_id')->unsigned()->foreign('branch_id')->references('id')->on('branches');
 			$table->timestamps();
 		});
 	}
