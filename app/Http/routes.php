@@ -667,6 +667,14 @@ Route::get('payments-list/{id}', function($id) {
   ->with('payments', $payments)
   ->with('credit', $credit);
 });
+Route::get('pay-notification/{id}', function($id) {
+  $credit = App\Models\Credits::find($id);
+  $payments = $credit->debt->payments;
+  return view('payments.index')
+  ->with('payments', $payments)
+  ->with('credit', $credit);
+});
+
 
 Route::get('pay/{id}', 'PaymentsController@pay');
 
@@ -697,6 +705,14 @@ $dateToday->addWeekday();
    echo "Es LUNES";
  }
  echo '<br>'.$dateToday;
+ echo "<br>";
+ $date = \Carbon\Carbon::now();
+ echo "la fecha de hoy es: ".$date;
  
 
+});
+
+Route::get('notification', function(){
+  Alert::success('Acreditado creado exitosamente.')->persistent('Cerrar');
+return view('documentation.notification');
 });
