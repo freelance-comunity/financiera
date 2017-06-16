@@ -145,6 +145,9 @@ $credits = App\Models\Credits::where('status','Ministrado')->count();
 			$accrediteds = App\Models\Accredited::all();
 			$chunk = $accrediteds->take(-8);
 			$chunk->all();
+			$date_now = \Carbon\Carbon::now()->toDateString();
+			$payments = App\Models\Payments::where('status', 'Atrasado')->where('payment_date', $date_now)->get();
+			$payment = App\Models\Payments::where('status', 'Atrasado')->count();
 			@endphp
 			<div class="col-md-4">
 				<!-- USERS LIST -->
@@ -184,7 +187,23 @@ $credits = App\Models\Credits::where('status','Ministrado')->count();
 					<!-- /.box-footer -->
 				</div>
 				<!--/.box -->
-			</div>
+			</div>			
+			
+			@foreach ($payments as $payments)
+			@if ($payments->status == 'Atrasado')
+			<script>  
+			var number= {payments:{{$payments->number}}};
+			var credit = {cre:{{$payments->debt->credits_id}}};
+			alertify.error('<a href="{{url('payments')}}">Pago atrasado No.</a>'+ number.payments + '<br>' + 'Del credito No. ' + credit.cre  );
+			 </script>
+			
+			@endif
+			@endforeach
+			
+			 <script>  
+			var pay= {p:{{$payment}}};
+			alertify.success('Total de  pagos atrasados: '+ pay.p);
+			 </script>
 			<!-- /.col -->
 		</div>
 	</div>

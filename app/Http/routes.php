@@ -715,6 +715,7 @@ Route::get('jueves', function(){
 
 
 
+
 /* Box Cute */
 Route::get('sales-promoters', 'BoxController@salesPromoters');
 

@@ -77,20 +77,8 @@
                             <li class="footer"><a href="#">{{ trans('adminlte_lang::message.viewall') }}</a></li>
                         </ul>
                     </li>
-                    <!-- Tasks Menu -->
-                    <li class="dropdown tasks-menu">
-                        <!-- Menu Toggle Button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">{{$payments}}</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">Pagos Atrasados&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <small>No. de Crédito</small></li>
-                            @include('payments.notification')
-
-                        </ul>
-                    </li>
+                     @include('payments.notification')  
+                  
                     @if (Auth::guest())
                     <li><a href="{{ url('/register') }}">{{ trans('adminlte_lang::message.register') }}</a></li>
                     <li><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></li>
