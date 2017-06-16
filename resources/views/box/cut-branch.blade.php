@@ -12,6 +12,15 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a sucursal {
   @include('sweet::alert')
 
   <div class="row">
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-header">
+        <h3 class="box-title">
+          Seleccionar Rango de Fechas
+        </h3>
+      </div>
+    </div>
+  </div>
     @if($payments->isEmpty())
     <div class="well text-center">No hay pagos este día.</div>
     @else

@@ -31,24 +31,13 @@
       return $pdf->download('moratorio.pdf');
     });
     
-    Route::get('testing2', function() {
-      $user = App\User::find(2);
-      $date_now = Carbon\Carbon::now()->toDateString();
-      $payments = $user->payments;
-
-      echo $user->name;
-      echo "<br>";
-      echo "Tu ruta de cobro del día ".$date_now." es:";
-      echo "<br>";
-      foreach ($payments as $payment) {
-        $debt = $payment->debt;
-        $credit = App\Models\Credits::find($debt->credits_id);
-        $accredited = $credit->accredited;
-        if ($payment->payment_date == $date_now) {
-          echo $accredited->name;
-        }
-      }
-      
+    Route::get('testing2', function(Illuminate\Http\Request  $request) {
+      $fromDate = $request->fromDate;
+      $toDate   = $request->toDate;
+      $collection = App\Models\Payments::whereBetween('payment_date', array($fromDate, $toDate))->where('status', 'Pagado')->get();
+      $html = view('box.box-search')->with('collection', $collection);
+      $html = $html->render();
+      return \Response::json($html);
     });
 
     Route::get('/rolescreate', function() {

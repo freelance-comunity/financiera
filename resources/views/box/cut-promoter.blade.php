@@ -49,12 +49,6 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a {{$promote
         <i class="fa fa-dollar"></i>
 
         <h3 class="box-title">General</h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-        </div>
       </div>
       <div class="box-body">
         <div class="info-box bg-green">
@@ -81,4 +75,66 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a {{$promote
       @endif
     </div>
   </div>
-  @endsection
+  <div class="row">
+    <h3>Busqueda Especifica</h3>
+    <div class="col-md-12">
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <i class="fa fa-calendar"></i>
+
+          <h3 class="box-title">Rango de Fechas</h3>
+        </div>
+        <div class="box-body">
+          <div class="col-md-4">
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="date" id="fromDate" name="fromDate" class="form-control pull-right">
+            </div>  
+          </div>
+          <div class="col-md-4">
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="date" id="toDate" name="toDate" class="form-control pull-right">
+            </div>   
+          </div>
+          <div class="input-group date">
+          <input type="hidden" value="{{$promoter->id}}">
+            <input type="submit" class="btn btn-block bg-navy" id="search" value="BUSCAR">
+          </div>   
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+   <div id="search_table"></div>
+    </div>
+  </div>
+  <script>
+    $('#search').click(function(){  
+      var fromDate = $('#fromDate').val();  
+      var toDate = $('#toDate').val();  
+      if(fromDate != '' && toDate != '')  
+      {  
+       $.ajax({  
+
+        url:"{{ url("testing2") }}",  
+        method:"get",  
+        data:{fromDate:fromDate, toDate:toDate},  
+        success:function(data)  
+        {  
+          $('#search_table').html(data);  
+        }  
+      });  
+     }  
+     else  
+     {  
+      alert("Por favor seleccione Fechas");  
+    }  
+  });  
+</script>
+@endsection

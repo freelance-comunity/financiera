@@ -8,6 +8,7 @@
 
 <!-- bootstrap datepicker -->
 <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+<script src="{{ asset('/plugins/daterangepicker/daterangepicker.js')}}"></script>
 
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -26,6 +27,8 @@
     $('#datepicker2').datepicker({
       autoclose: true
     });
+    //Date range picker
+    $('#reservation').daterangepicker();
   </script>
   <!-- DataTables -->
   <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js" type="text/javascript"></script>

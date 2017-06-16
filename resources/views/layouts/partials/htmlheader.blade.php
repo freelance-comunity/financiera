@@ -20,6 +20,7 @@
         <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css" />
         <!-- bootstrap datepicker -->
         <link rel="stylesheet" href="{{ asset('/plugins/datepicker/datepicker3.css') }}">
+        <link rel="stylesheet" href="{{ asset('/plugins/daterangepicker/daterangepicker.css') }}">
 
         <!-- DataTables -->
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
