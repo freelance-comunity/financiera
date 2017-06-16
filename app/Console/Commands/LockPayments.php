@@ -45,6 +45,7 @@ class LockPayments extends Command
       $payments = Payments::where('payment_date', $date_now)->where('status', 'Pendiente')->get();
 
       foreach ($payments as $key => $value) {
+
         if ($hour_now >= '16:05:00') {
           echo "Estamos listos para bloquear";
           $payment = Payments::find($value->id);

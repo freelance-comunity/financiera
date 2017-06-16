@@ -27,6 +27,7 @@ class BoxController extends Controller
 		$date_now = Carbon::now()->toDateString();
 		$payments = $promoter->payments->where('payment_date', $date_now)->where('status', 'Pagado');
 		
+		
 		return view('box.cut-promoter')
 		->with('payments', $payments)
 		->with('date_now', $date_now)
@@ -51,5 +52,15 @@ class BoxController extends Controller
 		->with('payments', $payments)
 		->with('date_now', $date_now)
 		->with('branch', $branch);
+	}
+
+	public function salesGlobal()
+	{	
+		$date_now = Carbon::now()->toDateString();
+		$payments = Payments::where('payment_date', $date_now)->where('status', 'Pagado')->get();
+
+		return view('box.cute-global')
+		->with('payments', $payments)
+		->with('date_now', $date_now);
 	}
 }

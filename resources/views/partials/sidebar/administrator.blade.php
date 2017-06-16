@@ -50,7 +50,7 @@
         <ul class="treeview-menu">
            <li><a href="{{ url('sales-promoters') }}">Hacer corte de promotor</a></li>
            <li><a href="{{ url('sales-branches') }}">Hacer corte de sucursal</a></li>
-           <li><a href="">Hacer corte del día global</a></li>
+           <li><a href="{{ url('sales-global') }}">Hacer corte del día global</a></li>
         </ul>
     </li>
 
