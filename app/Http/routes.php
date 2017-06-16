@@ -723,3 +723,5 @@ Route::get('cut-promoter/{id}', 'BoxController@cutPromoter');
 Route::get('sales-branches', 'BoxController@salesBranches');
 
 Route::get('cut-branch/{id}', 'BoxController@cutBranch');
+
+Route::get('sales-global', 'BoxController@salesGlobal');

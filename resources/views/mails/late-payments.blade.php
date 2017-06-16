@@ -217,18 +217,18 @@
         <tbody>
           @php
           $date_now = Carbon\Carbon::now()->toDateString();
-          $payments = App\Models\Payments::where('payment_date', $date_now)->get();
+          $payments = App\Models\Payments::where('payment_date', $date_now)->where('status', 'Atrasado')->get();
           @endphp
           @foreach ($payments as $payment)
           @php
           $credit = App\Models\Credits::find($payment->debt->credits_id);
           @endphp
           <tr>
-            <td>&nbsp;{{$payment->number}}</td>
+            <td>&nbsp;{{$payment->number}} de {{$credit->term}}</td>
             <td>&nbsp;{{$credit->accredited->name}} {{$credit->accredited->last_name}}</td>
             <td>&nbsp;${{number_format($payment->ammount)}}</td>
-            <td>&nbsp; $20</td>
-            <td>&nbsp; $254</td>
+            <td>&nbsp; ${{$payment->surcharge}}</td>
+            <td>&nbsp; ${{$payment->total}}</td>
             <td>&nbsp;{{$payment->payment_date}}</td>
           </tr>
           @endforeach

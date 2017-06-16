@@ -3,7 +3,7 @@
 Corte de caja Promotor
 @endsection
 @section('contentheader_title')
-Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a {{$promoter->name}} {{$promoter->last_name}}
+Corte Global del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span>
 @endsection
 @section('main-content')
 
@@ -66,19 +66,32 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a {{$promote
           </div>
           <!-- /.info-box-content -->
         </div>
-        <!--<div class="info-box bg-yellow">
-          <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-text">Recargos cobrados</span>
-            <span class="info-box-number">${{$payments->sum('surcharge')}}</span>
-          </div>-->
-          <!-- /.info-box-content -->
-          <!-- /.box-body-->
-        </div>
-        <!-- /.box -->
       </div>
       @endif
     </div>
   </div>
-  @endsection
+  <div class="col-md-6">
+   <!-- BAR CHART -->
+   <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title">Bar Chart</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <div class="chart">
+        <canvas id="barChart" style="height:230px"></canvas>
+      </div>
+    </div>
+    <!-- /.box-body -->
+  </div>
+  <!-- /.box -->
+</div>
+<script>
+
+</script>
+@endsection

@@ -177,6 +177,8 @@ return [
 
         'Jenssegers\Date\DateServiceProvider',
 
+        Fx3costa\LaravelChartJs\Providers\ChartjsServiceProvider::class
+
         ],
 
     /*

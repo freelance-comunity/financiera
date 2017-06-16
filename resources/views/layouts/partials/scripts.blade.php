@@ -5,7 +5,7 @@
 <script src="{{ asset('/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('plugins/morris/morris.min.js')}}"></script>
+
 <!-- bootstrap datepicker -->
 <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
 
