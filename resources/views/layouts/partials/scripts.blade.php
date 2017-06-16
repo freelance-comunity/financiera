@@ -185,3 +185,18 @@
   }
 </script>
 
+<script>
+$(function (){
+   $(".run").click(function(event){
+   alertify.error('Tienes pagos atrasados'); 
+  });
+});
+</script>
+<script>
+        $.toast({
+          heading: 'Error',
+          text: 'Report any <a href="https://github.com/kamranahmedse/jquery-toast-plugin/issues">issues</a>',
+          showHideTransition: 'fade',
+          icon: 'error'
+        })
+    </script>

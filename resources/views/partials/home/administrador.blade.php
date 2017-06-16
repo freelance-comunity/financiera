@@ -1,6 +1,7 @@
 @php
 $accrediteds = App\Models\Accredited::all()->count();
 $credits = App\Models\Credits::where('status','Ministrado')->count();
+$atrasado = App\Models\Payments::all();
 @endphp
 <!-- Info boxes -->
 <div class="row">
@@ -25,14 +26,15 @@ $credits = App\Models\Credits::where('status','Ministrado')->count();
 		<!-- small box -->
 		<div class="small-box bg-red">
 			<div class="inner">
-				<h3>$ 41,410</h3>
-
+				
+				<h3>$12345</h3>	
 				<p>Monto Atrasado</p>
+
 			</div>
 			<div class="icon">
 				<i class="fa fa-bell"></i>
 			</div>
-			<a href="#" class="small-box-footer">
+			<a href="{{url('payments')}}" class="small-box-footer">
 				Ver <i class="fa fa-arrow-circle-right"></i>
 			</a>
 		</div>
@@ -145,6 +147,9 @@ $credits = App\Models\Credits::where('status','Ministrado')->count();
 			$accrediteds = App\Models\Accredited::all();
 			$chunk = $accrediteds->take(-8);
 			$chunk->all();
+			$date_now = \Carbon\Carbon::now()->toDateString();
+			$payment = App\Models\Payments::where('status', 'Atrasado')->where('payment_date', $date_now)->get();
+			$payments = App\Models\Payments::where('status', 'Atrasado')->count();
 			@endphp
 			<div class="col-md-4">
 				<!-- USERS LIST -->
@@ -184,7 +189,26 @@ $credits = App\Models\Credits::where('status','Ministrado')->count();
 					<!-- /.box-footer -->
 				</div>
 				<!--/.box -->
-			</div>
+			</div>			
+			
+			@foreach ($payment as $payment)
+			@php
+			$credit = App\Models\Credits::find($payment->debt->credits_id);
+			@endphp
+			<script>  
+				var number= {payments:{{$payment->number}}};
+				var c = {cre:{{$payment->debt->credits_id}}};
+				alertify.error('PAGO ATRASADO DE HOY' + '<br>' + 'No. de Pago: '+ number.payments + '<br>' + 'No. de Crédito: ' + c.cre );
+			</script>
+
+			@endforeach
+
+			<script>  
+				var pay= {p:{{$payments}}};
+				alertify.success('Total de  pagos atrasados: '+ pay.p);
+			</script>
+			
+			
 			<!-- /.col -->
 		</div>
 	</div>
