@@ -730,7 +730,7 @@ Route::get('specific-search-global', function(Illuminate\Http\Request  $request)
   $fromDate = $request->fromDate;
   $toDate   = $request->toDate;
   $collection = App\Models\Payments::whereBetween('payment_date', array($fromDate, $toDate))->where('status', 'Pagado')->get();
-  $html = view('box.box-search-branch')->with('collection', $collection);
+  $html = view('box.box-search-global')->with('collection', $collection);
   $html = $html->render();
   return \Response::json($html);
 });

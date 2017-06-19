@@ -29,6 +29,15 @@
           <td>{{$payment->payment_date}}</td>
         </tr>
         @endforeach
+         <tfoot>
+            <tr class="warning">
+              <th></th>
+              <th></th>
+              <th>TOTAL: </th>
+              <th>${{$collection->sum('total')}}</th>
+              <th></th>
+            </tr>
+          </tfoot>
         @endif
       </tbody>
     </table>

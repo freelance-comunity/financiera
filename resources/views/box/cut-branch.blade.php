@@ -12,15 +12,6 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a sucursal {
   @include('sweet::alert')
 
   <div class="row">
-    <div class="col-md-12">
-      <div class="box box-primary">
-        <div class="box-header">
-          <h3 class="box-title">
-            Seleccionar Rango de Fechas
-          </h3>
-        </div>
-      </div>
-    </div>
     @if($payments->isEmpty())
     <div class="well text-center">No hay pagos este día.</div>
     @else
@@ -47,36 +38,17 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a sucursal {
           <td>{{$payment->payment_date}}</td>
         </tr>
         @endforeach
+        <tfoot>
+          <tr class="warning">
+            <th></th>
+            <th></th>
+            <th>TOTAL: </th>
+            <th>${{$payments->sum('total')}}</th>
+            <th></th>
+          </tr>
+        </tfoot>
       </tbody>
     </table>
-  </div>
-  <hr>
-  <div class="col-md-6">
-   <!-- Bar chart -->
-   <div class="box box-danger">
-    <div class="box-header with-border">
-      <i class="fa fa-dollar"></i>
-
-      <h3 class="box-title">General</h3>
-
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-      </div>
-    </div>
-    <div class="box-body">
-      <div class="info-box bg-green">
-        <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
-
-        <div class="info-box-content">
-          <span class="info-box-text">Total Recaudado</span>
-          <span class="info-box-number">${{$payments->sum('total')}}</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-    </div>
-    <!-- /.box -->
   </div>
   @endif
 </div>
@@ -109,7 +81,7 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a sucursal {
         </div>
         <div class="col-md-2">
           <div class="input-group date">
-          <input type="hidden" value="{{$branch->id}}" name="branch_id" id="branch_id">
+            <input type="hidden" value="{{$branch->id}}" name="branch_id" id="branch_id">
             <input type="submit" class="btn btn-block bg-navy" id="search" value="BUSCAR">
           </div>  
         </div>

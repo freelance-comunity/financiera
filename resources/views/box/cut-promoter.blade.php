@@ -38,31 +38,19 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a {{$promote
             <td>{{$payment->payment_date}}</td>
           </tr>
           @endforeach
+          <tfoot>
+            <tr class="warning">
+              <th></th>
+              <th></th>
+              <th>TOTAL: </th>
+              <th>${{$payments->sum('total')}}</th>
+              <th></th>
+            </tr>
+          </tfoot>
         </tbody>
       </table>
     </div>
     <hr>
-    <div class="col-md-6">
-     <!-- Bar chart -->
-     <div class="box box-danger">
-      <div class="box-header with-border">
-        <i class="fa fa-dollar"></i>
-
-        <h3 class="box-title">General</h3>
-      </div>
-      <div class="box-body">
-        <div class="info-box bg-green">
-          <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-text">Total Recaudado</span>
-            <span class="info-box-number">${{$payments->sum('total')}}</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-      </div>
-      <!-- /.box -->
-    </div>
     @endif
   </div>
 </div>
@@ -93,15 +81,15 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a {{$promote
           </div>   
         </div>
         <div class="col-md-2">
-        <div class="input-group date">
-          <input type="hidden" value="{{$promoter->id}}" name="promoter_id" id="promoter_id">
-          <input type="submit" class="btn btn-block bg-navy" id="search" value="BUSCAR">
-        </div>  
+          <div class="input-group date">
+            <input type="hidden" value="{{$promoter->id}}" name="promoter_id" id="promoter_id">
+            <input type="submit" class="btn btn-block bg-navy" id="search" value="BUSCAR">
+          </div>  
         </div>
         <div class="col-md-2">
-        <div class="input-group date">
-          <a href="" class="uppercase btn btn-block bg-navy"><i class="fa fa-file-pdf-o"></i> descargar</a>
-        </div>
+          <div class="input-group date">
+            <a href="" class="uppercase btn btn-block bg-navy"><i class="fa fa-file-pdf-o"></i> descargar</a>
+          </div>
         </div>  
       </div>
     </div>
