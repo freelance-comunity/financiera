@@ -1,5 +1,4 @@
-<div class="box-header">
-  
+<div class="box-header"> 
   <hr>
   <div class="box-body table-responsive no-padding">
     <table class="table table-hover" cellspacing="0" width="100%" id="myTable">

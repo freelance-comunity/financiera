@@ -680,7 +680,7 @@ Route::get('viernes', function(){
 
  }elseif ($dateToday->dayOfWeek === \Carbon\Carbon::FRIDAY) {
    echo "
-It's friday we go for the beers";
+   It's friday we go for the beers";
  }elseif ($dateToday->dayOfWeek === \Carbon\Carbon::SATURDAY) {
    echo "Es SABADO de gloria";
  }
@@ -705,3 +705,38 @@ Route::get('sales-branches', 'BoxController@salesBranches');
 Route::get('cut-branch/{id}', 'BoxController@cutBranch');
 
 Route::get('sales-global', 'BoxController@salesGlobal');
+
+Route::get('specific-search-promoter', function(Illuminate\Http\Request  $request) {
+  $fromDate = $request->fromDate;
+  $toDate   = $request->toDate;
+  $user = App\User::find($request->promoter_id);
+  $collection = App\Models\Payments::whereBetween('payment_date', array($fromDate, $toDate))->where('status', 'Pagado')->where('user_id', $user->id)->get();
+  $html = view('box.box-search')->with('collection', $collection);
+  $html = $html->render();
+  return \Response::json($html);
+});
+
+Route::get('specific-search-branch', function(Illuminate\Http\Request  $request) {
+  $fromDate = $request->fromDate;
+  $toDate   = $request->toDate;
+  $branch = App\Models\Branch::find($request->branch_id);
+  $collection = App\Models\Payments::whereBetween('payment_date', array($fromDate, $toDate))->where('status', 'Pagado')->where('branch_id', $branch->id)->get();
+  $html = view('box.box-search-branch')->with('collection', $collection);
+  $html = $html->render();
+  return \Response::json($html);
+});
+
+Route::get('specific-search-global', function(Illuminate\Http\Request  $request) {
+  $fromDate = $request->fromDate;
+  $toDate   = $request->toDate;
+  $collection = App\Models\Payments::whereBetween('payment_date', array($fromDate, $toDate))->where('status', 'Pagado')->get();
+  $html = view('box.box-search-branch')->with('collection', $collection);
+  $html = $html->render();
+  return \Response::json($html);
+});
+
+Route::get('print-cut-promoter', function() {
+  $pdf = App::make('dompdf.wrapper');
+  $pdf->loadHTML('<h1>Test</h1>');
+  return $pdf->stream();
+});
