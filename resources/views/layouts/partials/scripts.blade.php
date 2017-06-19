@@ -79,64 +79,86 @@
       },
       dom: 'Bfrtip',
       buttons: [
-      'excel', 'pdf', 'print'
+      'excel', 'pdf', 'print',
       ]
 
     });
     });
   </script>
   <script>
-    $(document).ready(function(){
-      $('#myTableCustom').DataTable({
-        "pageLength": 3,
-        responsive: true,
-        "language": {
-          "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
-        }
-      });
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      $('#example').DataTable( {
-        dom: 'Bfrtip',
-        "language": {
-          "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
-        },
-        buttons: [
-        {
-          extend: 'print',
-          exportOptions: {
-            columns: ':visible'
-          }
-        },
-        'colvis'
-        ],
-        columnDefs: [ {
-          targets: -1,
-          visible: false
-        } ]
-      } );
-    } );
-  </script>
-  <script>
-    $(document).ready(function(){
-      $('#myTableCustom2').DataTable({
-        responsive: true,
-        "language": {
-          "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
-        }
-      });
-    });
-  </script>
-  <script>
-   $('#select-all').click(function(event) {
-    if(this.checked) {
-     $(':checkbox').prop('checked', true);
-   } else {
-     $(':checkbox').prop('checked', false);
-   }
+   $(document).ready(function(){
+    $('#box-header').DataTable({
+     responsive: true,
+     "language": {
+      "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+    },
+    dom: 'Bfrtip',
+    buttons: [
+    {
+     extend: 'pdfHtml5',
+     text: 'Descargar PDF',
+     footer: true,
+     exportOptions: {
+       stripHtml: false
+     }               
+   } 
+   ]
+
  });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+    $('#myTableCustom').DataTable({
+      "pageLength": 3,
+      responsive: true,
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+      }
+    });
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable( {
+      dom: 'Bfrtip',
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+      },
+      buttons: [
+      {
+        extend: 'print',
+        exportOptions: {
+          columns: ':visible'
+        }
+      },
+      'colvis'
+      ],
+      columnDefs: [ {
+        targets: -1,
+        visible: false
+      } ]
+    } );
+  } );
+</script>
+<script>
+  $(document).ready(function(){
+    $('#myTableCustom2').DataTable({
+      responsive: true,
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+      }
+    });
+  });
+</script>
+<script>
+ $('#select-all').click(function(event) {
+  if(this.checked) {
+   $(':checkbox').prop('checked', true);
+ } else {
+   $(':checkbox').prop('checked', false);
+ }
+});
 </script>
 <script>
   var date = new Date();
@@ -186,17 +208,17 @@
 </script>
 
 <script>
-$(function (){
+  $(function (){
    $(".run").click(function(event){
-   alertify.error('Tienes pagos atrasados'); 
-  });
-});
+     alertify.error('Tienes pagos atrasados'); 
+   });
+ });
 </script>
 <script>
-        $.toast({
-          heading: 'Error',
-          text: 'Report any <a href="https://github.com/kamranahmedse/jquery-toast-plugin/issues">issues</a>',
-          showHideTransition: 'fade',
-          icon: 'error'
-        })
-    </script>
+  $.toast({
+    heading: 'Error',
+    text: 'Report any <a href="https://github.com/kamranahmedse/jquery-toast-plugin/issues">issues</a>',
+    showHideTransition: 'fade',
+    icon: 'error'
+  })
+</script>

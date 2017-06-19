@@ -2,13 +2,13 @@
   
   <hr>
   <div class="box-body table-responsive no-padding">
-    <table class="table table-hover" cellspacing="0" width="100%" id="myTable">
+    <table class="table table-hover" cellspacing="0" width="100%" id="box">
       <thead>
         <th>ID de crédito</th>
         <th>Número de Pago</th>
         <th>Acreditado</th>
         <th>Monto Recuperado</th>
-        <th>Fecha de Cobro</th>
+        <th>Fecha y hora de Cobro</th>
       </thead>
       <tbody>
         @if ($collection->isEmpty())
@@ -26,7 +26,7 @@
           <td>{{$payment->number}} de {{$credit->term}}</td>
           <td>{{$acredited->name}} {{$acredited->last_name}}</td>
           <td>${{$payment->total}}</td>
-          <td>{{$payment->payment_date}}</td>
+          <td>{{$payment->created_at}}</td>
         </tr>
         @endforeach
          <tfoot>

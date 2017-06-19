@@ -16,13 +16,13 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a sucursal {
     <div class="well text-center">No hay pagos este día.</div>
     @else
     <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTable">
+      <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="box-header">
        <thead>
         <th>ID de crédito</th>
         <th>Número de Pago</th>
         <th>Acreditado</th>
         <th>Monto Recuperado</th>
-        <th>Fecha de Cobro</th>
+        <th>Fecha y hora de Cobro</th>
       </thead>
       <tbody>
         @foreach ($payments as $payment)
@@ -35,7 +35,7 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a sucursal {
           <td>{{$payment->number}} de {{$credit->term}}</td>
           <td>{{$acredited->name}} {{$acredited->last_name}}</td>
           <td>${{$payment->total}}</td>
-          <td>{{$payment->payment_date}}</td>
+          <td>{{$payment->created_at}}</td>
         </tr>
         @endforeach
         <tfoot>
@@ -84,12 +84,7 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a sucursal {
             <input type="hidden" value="{{$branch->id}}" name="branch_id" id="branch_id">
             <input type="submit" class="btn btn-block bg-navy" id="search" value="BUSCAR">
           </div>  
-        </div>
-        <div class="col-md-2">
-          <div class="input-group date">
-            <a href="" class="uppercase btn btn-block bg-navy"><i class="fa fa-file-pdf-o"></i> descargar</a>
-          </div>
-        </div>  
+        </div> 
       </div>
     </div>
   </div>
@@ -113,7 +108,24 @@ Corte del <span class="btn bg-maroon"><h4>{{$date_now}}</h4></span> a sucursal {
       data:{fromDate:fromDate, toDate:toDate, branch_id:branch_id},  
       success:function(data)  
       {  
-        $('#search_table').html(data);  
+        $('#search_table').html(data);
+        $('#box').DataTable({
+          responsive: true,
+          "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+          },
+          dom: 'Bfrtip',
+          buttons: [
+          {
+           extend: 'pdfHtml5',
+           text: 'Descargar PDF',
+           footer: true,
+           exportOptions: {
+            stripHtml: false,
+          }               
+        } 
+        ]
+      });   
       }  
     });  
    }  
