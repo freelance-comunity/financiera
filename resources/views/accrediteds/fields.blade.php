@@ -106,7 +106,12 @@
         {!! Form::select('civil_status',['Soltero/a' => 'Soltero/a', 'Casado/a' => 'Casado/a',
         'Viudo/a' => 'Viudo/a', 'Divorciado/a' => 'Divorciado/a'], null, ['class' => 'form-control'])!!}
     </div>
-
+    
+<!--- Spouce Name Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('spouse_name', 'Nombre del Conyugue:') !!}
+        <input type="text" name="spouse_name"   value="{{ old('spouse_name') }}" class="form-control">
+    </div>
     <div class="form-group col-sm-12 col-lg-12">
     <div class="gllpLatlonPicker">
                  {!! Form::label('location', 'Introduce Dirección para localizar en Google Maps:') !!}

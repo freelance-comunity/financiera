@@ -305,5 +305,17 @@ class CreditsController extends AppBaseController
 		return view('moratoria.create')
 		->with('credits', $credits);		
 	}
-	
+	public function cre($id)
+	{
+		$credits = Credits::find($id);
+		
+
+		$credits->status = "Ministrado";
+		$credits->save();
+
+		
+
+		Alert::success('estadus realizado exitosamente')->persistent('Cerrar');
+		return redirect()->back();
+	}
 }

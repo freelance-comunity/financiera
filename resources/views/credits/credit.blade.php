@@ -70,7 +70,12 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
                   <td>{{$credits->debts}}</td>
                   <td>{{$credits->economic_activity}}</td>
                   <td>${{$credits->amount_requested}}</td>
-                  <td>${{$credits->authorized_amount}}</td>
+                  @if ($credits->authorized_amount)
+                    <td>${{$credits->authorized_amount}}</td>
+                  @else
+                   <td>Sin autorizar monto</td>
+                  @endif
+                 
                   <td>{{$credits->warranty}}</td>
                   <td>
                    @if ($credits->status === 'Revisión') 

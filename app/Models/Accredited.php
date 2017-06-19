@@ -26,6 +26,7 @@ class Accredited extends Model
 	"curp",
 	"sex",
 	"civil_status",		
+	"spouse_name",
 	"user_id",
 	"branch_id",
 	];

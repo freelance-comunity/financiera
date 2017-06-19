@@ -48,7 +48,6 @@ $references = $accredited->references;
 	<strong>Estado civil: </strong>{{$accredited->civil_status}}
 	<br>
 	<br>
-	
 	<strong>3. ESTUDIO SOCIOECONOMICO</strong><br><br>
 	@foreach($study as $element)
 	<strong>Dependientes economicos: </strong>{{ $element->dependent}} <br>

@@ -14,7 +14,7 @@ Lista de solicitudes
     @else
     <table class="table table-hover" id="myTable">
       <thead>
-        <th>ID</th>
+        <th>ID Crédito</th>
         <th>Fecha</th>
         <th>Nombre del Solicitante</th>
         <th>Aval</th>
@@ -31,6 +31,7 @@ Lista de solicitudes
       <tbody>
 
         @foreach($credits as $credits)
+
         <tr class="info">
           <td>{!! $credits->id!!}</td>
           <td>{!! $credits->date !!}</td>
@@ -50,9 +51,10 @@ Lista de solicitudes
           <td>      
 
             @if ($credits->status === 'Revisión') 
-            <a href="{!! route('credits.edit', [$credits->id]) !!}"><button class="btn btn btn-warning btn-block">Revisión</button></a>
+            <a href="{!! route('credits.edit', [$credits->id]) !!}<button class="btn btn btn-warning btn-block">Revisión</button></a>
             @elseif ($credits->status === 'Aprobado')
-            <a href="{!! route('credits.edit', [$credits->id]) !!}"><button  class="btn btn btn-info btn-block">Aprobado</button></a>          
+            <a href="{!! route('credits.edit', [$credits->id]) !!}"><button  class="btn btn-info btn-block">Aprobado</button></a> 
+            <a href="{{ url('cre') }}/{{$credits->id}}" class="btn btn-success btn-block"  onclick="return confirm('¿Estas seguro de Ministrar esta solicitud?')">Ministrar</a>          
             @elseif (($credits->status == 'Ministrado') && ($credits->days == '30'))
             <button class="btn btn-success btn-block disabled">Ministrado</button>        
             <a href="{!! url('download-documents', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>
@@ -64,9 +66,9 @@ Lista de solicitudes
           </td>
           <td>
             <a href="{!! route('credits.show', [$credits->id]) !!}" class="uppercase btn bg-blue btn-block">Ver crédito</a>
-            @if ($credits->status == 'Ministrado')
+           <!-- @if ($credits->status == 'Ministrado')
             <a href="{!! route('credits.moratoria', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-area-chart"></i> Crear Moratorio</a>
-            @endif
+            @endif-->
           </tr>
           @endforeach
         </tbody>

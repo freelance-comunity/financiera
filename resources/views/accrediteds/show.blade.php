@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('contentheader_title')
-Acreditado
+Perfil del Acreditado
 @endsection
 @section('main-content')
 @php
@@ -102,7 +102,13 @@ $credits = App\Models\Credits::where('status','Ministrado')->count();
 											<strong>Folio INE:</strong> {{$accredited->ife}} <br>	
 											<strong>CURP:</strong> {{$accredited->curp}} <br>	
 											<strong>Sexo:</strong> {{$accredited->sex}} <br>	
-											<strong>Estado civil:</strong> {{$accredited->civil_status}}
+											<strong>Estado civil:</strong> {{$accredited->civil_status}} <br>
+											@if ($accredited->spouse_name)
+												<strong>Nombre del Conyugue:</strong> {{$accredited->spouse_name}}
+											@else
+											<strong>Nombre del Conyugue:</strong> Sin Conyugue
+											@endif
+											
 										</div>
 										<a href="{!! route('accrediteds.edit', [$accredited->id]) !!}" class="btn btn-default">Editar</a>
 									</div>

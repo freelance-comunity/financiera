@@ -56,7 +56,12 @@
     <!--- Name Spouse Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('name_spouse', 'Nombre del Conyugue:') !!}
-        {!! Form::text('name_spouse', null, ['class' => 'form-control']) !!}
+        @if ($accredited->spouse_name)
+            {!! Form::text('name_spouse', $accredited->spouse_name, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
+            @else
+            {!! Form::text('name_spouse', 'Sin conyugue', ['class' => 'form-control', 'readonly' => 'readonly']) !!}
+        @endif
+        
     </div>
     @php
         $avals = $accredited->avals;

@@ -482,6 +482,7 @@ Route::get('creditsAccredited/{id}/{product}',[
   'uses' => 'AccreditedController@creditsAccredited',
   ]);
 
+
 Route::get('creditsCuotaAccredited/{id}/',[
   'as' => 'accrediteds.creditsCuotaAccredited',
   'uses' => 'AccreditedController@creditsCuotaAccredited',
@@ -677,34 +678,13 @@ Route::get('pay-notification/{id}', function($id) {
 
 
 Route::get('pay/{id}', 'PaymentsController@pay');
+Route::get('cre/{id}', 'CreditsController@cre');
 
 Route::get('myaccrediteds/{id}', 'UserController@myAccrediteds');
 
 Route::get('routepayments/{id}','UserController@routePayments');
 
-Route::get('viernes', function(){
 
- $dateToday = \Carbon\Carbon::now();
-
- if($dateToday->dayOfWeek === \Carbon\Carbon::THURSDAY) {
-   echo "it's THURSDAY";
-
- }elseif ($dateToday->dayOfWeek === \Carbon\Carbon::FRIDAY) {
-   echo "
-It's friday we go for the beers";
- }elseif ($dateToday->dayOfWeek === \Carbon\Carbon::SATURDAY) {
-   echo "Es SABADO de gloria";
- }
- elseif ($dateToday->dayOfWeek === \Carbon\Carbon::SUNDAY) {
-   echo "Es DOMINGO, día de misa";
- }elseif ($dateToday->dayOfWeek === \Carbon\Carbon::MONDAY) {
-   echo "Es LUNES";
- }
- echo '<br>'.$dateToday;
- 
- 
-
-});
 
 /* Box Cute */
 Route::get('sales-promoters', 'BoxController@salesPromoters');
@@ -716,3 +696,4 @@ Route::get('sales-branches', 'BoxController@salesBranches');
 Route::get('cut-branch/{id}', 'BoxController@cutBranch');
 
 Route::get('sales-global', 'BoxController@salesGlobal');
+
