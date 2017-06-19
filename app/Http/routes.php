@@ -31,24 +31,13 @@
       return $pdf->download('moratorio.pdf');
     });
     
-    Route::get('testing2', function() {
-      $user = App\User::find(2);
-      $date_now = Carbon\Carbon::now()->toDateString();
-      $payments = $user->payments;
-
-      echo $user->name;
-      echo "<br>";
-      echo "Tu ruta de cobro del día ".$date_now." es:";
-      echo "<br>";
-      foreach ($payments as $payment) {
-        $debt = $payment->debt;
-        $credit = App\Models\Credits::find($debt->credits_id);
-        $accredited = $credit->accredited;
-        if ($payment->payment_date == $date_now) {
-          echo $accredited->name;
-        }
-      }
-      
+    Route::get('testing2', function(Illuminate\Http\Request  $request) {
+      $fromDate = $request->fromDate;
+      $toDate   = $request->toDate;
+      $collection = App\Models\Payments::whereBetween('payment_date', array($fromDate, $toDate))->where('status', 'Pagado')->get();
+      $html = view('box.box-search')->with('collection', $collection);
+      $html = $html->render();
+      return \Response::json($html);
     });
 
     Route::get('/rolescreate', function() {
@@ -685,7 +674,6 @@ Route::get('myaccrediteds/{id}', 'UserController@myAccrediteds');
 Route::get('routepayments/{id}','UserController@routePayments');
 
 
-
 /* Box Cute */
 Route::get('sales-promoters', 'BoxController@salesPromoters');
 
@@ -697,3 +685,38 @@ Route::get('cut-branch/{id}', 'BoxController@cutBranch');
 
 Route::get('sales-global', 'BoxController@salesGlobal');
 
+
+Route::get('specific-search-promoter', function(Illuminate\Http\Request  $request) {
+  $fromDate = $request->fromDate;
+  $toDate   = $request->toDate;
+  $user = App\User::find($request->promoter_id);
+  $collection = App\Models\Payments::whereBetween('payment_date', array($fromDate, $toDate))->where('status', 'Pagado')->where('user_id', $user->id)->get();
+  $html = view('box.box-search')->with('collection', $collection);
+  $html = $html->render();
+  return \Response::json($html);
+});
+
+Route::get('specific-search-branch', function(Illuminate\Http\Request  $request) {
+  $fromDate = $request->fromDate;
+  $toDate   = $request->toDate;
+  $branch = App\Models\Branch::find($request->branch_id);
+  $collection = App\Models\Payments::whereBetween('payment_date', array($fromDate, $toDate))->where('status', 'Pagado')->where('branch_id', $branch->id)->get();
+  $html = view('box.box-search-branch')->with('collection', $collection);
+  $html = $html->render();
+  return \Response::json($html);
+});
+
+Route::get('specific-search-global', function(Illuminate\Http\Request  $request) {
+  $fromDate = $request->fromDate;
+  $toDate   = $request->toDate;
+  $collection = App\Models\Payments::whereBetween('payment_date', array($fromDate, $toDate))->where('status', 'Pagado')->get();
+  $html = view('box.box-search-global')->with('collection', $collection);
+  $html = $html->render();
+  return \Response::json($html);
+});
+
+Route::get('print-cut-promoter', function() {
+  $pdf = App::make('dompdf.wrapper');
+  $pdf->loadHTML('<h1>Test</h1>');
+  return $pdf->stream();
+});
