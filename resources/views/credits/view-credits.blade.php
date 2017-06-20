@@ -51,10 +51,10 @@ Lista de solicitudes
           <td>      
 
             @if ($credits->status === 'Revisión') 
-            <a href="{!! route('credits.edit', [$credits->id]) !!}<button class="btn btn btn-warning btn-block">Revisión</button></a>
+            <a href="{!! route('credits.edit', [$credits->id]) !!}"/><button class="btn btn btn-warning btn-block">Revisión</button></a>
             @elseif ($credits->status === 'Aprobado')
             <a href="{!! route('credits.edit', [$credits->id]) !!}"><button  class="btn btn-info btn-block">Aprobado</button></a> 
-            <a href="{{ url('cre') }}/{{$credits->id}}" class="btn btn-success btn-block"  onclick="return confirm('¿Estas seguro de Ministrar esta solicitud?')">Ministrar</a>          
+            <a href="{!! route('credits.edit', [$credits->id]) !!}" class="btn btn-success btn-block"  onclick="return confirm('¿Estas seguro de Ministrar esta solicitud?')">Ministrar</a>          
             @elseif (($credits->status == 'Ministrado') && ($credits->days == '30'))
             <button class="btn btn-success btn-block disabled">Ministrado</button>        
             <a href="{!! url('download-documents', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>
