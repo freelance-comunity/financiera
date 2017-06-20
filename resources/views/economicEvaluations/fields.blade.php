@@ -1,37 +1,37 @@
 <!--- Place Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('place', 'Lugar:') !!}
+    {!! Form::label('place', '* Lugar:') !!}
     {!! Form::text('place', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Date Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('date', 'Fecha:') !!}
+    {!! Form::label('date', '* Fecha:') !!}
     <input type="date" name="date" class="form-control" id="theDate">
 </div>
 
 <!--- Name Accredited Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('name_accredited', 'Nombre del Acreditado:') !!}
+    {!! Form::label('name_accredited', '* Nombre del Acreditado:') !!}
   <input type="text" name="name_accredited" value=" {{ $accredited->name}} {{ $accredited->last_name}}" class="form-control" readonly="readonly">
     <input type="hidden" name="accredited_id" value="{{ $accredited->id}}">
 </div>
 
 <!--- Activity Economic Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('activity_economic', 'Actividad Economica:') !!}
+    {!! Form::label('activity_economic', '* Actividad Economica:') !!}
     {!! Form::text('activity_economic', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Phone Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('phone', 'Teléfono:') !!}
+    {!! Form::label('phone', '* Teléfono:') !!}
     {!! Form::text('phone', $accredited->phone, ['class' => 'form-control','readonly' => 'readonly']) !!}
 </div>
 
 <!--- Address Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('address', 'Dirección:') !!}
+    {!! Form::label('address', '* Dirección:') !!}
     {!! Form::text('address', $accredited->address, ['class' => 'form-control','readonly' =>'readonly']) !!}
 </div>
 
@@ -63,7 +63,7 @@
 </script>
 <!--- Sales Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('sales', 'Ventas:') !!}
+    {!! Form::label('sales', '* Ventas:') !!}
     <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">$</span>
     {!! Form::text('sales', null, ['class' => 'form-control', 'id' => 'ventas', 'value' => '0', 'onkeyup' => 'calcular()']) !!}
@@ -72,7 +72,7 @@
 
 <!--- Buy Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('buy', 'Compras:') !!}
+    {!! Form::label('buy', '* Compras:') !!}
     <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">$</span>
     {!! Form::text('buy', null, ['class' => 'form-control', 'id' => 'compras', 'value' => '0', 'onkeyup' => 'calcular()']) !!}
@@ -90,7 +90,7 @@
 
 <!--- Other Income Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('other_income', 'Otros Ingresos:') !!}
+    {!! Form::label('other_income', '* Otros Ingresos:') !!}
     <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">$</span>
     {!! Form::text('other_income', null, ['class' => 'form-control', 'id' => 'otros_ingresos', 'value' => '0', 'onkeyup' => 'calcular()']) !!}
@@ -99,7 +99,7 @@
 
 <!--- Other Expenses Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('other_expenses', 'Otros Gastos:') !!}
+    {!! Form::label('other_expenses', '* Otros Gastos:') !!}
      <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">$</span>
     {!! Form::text('other_expenses', null, ['class' => 'form-control', 'id' => 'otros_gastos', 'value' => '0', 'onkeyup' => 'calcular()']) !!}
@@ -108,7 +108,7 @@
 
 <!--- Familiar Costs Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('familiar_costs', 'Gastos Familiares:') !!}
+    {!! Form::label('familiar_costs', '* Gastos Familiares:') !!}
      <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">$</span>
     {!! Form::text('familiar_costs', null, ['class' => 'form-control', 'id' => 'gastos_familiares', 'value' => '0', 'onkeyup' => 'calcular()']) !!}
