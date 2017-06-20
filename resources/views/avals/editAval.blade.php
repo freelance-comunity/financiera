@@ -5,7 +5,7 @@ Editar aval
 @section('main-content')
 <div class="container">
 
-    @include('common.errors')
+    @include('sweet::alert')
 
     {!! Form::model($aval, ['route' => ['avals.update', $aval->id], 'method' => 'patch']) !!}
 

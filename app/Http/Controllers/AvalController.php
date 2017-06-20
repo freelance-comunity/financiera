@@ -140,6 +140,9 @@ class AvalController extends AppBaseController
 	{
 		/** @var Aval $aval */
 		$aval = Aval::find($id);
+		$accredited = $aval->accredited_id;
+		$accrediteds = Accredited::find($accredited);
+		$address = strtoupper($request->input('address'));
 
 		if(empty($aval))
 		{
@@ -147,12 +150,17 @@ class AvalController extends AppBaseController
 			return redirect(route('avals.index'));
 		}
 
-		$aval->fill($request->all());
-		$aval->save();
+		if (strcmp($accrediteds->address, $address) == 0) {
+			Alert::error('La dirección del Aval es identica a la del acreditado.')->persistent('Cerrar');
+			return redirect()->back()->withInput($request->all());
+		}else{
+			$aval->fill($request->all());
+			$aval->save();
 
-		Alert::success('Datos acutalizados exitosamente.')->persistent('Cerrar');
+			Alert::success('Datos acutalizados exitosamente.')->persistent('Cerrar');
 
-		return redirect(route('accrediteds.index'));
+			return redirect(route('accrediteds.index'));
+		}
 	}
 
 	/**
