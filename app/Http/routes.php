@@ -557,7 +557,7 @@ Route::get('download-documents/{id}', function($id) {
   $credit = App\Models\Credits::find($id);
   $days = $credit->days;
   $amount = $credit->authorized_amount;
-  $interest = $credit->interest;
+  $interest = ($credit->interest)*1.16;
   $months = $credit->sequence;
   $capital = $amount/$credit->term;
   $f = (($amount*$interest)+($amount/$months))/$days;
@@ -572,7 +572,7 @@ Route::get('download-documents-cuota/{id}', function($id) {
   $credit = App\Models\Credits::find($id);
   $days = $credit->days;
   $amount = $credit->authorized_amount;
-  $interest = $credit->interest;
+  $interest = ($credit->interest)*1.16;
   $months = $credit->sequence;
   $capital = $amount/$credit->term;
   $f = (($amount*$interest)+($amount/$months))/$days;

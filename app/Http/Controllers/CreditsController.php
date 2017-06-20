@@ -199,7 +199,7 @@ class CreditsController extends AppBaseController
 		$frequency = $credits->frequency_payment;
 		$days = $credits->days;
 		$amount = $credits->authorized_amount;
-		$interest = $credits->interest;
+		$interest = ($credits->interest)*1.16;
 		$months = $credits->sequence;
 		$f = (($amount*$interest)+($amount/$months))/$days;
 		$date = new Carbon($credits->date_ministration);
