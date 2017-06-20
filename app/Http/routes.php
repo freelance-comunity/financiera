@@ -667,7 +667,7 @@ Route::get('pay-notification/{id}', function($id) {
 
 
 Route::get('pay/{id}', 'PaymentsController@pay');
-Route::get('cre/{id}', 'CreditsController@cre');
+Route::get('cre/{id}', 'CreditsController@update');
 
 Route::get('myaccrediteds/{id}', 'UserController@myAccrediteds');
 
