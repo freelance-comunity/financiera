@@ -50,7 +50,7 @@
 <!--- School Grade Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('school_grade', 'Grado de escolaridad:') !!}
-    {!! Form::text('school_grade', null, ['class' => 'form-control']) !!}
+    {!! Form::select('school_grade',['Terminado' =>'Terminado', 'Trunco'=>'Trunco'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Sector Field --->

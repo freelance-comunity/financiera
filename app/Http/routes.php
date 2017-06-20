@@ -39,7 +39,7 @@
       $html = $html->render();
       return \Response::json($html);
     });
-
+  
     Route::get('/rolescreate', function() {
       $propietario = new App\Role();
       $propietario->name         = 'propietario';

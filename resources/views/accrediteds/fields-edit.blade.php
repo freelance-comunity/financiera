@@ -102,18 +102,53 @@
     </div>
 
 
-<!--- Civil Status Field --->
-<div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('civil_status', 'Estado Civil:') !!}
-    {!! Form::select('civil_status',['Soltero/a' => 'Soltero/a', 'Casado/a' => 'Casado/a',
-    'Viudo/a' => 'Viudo/a', 'Divorciado/a' => 'Divorciado/a'], null, ['class' => 'form-control'])!!}
-</div>
+ <!--- Civil Status Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('civil_status', 'Estado Civil:') !!}
+        
+         <select id="status" name="civil_status" onChange="mostrar(this.value);" class="form-control">
+        <option value="Soltero/a">Soltero/a</option>
+         <option value="casado">Casado/a</option>
+        <option value="Divorciado/a">Divorciado/a</option>
+        <option value="Viudo/a">Viudo/a</option>
+     </select>
+    </div>
+   
+   <script>
+function mostrar(id) {
+    if (id == "casado") {
+        $("#casado").show();
+        $("#soltero").hide();
+        $("#divorciado").hide();
+        $("#viudo").hide();
+    }
+    if (id == "Soltero/a") {
+        $("#casado").hide();
+        $("#soltero").hide();
+        $("#divorciado").hide();
+        $("#viudo").hide();
+    }
 
+    if (id == "Divorciado/a") {
+        $("#casado").hide();
+        $("#soltero").hide();
+        $("#divorciado").hide();
+        $("#viudo").hide();
+    }
+
+    if (id == "Viudo/a") {
+        $("#casado").hide();
+        $("#soltero").hide();
+        $("#divorciado").hide();
+        $("#viudo").hide();
+    }
+}
+</script>
 
 <!--- Spouce Name Field --->
-    <div class="form-group col-sm-6 col-lg-4">
+    <div id="casado" style="display: none;" class="form-group col-sm-6 col-lg-4">
         {!! Form::label('spouse_name', 'Nombre del Conyugue:') !!}
-         {!! Form::text('spouse_name', null, ['class' => 'form-control']) !!}
+        <input type="text" name="spouse_name"   value="{{ old('spouse_name') }}" class="form-control">
     </div>
 
  <div class="form-group col-sm-12 col-lg-12">

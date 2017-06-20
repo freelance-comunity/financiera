@@ -16,11 +16,16 @@
   <input type="text" name="name_accredited" value=" {{ $accredited->name}} {{ $accredited->last_name}}" class="form-control" readonly="readonly">
     <input type="hidden" name="accredited_id" value="{{ $accredited->id}}">
 </div>
-
+@php
+    $micros = $accredited->micros;
+@endphp
 <!--- Activity Economic Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('activity_economic', 'Actividad Economica:') !!}
-    {!! Form::text('activity_economic', null, ['class' => 'form-control']) !!}
+    @foreach ($micros as $micros)
+        <input type="text" name="activity_economic" value="{{$micros->name}}", class="form-control" readonly>
+    @endforeach
+   
 </div>
 
 <!--- Phone Field --->
