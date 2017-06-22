@@ -92,15 +92,11 @@ Tabla de pagos
                             <td><span class="label label-danger pull-right"><h4>${!! $payments->total!!}</h4></span></td>
                             <td>{!! $payments->payment_date !!}</td>
                             <td>{!! $payments->status !!}</td>
-                            <td>
-                                @if ($payments->payment_date === $date_now or $payments->payment_date == $date_tomorrow)
-                                <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>
-                                @else
-                                <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block disabled" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>
-                                @endif
+                            <td>         
+                                <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>                             
                             </td>
                         </tr>
-                        @else
+                        @elseif($payments->status == "Pendiente")
                         <tr>
                             <td>{!! $payments->number !!}</td>
                             <td>${!! $payments->ammount !!}</td>
@@ -109,11 +105,7 @@ Tabla de pagos
                             <td>{!! $payments->payment_date !!}</td>
                             <td>{!! $payments->status !!}</td>
                             <td>
-                            @if ($payments->payment_date === $date_now or $payments->payment_date == $date_tomorrow)
                               <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>
-                              @else
-                              <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block disabled" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>
-                              @endif
                           </td>
                       </tr>
                       @endif
