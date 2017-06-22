@@ -135,7 +135,7 @@
     <!--- Qualification Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('status', 'Estatus:') !!}
-        {!! Form::select('status',['Aprobado' =>'Aprobado', 'Ministrado'=>'Ministrado'], null, ['class' => 'form-control']) !!}
+        {!! Form::select('status',['Aprobado' =>'Aprobado'], null, ['class' => 'form-control','readonly']) !!}
         
     </div>
      @if ($credits->status == "Aprobado")

@@ -150,6 +150,7 @@ $atrasado = App\Models\Payments::all();
 			$date_now = \Carbon\Carbon::now()->toDateString();
 			$payment = App\Models\Payments::where('status', 'Atrasado')->where('payment_date', $date_now)->get();
 			$payments = App\Models\Payments::where('status', 'Atrasado')->count();
+			$pagado = App\Models\Payments::where('status', 'Pagado')->count();
 			@endphp
 			<div class="col-md-4">
 				<!-- USERS LIST -->
@@ -205,10 +206,8 @@ $atrasado = App\Models\Payments::all();
 
 			<script>  
 				var pay= {p:{{$payments}}};
-				alertify.success('Total de  pagos atrasados: '+ pay.p);
+				alertify.error('Total de  pagos atrasados: '+ pay.p);
 			</script>
-			
-			
 			<!-- /.col -->
 		</div>
 	</div>

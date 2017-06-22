@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Requests\CreateCreditsRequest;
+use App\Http\Requests\EditCreditsRequest;
 use App\Models\Credits;
 use App\Models\Accredited;
 use App\Models\Aval;
@@ -178,7 +179,7 @@ class CreditsController extends AppBaseController
 	 *
 	 * @return Response
 	 */
-	public function update($id, CreateCreditsRequest $request)
+	public function update($id, EditCreditsRequest $request)
 	{
 		/** @var Credits $credits */
 		$credits = Credits::find($id);

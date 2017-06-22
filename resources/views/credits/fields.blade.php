@@ -149,47 +149,56 @@ $count = $credits->where('status', 'Ministrado')->count();
     </select>
     </div>
     <script>
+   
     function mostrar(id) {
+
     if (id == "1") {
         $("#1").show();  
         $("#2").hide();
         $("#3").hide();  
         $("#4").hide();  
-        $("#6").hide();    
+        $("#6").hide();  
+       
     }
     if (id == "2") {
         $("#1").hide();  
         $("#2").show();
         $("#3").hide();  
         $("#4").hide();  
-        $("#6").hide();     
+        $("#6").hide(); 
+       
     }
     if (id == "3") {
         $("#1").hide();  
         $("#2").hide();
         $("#3").show();  
         $("#4").hide();  
-        $("#6").hide();    
+        $("#6").hide();
+        
     }
     if (id == "4") {
         $("#1").hide();  
         $("#2").hide();
         $("#3").hide();  
         $("#4").show();  
-        $("#6").hide();    
+        $("#6").hide(); 
+        
     }
     if (id == "6") {
         $("#1").hide();  
         $("#2").hide();
         $("#3").hide();  
         $("#4").hide();  
-        $("#6").show();    
+        $("#6").show();
+               
     }
     if (id == "2.25") {
         $("#1").hide();  
         $("#1.5").hide();
-        $("#2.25").show();     
+        $("#2.25").show();
+       
     }
+   
 }
 </script>
 @if ($product->modality == "Diario")
@@ -198,6 +207,7 @@ $count = $credits->where('status', 'Ministrado')->count();
         {!! Form::label('term', 'Plazo en días:') !!}     
       <input type="text" name="term"   value="30" readonly class="form-control">  
        </div>  
+       
     <div id="2" style="display: none;" class="form-group col-sm-6 col-lg-4">
         {!! Form::label('term', 'Plazo en días:') !!}     
       <input type="text" name="term"   value="60" readonly class="form-control">  
@@ -214,6 +224,8 @@ $count = $credits->where('status', 'Ministrado')->count();
         {!! Form::label('term', 'Plazo en días:') !!}     
       <input type="text" name="term"   value="180" readonly class="form-control">  
        </div>  
+      
+      
    @else      
        <div id="1" style="display: none;" class="form-group col-sm-6 col-lg-4">
         {!! Form::label('term', 'Plazo en cuotas:') !!}      

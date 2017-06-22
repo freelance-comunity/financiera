@@ -720,3 +720,4 @@ Route::get('print-cut-promoter', function() {
   $pdf->loadHTML('<h1>Test</h1>');
   return $pdf->stream();
 });
+ 
