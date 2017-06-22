@@ -102,7 +102,6 @@
 
     <!--- Civil Status Field --->
     <div class="form-group col-sm-6 col-lg-4">
-<<<<<<< HEAD
         {!! Form::label('civil_status', 'Estado Civil:') !!}        
          <select id="status" name="civil_status" onChange="mostrar(this.value);" class="form-control">
         <option value="Soltero/a">Soltero/a</option>
