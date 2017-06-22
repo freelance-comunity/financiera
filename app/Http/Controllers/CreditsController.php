@@ -273,7 +273,7 @@ class CreditsController extends AppBaseController
 				$payment->save();
 				
 			}
-		}
+			
 
 
 		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');

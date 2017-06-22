@@ -151,7 +151,7 @@ $count = $credits->where('status', 'Ministrado')->count();
     <script>
    
     function mostrar(id) {
-
+    
     if (id == "1") {
         $("#1").show();  
         $("#2").hide();

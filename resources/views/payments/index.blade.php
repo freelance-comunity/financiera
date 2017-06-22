@@ -49,6 +49,8 @@ Tabla de pagos
             </div>
         </div>
     </div>
+   
+   @if ($credit->status == 'Ministrado') 
     <div class="row">
         <div class="col-lg-8">
             @if($payments->isEmpty())
@@ -205,5 +207,7 @@ Tabla de pagos
 <!-- /.info-box -->
 </div>
 </div>
+  
+   @endif
 </div>
 @endsection
