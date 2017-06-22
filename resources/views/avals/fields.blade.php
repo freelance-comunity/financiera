@@ -1,31 +1,31 @@
 <!--- Name Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('name', 'Nombre(s):') !!}
+    {!! Form::label('name', '* Nombre(s):') !!}
      <input type="text" name="name" pattern"[A-Za-z]{4-16}" value="{{ old('name') }}" class="form-control">
     <input type="hidden" name="accredited_id" value="{{ $accrediteds->id}}">
 </div>
 
 <!--- Last Name Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('last_name', 'Apellidos:') !!}
+    {!! Form::label('last_name', '* Apellidos:') !!}
      <input type="text" name="last_name" pattern"[A-Za-z]{4-16}" value="{{ old('last_name') }}" class="form-control">
 </div>
 
 <!--- Address Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('address', 'Dirección:') !!}
+    {!! Form::label('address', '* Dirección:') !!}
     <input type="text" name="address"   value="{{ old('address') }}" class="form-control">
 </div>
 
 <!--- Colony Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('colony', 'Colonia:') !!}
+    {!! Form::label('colony', '* Colonia:') !!}
     {!! Form::text('colony', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Municipality Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('municipality', 'Municipio:') !!}
+    {!! Form::label('municipality', '* Municipio:') !!}
      <select class="form-control" name="municipality">
 <option value="">Selecciona un municipio</option>
 <option value="Acacoyagua">Acacoyagua</option>
@@ -152,61 +152,61 @@
 
 <!--- Nacionality Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('nacionality', 'Nacionalidad:') !!}
+    {!! Form::label('nacionality', '* Nacionalidad:') !!}
     {!! Form::select('nacionality',['Mexicana' => 'Mexicana'], null, ['class' => 'form-control'])!!}
 </div>
 
 <!--- Place Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('place', 'Lugar de Nacimiento:') !!}
+    {!! Form::label('place', '* Lugar de Nacimiento:') !!}
     {!! Form::text('place', null, ['class' => 'form-control']) !!}
 </div>
 
 <!--- Birthday Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('birthday', 'Fecha de Nacimiento:') !!}
+    {!! Form::label('birthday', '* Fecha de Nacimiento:') !!}
     <input type="date" name="birthday" value="{{ old('birthday') }}" class="form-control">
 </div>
 
 <!--- Ife Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('ife', 'Folio INE:') !!}
+    {!! Form::label('ife', '* Folio INE:') !!}
     <input type="text" name="ife"   value="{{ old('ife') }}" class="form-control">
 </div>
 
 <!--- Curp Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('curp', 'Curp:') !!}
+    {!! Form::label('curp', '* Curp:') !!}
     <input type="text" name="curp"   value="{{ old('curp') }}" class="form-control">
 </div>
 
 <!--- Phone Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('phone', 'Teléfono:') !!}
+    {!! Form::label('phone', '* Teléfono:') !!}
      <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control">
 </div>
 
 <!--- Cel Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('cel', 'Celular:') !!}
+    {!! Form::label('cel', '* Celular:') !!}
      <input type="tel" name="cel"  value="{{ old('cel') }}" class="form-control">
 </div>
 
 <!--- Sex Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('sex', 'Sexo:') !!}
+    {!! Form::label('sex', '* Sexo:') !!}
     {!! Form::select('sex',['Hombre' => 'Hombre', 'Mujer' => 'Mujer'], null, ['class' => 'form-control'])!!}
 </div>
 
 <!--- Ocupation Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('ocupation', 'Ocupación:') !!}
+    {!! Form::label('ocupation', '* Ocupación:') !!}
     <input type="text" name="ocupation"  value="{{ old('ocupation') }}" class="form-control">
 </div>
 
 <!--- Address Work Field --->
 <div class="form-group col-sm-6 col-lg-4">
-    {!! Form::label('address_work', 'Dirección de Trabajo:') !!}
+    {!! Form::label('address_work', '* Dirección de Trabajo:') !!}
     <input type="text" name="address_work"   value="{{ old('address') }}" class="form-control">
 </div>
 
