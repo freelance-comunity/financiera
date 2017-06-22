@@ -39,7 +39,7 @@
       $html = $html->render();
       return \Response::json($html);
     });
-
+  
     Route::get('/rolescreate', function() {
       $propietario = new App\Role();
       $propietario->name         = 'propietario';
@@ -720,3 +720,4 @@ Route::get('print-cut-promoter', function() {
   $pdf->loadHTML('<h1>Test</h1>');
   return $pdf->stream();
 });
+ 

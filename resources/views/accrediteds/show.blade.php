@@ -40,6 +40,10 @@ $credits = App\Models\Credits::where('status','Ministrado')->count();
 							<b>Promotor</b>
 							<p><a href="{{ url('/users') }}" class="pull-left">{{ strtoupper($user->name) }} {{ strtoupper($user->last_name) }}</a></p> 
 						</li>
+						<li class="list-group-item">
+						<b>Expediente</b><br>
+							<a href="{{ url('accredited-pdf') }}/{{$accredited->id}}"></i> DESCARGAR EXPEDIENTE</a>
+						</li>
 					</ul>
 				</div>
 				<!-- /.box-body -->

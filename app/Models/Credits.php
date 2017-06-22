@@ -66,6 +66,31 @@ class Credits extends Model
 		"qualification" => "required",
 		"status" => "required"
 	];
+	public static $rulescreditsedits = [
+	    "date" => "required",
+	    "colony" => "required",
+	    "municipality" => "required",
+	    "state" => "required",
+		"name_spouse" =>  "required|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
+		"aval" =>  "required|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/",
+		"previous_credit" => "required",
+		"debts" => "required",
+		"economic_activity" => "required",
+		"amount_requested" => "required",
+		"authorized_amount" => "required",
+		"warranty" => "required",
+		"warranty_type" => "required",
+		"warranty_value" => "required",
+		"sequence" => "required",
+		"term" => "required|regex:/^[1-9]\d*$/|min:1|max:3'",
+		"frequency_payment" => "required",
+		"interest" => "required",		
+		"adviser" => "required",
+		"observations" => "required",
+		"requested" => "required",
+		"qualification" => "required",
+		"status" => "required"
+	];
 
 	 public function accredited()
     {

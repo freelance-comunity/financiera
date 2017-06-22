@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Requests\CreateCreditsRequest;
+use App\Http\Requests\EditCreditsRequest;
 use App\Models\Credits;
 use App\Models\Accredited;
 use App\Models\Aval;
@@ -178,7 +179,7 @@ class CreditsController extends AppBaseController
 	 *
 	 * @return Response
 	 */
-	public function update($id, CreateCreditsRequest $request)
+	public function update($id, EditCreditsRequest $request)
 	{
 		/** @var Credits $credits */
 		$credits = Credits::find($id);
@@ -191,6 +192,7 @@ class CreditsController extends AppBaseController
 		
 		$credits->fill($request->all());
 		$credits->save();
+
 
 		$accredited = Accredited::find($credits->accredited_id);
 		$user = $accredited->user;
@@ -205,12 +207,15 @@ class CreditsController extends AppBaseController
 		$date = new Carbon($credits->date_ministration);
 		$holidays = Holidays::all();
 
+	
+
 		if ($status == 'Ministrado' and $frequency == "Diario" ) {
 			$debt = new Debt;
 			$debt->ammount = $credits->authorized_amount;
 			$debt->status = "Pendiente";
 			$debt->credits_id = $credits->id;
 			$debt->save();
+
 			for ($i=1; $i <= $credits->term; $i++) { 
 				$var = $date->addDay();
 
@@ -233,6 +238,7 @@ class CreditsController extends AppBaseController
 				$payment->user_id = $user->id;
 				$payment->branch_id = $user->branch_id;
 				$payment->save();
+				
 			}
 		}elseif ($status == 'Ministrado' && $frequency == 'Diario cuota') {
 			$debt = new Debt;
@@ -265,6 +271,7 @@ class CreditsController extends AppBaseController
 				$payment->user_id = $user->id;
 				$payment->branch_id = $user->branch_id;
 				$payment->save();
+				
 			}
 		}
 
@@ -307,15 +314,91 @@ class CreditsController extends AppBaseController
 	}
 	public function cre($id)
 	{
-		$credits = Credits::find($id);
-		
-
+		$credits = Credits::find($id);	
 		$credits->status = "Ministrado";
 		$credits->save();
+		$accredited = Accredited::find($credits->accredited_id);
+		$user = $accredited->user;
 
+		$status = $credits->status;
+		$frequency = $credits->frequency_payment;
+		$days = $credits->days;
+		$amount = $credits->authorized_amount;
+		$interest = $credits->interest;
+		$months = $credits->sequence;
+		$f = (($amount*$interest)+($amount/$months))/$days;
+		$date = new Carbon($credits->date_ministration);
+		$holidays = Holidays::all();
+
+	
+
+		if ($status == 'Ministrado' and $frequency == "Diario" ) {
+			$debt = new Debt;
+			$debt->ammount = $credits->authorized_amount;
+			$debt->status = "Pendiente";
+			$debt->credits_id = $credits->id;
+			$debt->save();
+
+			for ($i=1; $i <= $credits->term; $i++) { 
+				$var = $date->addDay();
+
+				$fechaPago[$i] = $date->toDateString();
+				$payment = new Payments;
+				$payment->number = $i;
+				$payment->ammount = ceil($f);
+				$payment->surcharge = '0';
+				$payment->total = ceil($f) + 0; 
+				$payment->status = "Pendiente";
+				foreach ($holidays as $value) {
+					if ($value->date == $fechaPago[$i]){
+						$date->addDay();
+						$fechaPago[$i] = $date->toDateString();
+
+					}
+				}
+				$payment->payment_date = $var;
+				$payment->debt_id = $debt->id;
+				$payment->user_id = $user->id;
+				$payment->branch_id = $user->branch_id;
+				$payment->save();
+				
+			}
+		}elseif ($status == 'Ministrado' && $frequency == 'Diario cuota') {
+			$debt = new Debt;
+			$debt->ammount = $credits->authorized_amount;
+			$debt->status = "Pendiente";
+			$debt->credits_id = $credits->id;
+			$debt->save();
+			for ($i=1; $i <= $credits->term; $i++) { 
+				$var = $date->addDay();
+				while ($date->isWeekend())
+				{
+					$date->addDay(); 
+				}
+				$fechaPago[$i] = $date->toDateString();
+				$payment = new Payments;
+				$payment->number = $i;
+				$payment->ammount = ceil($f);
+				$payment->surcharge = '0';
+				$payment->total = ceil($f) + 0; 
+				$payment->status = "Pendiente";
+				foreach ($holidays as $value) {
+					if ($value->date == $fechaPago[$i]){
+						$date->addDay()->addWeekDay();
+						$fechaPago[$i] = $date->toDateString();
+
+					}
+				}
+				$payment->payment_date = $var;
+				$payment->debt_id = $debt->id;
+				$payment->user_id = $user->id;
+				$payment->branch_id = $user->branch_id;
+				$payment->save();
+				
+			}
+		}
 		
-
-		Alert::success('estadus realizado exitosamente')->persistent('Cerrar');
+		Alert::success('Estatus realizado exitosamente')->persistent('Cerrar');
 		return redirect()->back();
 	}
 }
