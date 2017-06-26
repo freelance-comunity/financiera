@@ -189,14 +189,14 @@ class CreditsController extends AppBaseController
 			Flash::error('Credits not found');
 			return redirect(route('credits.index'));
 		}
-		
+
 		$credits->fill($request->all());
 		$credits->save();
-
+		
 		if ($credits->status == 'Ministrado') {
 
-		$accredited = Accredited::find($credits->accredited_id);
-		$user = $accredited->user;
+			$accredited = Accredited::find($credits->accredited_id);
+			$user = $accredited->user;
 
 			$status = $credits->status;
 			$frequency = $credits->frequency_payment;
@@ -241,37 +241,41 @@ class CreditsController extends AppBaseController
 					$payment->save();
 
 				}
-			}elseif ($status == 'Ministrado' and $frequency == 'Diario cuota') 
-			$debt = new Debt;
-			$debt->ammount = $credits->authorized_amount;
-			$debt->status = "Pendiente";
-			$debt->credits_id = $credits->id;
-			$debt->save();
-			for ($i=1; $i <= $credits->term; $i++) { 
-				$var = $date->addDay();
-				while ($date->isWeekend())
-				{
-					$date->addDay(); 
-				}
-				$fechaPago[$i] = $date->toDateString();
-				$payment = new Payments;
-				$payment->number = $i;
-				$payment->ammount = ceil($f);
-				$payment->surcharge = '0';
-				$payment->total = ceil($f) + 0; 
-				$payment->status = "Pendiente";
-				foreach ($holidays as $value) {
-					if ($value->date == $fechaPago[$i]){
-						$date->addDay()->addWeekDay();
-						$fechaPago[$i] = $date->toDateString();
-
+			}
+			elseif ($status == 'Ministrado' and $frequency == 'Diario cuota') 
+			{
+				$debt = new Debt;
+				$debt->ammount = $credits->authorized_amount;
+				$debt->status = "Pendiente";
+				$debt->credits_id = $credits->id;
+				$debt->save();
+				for ($i=1; $i <= $credits->term; $i++) { 
+					$var = $date->addDay();
+					while ($date->isWeekend())
+					{
+						$date->addDay(); 
 					}
+					$fechaPago[$i] = $date->toDateString();
+					$payment = new Payments;
+					$payment->number = $i;
+					$payment->ammount = ceil($f);
+					$payment->surcharge = '0';
+					$payment->total = ceil($f) + 0; 
+					$payment->status = "Pendiente";
+					foreach ($holidays as $value) {
+						if ($value->date == $fechaPago[$i]){
+							$date->addDay()->addWeekDay();
+							$fechaPago[$i] = $date->toDateString();
+
+						}
+					}
+					$payment->payment_date = $var;
+					$payment->debt_id = $debt->id;
+					$payment->user_id = $user->id;
+					$payment->branch_id = $user->branch_id;
+					$payment->save();
+
 				}
-				$payment->payment_date = $var;
-				$payment->debt_id = $debt->id;
-				$payment->user_id = $user->id;
-				$payment->branch_id = $user->branch_id;
-				$payment->save();
 
 			}
 		}
