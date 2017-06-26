@@ -49,7 +49,7 @@ Tabla de pagos
             </div>
         </div>
     </div>
-    <div class="row">
+   
         <div class="col-lg-8">
             @if($payments->isEmpty())
             <div class="well text-center">No Payments found.</div>

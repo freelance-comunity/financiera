@@ -121,7 +121,9 @@ $atrasado = App\Models\Payments::all();
 										@elseif ($credit->status === 'Aprobado')
 										<a href="{!! route('credits.edit', [$credit->id]) !!}"><span  class="label label-info">Aprobado</span></a>          
 										@elseif ($credit->status == 'Ministrado')
-										<span class="label label-success">Ministrado</span>          
+										<span class="label label-success">Ministrado</span>  
+										@elseif ($credit->status == 'Cancelar')
+										<span class="label label-danger">Cancelado</span>          
 										@endif</td>
 										<td>
 											<div class="sparkbar" data-color="#00a65a" data-height="20">${!! $credit->amount_requested!!}</div>
