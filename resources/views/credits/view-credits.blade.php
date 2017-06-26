@@ -175,6 +175,12 @@ Lista de solicitudes
     <a href="{!! url('download-documents-monthly', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>  
     <a href="{!! url('download-payments-monthly', [$credits->id]) !!}" class="btn bg-teal btn-block"><i class="fa fa-calendar"></i> Descargar Calendario de Pagos</a> 
 <!-- End links credit montly -->
+<!-- Links documents credit weekly -->
+     @elseif (($credits->status == 'Ministrado') && ($credits->days == '4'))
+    <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModalcancel{{$credits->id}}"">Ministrado</button>          
+    <a href="{!! url('download-documents-weekly', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>  
+    <a href="{!! url('download-payments-weekly', [$credits->id]) !!}" class="btn bg-teal btn-block"><i class="fa fa-calendar"></i> Descargar Calendario de Pagos</a> 
+<!-- End links credit montly -->
     @elseif (($credits->status == 'Cancelar'))  
     <button  class="btn btn-danger btn-block">Cancelado</button></a>    
     @endif

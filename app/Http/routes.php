@@ -643,6 +643,36 @@ Route::get('download-payments-monthly/{id}', function($id) {
   return $pdf->download('Tabla-Pagos.pdf');
 });
 
+Route::get('download-documents-weekly/{id}', function($id) {
+  $credit = App\Models\Credits::find($id);
+  $days = $credit->days;
+  $amount = $credit->authorized_amount;
+  $interest = $credit->interest;
+  $months = $credit->sequence;
+  $capital = $amount/$credit->term;
+  $f = (($amount*$interest)+($amount/$months))/$days;
+  $rest = ceil($f)-$capital;
+
+  $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+  $pdf = PDF::loadView('documentation.case-file-weekly', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
+  return $pdf->download('expediente.pdf');
+});
+
+Route::get('download-payments-weekly/{id}', function($id) {
+  $credit = App\Models\Credits::find($id);
+  $days = $credit->days;
+  $amount = $credit->authorized_amount;
+  $interest = $credit->interest;
+  $months = $credit->sequence;
+  $capital = $amount/$credit->term;
+  $f = (($amount*$interest)+($amount/$months))/$days;
+  $rest = ceil($f)-$capital;
+
+  $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+  $pdf = PDF::loadView('documentation.payments-weekly', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
+  return $pdf->download('Tabla-Pagos.pdf');
+});
+
 Route::get('editCredits/{id}/',[
   'as' => 'credits.editCredits',
   'uses' => 'CreditsController@editCredits',

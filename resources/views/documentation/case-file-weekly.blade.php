@@ -285,7 +285,7 @@ $avals = $credit->accredited->avals;
 $holidays = App\Models\Holidays::all();
 $dateToday = new \Carbon\Carbon($credit->date_ministration);
 for ($i = 0; $i <=$credit->term ; $i++){
-	$dateToday->addDays(28); 
+	$dateToday->addWeek(); 
 
 	$fechaPago[$i] = $dateToday->toDateString();
 
