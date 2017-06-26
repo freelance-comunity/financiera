@@ -751,3 +751,14 @@ Route::get('print-cut-promoter', function() {
   return $pdf->stream();
 });
 
+Route::get('fondo',function(){
+$anchorings = App\Models\Anchoring::select('amount_resource','id')->first();
+$div = $anchorings->amount_resource;
+echo $div;
+echo "<br>";
+if ($div <=6000) {
+ echo '50%';
+}elseif ($div = 12000) {
+  echo "100%";
+}
+});

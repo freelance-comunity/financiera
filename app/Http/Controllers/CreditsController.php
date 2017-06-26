@@ -92,6 +92,7 @@ class CreditsController extends AppBaseController
 		$accredited = $request->input('accredited_id');
 		$accrediteds = Accredited::find($accredited);
 		$product = Product::find($request->input('type_product'));
+		$anchorings = Anchoring::select('amount_resource','id')->first();
 		if ($request->input('term') > $product->maximum_term) {
 			Alert::error('El plazo máximo en días ha sido rebasado')->persistent('Cerrar');			
 			return redirect()->back()->withInput($request->all());		
@@ -104,6 +105,9 @@ class CreditsController extends AppBaseController
 		}
 		elseif ($request->input('authorized_amount') > $product->maximum_amount) {
 			Alert::error('El monto autorizado máximo es de $15000')->persistent('Cerrar');			
+			return redirect()->back()->withInput($request->all());
+		}elseif ($request->input('amount_requested') > $anchorings->amount_resource) {
+			Alert::error('No cuentas con fondos suficientes')->persistent('Cerrar');			
 			return redirect()->back()->withInput($request->all());
 		}
 		/*elseif ($request->input('authorized_amount') < $product->minimum_amount) {
@@ -211,6 +215,11 @@ class CreditsController extends AppBaseController
 
 
 			if ($status == 'Ministrado' and $frequency == "Diario" ) {
+				$anchoring = Anchoring::select('amount_resource','id')->first();
+				$newAmount = $anchoring->amount_resource - $credits->authorized_amount;
+				$newAnchoring = Anchoring::find($anchoring->id);
+				$newAnchoring->amount_resource = $newAmount;
+				$newAnchoring->save();
 				$debt = new Debt;
 				$debt->ammount = $credits->authorized_amount;
 				$debt->status = "Pendiente";
@@ -244,6 +253,11 @@ class CreditsController extends AppBaseController
 			}
 			elseif ($status == 'Ministrado' and $frequency == 'Diario cuota') 
 			{
+				$anchoring = Anchoring::select('amount_resource','id')->first();
+				$newAmount = $anchoring->amount_resource - $credits->authorized_amount;
+				$newAnchoring = Anchoring::find($anchoring->id);
+				$newAnchoring->amount_resource = $newAmount;
+				$newAnchoring->save();
 				$debt = new Debt;
 				$debt->ammount = $credits->authorized_amount;
 				$debt->status = "Pendiente";
@@ -278,6 +292,17 @@ class CreditsController extends AppBaseController
 				}
 
 			}
+		}
+
+		if ($credits->status == 'Cancelar') {
+			$anchoring = Anchoring::select('amount_resource','id')->first();
+			$newAmount = $anchoring->amount_resource + $credits->authorized_amount;
+			$newAnchoring = Anchoring::find($anchoring->id);
+			$newAnchoring->amount_resource = $newAmount;
+			$newAnchoring->save();
+
+			
+		
 		}
 		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
 

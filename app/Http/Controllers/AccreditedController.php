@@ -306,6 +306,7 @@ class AccreditedController extends AppBaseController
 		$references = $accredited->references;
 		$economic = $accredited->economic;
 		$anchoring = Anchoring::all();
+		$anchorings = Anchoring::select('amount_resource','id')->first();
 
 		if ($aval->count() == 0 or $address->count() == 0 or $micros->count() == 0 or $study->count() == 0 or $references->count() == 0 or is_null($economic)) {
 			Alert::error('Este acreditado no cuenta con los datos registrados para la solicitud de un prestamo')->persistent('Cerrar');
@@ -315,6 +316,9 @@ class AccreditedController extends AppBaseController
 			return redirect('allacrediteds');
 		}elseif ($anchoring->count() == 0) {
 			Alert::error('Actualmente no se cuenta con Fondeo')->persistent('Cerrar');
+			return redirect('allacrediteds');
+		}elseif ($anchorings->amount_resource <1000) {
+			Alert::error('Actualmente no se cuenta con dinero')->persistent('Cerrar');
 			return redirect('allacrediteds');
 		}
 		else{
