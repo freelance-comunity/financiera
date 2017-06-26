@@ -52,7 +52,7 @@ Lista de acreditados
                 @else
                 @foreach ($products as $product)
                 <div class="form-group col-sm-6 col-lg-6">
-                  <a href="{{ url('creditsAccredited') }}/{{$accredited->id}}/{{$product->id}}" ><button type="button" class="btn btn-block btn-success">{{$product->name}}</button></a>
+                  <a href="{{ url('creditsAccredited') }}/{{$accredited->id}}/{{$product->id}}" ><button type="button" class="btn btn-block bg-navy">{{mb_strtoupper($product->name)}}</button></a>
                 </div>
                 @endforeach
                 @endif

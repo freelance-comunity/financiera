@@ -113,7 +113,7 @@ $atrasado = App\Models\Payments::all();
 							<tbody>
 								@foreach ($credits as $credit)
 								<tr>
-									<td><a href="{!! route('credits.show', [$credit->id]) !!}">S-{{$credit->id}}</a></td>
+									<td><a href="{!! route('credits.show', [$credit->id]) !!}">{{$credit->id}}</a></td>
 									<td>{{$credit->accredited->name}} {{$credit->accredited->last_name}}</td>
 									<td>
 										@if ($credit->status === 'Revisión') 
