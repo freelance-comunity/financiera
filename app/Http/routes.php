@@ -39,7 +39,7 @@
       $html = $html->render();
       return \Response::json($html);
     });
-  
+
     Route::get('/rolescreate', function() {
       $propietario = new App\Role();
       $propietario->name         = 'propietario';
@@ -568,6 +568,21 @@ Route::get('download-documents/{id}', function($id) {
   return $pdf->download('expediente.pdf');
 });
 
+Route::get('download-payments/{id}', function($id) {
+  $credit = App\Models\Credits::find($id);
+  $days = $credit->days;
+  $amount = $credit->authorized_amount;
+  $interest = ($credit->interest)*1.16;
+  $months = $credit->sequence;
+  $capital = $amount/$credit->term;
+  $f = (($amount*$interest)+($amount/$months))/$days;
+  $rest = ceil($f)-$capital;
+
+  $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+  $pdf = PDF::loadView('documentation.payments', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
+  return $pdf->download('Tabla-Pagos.pdf');
+});
+
 Route::get('download-documents-cuota/{id}', function($id) {
   $credit = App\Models\Credits::find($id);
   $days = $credit->days;
@@ -581,6 +596,21 @@ Route::get('download-documents-cuota/{id}', function($id) {
   $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
   $pdf = PDF::loadView('documentation.case-file-cuota', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
   return $pdf->download('expediente.pdf');
+});
+
+Route::get('download-payments-cuota/{id}', function($id) {
+  $credit = App\Models\Credits::find($id);
+  $days = $credit->days;
+  $amount = $credit->authorized_amount;
+  $interest = ($credit->interest)*1.16;
+  $months = $credit->sequence;
+  $capital = $amount/$credit->term;
+  $f = (($amount*$interest)+($amount/$months))/$days;
+  $rest = ceil($f)-$capital;
+
+  $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+  $pdf = PDF::loadView('documentation.payments-cuota', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
+  return $pdf->download('Tabla-Pagos.pdf');
 });
 
 Route::get('editCredits/{id}/',[
@@ -720,4 +750,4 @@ Route::get('print-cut-promoter', function() {
   $pdf->loadHTML('<h1>Test</h1>');
   return $pdf->stream();
 });
- 
+

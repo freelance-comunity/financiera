@@ -17,7 +17,12 @@
 		p{
 			text-align: justify;
 			text-justify: inter-word;
-			font-size: 15px;
+			font-size: 11px;
+		}
+		.title
+		{
+			text-align: justify;
+			font-size: 14px;	
 		}
 		.demo {
 			width:100%;
@@ -75,6 +80,16 @@
 		{
 			width: 50%;
 		}
+		.one
+		{
+			float: left;
+			width: 50%;
+		}
+		.two
+		{
+			float: right;
+			width: 50%;
+		}
 	</style>
 </head>
 <body>
@@ -94,14 +109,14 @@
 <p style="text-align: center"><strong>CONTRATO DE CRÉDITO</strong>
 </p>
 <p align="justify">
-En la ciudad de Villaflores, Chiapas, México, siendo las {{ Date::now()->format(' H:i:s') }} horas del día {{$credit->date_ministration}}, se reúnen en calidad de “Acreedor” Solución y Crecimiento
-Empresarial S.A. de C.V. representado por el LEA Víctor Manuel Salazar Molina y el (a)
-Sr.(a.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} en calidad de “Acreditado y/o Garante Prendario”, asi
-mismo el (a) Sr.(a.) Damaris Isamar Corzo Camas como “Obligado Solidario y/o Garante
-Prendario”, todos con capacidad legal para celebrar el presente CONTRATO DE
-CREDITO SIMPLE DIARIO CON OBLIGACION SOLIDARIA Y GARANTIA
-PRENDARIA, cuyos nombres y firmas aparecen en el apartado de firmas del presente
-contrato de conformidad con las declaraciones y clausulas siguientes:
+	En la ciudad de Villaflores, Chiapas, México, siendo las {{ Date::now()->format(' H:i:s') }} horas del día {{$credit->date_ministration}}, se reúnen en calidad de “Acreedor” Solución y Crecimiento
+	Empresarial S.A. de C.V. representado por el LEA Víctor Manuel Salazar Molina y el (a)
+	Sr.(a.) {{ $credit->accredited->name}} {{$credit->accredited->last_name}} en calidad de “Acreditado y/o Garante Prendario”, asi
+	mismo el (a) Sr.(a.) Damaris Isamar Corzo Camas como “Obligado Solidario y/o Garante
+	Prendario”, todos con capacidad legal para celebrar el presente CONTRATO DE
+	CREDITO SIMPLE DIARIO CON OBLIGACION SOLIDARIA Y GARANTIA
+	PRENDARIA, cuyos nombres y firmas aparecen en el apartado de firmas del presente
+	contrato de conformidad con las declaraciones y clausulas siguientes:
 </p>
 <p style="text-align: center"><strong>DECLARACIONES</strong>
 </p>
@@ -252,36 +267,20 @@ $avals = $credit->accredited->avals;
 	intervinieron.
 </p>
 <br>
-<p style="text-align: center"><strong>LEA. Víctor Manuel Salazar Molina</strong><br><strong>Representante Legal</strong><br><strong>Solución y Crecimiento Empresarial S.A. de C.V. </strong>
+<p class="title" style="text-align: center"><strong>LAE. Víctor Manuel Salazar Molina</strong><br><strong>Representante Legal</strong><br><strong>Solución y Crecimiento Empresarial S.A. de C.V. </strong>
 </p>
 <br><br><br>
-<p style="text-align: left"><strong>Sr.(a) {{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Sr. (a) {{$credit->aval}}</strong>
+<p class="title" style="text-align: center;"><strong>Sr.(a) {{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Sr. (a) {{$credit->aval}}</strong>
 	<br><strong>ACREDITADO” Y/O “GARANTE </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>OBLIGADO SOLIDARIO Y/O GARANTE</strong> <br>
 	<strong>PRENDARIO</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>PRENDARIO</strong>
 </p>
 <br><br>
-<p style="text-align: center"><strong>TESTIGOS</strong>
+<p class="title" style="text-align: center"><strong>TESTIGOS</strong>
 </p><br><br>
 
-<p style="text-align: left; "><strong>{{$credit->adviser}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Ing. Julio Octavio Medina de la Cruz</strong>
-
+<p class="title" style="text-align: center; "><strong>{{$credit->adviser}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>C.P. Saul Cruz Teco</strong>
 </p>
-
-
 <div class="page-break"></div>
-<header class="clearfix">
-	<div id="logo">
-		<img src="{{asset('img/pdf/logo_sc.png')}}">
-	</div>
-	<div id="company">
-		<strong><h2 class="name">CALENDARIO DE PAGOS</h2></strong>
-		<h2 class="name">SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S.A. DE C.V.</h2>
-		<div>Av. Central  Poniente #119, Villaflores, Chiapas C.P. 30470</div>
-		<div>(965) 652-0397</div>
-		<div>contacto@sc-empresarial.com.mx</div>
-	</div>
-</div>
-</header>
 <?php 
 $holidays = App\Models\Holidays::all();
 $dateToday = new \Carbon\Carbon($credit->date_ministration);
@@ -301,45 +300,6 @@ for ($i = 0; $i <=$credit->term ; $i++){
 
 }
 ?>	
-<table class="demo">
-	<caption>
-		<p>CLIENTE: <strong>{{$credit->accredited->name}} {{$credit->accredited->last_name}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  PROMOTOR: <strong>{{$credit->accredited->user->name}} {{$credit->accredited->user->last_name}}</strong></p>
-	</caption>
-	<caption>
-		<p>FECHA DE MINISTRACIÓN: <strong>{{$credit->date_ministration}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </strong></p>
-	</caption>
-	<caption>
-		<p>MONTO: <strong>${{$credit->authorized_amount}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FRECUENCIA:<strong>{{$credit->term}} días</strong></p>
-	</caption>
-	<thead>
-		<tr>
-			<th>No. DE PAGO</th>
-			<th>FECHA</th>
-			<th>CAPITAL</th>
-			<th>INTERES</th>
-			<th>TOTAL PAGO</th>
-			<th>FIRMA DE RECIBIDO</th>
-		</tr>
-	</thead>
-	<tbody>
-
-		@for ($j = 1; $j <= $credit->term; $j++)
-		<tr> 
-			<td>&nbsp;{{$j}}</td>
-			<td>&nbsp;{{ $fechaPago[$j-1] }}</td>
-			<td>&nbsp;{{ number_format($capital,2)}}</td>
-			<td>&nbsp;{{ number_format($rest,2)}}</td>
-			<td>&nbsp;{{ number_format(ceil($f),2)}}</td>
-			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		</tr>
-
-
-		@endfor
-	</tbody>
-</table>
-<h1 style="text-align: center;">"EVITE RECARGOS PAGUE PUNTUAL"</h1>
-<h2 style="text-align: center;">SE LE RECUERDA QUE EL HORARIO DE ATENCIÓN ES DE 9:00 DE LA MAÑANA A 4:30 DE LA TARDE DE LUNES A VIERNES.</h2>
-<div class="page-break"></div>
 <header class="clearfix">
 	<div id="logo">
 		<img src="{{asset('img/pdf/logo_sc.png')}}">

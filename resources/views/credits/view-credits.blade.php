@@ -25,7 +25,7 @@ Lista de solicitudes
         <th>Interés</th>
         <th>Promotor</th>
         <th>Fecha de Ministración</th>
-        <th width="50px">Estatus</th>
+        <th width="50px">Estatus / Opciones</th>
         <th>Ver crédito</th>
       </thead>
       <tbody>
@@ -111,13 +111,17 @@ Lista de solicitudes
         @if ($credits->status === 'Revisión') 
         <a href="{!! route('credits.edit', [$credits->id]) !!}"/><button class="btn btn btn-warning btn-block">Revisión</button></a>
         @elseif ($credits->status === 'Aprobado')
-        <button  class="btn btn-info btn-block" data-toggle="modal" data-target="#myModal{{$credits->id}}">Aprobado</button></a>          
+        <button  class="btn btn-info btn-block" data-toggle="modal" data-target="#myModal{{$credits->id}}">Aprobado</button></a>   
+        <!-- Process documents diary -->
         @elseif (($credits->status == 'Ministrado') && ($credits->days == '30'))
         <button class="btn btn-success btn-block disabled">Ministrado</button>        
         <a href="{!! url('download-documents', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>
+        <a href="{!! url('download-payments', [$credits->id]) !!}" class="btn bg-teal btn-block"><i class="fa fa-calendar"></i> Descargar tabla de pagos</a>
+        <!-- Process documents diary cuot -->
         @elseif (($credits->status == 'Ministrado') && ($credits->days == '20'))
         <button class="btn btn-success btn-block disabled">Ministrado</button>          
-        <a href="{!! url('download-documents-cuota', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>        
+        <a href="{!! url('download-documents-cuota', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a> 
+        <a href="{!! url('download-payments-cuota', [$credits->id]) !!}" class="btn bg-teal btn-block"><i class="fa fa-calendar"></i> Descargar tabla de pagos</a>       
         @endif
 
       </td>
