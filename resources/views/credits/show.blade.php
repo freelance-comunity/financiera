@@ -78,11 +78,13 @@ SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S. A. DE C. V.
                   <td>{{$credits->warranty}}</td>
                   <td>
                    @if ($credits->status === 'Revisión') 
-                   <a href="{!! route('credits.edit', [$credits->id]) !!}"><span class="label label-warning">Revisión</span></a>
+                   <span class="label label-warning">Revisión</span>
                    @elseif ($credits->status === 'Aprobado')
-                   <a href="{!! route('credits.edit', [$credits->id]) !!}"><span  class="label label-info">Aprobado</span></a>          
+                   <span  class="label label-info">Aprobado</span>        
                    @elseif ($credits->status == 'Ministrado')
-                   <span class="label label-success">Ministrado</span>          
+                   <span class="label label-success">Ministrado</span>   
+                   @elseif ($credits->status == 'Cancelar')    
+                    <span class="label label-danger">Cancelado</span>  
                    @endif</td>
                  </td>
                </tr>

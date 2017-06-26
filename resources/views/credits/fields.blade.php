@@ -123,124 +123,58 @@ $count = $credits->where('status', 'Ministrado')->count();
         {!! Form::label('warranty_value', 'Valor de la garantía:') !!}
         {!! Form::text('warranty_value', null, ['class' => 'form-control']) !!}
     </div>
-   
-<!--- Sequence Field --->
+   @if ($product->modality == "Diario")
+       <script>
+        function diario(sel)
+        {
+            //alert(sel.value);
+            var x = sel.value * 30;
+            document.getElementById('output').value=x;
+        }
+    </script>
+       <!--- Sequence Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('sequence', 'Frecuencia en:') !!}       
-   <select id="status" onChange="mostrar(this.value);" name="sequence"  style="width:350px" class="form-control">
-   @if ($product->modality == "Diario")
-       <optgroup label="Diario">
+   <select onchange="diario(this);" name="sequence"  style="width:350px" class="form-control">
+       <option value="0" selected="selected">Selecciona frecuencia</option>
         <option value="1">1 mes </option>
         <option value="1.5">1.5 meses</option>
         <option value="2">2 meses</option>
         <option value="3">3 meses</option>
         <option value="4">4 meses</option>
         <option value="6">6 meses</option>
-      </optgroup>
-   @else      
-      <optgroup label="Diario Cuota">
+    </select>
+    </div>
+
+     <div   class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('term', 'Plazo en días:') !!}     
+       <input type="text" name="term"   id="output" readonly class="form-control">  
+       </div>
+    @elseif($product->modality == "Diario cuota")
+     <script>
+        function cuota(sel)
+        {
+            //alert(sel.value);
+            var x = sel.value * 20;
+            document.getElementById('cuotas').value=x;
+        }
+    </script>
+    <!--- Sequence Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('sequence', 'Frecuencia en:') !!}       
+   <select onchange="cuota(this);" name="sequence"  style="width:350px" class="form-control">
+      <option value="0" selected="selected">Selecciona frecuencia</option>
         <option value="1"> 1 mes</option>
         <option value="1.5">1.5 meses</option>
         <option value="2.25"> 2.25 meses</option>
         <option value="3"> 3 meses</option>
          <option value="4.5"> 4.5 meses</option>
-      </optgroup>
-    @endif
     </select>
     </div>
-    <script>
-   
-    function mostrar(id) {
-    
-    if (id == "1") {
-        $("#1").show();  
-        $("#2").hide();
-        $("#3").hide();  
-        $("#4").hide();  
-        $("#6").hide();  
-       
-    }
-    if (id == "2") {
-        $("#1").hide();  
-        $("#2").show();
-        $("#3").hide();  
-        $("#4").hide();  
-        $("#6").hide(); 
-       
-    }
-    if (id == "3") {
-        $("#1").hide();  
-        $("#2").hide();
-        $("#3").show();  
-        $("#4").hide();  
-        $("#6").hide();
-        
-    }
-    if (id == "4") {
-        $("#1").hide();  
-        $("#2").hide();
-        $("#3").hide();  
-        $("#4").show();  
-        $("#6").hide(); 
-        
-    }
-    if (id == "6") {
-        $("#1").hide();  
-        $("#2").hide();
-        $("#3").hide();  
-        $("#4").hide();  
-        $("#6").show();
-               
-    }
-    if (id == "2.25") {
-        $("#1").hide();  
-        $("#1.5").hide();
-        $("#2.25").show();
-       
-    }
-   
-}
-</script>
-@if ($product->modality == "Diario")
-    <!--- Term Field --->
-    <div id="1" style="display: none;" class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('term', 'Plazo en días:') !!}     
-      <input type="text" name="term"   value="30" readonly class="form-control">  
-       </div>  
-       
-    <div id="2" style="display: none;" class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('term', 'Plazo en días:') !!}     
-      <input type="text" name="term"   value="60" readonly class="form-control">  
-       </div>  
-       <div id="3" style="display: none;" class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('term', 'Plazo en días:') !!}     
-      <input type="text" name="term"   value="90" readonly class="form-control">  
-       </div>  
-       <div id="4" style="display: none;" class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('term', 'Plazo en días:') !!}     
-      <input type="text" name="term"   value="120" readonly class="form-control">  
-       </div>
-        <div id="6" style="display: none;" class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('term', 'Plazo en días:') !!}     
-      <input type="text" name="term"   value="180" readonly class="form-control">  
-       </div>  
-      
-      
-   @else      
-       <div id="1" style="display: none;" class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('term', 'Plazo en cuotas:') !!}      
-      <input type="text" name="term"   value="20" readonly class="form-control">  
-       </div>  
-        <div id="2.25" style="display: none;" class="form-group col-sm-6 col-lg-4">
+        <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('term', 'Plazo en cuotas:') !!}     
-      <input type="text" name="term"   value="60" readonly class="form-control">  
-       </div>  
-       <div id="3" style="display: none;" class="form-group col-sm-6 col-lg-4">
-        {!! Form::label('term', 'Plazo en cuotas:') !!}     
-      <input type="text" name="term"   value="60" readonly class="form-control">  
-       </div>  
-
-    
+       <input type="text" name="term"    id="cuotas" readonly class="form-control">  
+       </div>          
     @endif
 
     <!--- Frequency Payment Field --->
