@@ -5,6 +5,17 @@
         return redirect('login');
       });
 
+      Route::get('test-debt', function() {
+          $debt = App\Models\Debt::find(11);
+          $payments = $debt->payments;
+          foreach ($payments as $key => $value) {
+            $payment_delete = App\Models\Payments::find($value->id);
+            $payment_delete->delete();
+          }
+          $debt->delete();
+          return "Listo";
+      });
+
       Route::group(['middleware' => 'auth'], function () {
         
         Route::get('lockscreen', 'LockAccountController@lockscreen');
