@@ -122,7 +122,7 @@ class CreditsController extends AppBaseController
 			$credits = $accrediteds->credits;
 			return view('credits.show')
 			->with('credits', $credits);
-		}		
+		}	
 	}
 
 	/**
@@ -206,7 +206,15 @@ class CreditsController extends AppBaseController
 			$frequency = $credits->frequency_payment;
 			$days = $credits->days;
 			$amount = $credits->authorized_amount;
-			$interest = ($credits->interest)*1.16;
+			if ($frequency == "Mensual") {
+				$interest = $credits->interest;
+			}
+			elseif ($frequency == "Semanal") {
+				$interest = $credits->interest;
+			}
+			else{
+				$interest = ($credits->interest)*1.16;				
+			}
 			$months = $credits->sequence;
 			$f = (($amount*$interest)+($amount/$months))/$days;
 			$date = new Carbon($credits->date_ministration);
@@ -292,6 +300,72 @@ class CreditsController extends AppBaseController
 				}
 
 			}
+			elseif ($status == 'Ministrado' and $frequency == 'Mensual') 
+			{
+				$debt = new Debt;
+				$debt->ammount = $credits->authorized_amount;
+				$debt->status = "Pendiente";
+				$debt->credits_id = $credits->id;
+				$debt->save();
+				for ($i=1; $i <= $credits->term; $i++) { 
+					$var = $date->addDays(28);
+
+					$fechaPago[$i] = $date->toDateString();
+					$payment = new Payments;
+					$payment->number = $i;
+					$payment->ammount = ceil($f);
+					$payment->surcharge = '0';
+					$payment->total = ceil($f) + 0; 
+					$payment->status = "Pendiente";
+					foreach ($holidays as $value) {
+						if ($value->date == $fechaPago[$i]){
+							$date->addDay();
+							$fechaPago[$i] = $date->toDateString();
+
+						}
+					}
+					$payment->payment_date = $var;
+					$payment->debt_id = $debt->id;
+					$payment->user_id = $user->id;
+					$payment->branch_id = $user->branch_id;
+					$payment->save();
+
+				}
+
+			}
+			elseif ($status == 'Ministrado' and $frequency == 'Semanal') 
+			{
+				$debt = new Debt;
+				$debt->ammount = $credits->authorized_amount;
+				$debt->status = "Pendiente";
+				$debt->credits_id = $credits->id;
+				$debt->save();
+				for ($i=1; $i <= $credits->term; $i++) { 
+					$var = $date->addWeek();
+
+					$fechaPago[$i] = $date->toDateString();
+					$payment = new Payments;
+					$payment->number = $i;
+					$payment->ammount = ceil($f);
+					$payment->surcharge = '0';
+					$payment->total = ceil($f) + 0; 
+					$payment->status = "Pendiente";
+					foreach ($holidays as $value) {
+						if ($value->date == $fechaPago[$i]){
+							$date->addDay();
+							$fechaPago[$i] = $date->toDateString();
+
+						}
+					}
+					$payment->payment_date = $var;
+					$payment->debt_id = $debt->id;
+					$payment->user_id = $user->id;
+					$payment->branch_id = $user->branch_id;
+					$payment->save();
+
+				}
+
+			}
 		}
 
 		if ($credits->status == 'Cancelar') {
@@ -301,9 +375,11 @@ class CreditsController extends AppBaseController
 			$newAnchoring->amount_resource = $newAmount;
 			$newAnchoring->save();
 
-			
-		
+			$payment = Debt::find($id)->payments()->delete();
+			Debt::destroy($id);
+
 		}
+
 		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('credits.index'));	

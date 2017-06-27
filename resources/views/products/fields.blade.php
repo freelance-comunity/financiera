@@ -55,7 +55,7 @@
 <!--- Days Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('days', 'Días:') !!}
-    {!! Form::select('days', ['20' => '20', '30' => '30'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('days', ['1' => '1', '4' => '4', '20' => '20', '30' => '30'], null, ['class' => 'form-control']) !!}
 </div>
 
 

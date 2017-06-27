@@ -13,7 +13,7 @@
     <!--- Date Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('date', 'Fecha de solicitud:') !!}
-        <input type="date" value="{{ old('date') }}" name="date" class="form-control">
+        <input type="date" id="theDate" value="{{ old('date') }}" name="date" class="form-control">
          <input type="hidden" name="accredited_id" value="{{ $accredited->id}}">
     </div>
 
@@ -175,6 +175,60 @@ $count = $credits->where('status', 'Ministrado')->count();
         {!! Form::label('term', 'Plazo en cuotas:') !!}     
        <input type="text" name="term"    id="cuotas" readonly class="form-control">  
        </div>          
+    @elseif($product->modality == "Mensual")
+     <script>
+        function monthly(sel)
+        {
+            //alert(sel.value);
+            var x = sel.value * 1;
+            document.getElementById('months').value=x;
+        }
+    </script>
+    <!--- Sequence Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('sequence', 'Frecuencia en:') !!}       
+   <select onchange="monthly(this);" name="sequence"  style="width:350px" class="form-control">
+      <option value="0" selected="selected">Selecciona frecuencia</option>
+        <option value="1">1 mes</option>
+        <option value="2">2 meses</option>
+        <option value="3">3 meses</option>
+         <option value="4">4 meses</option>
+         <option value="5">5 meses</option>
+         <option value="6">6 meses</option>
+    </select>
+    </div>
+        <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('term', 'Plazo en meses:') !!}     
+       <input type="text" name="term" id="months" readonly class="form-control">  
+       </div>
+       @elseif($product->modality == "Semanal")
+     <script>
+        function monthly(sel)
+        {
+            //alert(sel.value);
+            var x = sel.value * 4;
+            document.getElementById('months').value=x;
+        }
+    </script>
+    <!--- Sequence Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('sequence', 'Frecuencia en:') !!}       
+   <select onchange="monthly(this);" name="sequence"  style="width:350px" class="form-control">
+      <option value="0" selected="selected">Selecciona frecuencia</option>
+        <option value="1">1 mes</option>
+        <option value="1.5">1.5 meses</option>
+        <option value="2">2 meses</option>
+        <option value="2.5">2.5 meses</option>
+        <option value="3">3 meses</option>
+         <option value="4">4 meses</option>
+         <option value="5">5 meses</option>
+         <option value="6">6 meses</option>
+    </select>
+    </div>
+        <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('term', 'Plazo en semanas:') !!}     
+       <input type="text" name="term" id="months" readonly class="form-control">  
+       </div>      
     @endif
 
     <!--- Frequency Payment Field --->
@@ -182,15 +236,28 @@ $count = $credits->where('status', 'Ministrado')->count();
         {!! Form::label('frequency_payment', 'Frecuencia de pago:') !!}       
         {!! Form::text('frequency_payment', $product->modality, ['class' => 'form-control', 'readonly']) !!}       
     </div>
-
+@if ($product->modality == "Mensual")
     <!--- Interest Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('interest', 'Selecciona Interés:') !!}
+        {!! Form::select('interest', ['0.05' => '5%', '0.06' => '6%', '0.08' => '8%'],null, ['class' => 'form-control']) !!}
+    </div>
+@elseif($product->modality == "Semanal")
+    <!--- Interest Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('interest', 'Selecciona Interés:') !!}
+        {!! Form::select('interest', ['0.05' => '5%', '0.06' => '6%', '0.08' => '8%'],null, ['class' => 'form-control']) !!}
+    </div>
+@else
+<!--- Interest Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('interest', 'Interés:') !!}
         {!! Form::text('interest', $product->cup_interest, ['class' => 'form-control', 'readonly']) !!}
     </div>
-   
+@endif
+  
        
-         <input type="hidden" name="days" value="{{$product->days}}">
+    <input type="hidden" name="days" value="{{$product->days}}">
   
     @php
         $user = $accredited->user;
