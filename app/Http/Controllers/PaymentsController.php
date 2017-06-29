@@ -177,4 +177,6 @@ class PaymentsController extends AppBaseController
 		Alert::success('Pago realizado exitosamente')->persistent('Cerrar');
 		return redirect()->back();
 	}
+
+	
 }

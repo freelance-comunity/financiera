@@ -23,6 +23,8 @@ class AccountController extends AppBaseController
 	 public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('lock');
+        $this->middleware('is_admin');
     }
 
 	public function index(Request $request)

@@ -18,6 +18,7 @@ class Moratorium extends Model
 		"expiration_to",
 		"justification",
 		"credit_id"
+		
 	];
 
 	public static $rules = [

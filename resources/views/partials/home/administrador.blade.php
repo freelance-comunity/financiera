@@ -2,6 +2,7 @@
 $accrediteds = App\Models\Accredited::all()->count();
 $credits = App\Models\Credits::where('status','Ministrado')->count();
 $atrasado = App\Models\Payments::all();
+$anchorings = App\Models\Anchoring::select('amount_resource','id')->first();
 @endphp
 <!-- Info boxes -->
 <div class="row">
@@ -9,7 +10,7 @@ $atrasado = App\Models\Payments::all();
 		<!-- small box -->
 		<div class="small-box bg-olive">
 			<div class="inner">
-				<h3>90 %</h3>
+				<h3>${{number_format($anchorings->amount_resource)}}</h3>
 
 				<p>Crédito Disponible</p>
 			</div>

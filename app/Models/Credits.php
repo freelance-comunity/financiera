@@ -116,6 +116,9 @@ class Credits extends Model
     	return $this->hasOne('App\Models\Debt');
     } 
 
-    
+     public function condonations()
+    {
+        return $this->belongsTo('App\Models\Condonation');
+    }
 
 }

@@ -46,5 +46,9 @@ class Payments extends Model
     {
         return $this->belongsTo('App\Models\Branch');
     }
+    public function condonations()
+    {
+        return $this->belongsTo('App\Models\Condonation');
+    }
 
 }

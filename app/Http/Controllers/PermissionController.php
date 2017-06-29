@@ -26,6 +26,7 @@ class PermissionController extends AppBaseController
     {
         $this->middleware('auth');
         $this->middleware('lock');
+        $this->middleware('is_admin');
     }
     
 	public function index(Request $request)
