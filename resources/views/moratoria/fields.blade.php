@@ -2,8 +2,10 @@
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('date', 'Fecha:') !!}
      <input type="date" value="{{ old('date') }}" name="date" class="form-control">
+     <input type="hidden" name="credit_id" value="{{ $credit->id}}">
    
 </div>
+
 
 <!--- Surcharges Field --->
 <div class="form-group col-sm-6 col-lg-4">
@@ -14,13 +16,13 @@
 <!--- Expiration From Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('expiration_from', 'Vencimientos del:') !!}
-    {!! Form::text('expiration_from', null, ['class' => 'form-control']) !!}
+     <input type="date" value="{{ old('expiration_from') }}" name="expiration_from" class="form-control">
 </div>
 
 <!--- Expiration To Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('expiration_to', 'Al:') !!}
-    {!! Form::text('expiration_to', null, ['class' => 'form-control']) !!}
+    <input type="date" value="{{ old('expiration_to') }}" name="expiration_to" class="form-control">
 </div>
 
 <!--- Justification Field --->
@@ -32,5 +34,5 @@
 
 <!--- Submit Field --->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('GUARDAR', ['class' => 'btn btn-primary']) !!}
 </div>

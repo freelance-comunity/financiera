@@ -4,13 +4,6 @@
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
         <li class="treeview">
-            <a href="#"><i class='fa fa-life-ring'></i> <span>Roles y permisos</span> <i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-                <li><a href="{{ url('/roles')}}">Roles</a></li>
-                <li><a href="{{ url('/permissions') }}">Permisos</a></li>   
-            </ul>
-        </li>
-        <li class="treeview">
             <a href="#"><i class='fa fa-building'></i> <span>Compañía</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
                 <li><a href="{{ url('/users') }}">Usuarios</a></li>

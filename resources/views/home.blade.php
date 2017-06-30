@@ -16,5 +16,14 @@ s&c  <small>Version 1.0</small>
 	@role('promotor de credito')
 		@include('partials.home.promotor')
 	@endrole
+	@role('caja')
+		@include('partials.home.caja')
+	@endrole
+	@role('coordinador')
+		@include('partials.home.coordinador')
+	@endrole
+	@role('direccion')
+		@include('partials.home.direccion')
+	@endrole
 	
 @endsection

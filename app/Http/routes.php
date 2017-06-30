@@ -6,18 +6,18 @@
       });
 
       Route::get('test-debt', function() {
-          $debt = App\Models\Debt::find(11);
-          $payments = $debt->payments;
-          foreach ($payments as $key => $value) {
-            $payment_delete = App\Models\Payments::find($value->id);
-            $payment_delete->delete();
-          }
-          $debt->delete();
-          return "Listo";
+        $debt = App\Models\Debt::find(5);
+        $payments = $debt->payments;
+        foreach ($payments as $key => $value) {
+          $payment_delete = App\Models\Payments::find($value->id);
+          $payment_delete->delete();
+        }
+        $debt->delete();
+        return "Listo";
       });
 
-      Route::group(['middleware' => 'auth'], function () {
-        
+     Route::group(['middleware' => 'auth'], function () {
+
         Route::get('lockscreen', 'LockAccountController@lockscreen');
         Route::post('lockscreen', 'LockAccountController@unlock');
 
@@ -38,10 +38,11 @@
           $pdf = PDF::loadView('documentation.contrato', compact('credit','letras'))->setPaper('a4')->setWarnings(false);
           return $pdf->download('contrato.pdf');
         });
-        Route::get('moratorio-pdf/{id}', function($id){
-          $credit = App\Models\Credits::find($id);
-          $pdf = PDF::loadView('documentation.moratorio', compact('credit'))->setPaper('a4','landscape')->setWarnings(false);
-          return $pdf->download('moratorio.pdf');
+        Route::get('condonacion-pdf/{id}', function($id){  
+          $payments = App\Models\Payments::find($id);        
+          $condonation = App\Models\Condonation::find($id);
+          $pdf = PDF::loadView('documentation.condonation', compact('payments','condonation'))->setPaper('a4','landscape')->setWarnings(false);
+          return $pdf->download('condonacion.pdf');
         });
 
         Route::get('testing2', function(Illuminate\Http\Request  $request) {
@@ -525,7 +526,7 @@
    return view('groups.add-member')
    ->with('accrediteds', $accrediteds)
    ->with('group', $group);
-  });
+ });
 
   Route::post('addmembertogroup','GroupController@addMember');
 
@@ -686,6 +687,62 @@
     return $pdf->download('Tabla-Pagos.pdf');
   });
 
+  Route::get('download-payments-biweekly/{id}', function($id) {
+    $credit = App\Models\Credits::find($id);
+    $days = $credit->days;
+    $amount = $credit->authorized_amount;
+    $interest = $credit->interest;
+    $months = $credit->sequence;
+    $capital = $amount/$credit->term;
+    $f = (($amount*$interest)+($amount/$months))/$days;
+    $rest = ceil($f)-$capital;
+
+    $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+    $pdf = PDF::loadView('documentation.payments-biweekly', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
+    return $pdf->download('Tabla-Pagos.pdf');
+  });
+  Route::get('download-documents-biweekly/{id}', function($id) {
+    $credit = App\Models\Credits::find($id);
+    $days = $credit->days;
+    $amount = $credit->authorized_amount;
+    $interest = $credit->interest;
+    $months = $credit->sequence;
+    $capital = $amount/$credit->term;
+    $f = (($amount*$interest)+($amount/$months))/$days;
+    $rest = ceil($f)-$capital;
+
+    $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+    $pdf = PDF::loadView('documentation.case-file-biweekly', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
+    return $pdf->download('expediente.pdf');
+  });
+  Route::get('download-payments-fourteen/{id}', function($id) {
+    $credit = App\Models\Credits::find($id);
+    $days = $credit->days;
+    $amount = $credit->authorized_amount;
+    $interest = $credit->interest;
+    $months = $credit->sequence;
+    $capital = $amount/$credit->term;
+    $f = (($amount*$interest)+($amount/$months))/$days;
+    $rest = ceil($f)-$capital;
+
+    $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+    $pdf = PDF::loadView('documentation.payments-fourteen', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
+    return $pdf->download('Tabla-Pagos.pdf');
+  });
+  Route::get('download-documents-fourteen/{id}', function($id) {
+    $credit = App\Models\Credits::find($id);
+    $days = $credit->days;
+    $amount = $credit->authorized_amount;
+    $interest = $credit->interest;
+    $months = $credit->sequence;
+    $capital = $amount/$credit->term;
+    $f = (($amount*$interest)+($amount/$months))/$days;
+    $rest = ceil($f)-$capital;
+
+    $amount_letter = NumeroALetras::convertir($credit->authorized_amount, 'pesos', 'centavos');
+    $pdf = PDF::loadView('documentation.case-file-fourteen', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
+    return $pdf->download('expediente.pdf');
+  });
   Route::get('editCredits/{id}/',[
     'as' => 'credits.editCredits',
     'uses' => 'CreditsController@editCredits',
@@ -716,7 +773,7 @@
    echo "<br>";
    echo $date;
 
-  });
+ });
 
   Route::resource('moratoria', 'MoratoriumController');
 
@@ -760,12 +817,19 @@
     ->with('payments', $payments)
     ->with('credit', $credit);
   });
-  Route::get('pay-notification/{id}', function($id) {
+  Route::get('payments-lis/{id}', function($id) {
     $credit = App\Models\Credits::find($id);
     $payments = $credit->debt->payments;
     return view('payments.index')
     ->with('payments', $payments)
-    ->with('credit', $credit);
+    ->with('credit', $credit);   
+  });
+  Route::get('pay-notification/{id}', function($id) {
+    $credits = App\Models\Credits::find($id);
+    $payments = $credits->debt->payments;
+    return view('payments.index')
+    ->with('payments', $payments)
+    ->with('credits', $credits);
   });
 
 
@@ -819,6 +883,40 @@
   });
 
 
-  });
+});
 
-      
+
+
+      Route::get('print-cut-promoter', function() {
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
+      });
+
+      Route::get('fondo',function(){
+        $anchorings = App\Models\Anchoring::select('amount_resource','id')->first();
+        $div = $anchorings->amount_resource;
+        echo $div;
+        echo "<br>";
+        if ($div <=6000) {
+         echo '50%';
+       }elseif ($div = 12000) {
+        echo "100%";
+      }
+    });
+
+      Route::resource('condonations', 'CondonationController');
+
+      Route::get('condonations/{id}/delete', [
+        'as' => 'condonations.delete',
+        'uses' => 'CondonationController@destroy',
+        ]);
+
+
+      Route::get('condonation/{id}', function($id) {
+        $credits = App\Models\Credits::find($id);
+        $payments = App\Models\Payments::find($id);
+        return view('condonations.create')
+        ->with('credits',$credits)
+        ->with('payments', $payments);
+      });

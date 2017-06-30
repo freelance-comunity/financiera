@@ -316,6 +316,18 @@ return [
         'term' => [
             'required' => 'El campo plazo en dias es obligatorio.',
         ],
+        'surcharges ' => [
+            'required' => 'El campo recargos es obligatorio.',
+        ],
+        'expiration_from ' => [
+            'required' => 'El campo vencimientos del es obligatorio.',
+        ],
+        'expiration_to ' => [
+            'required' => 'El campo al es obligatorio.',
+        ],
+        'justification ' => [
+            'required' => 'El campo justificación es obligatorio.',
+        ],
     ],
 
     /*

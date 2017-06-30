@@ -307,11 +307,24 @@ class AccreditedController extends AppBaseController
 		$references = $accredited->references;
 		$economic = $accredited->economic;
 		$anchoring = Anchoring::all();
+		$status = 0;
+		foreach ($credits as $value) {
+			if ($value->status == 'Ministrado') {
+				$status ++;
+
+			}
+
+			if ($status == 3) {
+				break;
+			}
+		}
 
 		if ($aval->count() == 0 or $address->count() == 0 or $micros->count() == 0 or $study->count() == 0 or $references->count() == 0 or is_null($economic)) {
 			Alert::error('Este acreditado no cuenta con los datos registrados para la solicitud de un prestamo')->persistent('Cerrar');
 			return redirect('allacrediteds');
-		}elseif ($credits->count() == 3) {
+		}
+
+		elseif ($status == 3) {
 			Alert::error('Este acreditado ya cuenta con tres prestamos')->persistent('Cerrar');
 			return redirect('allacrediteds');
 		}elseif ($anchoring->count() == 0) {

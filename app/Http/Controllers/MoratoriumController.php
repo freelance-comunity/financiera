@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Requests\CreateMoratoriumRequest;
 use App\Models\Moratorium;
+use App\Models\Payments;
 use App\Models\Credits;
 use Illuminate\Http\Request;
 use Mitul\Controller\AppBaseController;
@@ -54,6 +55,7 @@ class MoratoriumController extends AppBaseController
 		
 		return view('moratoria.create');
 		
+		
 	}
 
 	/**
@@ -65,16 +67,17 @@ class MoratoriumController extends AppBaseController
 	 */
 	public function store(CreateMoratoriumRequest $request)
 	{
-        $input = $request->all();
-        $credits = $request->input('credit_id');
+        $input = $request->all();  
+        $credit = $request->input('credit_id');
         $moratoria = Moratorium::find($input);
-		
+		Alert::success('Moratorio creado exitosamente.')->persistent('Cerrar');	
+		$credit = Credits::find($credit);
+		$moratoria = $credit->moratoria;		
 
-		Alert::success('Moratorio creado exitosamente.')->persistent('Cerrar');
-		$credits = Credits::find($credits);
-		$moratorium= $credits->moratoria;
-		
-		return redirect(route('credits.show', [$credits->id]));
+		return view('moratoria.index')->with('moratoria', $moratoria)
+		->with('credit',$credit);
+
+
 	}
 
 	/**

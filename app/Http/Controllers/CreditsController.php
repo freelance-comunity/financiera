@@ -93,6 +93,7 @@ class CreditsController extends AppBaseController
 		$accredited = $request->input('accredited_id');
 		$accrediteds = Accredited::find($accredited);
 		$product = Product::find($request->input('type_product'));
+		$anchorings = Anchoring::select('amount_resource','id')->first();
 		if ($request->input('term') > $product->maximum_term) {
 			Alert::error('El plazo máximo en días ha sido rebasado')->persistent('Cerrar');			
 			return redirect()->back()->withInput($request->all());		
@@ -105,6 +106,9 @@ class CreditsController extends AppBaseController
 		}
 		elseif ($request->input('authorized_amount') > $product->maximum_amount) {
 			Alert::error('El monto autorizado máximo es de $15000')->persistent('Cerrar');			
+			return redirect()->back()->withInput($request->all());
+		}elseif ($request->input('amount_requested') > $anchorings->amount_resource) {
+			Alert::error('No cuentas con fondos suficientes')->persistent('Cerrar');			
 			return redirect()->back()->withInput($request->all());
 		}
 		/*elseif ($request->input('authorized_amount') < $product->minimum_amount) {
@@ -208,6 +212,11 @@ class CreditsController extends AppBaseController
 			}
 			elseif ($frequency == "Semanal") {
 				$interest = $credits->interest;
+			}elseif ($frequency == 'Catorcenal') {
+				$interest = $credits->interest;	
+			}
+			elseif ($frequency == 'Quincenal') {
+				$interest = $credits->interest;
 			}
 			else{
 				$interest = ($credits->interest)*1.16;				
@@ -220,6 +229,11 @@ class CreditsController extends AppBaseController
 
 
 			if ($status == 'Ministrado' and $frequency == "Diario" ) {
+				$anchoring = Anchoring::select('amount_resource','id')->first();
+				$newAmount = $anchoring->amount_resource - $credits->authorized_amount;
+				$newAnchoring = Anchoring::find($anchoring->id);
+				$newAnchoring->amount_resource = $newAmount;
+				$newAnchoring->save();
 				$debt = new Debt;
 				$debt->ammount = $credits->authorized_amount;
 				$debt->status = "Pendiente";
@@ -253,6 +267,11 @@ class CreditsController extends AppBaseController
 			}
 			elseif ($status == 'Ministrado' and $frequency == 'Diario cuota') 
 			{
+				$anchoring = Anchoring::select('amount_resource','id')->first();
+				$newAmount = $anchoring->amount_resource - $credits->authorized_amount;
+				$newAnchoring = Anchoring::find($anchoring->id);
+				$newAnchoring->amount_resource = $newAmount;
+				$newAnchoring->save();
 				$debt = new Debt;
 				$debt->ammount = $credits->authorized_amount;
 				$debt->status = "Pendiente";
@@ -289,6 +308,11 @@ class CreditsController extends AppBaseController
 			}
 			elseif ($status == 'Ministrado' and $frequency == 'Mensual') 
 			{
+				$anchoring = Anchoring::select('amount_resource','id')->first();
+				$newAmount = $anchoring->amount_resource - $credits->authorized_amount;
+				$newAnchoring = Anchoring::find($anchoring->id);
+				$newAnchoring->amount_resource = $newAmount;
+				$newAnchoring->save();
 				$debt = new Debt;
 				$debt->ammount = $credits->authorized_amount;
 				$debt->status = "Pendiente";
@@ -322,6 +346,11 @@ class CreditsController extends AppBaseController
 			}
 			elseif ($status == 'Ministrado' and $frequency == 'Semanal') 
 			{
+				$anchoring = Anchoring::select('amount_resource','id')->first();
+				$newAmount = $anchoring->amount_resource - $credits->authorized_amount;
+				$newAnchoring = Anchoring::find($anchoring->id);
+				$newAnchoring->amount_resource = $newAmount;
+				$newAnchoring->save();
 				$debt = new Debt;
 				$debt->ammount = $credits->authorized_amount;
 				$debt->status = "Pendiente";
@@ -353,7 +382,99 @@ class CreditsController extends AppBaseController
 				}
 
 			}
+			elseif ($status == 'Ministrado' and $frequency == 'Catorcenal') {
+				$anchoring = Anchoring::select('amount_resource','id')->first();
+				$newAmount = $anchoring->amount_resource - $credits->authorized_amount;
+				$newAnchoring = Anchoring::find($anchoring->id);
+				$newAnchoring->amount_resource = $newAmount;
+				$newAnchoring->save();
+				$debt = new Debt;
+				$debt->ammount = $credits->authorized_amount;
+				$debt->status = "Pendiente";
+				$debt->credits_id = $credits->id;
+				$debt->save();
+
+				for ($i=1; $i <= $credits->term; $i++) { 
+					$var = $date->addDays(14);
+
+					$fechaPago[$i] = $date->toDateString();
+					$payment = new Payments;
+					$payment->number = $i;
+					$payment->ammount = ceil($f);
+					$payment->surcharge = '0';
+					$payment->total = ceil($f) + 0; 
+					$payment->status = "Pendiente";
+					foreach ($holidays as $value) {
+						if ($value->date == $fechaPago[$i]){
+							$date->addDay();
+							$fechaPago[$i] = $date->toDateString();
+
+						}
+					}
+					$payment->payment_date = $var;
+					$payment->debt_id = $debt->id;
+					$payment->user_id = $user->id;
+					$payment->branch_id = $user->branch_id;
+					$payment->save();
+
+				}
+			}
+			elseif ($status == 'Ministrado' and $frequency == 'Quincenal') {
+				$anchoring = Anchoring::select('amount_resource','id')->first();
+				$newAmount = $anchoring->amount_resource - $credits->authorized_amount;
+				$newAnchoring = Anchoring::find($anchoring->id);
+				$newAnchoring->amount_resource = $newAmount;
+				$newAnchoring->save();
+				$debt = new Debt;
+				$debt->ammount = $credits->authorized_amount;
+				$debt->status = "Pendiente";
+				$debt->credits_id = $credits->id;
+				$debt->save();
+
+				for ($i=1; $i <= $credits->term; $i++) { 
+					$var = $date->addDays(15);
+
+					$fechaPago[$i] = $date->toDateString();
+					$payment = new Payments;
+					$payment->number = $i;
+					$payment->ammount = ceil($f);
+					$payment->surcharge = '0';
+					$payment->total = ceil($f) + 0; 
+					$payment->status = "Pendiente";
+					foreach ($holidays as $value) {
+						if ($value->date == $fechaPago[$i]){
+							$date->addDay();
+							$fechaPago[$i] = $date->toDateString();
+
+						}
+					}
+					$payment->payment_date = $var;
+					$payment->debt_id = $debt->id;
+					$payment->user_id = $user->id;
+					$payment->branch_id = $user->branch_id;
+					$payment->save();
+
+				}
+			}
 		}
+
+		if ($credits->status == 'Cancelar') {
+			$anchoring = Anchoring::select('amount_resource','id')->first();
+			$newAmount = $anchoring->amount_resource + $credits->authorized_amount;
+			$newAnchoring = Anchoring::find($anchoring->id);
+			$newAnchoring->amount_resource = $newAmount;
+			$newAnchoring->save();
+
+			$debt = Debt::find($id);
+			$payments = $debt->payments;
+			foreach ($payments as $value) {
+				$payment_delete = Payments::find($value->id);
+				$payment_delete->delete();
+			}
+			$debt->delete();
+
+		}
+
 		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
 
 		return redirect(route('credits.index'));	

@@ -102,41 +102,43 @@
 		</div>
 	</div>
 </header>
+
 <p style="text-align: center; text-decoration: underline"><strong>SOLICITUD DE CONDONACIÓN</strong></p>
 <p style=""><strong style="text-align: left; text-decoration: underline">DATOS DEL CREDITO</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<strong style="text-align: center;">FECHA:</strong> 16-06-207</p>
+	<strong style="text-align: center;">FECHA:</strong>{{$condonation->date}}</p>
 	<div style="border: 1px solid black; padding: 5px 5px 5px 80px;; ">
-		<p><strong>Sucursal:</strong> {{$credit->accredited->branch->nomenclature}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Promotor: </strong>{{$credit->adviser}}</p>
-		<p><strong>Cliente: </strong> {{$credit->accredited->name}} {{$credit->accredited->last_name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Monto desembolsado:</strong> ${{number_format($credit->authorized_amount)}}</p>
-		<p><strong>Plazo:</strong> {{$credit->term}} días &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Número de amortizaciones:</strong> {{$credit->term}}</p>
+		<p><strong>Sucursal:</strong> {{$condonation->branch}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Promotor: </strong>{{$condonation->adviser}}</p>
+		<p><strong>Cliente: </strong> {{$condonation->accredited}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Monto desembolsado:</strong> {{$condonation->amount}}</p>
+		<p><strong>Plazo:</strong> {{$condonation->term}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Número de amortizaciones:</strong> {{$condonation->amortization}}</p>
 	</div>
 	<br>
 	<table>
   <tr style="text-align: center;">
     <th>Detalle</th>
-    <th>{{$condonation->ammount}}</th>
+    <th>Monto Condonación</th>
   </tr>
   <tr>
     <td>Recargos</td>
-    <td>Un chingo de dinero</td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$condonation->surcharges}}</td>
   </tr>
   <tr>
+  
     <td><strong>TOTAL</strong></td>
-    <td>Si arriba es un chingo aca es un putero</td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$condonation->surcharges}}</td>
   </tr>
 </table>
 <br>
-<p>Correspondiente a los vencimientos del <label style="text-decoration: underline;"> 25 de Junio de 2017</label> al  <label style="text-decoration: underline;">28 de Octubre de 2017</label>
+<p>Correspondiente a los vencimientos del <label style="text-decoration: underline;"> {{$condonation->date_to}}</label> hasta  <label style="text-decoration: underline;">{{$condonation->date_at}}</label>
 </p>
 <p><strong>JUSTIFICACIÓN DEL PROMOTOR DE CREDITO:
 </strong></p>
 <p style="text-decoration: underline;">
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum natus quia officiis maiores fugit asperiores quo doloremque eligendi sint at quibusdam nostrum, accusantium iusto sed facere rerum ea. Sed, explicabo?
+{{$condonation->justification}}
 </p>
 <br>
 <br>
 
-<p style="text-align: center; text-decoration: underline;">{{$credit->adviser}}</p>
+<p style="text-align: center; text-decoration: underline;">{{$condonation->adviser}}</p>
 <p style="text-align: center">Nombre y firma del Promotor</p>
 <br>
 <p style="text-align: center;"><strong>AUTORIZACIÓN</strong></p>

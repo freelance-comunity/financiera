@@ -37,6 +37,15 @@
     @role('mesa de control')
     @include('partials.sidebar.mesa')
     @endrole
+    @role('caja')
+    @include('partials.sidebar.caja')
+    @endrole
+    @role('coordinador')
+    @include('partials.sidebar.coordinador')
+    @endrole
+     @role('direccion')
+    @include('partials.sidebar.direccion')
+    @endrole
 </section>
 <!-- /.sidebar -->
 </aside>

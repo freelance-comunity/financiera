@@ -229,6 +229,60 @@ $count = $credits->where('status', 'Ministrado')->count();
         {!! Form::label('term', 'Plazo en semanas:') !!}     
        <input type="text" name="term" id="months" readonly class="form-control">  
        </div>      
+   
+
+           @elseif($product->modality == "Catorcenal")
+     <script>
+        function monthly(sel)
+        {
+            //alert(sel.value);
+            var x = sel.value * 2;
+            document.getElementById('months').value=x;
+        }
+    </script>
+    <!--- Sequence Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('sequence', 'Frecuencia en:') !!}       
+   <select onchange="monthly(this);" name="sequence"  style="width:350px" class="form-control">
+      <option value="0" selected="selected">Selecciona frecuencia</option>
+        <option value="1">1 mes</option>
+        <option value="2">2 meses</option>
+        <option value="3">3 meses</option>
+         <option value="4">4 meses</option>
+         <option value="5">5 meses</option>
+         <option value="6">6 meses</option>
+    </select>
+    </div>
+        <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('term', 'Plazo en catorcenas:') !!}     
+       <input type="text" name="term" id="months" readonly class="form-control">  
+       </div>      
+      @elseif($product->modality == "Quincenal")
+     <script>
+        function monthly(sel)
+        {
+            //alert(sel.value);
+            var x = sel.value * 2;
+            document.getElementById('months').value=x;
+        }
+    </script>
+    <!--- Sequence Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('sequence', 'Frecuencia en:') !!}       
+   <select onchange="monthly(this);" name="sequence"  style="width:350px" class="form-control">
+      <option value="0" selected="selected">Selecciona frecuencia</option>
+        <option value="1">1 mes</option>
+        <option value="2">2 meses</option>
+        <option value="3">3 meses</option>
+         <option value="4">4 meses</option>
+         <option value="5">5 meses</option>
+         <option value="6">6 meses</option>
+    </select>
+    </div>
+        <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('term', 'Plazo en catorcenas:') !!}     
+       <input type="text" name="term" id="months" readonly class="form-control">  
+       </div>      
     @endif
 
     <!--- Frequency Payment Field --->
@@ -243,6 +297,13 @@ $count = $credits->where('status', 'Ministrado')->count();
         {!! Form::select('interest', ['0.05' => '5%', '0.06' => '6%', '0.08' => '8%'],null, ['class' => 'form-control']) !!}
     </div>
 @elseif($product->modality == "Semanal")
+    <!--- Interest Field --->
+    <div class="form-group col-sm-6 col-lg-4">
+        {!! Form::label('interest', 'Selecciona Interés:') !!}
+        {!! Form::select('interest', ['0.05' => '5%', '0.06' => '6%', '0.08' => '8%'],null, ['class' => 'form-control']) !!}
+    </div>
+
+@elseif($product->modality == "Catorcenal")
     <!--- Interest Field --->
     <div class="form-group col-sm-6 col-lg-4">
         {!! Form::label('interest', 'Selecciona Interés:') !!}

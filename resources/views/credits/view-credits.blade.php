@@ -169,24 +169,36 @@ Lista de solicitudes
     <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModalcancel{{$credits->id}}"">Ministrado</button>          
     <a href="{!! url('download-documents-cuota', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>  
     <a href="{!! url('download-payments-cuota', [$credits->id]) !!}" class="btn bg-teal btn-block"><i class="fa fa-calendar"></i> Descargar Calendario de Pagos</a> 
-<!-- Links documents credit monthly -->
-     @elseif (($credits->status == 'Ministrado') && ($credits->days == '1'))
+    <!-- Links documents credit monthly -->
+    @elseif (($credits->status == 'Ministrado') && ($credits->days == '1'))
     <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModalcancel{{$credits->id}}"">Ministrado</button>          
     <a href="{!! url('download-documents-monthly', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>  
     <a href="{!! url('download-payments-monthly', [$credits->id]) !!}" class="btn bg-teal btn-block"><i class="fa fa-calendar"></i> Descargar Calendario de Pagos</a> 
-<!-- End links credit montly -->
-<!-- Links documents credit weekly -->
-     @elseif (($credits->status == 'Ministrado') && ($credits->days == '4'))
+    <!-- End links credit montly -->
+    <!-- Links documents credit weekly -->
+    @elseif (($credits->status == 'Ministrado') && ($credits->days == '4'))
     <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModalcancel{{$credits->id}}"">Ministrado</button>          
     <a href="{!! url('download-documents-weekly', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>  
     <a href="{!! url('download-payments-weekly', [$credits->id]) !!}" class="btn bg-teal btn-block"><i class="fa fa-calendar"></i> Descargar Calendario de Pagos</a> 
-<!-- End links credit montly -->
+    <!-- End links credit montly -->
+    @elseif (($credits->status == 'Ministrado') && ($credits->frequency_payment == 'Quincenal'))
+    <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModalcancel{{$credits->id}}">Ministrado</button>          
+    <a href="{!! url('download-documents-biweekly', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>  
+    <a href="{!! url('download-payments-biweekly', [$credits->id]) !!}" class="btn bg-teal btn-block"><i class="fa fa-calendar"></i> Descargar Calendario de Pagos</a>
+    @elseif (($credits->status == 'Ministrado') && ($credits->frequency_payment == 'Catorcenal'))
+    <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModalcancel{{$credits->id}}">Ministrado</button>          
+    <a href="{!! url('download-documents-fourteen', [$credits->id]) !!}" class="btn bg-navy btn-block"><i class="fa fa-file-pdf-o"></i> Descargar documentos</a>  
+    <a href="{!! url('download-payments-fourteen', [$credits->id]) !!}" class="btn bg-teal btn-block"><i class="fa fa-calendar"></i> Descargar Calendario de Pagos</a>
     @elseif (($credits->status == 'Cancelar'))  
     <button  class="btn btn-danger btn-block">Cancelado</button></a>    
     @endif
   </td>
   <td>
     <a href="{!! route('credits.show', [$credits->id]) !!}" class="uppercase btn bg-blue btn-block">Ver crédito</a>
+    @if($credits->status == 'Ministrado')
+    
+    <a href="{{ url('condonation')}}/{{$credits->id}}" class="uppercase btn bg-maroon btn-block" >Condonación</a> 
+    @endif
   </td>
 </tr>
 @endforeach

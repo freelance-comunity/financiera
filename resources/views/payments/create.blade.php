@@ -4,7 +4,7 @@
 <div class="container">
 
     @include('common.errors')
-
+	
     {!! Form::open(['route' => 'payments.store']) !!}
 
         @include('payments.fields')

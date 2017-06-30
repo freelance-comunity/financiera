@@ -10,12 +10,8 @@ $anchorings = App\Models\Anchoring::select('amount_resource','id')->first();
 		<!-- small box -->
 		<div class="small-box bg-olive">
 			<div class="inner">
-<<<<<<< HEAD
-				<h3>90 %</h3>
-=======
 				
 				<h3>${{number_format($anchorings->amount_resource)}}</h3>
->>>>>>> refs/remotes/origin/master
 				<p>Crédito Disponible</p>
 			</div>
 			<div class="icon">
@@ -30,9 +26,11 @@ $anchorings = App\Models\Anchoring::select('amount_resource','id')->first();
 	<!--<div class="col-lg-3 col-xs-6">
 		
 		<div class="small-box bg-red">
-			<div class="inner">				
+			<div class="inner">
+				
 				<h3>$12345</h3>	
 				<p>Monto Atrasado</p>
+
 			</div>
 			<div class="icon">
 				<i class="fa fa-bell"></i>
@@ -43,6 +41,7 @@ $anchorings = App\Models\Anchoring::select('amount_resource','id')->first();
 		</div>
 	</div>-->
 	<!-- /.col -->
+
 	<!-- fix for small devices only -->
 	<div class="clearfix visible-sm-block"></div>
 	<div class="col-lg-3 col-xs-6">
@@ -50,6 +49,7 @@ $anchorings = App\Models\Anchoring::select('amount_resource','id')->first();
 		<div class="small-box bg-teal">
 			<div class="inner">
 				<h3>{{$credits}}</h3>
+
 				<p>Créditos Aprobados</p>
 			</div>
 			<div class="icon">
@@ -193,7 +193,8 @@ $anchorings = App\Models\Anchoring::select('amount_resource','id')->first();
 					<!-- /.box-footer -->
 				</div>
 				<!--/.box -->
-			</div>						
+			</div>			
+			
 			@foreach ($payment as $payment)
 			@php
 			$credit = App\Models\Credits::find($payment->debt->credits_id);
@@ -203,7 +204,9 @@ $anchorings = App\Models\Anchoring::select('amount_resource','id')->first();
 				var c = {cre:{{$payment->debt->credits_id}}};
 				alertify.error('PAGO ATRASADO DE HOY' + '<br>' + 'No. de Pago: '+ number.payments + '<br>' + 'No. de Crédito: ' + c.cre );
 			</script>
+
 			@endforeach
+
 			<script>  
 				var pay= {p:{{$payments}}};
 				alertify.error('Total de  pagos atrasados: '+ pay.p);
