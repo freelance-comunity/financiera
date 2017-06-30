@@ -8,7 +8,7 @@
 
     <div class="row">
         <h1 class="pull-left">Productos</h1>
-        <a class="uppercase btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('products.create') !!}">Agregar Nuevo</a>
+        <!--<a class="uppercase btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('products.create') !!}">Agregar Nuevo</a>-->
     </div>
 
     <div class="row">
@@ -27,7 +27,7 @@
                     <th>Tasa de Interés</th>
                     <th>Recargo</th>
                     <th>Modalidad</th>
-                    <th width="50px">Acción</th>
+                    <!--<th width="50px">Acción</th>-->
                 </thead>
                 <tbody>
 
@@ -42,10 +42,10 @@
                         <td>{!! $product->cup_interest !!}</td>
                         <td>{!! $product->surcharge !!}</td>
                         <td>{!! $product->modality !!}</td>
-                        <td>
+                        <!--<td>
                             <a href="{!! route('products.edit', [$product->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
                             <a href="{!! route('products.delete', [$product->id]) !!}" onclick="return confirm('¿Estas seguro de querer borrar este producto?')"><i class="glyphicon glyphicon-remove"></i></a>
-                        </td>
+                        </td>-->
                     </tr>
                     @endforeach
                 </tbody>

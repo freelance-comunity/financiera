@@ -13,7 +13,7 @@
 
 <div class="row">
   @if($condonations->isEmpty())
-  <div class="well text-center">No Condonations found.</div>
+  <div class="well text-center">No se encontraron condonaciones.</div>
   @else
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="myTable">
@@ -34,8 +34,8 @@
       <tbody>
 
         @foreach($condonations as $condonation)        
-         @php
-        $credit = App\Models\Credits::find($condonations->credits_id);
+        @php
+        $credit = App\Models\Credits::find($condonation->credits_id);
         @endphp
         <tr>
           <td>{!! $condonation->date !!}</td>

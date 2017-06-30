@@ -19,7 +19,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {   
-        if (\Auth::user()->hasRole(['propietario'])) {
+        if (\Auth::user()->hasRole(['administrador'])) {
             return $next($request);
         }else{
             return abort(403);

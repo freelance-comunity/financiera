@@ -34,7 +34,6 @@ Lista de cuentas
                     <td>{!! $account->account_type !!}</td>
                     <td>
                         <a href="{!! route('accounts.edit', [$account->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a href="{!! route('accounts.delete', [$account->id]) !!}" onclick="return confirm('¿Estas seguro de eliminar esta cuenta del sistema?')"><i class="glyphicon glyphicon-remove"></i></a>
                     </td>
                 </tr>
                 @endforeach
