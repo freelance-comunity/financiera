@@ -9,7 +9,7 @@
 <body>
   <header class="clearfix">
     <div id="logo">
-      <img src="{{asset('img/pdf/logo.png')}}">
+      <img src="{{asset('img/pdf/logo_sc.png')}}">
     </div>
     <div id="company">
      <h2 class="name">SOLUCIÓN Y CRECIMIENTO EMPRESARIAL, S.A. DE C.V.</h2>

@@ -30,7 +30,7 @@
 <!--- Phone Field --->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('phone', '* Teléfono:') !!}
-    {!! Form::text('phone', $accredited->phone, ['class' => 'form-control','readonly' => 'readonly']) !!}
+    {!! Form::text('phone', $accredited->cel, ['class' => 'form-control','readonly' => 'readonly']) !!}
 </div>
 
 <!--- Address Field --->
