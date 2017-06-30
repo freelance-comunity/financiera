@@ -10,7 +10,6 @@ $atrasado = App\Models\Payments::all();
 		<div class="small-box bg-olive">
 			<div class="inner">
 				<h3>90 %</h3>
-
 				<p>Crédito Disponible</p>
 			</div>
 			<div class="icon">
@@ -25,11 +24,9 @@ $atrasado = App\Models\Payments::all();
 	<div class="col-lg-3 col-xs-6">
 		<!-- small box -->
 		<div class="small-box bg-red">
-			<div class="inner">
-				
+			<div class="inner">				
 				<h3>$12345</h3>	
 				<p>Monto Atrasado</p>
-
 			</div>
 			<div class="icon">
 				<i class="fa fa-bell"></i>
@@ -40,7 +37,6 @@ $atrasado = App\Models\Payments::all();
 		</div>
 	</div>
 	<!-- /.col -->
-
 	<!-- fix for small devices only -->
 	<div class="clearfix visible-sm-block"></div>
 	<div class="col-lg-3 col-xs-6">
@@ -48,7 +44,6 @@ $atrasado = App\Models\Payments::all();
 		<div class="small-box bg-teal">
 			<div class="inner">
 				<h3>{{$credits}}</h3>
-
 				<p>Créditos Aprobados</p>
 			</div>
 			<div class="icon">
@@ -192,8 +187,7 @@ $atrasado = App\Models\Payments::all();
 					<!-- /.box-footer -->
 				</div>
 				<!--/.box -->
-			</div>			
-			
+			</div>						
 			@foreach ($payment as $payment)
 			@php
 			$credit = App\Models\Credits::find($payment->debt->credits_id);
@@ -203,9 +197,7 @@ $atrasado = App\Models\Payments::all();
 				var c = {cre:{{$payment->debt->credits_id}}};
 				alertify.error('PAGO ATRASADO DE HOY' + '<br>' + 'No. de Pago: '+ number.payments + '<br>' + 'No. de Crédito: ' + c.cre );
 			</script>
-
 			@endforeach
-
 			<script>  
 				var pay= {p:{{$payments}}};
 				alertify.error('Total de  pagos atrasados: '+ pay.p);
