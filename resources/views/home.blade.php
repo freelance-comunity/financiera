@@ -9,7 +9,7 @@ Inicio
 @section('contentheader_title')
 s&c  <small>Version 1.0</small>
 @endsection
-	@role('administrador')
+	@role('propietario')
 		@include('partials.home.administrador')
 	@endrole
 

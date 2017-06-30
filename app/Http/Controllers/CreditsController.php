@@ -308,6 +308,11 @@ class CreditsController extends AppBaseController
 			}
 			elseif ($status == 'Ministrado' and $frequency == 'Mensual') 
 			{
+				$anchoring = Anchoring::select('amount_resource','id')->first();
+				$newAmount = $anchoring->amount_resource - $credits->authorized_amount;
+				$newAnchoring = Anchoring::find($anchoring->id);
+				$newAnchoring->amount_resource = $newAmount;
+				$newAnchoring->save();
 				$debt = new Debt;
 				$debt->ammount = $credits->authorized_amount;
 				$debt->status = "Pendiente";
@@ -341,6 +346,11 @@ class CreditsController extends AppBaseController
 			}
 			elseif ($status == 'Ministrado' and $frequency == 'Semanal') 
 			{
+				$anchoring = Anchoring::select('amount_resource','id')->first();
+				$newAmount = $anchoring->amount_resource - $credits->authorized_amount;
+				$newAnchoring = Anchoring::find($anchoring->id);
+				$newAnchoring->amount_resource = $newAmount;
+				$newAnchoring->save();
 				$debt = new Debt;
 				$debt->ammount = $credits->authorized_amount;
 				$debt->status = "Pendiente";
@@ -455,20 +465,20 @@ class CreditsController extends AppBaseController
 			$newAnchoring->amount_resource = $newAmount;
 			$newAnchoring->save();
 
-		/*$debt = Debt::find($id);
+			$debt = Debt::find($id);
 			$payments = $debt->payments;
 			foreach ($payments as $value) {
-            $payment_delete = Payments::find($value->id);
-            $payment_delete->delete();
-          }
-          $debt->delete();*/
+				$payment_delete = Payments::find($value->id);
+				$payment_delete->delete();
+			}
+			$debt->delete();
 
-      }
+		}
 
-      Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
+		Alert::success('Datos editados exitosamente.')->persistent('Cerrar');
 
-      return redirect(route('credits.index'));	
-  }	
+		return redirect(route('credits.index'));	
+	}	
 
 
 

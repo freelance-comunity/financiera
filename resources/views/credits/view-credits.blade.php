@@ -195,7 +195,10 @@ Lista de solicitudes
   </td>
   <td>
     <a href="{!! route('credits.show', [$credits->id]) !!}" class="uppercase btn bg-blue btn-block">Ver crédito</a>
-    <a href="{{ url('condonation')}}/{{$credits->id}}" class="uppercase btn bg-olive btn-block" >Condonación</a> 
+    @if($credits->status == 'Ministrado')
+    
+    <a href="{{ url('condonation')}}/{{$credits->id}}" class="uppercase btn bg-maroon btn-block" >Condonación</a> 
+    @endif
   </td>
 </tr>
 @endforeach

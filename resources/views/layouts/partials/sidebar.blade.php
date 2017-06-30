@@ -28,7 +28,7 @@
         </div>
     </form>
     <!-- /.search form -->
-    @role('administrador')
+    @role('propietario')
     @include('partials.sidebar.administrator')
     @endrole
     @role('promotor de credito')

@@ -105,11 +105,11 @@
 
 <p style="text-align: center; text-decoration: underline"><strong>SOLICITUD DE CONDONACIÓN</strong></p>
 <p style=""><strong style="text-align: left; text-decoration: underline">DATOS DEL CREDITO</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<strong style="text-align: center;">FECHA:</strong> 16-06-207</p>
+	<strong style="text-align: center;">FECHA:</strong>{{$condonation->date}}</p>
 	<div style="border: 1px solid black; padding: 5px 5px 5px 80px;; ">
-		<p><strong>Sucursal:</strong> Tuxtla Gutierrez &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Promotor: </strong>Wilfrido Enrique Ramírez Meza</p>
-		<p><strong>Cliente: </strong> Edgar Custodio &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Monto desembolsado:</strong> 5000</p>
-		<p><strong>Plazo:</strong> 2 días &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Número de amortizaciones:</strong> 2</p>
+		<p><strong>Sucursal:</strong> {{$condonation->branch}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Promotor: </strong>{{$condonation->adviser}}</p>
+		<p><strong>Cliente: </strong> {{$condonation->accredited}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Monto desembolsado:</strong> {{$condonation->amount}}</p>
+		<p><strong>Plazo:</strong> {{$condonation->term}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Número de amortizaciones:</strong> {{$condonation->amortization}}</p>
 	</div>
 	<br>
 	<table>
@@ -128,7 +128,7 @@
   </tr>
 </table>
 <br>
-<p>Correspondiente a los vencimientos del <label style="text-decoration: underline;"> {{$condonation->date_to}}</label><!-- al  <label style="text-decoration: underline;">28 de Octubre de 2017</label>-->
+<p>Correspondiente a los vencimientos del <label style="text-decoration: underline;"> {{$condonation->date_to}}</label> hasta  <label style="text-decoration: underline;">{{$condonation->date_at}}</label>
 </p>
 <p><strong>JUSTIFICACIÓN DEL PROMOTOR DE CREDITO:
 </strong></p>
@@ -138,7 +138,7 @@
 <br>
 <br>
 
-<p style="text-align: center; text-decoration: underline;">Wilfrido Enrique Ramírez Meza</p>
+<p style="text-align: center; text-decoration: underline;">{{$condonation->adviser}}</p>
 <p style="text-align: center">Nombre y firma del Promotor</p>
 <br>
 <p style="text-align: center;"><strong>AUTORIZACIÓN</strong></p>

@@ -10,7 +10,7 @@ $anchorings = App\Models\Anchoring::select('amount_resource','id')->first();
 		<!-- small box -->
 		<div class="small-box bg-olive">
 			<div class="inner">
-				<h3>${{number_format($anchorings->amount_resource)}}</h3>
+				
 
 				<p>Crédito Disponible</p>
 			</div>

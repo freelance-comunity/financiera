@@ -41,6 +41,7 @@
             <a href="#"><i class='fa fa-money'></i> <span>Cobranza</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
                 <li><a href="{{ url('/payments') }}">Nuevo Pago</a></li>
+                <li><a href="{{ url('/condonations') }}">Condonaciones</a></li>
             </ul>
         </li>
         <li class="treeview">

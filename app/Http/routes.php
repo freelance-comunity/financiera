@@ -16,7 +16,7 @@
         return "Listo";
       });
 
-      Route::group(['middleware' => 'auth'], function () {
+     Route::group(['middleware' => 'auth'], function () {
 
         Route::get('lockscreen', 'LockAccountController@lockscreen');
         Route::post('lockscreen', 'LockAccountController@unlock');
@@ -715,7 +715,7 @@
     $pdf = PDF::loadView('documentation.case-file-biweekly', compact('credit', 'amount_letter', 'amount', 'interest', 'months', 'capital', 'f', 'rest'));
     return $pdf->download('expediente.pdf');
   });
-Route::get('download-payments-fourteen/{id}', function($id) {
+  Route::get('download-payments-fourteen/{id}', function($id) {
     $credit = App\Models\Credits::find($id);
     $days = $credit->days;
     $amount = $credit->authorized_amount;
@@ -817,12 +817,19 @@ Route::get('download-payments-fourteen/{id}', function($id) {
     ->with('payments', $payments)
     ->with('credit', $credit);
   });
-  Route::get('pay-notification/{id}', function($id) {
+  Route::get('payments-lis/{id}', function($id) {
     $credit = App\Models\Credits::find($id);
     $payments = $credit->debt->payments;
     return view('payments.index')
     ->with('payments', $payments)
-    ->with('credit', $credit);
+    ->with('credit', $credit);   
+  });
+  Route::get('pay-notification/{id}', function($id) {
+    $credits = App\Models\Credits::find($id);
+    $payments = $credits->debt->payments;
+    return view('payments.index')
+    ->with('payments', $payments)
+    ->with('credits', $credits);
   });
 
 
@@ -898,18 +905,18 @@ Route::get('download-payments-fourteen/{id}', function($id) {
       }
     });
 
- Route::resource('condonations', 'CondonationController');
+      Route::resource('condonations', 'CondonationController');
 
-  Route::get('condonations/{id}/delete', [
-    'as' => 'condonations.delete',
-    'uses' => 'CondonationController@destroy',
-    ]);
+      Route::get('condonations/{id}/delete', [
+        'as' => 'condonations.delete',
+        'uses' => 'CondonationController@destroy',
+        ]);
 
 
-    Route::get('condonation/{id}', function($id) {
-    $credits = App\Models\Credits::find($id);
-    $payments = App\Models\Payments::find($id);
-    return view('condonations.create')
-    ->with('credits',$credits)
-    ->with('payments', $payments);
-  });
+      Route::get('condonation/{id}', function($id) {
+        $credits = App\Models\Credits::find($id);
+        $payments = App\Models\Payments::find($id);
+        return view('condonations.create')
+        ->with('credits',$credits)
+        ->with('payments', $payments);
+      });

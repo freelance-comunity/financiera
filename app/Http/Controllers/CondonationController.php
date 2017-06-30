@@ -65,11 +65,12 @@ class CondonationController extends AppBaseController
 	public function store(CreateCondonationRequest $request)
 	{
 		$input = $request->all();
-		$payments = $request->input('payments_id');		
+		
+		$credits = $request->input('credits_id');	
 		$condonation = Condonation::create($input);
 		Alert::success('Condonación creada correctamente')->persistent('Cerrar');
-		$payments = Payments::find($payments);
-		$condonation = $payments->condonation;	
+		$credits = Credits::find($credits);
+		$condonation = $credits->condonation;	
 		return redirect(route('condonations.index'));
 	}
 

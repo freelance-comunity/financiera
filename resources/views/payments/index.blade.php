@@ -226,9 +226,7 @@ Tabla de pagos
                         <td>{!! $payments->payment_date !!}</td>
                         <td>{!! $payments->status !!}</td>
                         <td>         
-                            <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>  
-                             <a href="{{ url('condonation')}}/{{$payments->id}}" class="uppercase btn bg-olive btn-block" >Condonación</a>   
-                             <a href="{{ url('condonacion-pdf')}}/{{$payments->id}}" class="uppercase btn bg-olive btn-block" >pdf</a>                          
+                            <a href="{{ url('pay') }}/{{$payments->id}}" class="uppercase btn bg-navy btn-block" onclick="return confirm('¿Estas seguro de realizar este pago?')">pagar</a>                    
                         </td>
                     </tr>
                     @elseif($payments->status == "Pendiente")
