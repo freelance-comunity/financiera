@@ -50,5 +50,5 @@
 
         <link rel="stylesheet" href="{{ asset('/alertify/alertify.css') }}">
         <script src="{{ asset('/alertify/alertify.min.js') }}"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
       </head>

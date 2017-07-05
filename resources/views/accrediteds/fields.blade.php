@@ -75,6 +75,7 @@
         @if($count ->isEmpty())
         <option value="">No hay sucursales registradas en el sistema</option>
         @else 
+             <option selected value="">seleccione sucursal</option>
              @foreach($branches as $branches)
              <option value="{{ $branches->id}}">{{$branches->nomenclature}}</option>
              @endforeach
@@ -91,7 +92,8 @@
         @if($count ->isEmpty())
          <option value="">No hay promotores registradios en el sistema</option>
          @else
-        @foreach ($count as $users)
+         <option selected value="">Seleccione sucursal</option>
+        @foreach ($count as $users)        
         <option value="{{$users->id}}"></option>
           @endforeach
        @endif

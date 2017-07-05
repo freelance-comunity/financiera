@@ -16,7 +16,7 @@
         return "Listo";
       });
 
-     Route::group(['middleware' => 'auth'], function () {
+      Route::group(['middleware' => 'auth'], function () {
 
         Route::get('lockscreen', 'LockAccountController@lockscreen');
         Route::post('lockscreen', 'LockAccountController@unlock');
@@ -812,10 +812,17 @@
 
   Route::get('payments-list/{id}', function($id) {
     $credit = App\Models\Credits::find($id);
-    $payments = $credit->debt->payments;
-    return view('payments.index')
-    ->with('payments', $payments)
-    ->with('credit', $credit);
+    $debt   = $credit->debt;
+    if (is_null($debt)) {
+      Alert::error('Este crédito no se ministro correctamente');
+      return redirect()->back();
+    }
+    else{
+      $payments = $credit->debt->payments;
+      return view('payments.index')
+      ->with('payments', $payments)
+      ->with('credit', $credit);
+    }
   });
   Route::get('payments-lis/{id}', function($id) {
     $credit = App\Models\Credits::find($id);
